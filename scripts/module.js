@@ -1,35 +1,41 @@
-Hooks.once("init", async function () {});
+import { registerSettings } from "./settings.js";
+
+Hooks.once("init", async function () {
+  registerSettings();
+});
 
 const COLORS = {
   GREEN: "#ADFF2F",
   RED: "#ff0000",
   PURPLE: "#9370DB",
   WHITE: "#FFFFFF",
+  DEEPSKYBLUE: "#00BFFF",
 };
 Hooks.once("ready", async function () {
-  Hooks.on("updateActor", async (actor, update, status, userID) => {
-    if (userID == game.user.id || true) {
-      if (status.diff) {
-        const hpChanged = update.system.attributes.hp.value;
-        const dmgTaken = (status?.damageTaken ?? 0) > 0;
-        const tok = canvas.tokens.placeables.find(
-          (token) => token.actor.id === actor.id
-        );
-        if (hpChanged) {
-          if (dmgTaken) {
-            //Dealt Damage
-            flashColor(tok, COLORS.RED);
-          } else {
-            //Heal
-            flashColor(tok, COLORS.GREEN);
-          }
+  Hooks.on("updateActor", async (actor, update, status, _userID) => {
+    if (status.diff) {
+      const hpChanged = update.system.attributes.hp.value;
+      const dmgTaken = (status?.damageTaken ?? 0) > 0;
+      const tok = canvas.tokens.placeables.find(
+        (token) => token.actor.id === actor.id
+      );
+      if (hpChanged) {
+        if (dmgTaken) {
+          //Dealt Damage
+          flashColor(tok, COLORS.RED);
+        } else {
+          //Heal
+          flashColor(tok, COLORS.GREEN);
         }
       }
     }
   });
   Hooks.on("targetToken", async (user, token) => {
-    if (user.id === game.user.id || true) {
-      flashColor(token, COLORS.PURPLE);
+    if (
+      user.id === game.user.id ||
+      game.settings.get(MODULE_ID, "share-target-flash")
+    ) {
+      flashColor(token, COLORS.DEEPSKYBLUE);
     }
   });
 });

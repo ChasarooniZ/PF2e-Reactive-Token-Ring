@@ -1,3 +1,25 @@
 {
-    "MODULE.hello": "hello"
+  "I18N.LANGUAGE": "English",
+  "pf2e-reactive-token-ring": {
+    "module-settings": {
+      "target": {
+        "share-flash": {
+          "name": "Share Target Flash",
+          "hint": "Shows the flash effect on target to all users (disabled show to only the person targetting)"
+        },
+        "player-color": {
+          "name": "Target uses Player Color",
+          "hint": "For the target flash, use the player color (overrides any custom set colors)"
+        }
+      },
+      "": {
+        "name": "",
+        "hint": ""
+      },
+      "": {
+        "name": "",
+        "hint": ""
+      }
+    }
+  }
 }
