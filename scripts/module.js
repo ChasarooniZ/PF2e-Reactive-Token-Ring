@@ -3,6 +3,7 @@ Hooks.once("init", async function () {});
 const COLORS = {
   GREEN: "#ADFF2F",
   RED: "#ff0000",
+  PURPLE: "#800080",
   WHITE: "#FFFFFF",
 };
 Hooks.once("ready", async function () {
@@ -28,7 +29,7 @@ Hooks.once("ready", async function () {
   });
   Hooks.on("targetToken", async (user, token) => {
     if (user.id === game.user.id) {
-      flashColor(token, COLORS.WHITE);
+      flashColor(token, COLORS.PURPLE);
     }
   });
 });
