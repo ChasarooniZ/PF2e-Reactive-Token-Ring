@@ -101,8 +101,8 @@ function getAnimationChanges(situation, data) {
       if (game.settings.get(MODULE_ID, "damage-heal.scale-on-%-hp")) {
         result.duration =
           getDurationMultiplier(
-            Math.abs(data.status.dmgTaken / data.system.attributes.hp.value)
-          ) * baseDuration ?? baseDuration;
+            Math.abs(data.status.dmgTaken / data.actor.system.attributes.hp.max)
+          ) * baseDuration;
       }
       break;
     case "flash":
