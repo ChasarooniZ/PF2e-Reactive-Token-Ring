@@ -15,7 +15,7 @@ const COLORS = {
 Hooks.once("ready", async function () {
   Hooks.on("updateActor", async (actor, update, status, _userID) => {
     if (status.diff) {
-      const hpChanged = update.system.attributes.hp.value;
+      const hpChanged = !!update?.system?.attributes?.hp?.value;
       const dmgTaken = (status?.damageTaken ?? 0) > 0;
       const tok = canvas.tokens.placeables.find(
         (token) => token.actor.id === actor.id
