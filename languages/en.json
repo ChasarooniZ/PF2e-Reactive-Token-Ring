@@ -1,3 +1,31 @@
 {
-    "MODULE.hello": "hello"
+  "I18N.LANGUAGE": "English",
+  "pf2e-reactive-token-ring": {
+    "module-settings": {
+      "target": {
+        "share-flash": {
+          "name": "Share Target Flash",
+          "hint": "Shows the flash effect on target to all users (disabled show to only the person targetting)"
+        },
+        "player-color": {
+          "name": "Target uses Player Color",
+          "hint": "For the target flash, use the player color (overrides any custom set colors)"
+        }
+      },
+      "damage-heal": {
+        "scale-on-%-hp": {
+          "name": "Scale Damage/Heal Duration",
+          "hint": "Scale damage/healing duration based on the percent of health change"
+        }
+      },
+      "duration": {
+        "name": "Duration",
+        "hint": "How long (in ms) should the token flashing be for all effects (Default 500 ms, this will scaled if you toggle on settings that scale duration)"
+      },
+      "": {
+        "name": "",
+        "hint": ""
+      }
+    }
+  }
 }
