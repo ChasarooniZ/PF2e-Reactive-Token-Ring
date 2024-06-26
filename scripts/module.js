@@ -101,7 +101,7 @@ function getAnimationChanges(situation, data) {
       if (game.settings.get(MODULE_ID, "damage-heal.scale-on-%-hp")) {
         result.duration =
           getDurationMultiplier(
-            Math.abs(data.status.dmgTaken / data.actor.system.attributes.hp.max)
+            Math.abs(data.status.damageTaken / data.actor.system.attributes.hp.max)
           ) * baseDuration;
       }
       break;
