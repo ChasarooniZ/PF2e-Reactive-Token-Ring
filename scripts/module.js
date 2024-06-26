@@ -1,7 +1,7 @@
 import { CONDITIONS, MODULE_ID } from "./misc.js";
 import { registerSettings } from "./settings.js";
 
-Hooks.once("init", async function () {
+Hooks.once("init", function () {
   registerSettings();
 });
 
