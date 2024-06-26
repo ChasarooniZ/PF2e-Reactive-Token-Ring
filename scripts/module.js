@@ -54,7 +54,9 @@ Hooks.once("ready", async function () {
     }
   });
   Hooks.on("applyTokenStatusEffect", async (token, name, _unknown) => {
-    const conditions = [...token.actor.conditions.#conditionsHad];
+    const conditions = token.actor.conditions.active.map(
+      (c) => c?.rollOptionSlug
+    );
     const isAdded = conditions.includes(name);
     //condition was added
     if (CONDITIONS.POSITIVE.includes(name)) {
