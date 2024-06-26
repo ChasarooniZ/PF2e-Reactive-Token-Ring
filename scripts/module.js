@@ -48,7 +48,7 @@ Hooks.once("ready", async function () {
     ) {
       let color = COLORS.DEEPSKYBLUE;
       if (game.settings.get(MODULE_ID, "target.player-color")) {
-        color = user.color;
+        color = user.color.css;
       }
       flashColor(token, color, getAnimationChanges("target", { token }));
     }
@@ -101,10 +101,8 @@ function getAnimationChanges(situation, data) {
       if (game.settings.get(MODULE_ID, "damage-heal.scale-on-%-hp")) {
         result.duration =
           getDurationMultiplier(
-            Math.abs(
-              data.status.dmgTaken / data.actor.system.attributes.hp.value
-            )
-          ) * baseDuration;
+            Math.abs(data.status.dmgTaken / data.system.attributes.hp.value)
+          ) * baseDuration ?? baseDuration;
       }
       break;
     case "flash":
