@@ -1,0 +1,33 @@
+<form>
+    <nav class="tabs" data-group="primary-tabs">
+        <a class="item" data-tab="general">General</a>
+        <a class="item" data-tab="advanced">Advanced</a>
+    </nav>
+
+    <section class="content">
+        <div class="tab" data-tab="general" data-group="primary-tabs">
+            <div class="form-group">
+                <label>Text Input:</label>
+                <input type="text" name="textSetting" value="{{textSetting}}">
+            </div>
+            <div class="form-group">
+                <label>Color Input:</label>
+                <input type="color" name="colorSetting" value="{{colorSetting}}">
+            </div>
+        </div>
+        <div class="tab" data-tab="advanced" data-group="primary-tabs">
+            <div class="form-group">
+                <label>Number Input:</label>
+                <input type="number" name="numberSetting" value="{{numberSetting}}">
+            </div>
+            <div class="form-group">
+                <label>Boolean Input:</label>
+                <input type="checkbox" name="booleanSetting" {{#if booleanSetting}}checked{{/if}}>
+            </div>
+        </div>
+    </section>
+
+    <footer class="sheet-footer">
+        <button type="submit">Save Settings</button>
+    </footer>
+</form>
