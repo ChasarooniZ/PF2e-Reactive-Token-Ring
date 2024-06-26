@@ -33,11 +33,6 @@ Hooks.once("ready", async function () {
   });
 });
 
-const defaultAnimationOptions = {
-  duration: 500,
-  easing: CONFIG.Token.ringClass.easeTwoPeaks,
-};
-
 /**
  * flash color of token
  * @param {Token} token Token to flash
@@ -47,6 +42,10 @@ const defaultAnimationOptions = {
 async function flashColor(token, color, animationOverride = {}) {
   //if ring enabled flash it
   if (token?.document?.ring?.enabled) {
+    const defaultAnimationOptions = {
+      duration: 500,
+      easing: easeTwoPeaks,
+    };
     const options = foundry.utils.mergeObject(
       defaultAnimationOptions,
       animationOverride
