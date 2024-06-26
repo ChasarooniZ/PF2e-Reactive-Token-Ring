@@ -1,35 +1,33 @@
 {
-  "id": "module",
-  "title": "New Module",
-  "description": "",
+  "id": "pf2e-reactive-token-ring",
+  "title": "PF2e Reactive Token Ring",
+  "description": "Adds some reaction for the pf2e system for dynamic token rings",
   "version": "#{VERSION}#",
   "library": "false",
   "manifestPlusVersion": "1.2.0",
   "compatibility": {
-    "minimum": 10,
-    "verified": 10,
-    "maximum": 11
+    "minimum": 12,
+    "verified": 12
   },
   "authors": [
     {
-      "name": "The League of Extraordinary FVTT Developers",
-      "url": "https://github.com/League-of-Foundry-Developers",
-      "discord": "discordID#0001"
+      "name": "chasarooniZ"
     }
   ],
   "relationships": {
-    "systems": [],
+    "systems": [
+      {
+        "id": "pf2e",
+        "type": "system",
+        "compatibility": {
+          "minimum": "5.2.1",
+          "verified": "5.3.0"
+        }
+      }
+    ],
     "requires": []
   },
-  "esmodules": [
-    "scripts/module.js"
-  ],
-  "scripts": [
-    "scripts/lib/lib.js"
-  ],
-  "styles": [
-    "styles/module.css"
-  ],
+  "esmodules": ["scripts/module.js"],
   "languages": [
     {
       "lang": "en",
