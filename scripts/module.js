@@ -122,7 +122,7 @@ function getAnimationChanges(situation, data) {
 function getDurationMultiplier(percentHealth) {
   return (
     1 +
-    ((Math.max(Math.max(0.1, percentHealth), 0.5) - 0.1) * (4 - 1)) /
+    ((Math.min(Math.max(0.1, percentHealth), 0.5) - 0.1) * (4 - 1)) /
       (0.5 - 0.1)
   );
 }
