@@ -17,5 +17,5 @@ Adds some reaction for the pf2e system for dynamic token rings
   ![damage+example](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/assets/79132112/e87d28c6-95e9-4fa9-98f7-95ebb5faf2a2)
 - Flashes green on heal
   ![healing+example](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/assets/79132112/55a1c569-d2b5-4d12-824e-2f10178eddef)
-- Flashes purple when targetted
+- Flashes purple when targeted
 ![target+example](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/assets/79132112/c194cade-0878-4adf-9ce5-bf79891424c3)
