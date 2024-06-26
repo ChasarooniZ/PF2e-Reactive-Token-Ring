@@ -8,7 +8,7 @@ const COLORS = {
 };
 Hooks.once("ready", async function () {
   Hooks.on("updateActor", async (actor, update, status, userID) => {
-    if (userID == game.user.id) {
+    if (userID == game.user.id || true) {
       if (status.diff) {
         const hpChanged = update.system.attributes.hp.value;
         const dmgTaken = (status?.damageTaken ?? 0) > 0;
@@ -28,7 +28,7 @@ Hooks.once("ready", async function () {
     }
   });
   Hooks.on("targetToken", async (user, token) => {
-    if (user.id === game.user.id) {
+    if (user.id === game.user.id || true) {
       flashColor(token, COLORS.PURPLE);
     }
   });
