@@ -1,1 +1,44 @@
-export const MODULE_ID = 'pf2e-reactive-token-ring';
+export const MODULE_ID = "pf2e-reactive-token-ring";
+export const CONDITIONS = {
+  POSITIVE: [
+    "concealed",
+    "hidden",
+    "invisible",
+    "quickened",
+    "undetected",
+  ],
+  NEGATIVE: [
+    "blinded",
+    "clumsy",
+    "confused",
+    "controlled",
+    "dazzled",
+    "deafened",
+    "doomed",
+    "drained",
+    "dying",
+    "encumbered",
+    "enfeebled",
+    "fascinated",
+    "fatigued",
+    "fleeing",
+    "frightened",
+    "grabbed",
+    "immobilized",
+    "off-guard",
+    "paralyzed",
+    "persistent-damage",
+    "petrified",
+    "prone",
+    "restrained",
+    "sickened",
+    "slowed",
+    "stunned",
+    "stupefied",
+  ],
+  DEAD: [
+      "dead",
+      "unconscious",
+      "wounded",
+  ]
+};

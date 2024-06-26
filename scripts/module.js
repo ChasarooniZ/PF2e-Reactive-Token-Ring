@@ -1,4 +1,4 @@
-import { MODULE_ID } from "./misc.js";
+import { CONDITIONS, MODULE_ID } from "./misc.js";
 import { registerSettings } from "./settings.js";
 
 Hooks.once("init", async function () {
@@ -11,6 +11,8 @@ const COLORS = {
   PURPLE: "#9370DB",
   WHITE: "#FFFFFF",
   DEEPSKYBLUE: "#00BFFF",
+  ORANGE: "#FFA500",
+  PINK: "#FF69B4",
 };
 Hooks.once("ready", async function () {
   Hooks.on("updateActor", async (actor, update, status, _userID) => {
@@ -49,6 +51,18 @@ Hooks.once("ready", async function () {
         color = user.color;
       }
       flashColor(token, color, getAnimationChanges("target", { token }));
+    }
+  });
+  Hooks.on("applyTokenStatusEffect", async (token, name, _unknown) => {
+    const conditions = [...token.actor.conditions.#conditionsHad];
+    const isAdded = conditions.includes(name);
+    //condition was added
+    if (CONDITIONS.POSITIVE.includes(name)) {
+      if (isAdded) flashColor(token, COLORS.PINK);
+
+      //condition was removed
+    } else if (CONDITIONS.NEGATIVE.includes(name)) {
+      if (isAdded) flashColor(token, COLORS.ORANGE);
     }
   });
 });
