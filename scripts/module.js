@@ -3,7 +3,7 @@ Hooks.once("init", async function () {});
 const COLORS = {
   GREEN: "#ADFF2F",
   RED: "#ff0000",
-  PURPLE: "#800080",
+  PURPLE: "#9370DB",
   WHITE: "#FFFFFF",
 };
 Hooks.once("ready", async function () {
