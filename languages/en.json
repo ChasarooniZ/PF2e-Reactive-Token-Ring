@@ -12,9 +12,15 @@
           "hint": "For the target flash, use the player color (overrides any custom set colors)"
         }
       },
-      "": {
-        "name": "",
-        "hint": ""
+      "damage-heal": {
+        "scale-on-%-hp": {
+          "name": "Scale Damage/Heal Duration",
+          "hint": "Scale damage/healing duration based on the percent of health change"
+        }
+      },
+      "duration": {
+        "name": "Duration",
+        "hint": "How long (in ms) should the token flashing be for all effects (Default 500 ms, this will scaled if you toggle on settings that scale duration)"
       },
       "": {
         "name": "",

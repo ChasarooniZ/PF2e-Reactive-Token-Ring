@@ -23,10 +23,18 @@ Hooks.once("ready", async function () {
       if (hpChanged) {
         if (dmgTaken) {
           //Dealt Damage
-          flashColor(tok, COLORS.RED);
+          flashColor(
+            tok,
+            COLORS.RED,
+            getAnimationChanges("damage", { actor, status })
+          );
         } else {
           //Heal
-          flashColor(tok, COLORS.GREEN);
+          flashColor(
+            tok,
+            COLORS.GREEN,
+            getAnimationChanges("heal", { actor, status })
+          );
         }
       }
     }
@@ -37,8 +45,10 @@ Hooks.once("ready", async function () {
       game.settings.get(MODULE_ID, "target.share-flash")
     ) {
       let color = COLORS.DEEPSKYBLUE;
-      if (game.settings.get(MODULE_ID, "target.player-color")) color = user.color; 
-      flashColor(token, );
+      if (game.settings.get(MODULE_ID, "target.player-color")) {
+        color = user.color;
+      }
+      flashColor(token, color, getAnimationChanges("target", { token }));
     }
   });
 });
@@ -53,7 +63,7 @@ async function flashColor(token, color, animationOverride = {}) {
   //if ring enabled flash it
   if (token?.document?.ring?.enabled) {
     const defaultAnimationOptions = {
-      duration: 500,
+      duration: game.settings.get(MODULE_ID, "duration"),
       easing: CONFIG.Token.ring.ringClass.easeTwoPeaks,
     };
     const options = foundry.utils.mergeObject(
@@ -64,6 +74,43 @@ async function flashColor(token, color, animationOverride = {}) {
     return token.ring.flashColor(colorNum, options);
   }
   //return Promise.resolve();
+}
+
+function getAnimationChanges(situation, data) {
+  const baseDuration = game.settings.get(MODULE_ID, "duration");
+  const result = {};
+  switch (situation) {
+    case "damage":
+    case "heal":
+      if (game.settings.get(MODULE_ID, "damage-heal.scale-on-%-hp")) {
+        result.duration =
+          getDurationMultiplier(
+            Math.abs(
+              data.status.dmgTaken / data.actor.system.attributes.hp.value
+            )
+          ) * baseDuration;
+      }
+      break;
+    case "flash":
+      break;
+    default:
+      break;
+  }
+  return result;
+}
+
+/**
+ * Function's goal is to convert values to a min of 10% or max of 50% and
+ * convert that into a multiplier between 1 and 4 respectively
+ * @param {*} percentHealth Percentage of max health
+ * @returns A value between 1 and 4 (to scale )
+ */
+function getDurationMultiplier(percentHealth) {
+  return (
+    1 +
+    ((Math.max(Math.max(0.1, percentHealth), 0.5) - 0.1) * (4 - 1)) /
+      (0.5 - 0.1)
+  );
 }
 
 // Code Borrowed from DND 5e system implementation of color flash
