@@ -1,3 +1,4 @@
+import { MODULE_ID } from "./misc.js";
 import { registerSettings } from "./settings.js";
 
 Hooks.once("init", async function () {
@@ -33,9 +34,11 @@ Hooks.once("ready", async function () {
   Hooks.on("targetToken", async (user, token) => {
     if (
       user.id === game.user.id ||
-      game.settings.get(MODULE_ID, "share-target-flash")
+      game.settings.get(MODULE_ID, "target.share-flash")
     ) {
-      flashColor(token, COLORS.DEEPSKYBLUE);
+      let color = COLORS.DEEPSKYBLUE;
+      if (game.settings.get(MODULE_ID, "target.player-color")) color = user.color; 
+      flashColor(token, );
     }
   });
 });
@@ -51,7 +54,7 @@ async function flashColor(token, color, animationOverride = {}) {
   if (token?.document?.ring?.enabled) {
     const defaultAnimationOptions = {
       duration: 500,
-      easing: easeTwoPeaks,
+      easing: CONFIG.Token.ring.ringClass.easeTwoPeaks,
     };
     const options = foundry.utils.mergeObject(
       defaultAnimationOptions,
@@ -64,20 +67,6 @@ async function flashColor(token, color, animationOverride = {}) {
 }
 
 // Code Borrowed from DND 5e system implementation of color flash
-
-/**
- * Easing function that produces two peaks before returning to the original value. Ideal duration is around 500ms.
- * @param {number} pt     The proportional animation timing on [0,1].
- * @returns {number}      The eased animation progress on [0,1].
- */
-function easeTwoPeaks(pt) {
-  return (Math.sin(4 * Math.PI * pt - Math.PI / 2) + 1) / 2;
-}
-
-/* -------------------------------------------- */
-/*  Rings System                                */
-/* -------------------------------------------- */
-
 /**
  * The effects which could be applied to a token ring (using bitwise operations.)
  * @enum {number}
