@@ -10,7 +10,7 @@ Hooks.once("ready", async function () {
     if (userID == game.user.id) {
       if (status.diff) {
         const hpChanged = update.system.attributes.hp.value;
-        const dmgTaken = !!status?.damageTaken;
+        const dmgTaken = (status?.damageTaken ?? 0) > 0;
         const tok = canvas.tokens.placeables.find(
           (token) => token.actor.id === actor.id
         );
