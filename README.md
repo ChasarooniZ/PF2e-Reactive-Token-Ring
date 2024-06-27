@@ -10,7 +10,9 @@
 
 
 # PF2e Reactive Token Ring
-Adds some reaction for the pf2e system for dynamic token rings
+Adds some reaction for the pf2e system for dynamic token rings.
+
+***Note: On the Future of this module** This module will be transitioned from a PF2e only Module to a generic one when the system ends up implementing reactivedynamic token support. It may still end up extending on what was added in the system, but we shall see.*
 
 [Changelog](/CHANGELOG.md) | [Contributors](CONTRIBUTERS.md)
 ## Features
