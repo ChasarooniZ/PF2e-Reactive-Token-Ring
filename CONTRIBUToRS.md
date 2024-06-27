@@ -1,0 +1,11 @@
+## Contributers
+- Lioheart
+  - Polish Translator
+- shemetz
+  - Dev advice
+  - Feature ideas for
+    - Flash Duration setting
+    - Flashing on condition add
+    - Flash duration based on damage taken/healed
+- 117K
+  - Persistent effects idea

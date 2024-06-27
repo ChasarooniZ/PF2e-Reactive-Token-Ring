@@ -12,6 +12,7 @@
 # PF2e Reactive Token Ring
 Adds some reaction for the pf2e system for dynamic token rings
 
+[Changelog](/CHANGELOG.md) | [Contributors](CONTRIBUTERS.md)
 ## Features
 - Flashes red on damage taken
   - ![damage+example](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/assets/79132112/e87d28c6-95e9-4fa9-98f7-95ebb5faf2a2)
@@ -24,3 +25,5 @@ Adds some reaction for the pf2e system for dynamic token rings
 - Flashes pink on positive condition
   - ![good+condition](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/assets/79132112/b766645e-4bfd-4198-b1bb-e36e99ea6e96)
 
+## How to Make a Dynamic Token
+[![How to Make a Dynamic Token](https://img.youtube.com/vi/P7Ot2YipUjU/0.jpg)](https://youtu.be/P7Ot2YipUjU?si=I2VRDQexxBJybVRc)

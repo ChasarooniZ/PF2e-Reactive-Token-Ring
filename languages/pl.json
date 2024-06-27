@@ -1,0 +1,31 @@
+{
+  "I18N.LANGUAGE": "Polski",
+  "pf2e-reactive-token-ring": {
+    "module-settings": {
+      "target": {
+        "share-flash": {
+          "name": "Współdzielenie migania celu",
+          "hint": "Pokazuje efekt migania na celu wszystkim użytkownikom (wyłączone - pokazuje tylko osobie celującej)"
+        },
+        "player-color": {
+          "name": "Cel używa koloru gracza",
+          "hint": "Dla celu migania użyj koloru gracza (zastępuje wszelkie niestandardowe kolory)."
+        }
+      },
+      "damage-heal": {
+        "scale-on-%-hp": {
+          "name": "Skala obrażeń/czas trwania leczenia",
+          "hint": "Skalowanie czasu trwania obrażeń/leczenia na podstawie procentowej zmiany stanu zdrowia."
+        }
+      },
+      "duration": {
+        "name": "Czas trwania",
+        "hint": "Jak długo (w ms) powinien migać token dla wszystkich efektów (domyślnie 500 ms, będzie to skalowane, jeśli włączysz ustawienia skalujące czas trwania)."
+      },
+      "": {
+        "name": "",
+        "hint": ""
+      }
+    }
+  }
+}

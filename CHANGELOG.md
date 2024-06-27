@@ -1,3 +1,6 @@
+## 0.2.1 - Polish Support
+- Added Polish Support thanks to (@Lioheart)
+- Started tracking contributors (trying to do that from now on)
 ## 0.2.0 - Oops all Features
 - Added a lot of features
 - **Conditions**
