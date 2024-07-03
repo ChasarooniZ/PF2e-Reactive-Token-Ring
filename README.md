@@ -12,12 +12,10 @@
 # Reactive Token Ring
 Adds some reaction for the pf2e system for dynamic token rings.
 
-***Note: On the Future of this module** This module will be transitioned from a PF2e only Module to a generic one when the system ends up implementing reactivedynamic token support. It may still end up extending on what was added in the system, but we shall see.*
+***Note: I only use pf2e so whether the compatability for othe rsystems works is on whoever puts in the leg work to make them compatible*
 
 [Changelog](/CHANGELOG.md) | [Contributors](CONTRIBUTERS.md)
-##### Supported Systems
-Pf2e | Tormenta 20
-*To see how to add support for your system look at [system Compatability](scripts/systemCompatability.js)*
+
 ## Features
 - Flashes red on damage taken
   - ![damage+example](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/assets/79132112/e87d28c6-95e9-4fa9-98f7-95ebb5faf2a2)
@@ -25,6 +23,7 @@ Pf2e | Tormenta 20
   - ![healing+example](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/assets/79132112/55a1c569-d2b5-4d12-824e-2f10178eddef)
 - Flashes blue when targeted
   - ![target+example+new](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/assets/79132112/a225c5e6-82e2-4e86-a9eb-b2d07d8537b9)
+
 
 
 ### PF2e Exclusive Features
@@ -35,3 +34,9 @@ Pf2e | Tormenta 20
 
 ## How to Make a Dynamic Token
 [![How to Make a Dynamic Token](https://img.youtube.com/vi/P7Ot2YipUjU/0.jpg)](https://youtu.be/P7Ot2YipUjU?si=I2VRDQexxBJybVRc)
+
+### Supported Systems
+- Pathfinder Second Edition (PF2e)
+- Tormenta 20
+
+*To see how to add support for your system look at [system Compatability](scripts/systemCompatability.js)*
