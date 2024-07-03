@@ -1,3 +1,5 @@
+## 1.0.0 - ~~PF2e~~ -> Reactive Token Rings
+- Added support for other systems
 ## 0.2.1 - Polish Support
 - Added Polish Support thanks to (@Lioheart)
 - Started tracking contributors (trying to do that from now on)

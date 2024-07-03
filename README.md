@@ -9,12 +9,15 @@
 <!--- ![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2F<your-module-name>&colorB=4aa94a) -->
 
 
-# PF2e Reactive Token Ring
+# Reactive Token Ring
 Adds some reaction for the pf2e system for dynamic token rings.
 
 ***Note: On the Future of this module** This module will be transitioned from a PF2e only Module to a generic one when the system ends up implementing reactivedynamic token support. It may still end up extending on what was added in the system, but we shall see.*
 
 [Changelog](/CHANGELOG.md) | [Contributors](CONTRIBUTERS.md)
+##### Supported Systems
+Pf2e | Tormenta 20
+*To see how to add support for your system look at [system Compatability](scripts/systemCompatability.js)*
 ## Features
 - Flashes red on damage taken
   - ![damage+example](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/assets/79132112/e87d28c6-95e9-4fa9-98f7-95ebb5faf2a2)
@@ -22,6 +25,9 @@ Adds some reaction for the pf2e system for dynamic token rings.
   - ![healing+example](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/assets/79132112/55a1c569-d2b5-4d12-824e-2f10178eddef)
 - Flashes blue when targeted
   - ![target+example+new](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/assets/79132112/a225c5e6-82e2-4e86-a9eb-b2d07d8537b9)
+
+
+### PF2e Exclusive Features
 - Flashes orange on negative condition
   - ![bad+effect](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/assets/79132112/598c187e-5044-4ce2-b3d7-40d887522f44)
 - Flashes pink on positive condition
