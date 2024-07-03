@@ -1,5 +1,6 @@
 import { CONDITIONS, MODULE_ID } from "./misc.js";
 import { registerSettings } from "./settings.js";
+import { isHealing } from "./systemCompatability.js";
 
 Hooks.once("init", function () {
   registerSettings();
@@ -17,25 +18,24 @@ const COLORS = {
 Hooks.once("ready", async function () {
   Hooks.on("updateActor", async (actor, update, status, _userID) => {
     if (status.diff) {
-      const hpChanged = !!update?.system?.attributes?.hp?.value;
-      const dmgTaken = (status?.damageTaken ?? 0) > 0;
+      const isHeal = isHealing(actor, update);
       const tok = canvas.tokens.placeables.find(
         (token) => token.actor.id === actor.id
       );
-      if (hpChanged) {
-        if (dmgTaken) {
-          //Dealt Damage
-          flashColor(
-            tok,
-            COLORS.RED,
-            getAnimationChanges("damage", { actor, status })
-          );
-        } else {
+      if (isHeal !== undefined) {
+        if (isHeal) {
           //Heal
           flashColor(
             tok,
             COLORS.GREEN,
             getAnimationChanges("heal", { actor, status })
+          );
+        } else {
+          //Dealt Damage
+          flashColor(
+            tok,
+            COLORS.RED,
+            getAnimationChanges("damage", { actor, status })
           );
         }
       }
@@ -53,20 +53,22 @@ Hooks.once("ready", async function () {
       flashColor(token, color, getAnimationChanges("target", { token }));
     }
   });
-  Hooks.on("applyTokenStatusEffect", async (token, name, _unknown) => {
-    const conditions = token.actor.conditions.active.map(
-      (c) => c?.rollOptionSlug
-    );
-    const isAdded = conditions.includes(name);
-    //condition was added
-    if (CONDITIONS.POSITIVE.includes(name)) {
-      if (isAdded) flashColor(token, COLORS.PINK);
+  if (game.system.id === "pf2e") {
+    Hooks.on("applyTokenStatusEffect", async (token, name, _unknown) => {
+      const conditions = token.actor.conditions.active.map(
+        (c) => c?.rollOptionSlug
+      );
+      const isAdded = conditions.includes(name);
+      //condition was added
+      if (CONDITIONS.POSITIVE.includes(name)) {
+        if (isAdded) flashColor(token, COLORS.PINK);
 
-      //condition was removed
-    } else if (CONDITIONS.NEGATIVE.includes(name)) {
-      if (isAdded) flashColor(token, COLORS.ORANGE);
-    }
-  });
+        //condition was removed
+      } else if (CONDITIONS.NEGATIVE.includes(name)) {
+        if (isAdded) flashColor(token, COLORS.ORANGE);
+      }
+    });
+  }
 });
 
 /**
@@ -95,20 +97,24 @@ async function flashColor(token, color, animationOverride = {}) {
 function getAnimationChanges(situation, data) {
   const baseDuration = game.settings.get(MODULE_ID, "duration");
   const result = {};
-  switch (situation) {
-    case "damage":
-    case "heal":
-      if (game.settings.get(MODULE_ID, "damage-heal.scale-on-%-hp")) {
-        result.duration =
-          getDurationMultiplier(
-            Math.abs(data.status.damageTaken / data.actor.system.attributes.hp.max)
-          ) * baseDuration;
-      }
-      break;
-    case "flash":
-      break;
-    default:
-      break;
+  if (game.system.id !== "pf2e") {
+    switch (situation) {
+      case "damage":
+      case "heal":
+        if (game.settings.get(MODULE_ID, "damage-heal.scale-on-%-hp")) {
+          result.duration =
+            getDurationMultiplier(
+              Math.abs(
+                data.status.damageTaken / data.actor.system.attributes.hp.max
+              )
+            ) * baseDuration;
+        }
+        break;
+      case "flash":
+        break;
+      default:
+        break;
+    }
   }
   return result;
 }

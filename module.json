@@ -1,7 +1,7 @@
 {
   "id": "pf2e-reactive-token-ring",
-  "title": "PF2e Reactive Token Ring",
-  "description": "Adds some reaction for the pf2e system for dynamic token rings",
+  "title": "Reactive Token Rings",
+  "description": "Adds some reaction for dynamic token rings",
   "version": "#{VERSION}#",
   "library": "false",
   "manifestPlusVersion": "1.2.0",
@@ -16,14 +16,6 @@
   ],
   "relationships": {
     "systems": [
-      {
-        "id": "pf2e",
-        "type": "system",
-        "compatibility": {
-          "minimum": "5.2.1",
-          "verified": "5.3.0"
-        }
-      }
     ],
     "requires": []
   },
