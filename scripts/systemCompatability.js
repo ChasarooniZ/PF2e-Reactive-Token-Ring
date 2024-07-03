@@ -17,7 +17,7 @@ export function isHealing(actor, update, status) {
   }
 
   const damageTaken = foundry.utils.getProperty(status, keys.statusDamagePath);
-  return damageTaken > 0 === keys.zeroIsBad;
+  return damageTaken > 0 !== keys.zeroIsBad;
 }
 
 /**
