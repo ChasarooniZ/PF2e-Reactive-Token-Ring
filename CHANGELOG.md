@@ -1,9 +1,11 @@
-## 1.0.0 - ~~PF2e~~ -> Reactive Token Rings
+## [1.0.1](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.0.0...1.0.1) - Bug Fix
+- Fix bug where it wasn't detecting damage
+## [1.0.0](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/0.2.1...1.0.0) - ~~PF2e~~ -> Reactive Token Rings
 - Added support for other systems
-## 0.2.1 - Polish Support
+## [0.2.1](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/0.2.1...1.0.0) - Polish Support
 - Added Polish Support thanks to (@Lioheart)
 - Started tracking contributors (trying to do that from now on)
-## 0.2.0 - Oops all Features
+## [0.2.0](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/0.1.0...0.2.0) - Oops all Features
 - Added a lot of features
 - **Conditions**
   - Flashes Pink on applying Positive Conditions
