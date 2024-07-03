@@ -22,7 +22,7 @@ Hooks.once("init", function () {
 // Set up main functionality when Foundry VTT is ready
 Hooks.once("ready", async function () {
   // Handle actor updates
-  Hooks.on("updateActor", async (actor, update, status, _userID) => {
+  Hooks.on("preUpdateActor", async (actor, update, status, _userID) => {
     if (status.diff) {
       const isHeal = isHealing(actor, update, status);
       const token = canvas.tokens.placeables.find(
