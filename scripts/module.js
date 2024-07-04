@@ -103,7 +103,7 @@ function getAnimationChanges(situation, data) {
   const result = {};
 
   if (
-    game.system.id !== "pf2e" &&
+    game.system.id === "pf2e" &&
     (situation === "damage" || situation === "heal")
   ) {
     if (game.settings.get(MODULE_ID, "damage-heal.scale-on-%-hp")) {
