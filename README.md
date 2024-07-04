@@ -26,6 +26,12 @@ Adds some reaction for the pf2e system for dynamic token rings.
 - Flashes blue when targeted
   - <img src="https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/assets/79132112/a225c5e6-82e2-4e86-a9eb-b2d07d8537b9" height=150>
 
+### PF2e Exclusive Features
+- Flashes orange on negative condition
+  - <img src="https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/assets/79132112/598c187e-5044-4ce2-b3d7-40d887522f44" height=250>
+- Flashes pink on positive condition
+  - <img src="https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/assets/79132112/b766645e-4bfd-4198-b1bb-e36e99ea6e96" height=250>
+
 ## How to Make a Dynamic Token
 [<img src="https://img.youtube.com/vi/P7Ot2YipUjU/0.jpg">](https://youtu.be/P7Ot2YipUjU?si=I2VRDQexxBJybVRc)
 
@@ -44,9 +50,3 @@ Adds some reaction for the pf2e system for dynamic token rings.
 
 [![Static Badge](https://img.shields.io/badge/Add%20your%20System-009900?logo=github)](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/issues/new?assignees=ChasarooniZ&labels=sys-support&projects=&template=add-support-for-a-system.md&title=%5BSystem+Support%5D+)
 
-
-## PF2e Exclusive Features
-- Flashes orange on negative condition
-  - <img src="https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/assets/79132112/598c187e-5044-4ce2-b3d7-40d887522f44" height=250>
-- Flashes pink on positive condition
-  - <img src="https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/assets/79132112/b766645e-4bfd-4198-b1bb-e36e99ea6e96" height=250>
