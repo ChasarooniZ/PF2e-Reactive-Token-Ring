@@ -40,7 +40,8 @@ Adds some reaction for the pf2e system for dynamic token rings.
 - Tormenta 20
 - Warhammer Fantasy Roleplay 4th Edition
 
-*To see how to add support for your system look at [system Compatability](scripts/systemCompatability.js)*
+[![Static Badge](https://img.shields.io/badge/Add%20your%20System-009900?logo=github)](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/issues/new?assignees=ChasarooniZ&labels=sys-support&projects=&template=add-support-for-a-system.md&title=%5BSystem+Support%5D+)
+
 
 ### PF2e Exclusive Features
 - Flashes orange on negative condition
