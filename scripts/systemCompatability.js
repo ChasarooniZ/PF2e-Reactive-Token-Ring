@@ -57,6 +57,15 @@ function getSystemKeys(actor) {
         hpMaxPath: "system.health.max",
         zeroIsBad: true,
       };
+    case "metanthropes":
+      if (actor.type !== "Vehicle") {
+        return {
+          hpPath: "system.Vital.Life.value",
+          hpMaxPath: "system.Vital.Life.max",
+          zeroIsBad: true,
+        };
+      }
+      break;
     case "ose":
       return {
         hpPath: "system.hp.value",
