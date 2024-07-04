@@ -40,6 +40,7 @@ Adds some reaction for the pf2e system for dynamic token rings.
 - Cyberpunk RED
 - Dungeon World
 - HeXXen 1733 Official
+- Metanthropes
 - Old-School Essentials
 - Pathfinder 1
 - Pathfinder Second Edition (PF2e)
