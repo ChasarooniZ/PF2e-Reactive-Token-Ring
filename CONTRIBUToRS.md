@@ -10,5 +10,6 @@
     - Flash duration based on damage taken/healed
 - 117K
   - Persistent effects idea
+
 Mjb141
 - Support for Metanthropes system
