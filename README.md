@@ -27,7 +27,7 @@ Adds some reaction for the pf2e system for dynamic token rings.
   - <img src="https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/assets/79132112/a225c5e6-82e2-4e86-a9eb-b2d07d8537b9" height=150>
 
 ## How to Make a Dynamic Token
-<img src="https://img.youtube.com/vi/P7Ot2YipUjU/0.jpg)](https://youtu.be/P7Ot2YipUjU?si=I2VRDQexxBJybVRc" height=150>
+[<img src="https://img.youtube.com/vi/P7Ot2YipUjU/0.jpg">](https://youtu.be/P7Ot2YipUjU?si=I2VRDQexxBJybVRc)
 
 ## Supported Systems
 - Alien RPG
