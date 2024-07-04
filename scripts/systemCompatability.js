@@ -6,7 +6,7 @@
  * @returns {boolean|undefined} True if healing, false if taking damage, undefined if no HP change.
  */
 export function isHealing(actor, update, status) {
-  const keys = getSystemKeys();
+  const keys = getSystemKeys(actor);
   const updateHP = foundry.utils.getProperty(update, keys.hpPath);
 
   if (!updateHP) return undefined;
@@ -24,23 +24,99 @@ export function isHealing(actor, update, status) {
  * Retrieves system-specific keys and settings.
  * @returns {Object} An object containing system-specific paths and flags.
  */
-function getSystemKeys() {
+function getSystemKeys(actor) {
   switch (game.system.id) {
+    case "alienrpg":
+      if (actor.type !== "spacecraft" && actor.type !== "vehicles") {
+        return {
+          hpPath: "system.header.health.value",
+          hpMaxPath: "system.header.health.max",
+          zeroIsBad: true,
+        };
+      }
+      break;
+    case "cyberpunk-red-core":
+      return {
+        hpPath: "system.derivedStats.hp.value",
+        hpMaxPath: "system.derivedStats.hp.max",
+        zeroIsBad: true,
+      };
+    //case "dnd5e":
+    case "dungeonworld":
+    case "pf1":
     case "pf2e":
       return {
         hpPath: "system.attributes.hp.value",
+        hpMaxPath: "system.attributes.hp.max",
         zeroIsBad: true,
         statusDamagePath: "damageTaken",
+      };
+    case "hexxen-1733":
+      return {
+        hpPath: "system.health.value",
+        hpMaxPath: "system.health.max",
+        zeroIsBad: true,
+      };
+    case "ose":
+      return {
+        hpPath: "system.hp.value",
+        hpMaxPath: "system.hp.max",
+        zeroIsBad: true,
+      };
+    case "pbta":
+      if (actor.system?.attrTop?.harm !== undefined) {
+        return {
+          hpPath: "system.attrTop.harm.value",
+          hpMaxPath: "system.attrTop.harm.max",
+          zeroIsBad: false,
+        };
+      } else if (actor.system?.attrTop?.hp !== undefined) {
+        return {
+          hpPath: "system.attrTop.hp.value",
+          hpMaxPath: "system.attrTop.hp.max",
+          zeroIsBad: false,
+        };
+      } else if (actor.system?.attrTop?.hurt !== undefined) {
+        return {
+          hpPath: "system.attrTop.hurt.value",
+          hpMaxPath: "system.attrTop.hurt.max",
+          zeroIsBad: false,
+        };
+      } else if (actor.system?.attributesTop?.hurt !== undefined) {
+        return {
+          hpPath: "system.attributesTop.hurt.value",
+          hpMaxPath: "system.attributesTop.hurt.max",
+          zeroIsBad: false,
+        };
+      }
+      break;
+    case "swade":
+      return {
+        hpPath: "system.wounds.value",
+        hpMaxPath: "system.wounds.max",
+        zeroIsBad: false,
       };
     case "tormenta20":
       return {
         hpPath: "system.attributes.pv.value",
-        zeroIsBad: false,
+        hpMaxPath: "system.attributes.pv.max",
+        zeroIsBad: true,
       };
-    default:
-      return {
-        hpPath: undefined,
-        zeroIsBad: undefined,
-      };
+    case "wfrp4e":
+      if (actor.type !== "vehicle") {
+        return {
+          hpPath: "system.status.wounds.value",
+          hpMaxPath: "system.status.wounds.max",
+          zeroIsBad: true,
+        };
+      }
+      break;
   }
+
+  // Default case for unsupported systems
+  return {
+    hpPath: undefined,
+    hpMaxPath: undefined,
+    zeroIsBad: undefined,
+  };
 }

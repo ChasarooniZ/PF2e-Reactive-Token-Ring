@@ -1,3 +1,18 @@
+## [1.0.3](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.0.2...1.0.3) - Systems Galore
+- Adding Support for a lot of other systems
+  - Thanks to [@shemetz](https://github.com/shemetz/tokenmagic-automatic-wounds/blob/master/scripts/system-compatibility.js) for the reference code <3
+- Support for the following systems was added
+  - Alien RPG
+  - Cyberpunk RED
+  - Dungeon World
+  - Pathfinder 1
+  - HeXXen 1733 Official
+  - Old-School Essentials
+  - Powered by the Apocalypse
+  - Savage Worlds Adventure Edition
+  - Warhammer Fantasy Roleplay 4th Edition
+## [1.0.2](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.0.1...1.0.2) - Bug Fix 2
+- Fixed bug causing all non pf2e systems to not work (based on a flipped check)
 ## [1.0.1](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.0.0...1.0.1) - Bug Fix
 - Fix bug where it wasn't detecting damage
 ## [1.0.0](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/0.2.1...1.0.0) - ~~PF2e~~ -> Reactive Token Rings
