@@ -32,6 +32,7 @@ function getSystemKeys(actor) {
         hpMaxPath: "system.attributes.hp.max",
         zeroIsBad: true,
       }
+    break;
     case "alienrpg":
       if (actor.type !== "spacecraft" && actor.type !== "vehicles") {
         return {
