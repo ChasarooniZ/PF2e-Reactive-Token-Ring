@@ -1,5 +1,8 @@
-## 1.1.2 - Level Up
+## [1.1.2](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.1.1...1.1.2) - Level Up
 - Support for Level Up (Advanced 5e) (@Lonely Paladin)
+
+## [1.1.1](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.1.0...1.1.1) - Metanthropes Support
+- Added support for Metanthropes (@Mjb141)
 
 ## [1.1.0](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.0.2...1.1.0) - Systems Galore
 - Adding Support for a lot of other systems
