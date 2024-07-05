@@ -40,8 +40,9 @@ Adds some reaction for the pf2e system for dynamic token rings.
 - Cyberpunk RED
 - Dungeon World
 - HeXXen 1733 Official
+- Level Up (Advanced 5e)
 - Metanthropes
-- Old-School Essentials
+- Old-School Essential
 - Pathfinder 1
 - Pathfinder Second Edition (PF2e)
 - Powered by the Apocalypse

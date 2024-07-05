@@ -12,4 +12,7 @@
   - Persistent effects idea
 
 Mjb141
-- Support for Metanthropes system
+- Support for Metanthropes system (PR <3)
+
+LonePaladin
+- Support for level up (Advanced 5e)

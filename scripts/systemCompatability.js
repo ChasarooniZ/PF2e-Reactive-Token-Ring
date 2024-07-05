@@ -26,6 +26,13 @@ export function isHealing(actor, update, status) {
  */
 function getSystemKeys(actor) {
   switch (game.system.id) {
+    case "a5e":
+      return {
+        hpPath: "system.attributes.hp.value",
+        hpMaxPath: "system.attributes.hp.max",
+        zeroIsBad: true,
+      }
+    break;
     case "alienrpg":
       if (actor.type !== "spacecraft" && actor.type !== "vehicles") {
         return {
