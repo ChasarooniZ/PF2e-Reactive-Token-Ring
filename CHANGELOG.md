@@ -1,3 +1,6 @@
+## 1.1.2 - Level Up
+- Support for Level Up (Advanced 5e) (@Lonely Paladin)
+
 ## [1.1.0](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.0.2...1.1.0) - Systems Galore
 - Adding Support for a lot of other systems
   - Thanks to [@shemetz](https://github.com/shemetz/tokenmagic-automatic-wounds/blob/master/scripts/system-compatibility.js) for the reference code <3
