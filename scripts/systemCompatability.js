@@ -41,6 +41,12 @@ function getSystemKeys(actor) {
         hpMaxPath: "system.derivedStats.hp.max",
         zeroIsBad: true,
       };
+    case "dragonbane":
+      return {
+        hpPath: "system.hitPoints.value",
+        hpMaxPath: "system.hitPoints.max",
+        zeroIsBad: true,
+      };
     //case "dnd5e":
     case "dungeonworld":
     case "pf1":
