@@ -9,8 +9,8 @@
 <!--- ![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2F<your-module-name>&colorB=4aa94a) -->
 
 
-# Reactive Token Ring
-Adds some reaction for the pf2e system for dynamic token rings.
+# Reactive Dynamic Token Ring
+Adds some reaction for dynamic token rings.
 
 [Supported Systems](#supported-systems)
 
