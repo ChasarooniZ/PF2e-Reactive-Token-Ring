@@ -1,3 +1,6 @@
+## [1.1.3](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.1.2...1.1.3) - Dragonbane
+- Support for Dragonbane - Drakar och Demoner (@xdy)
+
 ## [1.1.2](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.1.1...1.1.2) - Level Up
 - Support for Level Up (Advanced 5e) (@Lonely Paladin)
 
