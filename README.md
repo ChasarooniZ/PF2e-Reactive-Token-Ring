@@ -38,6 +38,7 @@ Adds some reaction for the pf2e system for dynamic token rings.
 ## Supported Systems
 - Alien RPG
 - Cyberpunk RED
+- Dragonbane - Drakar och Demoner
 - Dungeon World
 - HeXXen 1733 Official
 - Level Up (Advanced 5e)
