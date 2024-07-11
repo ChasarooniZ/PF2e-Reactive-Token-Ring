@@ -31,10 +31,11 @@ Hooks.once("ready", async () => {
   });
 
   // Handle token targeting
-  Hooks.on("targetToken", async (user, token) => {
+  Hooks.on("targetToken", async (user, token, isTargetting) => {
     if (
-      user.id === game.user.id ||
-      game.settings.get(MODULE_ID, "target.share-flash")
+      isTargetting &&
+      (user.id === game.user.id ||
+        game.settings.get(MODULE_ID, "target.share-flash"))
     ) {
       const color = game.settings.get(MODULE_ID, "target.player-color")
         ? user.color.css
