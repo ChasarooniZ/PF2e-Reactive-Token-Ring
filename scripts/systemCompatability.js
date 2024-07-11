@@ -14,10 +14,13 @@ export function isHealing(actor, update, status) {
   if (!keys.statusDamagePath) {
     const actorHP = foundry.utils.getProperty(actor, keys.hpPath);
     return updateHP > actorHP === keys.zeroIsBad;
+  } else {
+    const damageTaken = foundry.utils.getProperty(
+      status,
+      keys.statusDamagePath
+    );
+    return damageTaken > 0 !== keys.zeroIsBad;
   }
-
-  const damageTaken = foundry.utils.getProperty(status, keys.statusDamagePath);
-  return damageTaken > 0 !== keys.zeroIsBad;
 }
 
 /**
