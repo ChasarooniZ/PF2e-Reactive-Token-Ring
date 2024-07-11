@@ -1,3 +1,6 @@
+## [1.1.4](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.1.3...1.1.4) - Only on Target
+- Tokens only flash when targetted now
+- Minor Code Cleanup
 ## [1.1.3](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.1.2...1.1.3) - Dragonbane
 - Support for Dragonbane - Drakar och Demoner (@xdy)
 
