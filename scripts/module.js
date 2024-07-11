@@ -6,7 +6,7 @@ import { isHealing } from "./systemCompatability.js";
 // Define color constants
 const COLORS = {
   GREEN: "#ADFF2F",
-  RED: "#ff0000",
+  RED: "#FF0000",
   PURPLE: "#9370DB",
   WHITE: "#FFFFFF",
   DEEPSKYBLUE: "#00BFFF",
@@ -15,30 +15,19 @@ const COLORS = {
 };
 
 // Initialize module settings
-Hooks.once("init", function () {
-  registerSettings();
-});
+Hooks.once("init", registerSettings);
 
 // Set up main functionality when Foundry VTT is ready
-Hooks.once("ready", async function () {
+Hooks.once("ready", async () => {
   // Handle actor updates
   Hooks.on("preUpdateActor", async (actor, update, status, _userID) => {
-    if (status.diff) {
-      const isHeal = isHealing(actor, update, status);
-      const token = canvas.tokens.placeables.find(
-        (t) => t.actor.id === actor.id
-      );
-
-      if (isHeal !== undefined) {
-        const color = isHeal ? COLORS.GREEN : COLORS.RED;
-        const situation = isHeal ? "heal" : "damage";
-        flashColor(
-          token,
-          color,
-          getAnimationChanges(situation, { actor, status })
-        );
-      }
-    }
+    if (!status.diff) return;
+    const isHeal = isHealing(actor, update, status);
+    if (isHeal !== undefined) return;
+    const token = canvas.tokens.placeables.find((t) => t.actor.id === actor.id);
+    const color = isHeal ? COLORS.GREEN : COLORS.RED;
+    const situation = isHeal ? "heal" : "damage";
+    flashColor(token, color, getAnimationChanges(situation, { actor, status }));
   });
 
   // Handle token targeting
@@ -98,7 +87,7 @@ async function flashColor(token, color, animationOverride = {}) {
  * @param {Object} data - Additional data for the animation
  * @returns {Object} Animation changes
  */
-function getAnimationChanges(situation, data) {
+function getAnimationChanges(situation, { actor, status }) {
   const baseDuration = game.settings.get(MODULE_ID, "duration");
   const result = {};
 
@@ -108,7 +97,7 @@ function getAnimationChanges(situation, data) {
   ) {
     if (game.settings.get(MODULE_ID, "damage-heal.scale-on-%-hp")) {
       const percentHealth = Math.abs(
-        data.status.damageTaken / data.actor.system.attributes.hp.max
+        status.damageTaken / actor.system.attributes.hp.max
       );
       result.duration = getDurationMultiplier(percentHealth) * baseDuration;
     }
@@ -123,11 +112,9 @@ function getAnimationChanges(situation, data) {
  * @returns {number} A value between 1 and 4 to scale duration
  */
 function getDurationMultiplier(percentHealth) {
-  return (
-    1 +
-    ((Math.min(Math.max(0.1, percentHealth), 0.5) - 0.1) * (4 - 1)) /
-      (0.5 - 0.1)
-  );
+  const clampedHealth = Math.min(Math.max(0.1, percentHealth), 0.5);
+  const scaledHealth = ((clampedHealth - 0.1) * 3) / 0.4;
+  return 1 + scaledHealth;
 }
 
 // Token ring effects (borrowed from DnD 5e system)
