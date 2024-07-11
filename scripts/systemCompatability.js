@@ -29,6 +29,13 @@ export function isHealing(actor, update, status) {
  */
 function getSystemKeys(actor) {
   switch (game.system.id) {
+    case "a5e":
+      return {
+        hpPath: "system.attributes.hp.value",
+        hpMaxPath: "system.attributes.hp.max",
+        zeroIsBad: true,
+      }
+    break;
     case "alienrpg":
       if (actor.type !== "spacecraft" && actor.type !== "vehicles") {
         return {
@@ -42,6 +49,12 @@ function getSystemKeys(actor) {
       return {
         hpPath: "system.derivedStats.hp.value",
         hpMaxPath: "system.derivedStats.hp.max",
+        zeroIsBad: true,
+      };
+    case "dragonbane":
+      return {
+        hpPath: "system.hitPoints.value",
+        hpMaxPath: "system.hitPoints.max",
         zeroIsBad: true,
       };
     //case "dnd5e":
@@ -60,6 +73,15 @@ function getSystemKeys(actor) {
         hpMaxPath: "system.health.max",
         zeroIsBad: true,
       };
+    case "metanthropes":
+      if (actor.type !== "Vehicle") {
+        return {
+          hpPath: "system.Vital.Life.value",
+          hpMaxPath: "system.Vital.Life.max",
+          zeroIsBad: true,
+        };
+      }
+      break;
     case "ose":
       return {
         hpPath: "system.hp.value",
