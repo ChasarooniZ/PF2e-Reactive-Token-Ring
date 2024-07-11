@@ -27,7 +27,11 @@ Hooks.once("ready", async () => {
     const token = canvas.tokens.placeables.find((t) => t.actor.id === actor.id);
     const color = isHeal ? COLORS.GREEN : COLORS.RED;
     const situation = isHeal ? "heal" : "damage";
-    flashColor(token, color, getAnimationChanges(situation, { actor, status }));
+    await flashColor(
+      token,
+      color,
+      getAnimationChanges(situation, { actor, status })
+    );
   });
 
   // Handle token targeting
@@ -40,7 +44,7 @@ Hooks.once("ready", async () => {
       const color = game.settings.get(MODULE_ID, "target.player-color")
         ? user.color.css
         : COLORS.DEEPSKYBLUE;
-      flashColor(token, color, getAnimationChanges("target", { token }));
+      await flashColor(token, color, getAnimationChanges("target", { token }));
     }
   });
 
@@ -50,12 +54,14 @@ Hooks.once("ready", async () => {
       const conditions = token.actor.conditions.active.map(
         (c) => c?.rollOptionSlug
       );
-      const isAdded = conditions.includes(name);
 
-      if (CONDITIONS.POSITIVE.includes(name) && isAdded) {
-        flashColor(token, COLORS.PINK);
-      } else if (CONDITIONS.NEGATIVE.includes(name) && isAdded) {
-        flashColor(token, COLORS.ORANGE);
+      if (conditions.includes(name)) {
+        //is added
+        if (CONDITIONS.POSITIVE.includes(name)) {
+          await flashColor(token, COLORS.PINK);
+        } else if (CONDITIONS.NEGATIVE.includes(name)) {
+          await flashColor(token, COLORS.ORANGE);
+        }
       }
     });
   }

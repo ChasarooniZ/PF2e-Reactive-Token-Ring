@@ -1,3 +1,5 @@
+## [1.1.5](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.1.4...1.1.5) - Waiting...
+- Added some awaits to hopefully fix issue where some flashes cause the token border to stop rendering
 ## [1.1.4](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.1.3...1.1.4) - Only on Target
 - Tokens only flash when targetted now
 - Minor Code Cleanup
