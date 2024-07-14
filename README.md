@@ -9,7 +9,7 @@ Adds some reaction for dynamic token rings.
 
 [Supported Systems](#supported-systems)
 
-***Note: I only use pf2e so whether the compatability for other systems works is on whoever puts in the leg work to make them compatible*
+***Note:** I only use pf2e so whether the compatability for other systems works is on whoever puts in the leg work to make them compatible*
 
 [Changelog](/CHANGELOG.md) | [Contributors](CONTRIBUTORS.md)
 
