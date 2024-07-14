@@ -23,7 +23,7 @@ Hooks.once("ready", async () => {
   Hooks.on("preUpdateActor", async (actor, update, status, _userID) => {
     if (!status.diff) return;
     const isHeal = isHealing(actor, update, status);
-    if (isHeal !== undefined) return;
+    if (isHeal === undefined) return;
     const token = canvas.tokens.placeables.find((t) => t.actor.id === actor.id);
     const color = isHeal ? COLORS.GREEN : COLORS.RED;
     const situation = isHeal ? "heal" : "damage";
