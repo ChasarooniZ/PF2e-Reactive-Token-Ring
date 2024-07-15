@@ -4,19 +4,14 @@
 ![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2Fpf2e-reactive-token-ring&colorB=4aa94a)
 ![module_banner](https://github.com/ChasarooniZ/pf2e-usage-updater/assets/79132112/3b2a4f8c-7ba1-4647-b073-d8ecac9d93a6)
 
-<!--- Forge Bazaar Install % Badge -->
-<!--- replace <your-module-name> with the `name` in your manifest -->
-<!--- ![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2F<your-module-name>&colorB=4aa94a) -->
-
-
-# Reactive Dynamic Token Ring
+# REDY: Reactive Dynamic Token Rings
 Adds some reaction for dynamic token rings.
 
 [Supported Systems](#supported-systems)
 
-***Note: I only use pf2e so whether the compatability for other systems works is on whoever puts in the leg work to make them compatible*
+***Note:** I only use pf2e so whether the compatability for other systems works is on whoever puts in the leg work to make them compatible*
 
-[Changelog](/CHANGELOG.md) | [Contributors](CONTRIBUTERS.md)
+[Changelog](/CHANGELOG.md) | [Contributors](CONTRIBUTORS.md)
 
 ## Features
 - Flashes red on damage taken

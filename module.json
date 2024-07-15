@@ -1,6 +1,6 @@
 {
   "id": "pf2e-reactive-token-ring",
-  "title": "Reactive Token Rings",
+  "title": "REDY: Reactive Dynamic Token Rings",
   "description": "Adds some reaction for dynamic token rings",
   "version": "#{VERSION}#",
   "library": "false",
