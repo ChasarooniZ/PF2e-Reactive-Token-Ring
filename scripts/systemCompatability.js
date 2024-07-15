@@ -1,25 +1,42 @@
 /**
  * Determines if an actor is healing based on HP updates and system-specific rules.
- * @param {Object} actor - The actor object.
- * @param {Object} update - The update object containing HP changes.
+ *
+ * This function evaluates the changes in an actor's HP (Hit Points) to determine whether the actor
+ * is healing, taking damage, or if there is no change in HP. It takes into account system-specific
+ * paths for accessing HP and damage information.
+ *
+ * @param {Object} actor - The actor object whose HP is being evaluated.
+ * @param {Object} update - The update object containing the new HP value.
  * @param {Object} status - The status object containing damage information.
- * @returns {boolean|undefined} True if healing, false if taking damage, undefined if no HP change.
+ * @returns {Object} An object containing:
+ *    - {boolean|undefined} isHeal - True if healing, false if taking damage, undefined if no HP change.
+ *    - {number|undefined} dmg - The amount of damage taken or healed, undefined if no HP change.
+ *    - {number|undefined} maxHP - The maximum HP of the actor, undefined if not applicable.
  */
-export function isHealing(actor, update, status) {
+export function getHealingInfo(actor, update, status) {
   const keys = getSystemKeys(actor);
   const updateHP = foundry.utils.getProperty(update, keys.hpPath);
+  if (!updateHP) return { isHeal: undefined, dmg: undefined, maxHP: undefined };
 
-  if (!updateHP) return undefined;
+  const maxHP = foundry.utils.getProperty(actor, keys.hpMaxPath);
 
   if (!keys.statusDamagePath) {
     const actorHP = foundry.utils.getProperty(actor, keys.hpPath);
-    return updateHP > actorHP === keys.zeroIsBad;
+    return {
+      isHeal: updateHP > actorHP === keys.zeroIsBad,
+      dmg: updateHP - actorHP,
+      maxHP: maxHP,
+    };
   } else {
     const damageTaken = foundry.utils.getProperty(
       status,
       keys.statusDamagePath
     );
-    return damageTaken > 0 !== keys.zeroIsBad;
+    return {
+      isHeal: damageTaken > 0 !== keys.zeroIsBad,
+      dmg: damageTaken,
+      maxHP: maxHP,
+    };
   }
 }
 
@@ -34,8 +51,8 @@ function getSystemKeys(actor) {
         hpPath: "system.attributes.hp.value",
         hpMaxPath: "system.attributes.hp.max",
         zeroIsBad: true,
-      }
-    break;
+      };
+      break;
     case "alienrpg":
       if (actor.type !== "spacecraft" && actor.type !== "vehicles") {
         return {

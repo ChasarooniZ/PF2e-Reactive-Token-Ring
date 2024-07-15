@@ -33,7 +33,7 @@ export function registerSettings() {
       MODULE_ID + ".module-settings.damage-heal.scale-on-%-hp.hint"
     ),
     scope: "world",
-    config: game.system.id === "pf2e",
+    config: true,
     default: true,
     type: Boolean,
   });
