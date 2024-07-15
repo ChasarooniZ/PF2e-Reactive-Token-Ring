@@ -100,7 +100,7 @@ function getAnimationChanges(situation, { dmg, maxHP }) {
 
   if (situation === "damage" || situation === "heal") {
     if (game.settings.get(MODULE_ID, "damage-heal.scale-on-%-hp")) {
-      const percentHealth = Math.abs(dmg / maxHP);
+      const percentHealth = maxHP === 0 ? 0 : Math.abs(dmg / maxHP);
       result.duration = getDurationMultiplier(percentHealth) * baseDuration;
     }
   }
