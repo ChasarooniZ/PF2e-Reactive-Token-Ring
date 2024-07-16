@@ -18,11 +18,7 @@ export function getHealingInfo(actor, update, status) {
   const currentHP = foundry.utils.getProperty(actor, keys.hpPath);
   const updateHP = foundry.utils.getProperty(update, keys.hpPath);
   const dmgTaken = foundry.utils.getProperty(status, keys.statusDamagePath);
-  if (
-    !updateHP ||
-    currentHP === updateHP ||
-    (game.system.id === "pf2e" && !dmgTaken)
-  )
+  if (!updateHP || (keys.statusDamagePath ? !dmgTaken : currentHP === updateHP))
     return { isHeal: undefined, dmg: undefined, maxHP: undefined };
 
   const maxHP = foundry.utils.getProperty(actor, keys.hpMaxPath);
