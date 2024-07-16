@@ -15,18 +15,22 @@
  */
 export function getHealingInfo(actor, update, status) {
   const keys = getSystemKeys(actor);
+  const currentHP = foundry.utils.getProperty(actor, keys.hpPath);
   const updateHP = foundry.utils.getProperty(update, keys.hpPath);
   const dmgTaken = foundry.utils.getProperty(status, keys.statusDamagePath);
-  if (!updateHP || (game.system.id === "pf2e" && !dmgTaken))
+  if (
+    !updateHP ||
+    currentHP === updateHP ||
+    (game.system.id === "pf2e" && !dmgTaken)
+  )
     return { isHeal: undefined, dmg: undefined, maxHP: undefined };
 
   const maxHP = foundry.utils.getProperty(actor, keys.hpMaxPath);
 
   if (!keys.statusDamagePath) {
-    const actorHP = foundry.utils.getProperty(actor, keys.hpPath);
     return {
-      isHeal: updateHP > actorHP === keys.zeroIsBad,
-      dmg: updateHP - actorHP,
+      isHeal: updateHP > currentHP === keys.zeroIsBad,
+      dmg: updateHP - currentHP,
       maxHP: maxHP,
     };
   } else {
