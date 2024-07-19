@@ -1,7 +1,7 @@
 // Import necessary modules and constants
 import { CONDITIONS, MODULE_ID } from "./misc.js";
 import { registerSettings } from "./settings.js";
-import { isHealing } from "./systemCompatability.js";
+import { getHealingInfo } from "./systemCompatability.js";
 
 // Define color constants
 const COLORS = {
@@ -22,7 +22,7 @@ Hooks.once("ready", async () => {
   // Handle actor updates
   Hooks.on("preUpdateActor", async (actor, update, status, _userID) => {
     if (!status.diff) return;
-    const isHeal = isHealing(actor, update, status);
+    const { isHeal, dmg, maxHP } = getHealingInfo(actor, update, status);
     if (isHeal === undefined) return;
     const token = canvas.tokens.placeables.find((t) => t.actor.id === actor.id);
     const color = isHeal ? COLORS.GREEN : COLORS.RED;
@@ -30,7 +30,7 @@ Hooks.once("ready", async () => {
     await flashColor(
       token,
       color,
-      getAnimationChanges(situation, { actor, status })
+      getAnimationChanges(situation, { dmg, maxHP })
     );
   });
 
@@ -94,18 +94,13 @@ async function flashColor(token, color, animationOverride = {}) {
  * @param {Object} data - Additional data for the animation
  * @returns {Object} Animation changes
  */
-function getAnimationChanges(situation, { actor, status }) {
+function getAnimationChanges(situation, { dmg, maxHP }) {
   const baseDuration = game.settings.get(MODULE_ID, "duration");
   const result = {};
 
-  if (
-    game.system.id === "pf2e" &&
-    (situation === "damage" || situation === "heal")
-  ) {
+  if (situation === "damage" || situation === "heal") {
     if (game.settings.get(MODULE_ID, "damage-heal.scale-on-%-hp")) {
-      const percentHealth = Math.abs(
-        status.damageTaken / actor.system.attributes.hp.max
-      );
+      const percentHealth = maxHP === 0 ? 0 : Math.abs(dmg / maxHP);
       result.duration = getDurationMultiplier(percentHealth) * baseDuration;
     }
   }

@@ -1,3 +1,5 @@
+## [1.2.0](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.1.6...1.2.0) - Emphasis
+- Adds option to increase the duration of flash on damage/heal based on the % of damage taken or healed compared to your max health
 ## [1.1.6](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.1.5...1.1.6) - Healing again
 - Renamed module properly in the `module.json` to reflect its new name
 - Fixed bug where the module wouldn't flash on healing or damage
