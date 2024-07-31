@@ -184,8 +184,8 @@ function registerRingColorsWrapper() {
       MODULE_ID,
       "CONFIG.Token.objectClass.prototype.getRingColors",
       function () {
-        let ringColor = token.document.ring.colors.ring;
-        let backgroundColor = token.document.ring.colors.background;
+        let ringColor = this.document.ring.colors.ring;
+        let backgroundColor = this.document.ring.colors.background;
         const ringSetting = game.settings.get(MODULE_ID, "auto-coloring.ring");
         const backgroundSetting = game.settings.get(
           MODULE_ID,
