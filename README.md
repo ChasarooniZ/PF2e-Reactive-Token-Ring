@@ -14,17 +14,36 @@ Adds some reaction for dynamic token rings.
 [Changelog](/CHANGELOG.md) | [Contributors](CONTRIBUTORS.md)
 
 ## Features
-- Flashes red on damage taken
-  - <img src="https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/assets/79132112/e87d28c6-95e9-4fa9-98f7-95ebb5faf2a2" height=150>
-- Flashes green on heal
-  - <img src="https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/assets/79132112/55a1c569-d2b5-4d12-824e-2f10178eddef" height=150>
-- Flashes blue when targeted
-  - <img src="https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/assets/79132112/a225c5e6-82e2-4e86-a9eb-b2d07d8537b9" height=150>
+#### Flashes red on damage taken
+
+<img src="https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/assets/79132112/e87d28c6-95e9-4fa9-98f7-95ebb5faf2a2" height=150>
+
+#### Flashes green on heal
+
+<img src="https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/assets/79132112/55a1c569-d2b5-4d12-824e-2f10178eddef" height=150>
+
+#### Flashes blue when targeted
+
+<img src="https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/assets/79132112/a225c5e6-82e2-4e86-a9eb-b2d07d8537b9" height=150>
+
+### Token Health Ring Coloring
+*Developed by ([@Mystler](https://github.com/Mystler))*
+
+![colorScalingHealth](https://github.com/user-attachments/assets/84c246cc-8097-4dee-8ac7-e303c4d01607)
+#### Token Ring Coloring
+  - Unchanged: Use the default color and effectively disable this setting.
+  - Health-Based: Interpolate the color from red to green as health goes up.
+  - Disposition: Apply a color based on the token disposition: green for friendly, yellow for neutral, red for hostile.
+#### Token Background Coloring
+  - Unchanged: Use the default color and effectively disable this setting.
+  - Health-Based: Interpolate the color from red to green as health goes up.
+  - Disposition: Apply a color based on the token disposition: green for friendly, yellow for neutral, red for hostile.
+
 
 ### PF2e Exclusive Features
-- Flashes orange on negative condition
+#### Flashes orange on negative condition
   - <img src="https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/assets/79132112/598c187e-5044-4ce2-b3d7-40d887522f44" height=250>
-- Flashes pink on positive condition
+#### Flashes pink on positive condition
   - <img src="https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/assets/79132112/b766645e-4bfd-4198-b1bb-e36e99ea6e96" height=250>
 
 ## How to Make a Dynamic Token
