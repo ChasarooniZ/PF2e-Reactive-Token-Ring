@@ -1,0 +1,46 @@
+{
+  "I18N.LANGUAGE": "Français",
+  "pf2e-reactive-token-ring": {
+    "module-settings": {
+      "target": {
+        "share-flash": {
+          "name": "Partager le Flash de Cible",
+          "hint": "Montre l'effet de flash sur la cible à tous les utilisateurs (désactivé montre uniquement à la personne ciblant)"
+        },
+        "player-color": {
+          "name": "La cible utilise la couleur du joueur",
+          "hint": "Pour le flash de la cible, utilisez la couleur du joueur (remplace toute couleur personnalisée)"
+        }
+      },
+      "damage-heal": {
+        "scale-on-%-hp": {
+          "name": "Échelle de Durée de Dommage/Guérison",
+          "hint": "Échelle de la durée des dommages/guérison en fonction du pourcentage de changement de santé"
+        }
+      },
+      "duration": {
+        "name": "Durée",
+        "hint": "Combien de temps (en ms) le flash du token doit-il durer pour tous les effets ? (Défaut 500 ms, cela sera échelonné si vous activez des paramètres qui échelonnent la durée)"
+      },
+      "auto-coloring": {
+        "ring": {
+          "name": "Couleur de l'Anneau du Token",
+          "hint": "Sélectionnez si le module doit changer la couleur dynamique de l'anneau du token"
+        },
+        "background": {
+          "name": "Couleur de Fond du Token",
+          "hint": "Sélectionnez si le module doit changer la couleur de fond dynamique du token"
+        },
+        "choices": {
+          "unchanged": "Inchangé",
+          "health": "Basé sur la santé",
+          "disposition": "Disposition"
+        }
+      },
+      "": {
+        "name": "",
+        "hint": ""
+      }
+    }
+  }
+}
