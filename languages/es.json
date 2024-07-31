@@ -1,0 +1,46 @@
+{
+  "I18N.LANGUAGE": "Español",
+  "pf2e-reactive-token-ring": {
+    "module-settings": {
+      "target": {
+        "share-flash": {
+          "name": "Compartir Destello del Objetivo",
+          "hint": "Muestra el efecto de destello en el objetivo a todos los usuarios (deshabilitado muestra solo a la persona que apunta)"
+        },
+        "player-color": {
+          "name": "El objetivo usa el color del jugador",
+          "hint": "Para el destello del objetivo, usa el color del jugador (sobrescribe cualquier color personalizado)"
+        }
+      },
+      "damage-heal": {
+        "scale-on-%-hp": {
+          "name": "Escalar Duración de Daño/Sanación",
+          "hint": "Escala la duración del daño/sanación basada en el porcentaje de cambio de salud"
+        }
+      },
+      "duration": {
+        "name": "Duración",
+        "hint": "¿Cuánto tiempo (en ms) debería durar el destello del token para todos los efectos? (Predeterminado 500 ms, esto se escalará si activa configuraciones que escalan la duración)"
+      },
+      "auto-coloring": {
+        "ring": {
+          "name": "Color del Anillo del Token",
+          "hint": "Seleccione si el módulo debe cambiar el color dinámico del anillo del token"
+        },
+        "background": {
+          "name": "Color de Fondo del Token",
+          "hint": "Seleccione si el módulo debe cambiar el color de fondo dinámico del token"
+        },
+        "choices": {
+          "unchanged": "Sin cambios",
+          "health": "Basado en la salud",
+          "disposition": "Disposición"
+        }
+      },
+      "": {
+        "name": "",
+        "hint": ""
+      }
+    }
+  }
+}
