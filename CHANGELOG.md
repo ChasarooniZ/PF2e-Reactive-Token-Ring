@@ -1,3 +1,15 @@
+## [1.3.1](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.3.0...1.3.1) - Rise of the Machine Languages I
+Added Machine Translations into the following languages
+- French
+- German
+- Spanish
+## [1.3.0](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.2.0...1.3.0) - Automatic Color Changing
+Adds the following new features developed by (@Mystler)
+- Token Ring & Background Coloring
+  - Unchanged: Use the default color and effectively disable this setting.
+  - Health-Based: Interpolate the color from red to green as health goes up.
+  - Disposition: Apply a color based on the token disposition: green for friendly, yellow for neutral, red for hostile.|
+![colorScalingHealth](https://github.com/user-attachments/assets/84c246cc-8097-4dee-8ac7-e303c4d01607)
 ## [1.2.0](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.1.6...1.2.0) - Emphasis
 - Adds option to increase the duration of flash on damage/heal based on the % of damage taken or healed compared to your max health
 - Changed the Color of Healing Green to pop more
