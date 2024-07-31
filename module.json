@@ -38,17 +38,17 @@
     {
       "lang": "es",
       "name": "Español",
-      "path": "lang/es.json"
+      "path": "languages/es.json"
     },
     {
       "lang": "fr",
       "name": "Français",
-      "path": "lang/fr.json"
+      "path": "languages/fr.json"
     },
     {
       "lang": "de",
       "name": "Deutsch",
-      "path": "lang/de.json"
+      "path": "languages/de.json"
     },
     {
       "lang": "pl",
