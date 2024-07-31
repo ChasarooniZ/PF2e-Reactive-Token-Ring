@@ -1,14 +1,14 @@
 ## Contributers
-- Lioheart
+Lioheart
   - Polish Translator
-- shemetz
+shemetz
   - Dev advice
   - Code for supporting multiple systems
   - Feature ideas for
     - Flash Duration setting
     - Flashing on condition add
     - Flash duration based on damage taken/healed
-- 117K
+117K
   - Persistent effects idea
 
 Mjb141
@@ -19,3 +19,6 @@ LonePaladin
 
 xdy
 - Support for Dragonbane - Drakar och Demoner
+
+Mystler
+- Token Health Ring Coloring Features <3
