@@ -1,7 +1,11 @@
 // Import necessary modules and constants
 import { CONDITIONS, MODULE_ID } from "./misc.js";
 import { registerSettings } from "./settings.js";
-import { getHealingInfo, getHealthLevel, updateHasAllianceChange } from "./systemCompatability.js";
+import {
+  getHealingInfo,
+  getHealthLevel,
+  updateHasAllianceChange,
+} from "./systemCompatability.js";
 
 // Define color constants
 const COLORS = {
@@ -28,10 +32,16 @@ Hooks.once("ready", async () => {
     if (!status.diff) return;
     const { isHeal, dmg, maxHP } = getHealingInfo(actor, update, status);
     if (isHeal !== undefined) {
-      const token = canvas.tokens.placeables.find((t) => t.actor.id === actor.id);
+      const token = canvas.tokens.placeables.find(
+        (t) => t.actor.id === actor.id
+      );
       if (!token) return;
       // Update health level flag for the module so the Ring color can be determined before the actual update
-      await token.document.setFlag(MODULE_ID, "tokenHealthLevel", getHealthLevel(actor, update));
+      await token.document.setFlag(
+        MODULE_ID,
+        "tokenHealthLevel",
+        getHealthLevel(actor, update)
+      );
       // Force updating of the ring elements including background before flashing
       if (token.document.ring?.enabled) token.ring.configureVisuals();
       // Flash!
@@ -50,7 +60,9 @@ Hooks.once("ready", async () => {
     // Cause a manual token ring update if alliance changed via system, so it picks up disposition
     // If the system-specific part is not implemented, it will simply synch up on the next regular update.
     if (updateHasAllianceChange(actor, update)) {
-      const token = canvas.tokens.placeables.find((t) => t.actor.id === actor.id);
+      const token = canvas.tokens.placeables.find(
+        (t) => t.actor.id === actor.id
+      );
       if (!token) return;
       if (token.document.ring?.enabled) token.ring.configureVisuals();
     }
@@ -168,40 +180,58 @@ function getColorForHealthLevel(level) {
  */
 function registerRingColorsWrapper() {
   try {
-    libWrapper.register(MODULE_ID, 'CONFIG.Token.objectClass.prototype.getRingColors', function () {
-      let ringColor = undefined;
-      let backgroundColor = undefined;
-      const ringSetting = game.settings.get(MODULE_ID, "auto-coloring.ring");
-      const backgroundSetting = game.settings.get(MODULE_ID, "auto-coloring.background");
+    libWrapper.register(
+      MODULE_ID,
+      "CONFIG.Token.objectClass.prototype.getRingColors",
+      function () {
+        let ringColor = token.document.ring.colors.ring;
+        let backgroundColor = token.document.ring.colors.background;
+        const ringSetting = game.settings.get(MODULE_ID, "auto-coloring.ring");
+        const backgroundSetting = game.settings.get(
+          MODULE_ID,
+          "auto-coloring.background"
+        );
 
-      if (ringSetting === "health" || backgroundSetting === "health") {
-        const level = this.document.getFlag(MODULE_ID, "tokenHealthLevel") ?? getHealthLevel(this.actor);
-        const healthColor = getColorForHealthLevel(level);
-        if (ringSetting === "health")
-          ringColor = healthColor;
-        if (backgroundSetting === "health")
-          backgroundColor = healthColor;
-      }
-
-      if (ringSetting === "disposition" || backgroundSetting === "disposition") {
-        let dispositionColor = undefined;
-        switch (this.document.disposition) {
-          case CONST.TOKEN_DISPOSITIONS.FRIENDLY: dispositionColor = COLORS.GREEN; break;
-          case CONST.TOKEN_DISPOSITIONS.NEUTRAL: dispositionColor = COLORS.YELLOW; break;
-          case CONST.TOKEN_DISPOSITIONS.HOSTILE: dispositionColor = COLORS.RED; break;
+        if (ringSetting === "health" || backgroundSetting === "health") {
+          const level =
+            this.document.getFlag(MODULE_ID, "tokenHealthLevel") ??
+            getHealthLevel(this.actor);
+          const healthColor = getColorForHealthLevel(level);
+          if (ringSetting === "health") ringColor = healthColor;
+          if (backgroundSetting === "health") backgroundColor = healthColor;
         }
-        if (ringSetting === "disposition")
-          ringColor = dispositionColor;
-        if (backgroundSetting === "disposition")
-          backgroundColor = dispositionColor;
-      }
 
-      return {
-        ring: ringColor,
-        background: backgroundColor,
-      };
-    }, 'OVERRIDE');
+        if (
+          ringSetting === "disposition" ||
+          backgroundSetting === "disposition"
+        ) {
+          let dispositionColor = undefined;
+          switch (this.document.disposition) {
+            case CONST.TOKEN_DISPOSITIONS.FRIENDLY:
+              dispositionColor = COLORS.GREEN;
+              break;
+            case CONST.TOKEN_DISPOSITIONS.NEUTRAL:
+              dispositionColor = COLORS.YELLOW;
+              break;
+            case CONST.TOKEN_DISPOSITIONS.HOSTILE:
+              dispositionColor = COLORS.RED;
+              break;
+          }
+          if (ringSetting === "disposition") ringColor = dispositionColor;
+          if (backgroundSetting === "disposition")
+            backgroundColor = dispositionColor;
+        }
+
+        return {
+          ring: ringColor,
+          background: backgroundColor,
+        };
+      },
+      "OVERRIDE"
+    );
   } catch {
-    ui.notifications.error("REDY: Another module is already overriding token ring colors!");
+    ui.notifications.error(
+      "REDY: Another module is already overriding token ring colors!"
+    );
   }
 }
