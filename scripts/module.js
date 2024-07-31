@@ -196,9 +196,11 @@ function registerRingColorsWrapper() {
           const level =
             this.document.getFlag(MODULE_ID, "tokenHealthLevel") ??
             getHealthLevel(this.actor);
-          const healthColor = getColorForHealthLevel(level);
-          if (ringSetting === "health") ringColor = healthColor;
-          if (backgroundSetting === "health") backgroundColor = healthColor;
+          if (!isNaN(level)) {
+            const healthColor = getColorForHealthLevel(level);
+            if (ringSetting === "health") ringColor = healthColor;
+            if (backgroundSetting === "health") backgroundColor = healthColor;
+          }
         }
 
         if (
