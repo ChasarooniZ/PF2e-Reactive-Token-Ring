@@ -22,6 +22,21 @@
         "name": "Czas trwania",
         "hint": "Jak długo (w ms) powinien migać token dla wszystkich efektów (domyślnie 500 ms, będzie to skalowane, jeśli włączysz ustawienia skalujące czas trwania)."
       },
+      "auto-coloring": {
+        "ring": {
+          "name": "Token Ring Color",
+          "hint": "Select if the module should change the dynamic token ring color"
+        },
+        "background": {
+          "name": "Token Background Color",
+          "hint": "Select if the module should change the dynamic token background color"
+        },
+        "choices": {
+          "unchanged": "Unchanged",
+          "health": "Health-Based",
+          "disposition": "Disposition"
+        }
+      },
       "": {
         "name": "",
         "hint": ""

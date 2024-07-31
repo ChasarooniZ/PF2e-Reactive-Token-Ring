@@ -22,6 +22,21 @@
         "name": "Duration",
         "hint": "How long (in ms) should the token flashing be for all effects (Default 500 ms, this will scaled if you toggle on settings that scale duration)"
       },
+      "auto-coloring": {
+        "ring": {
+          "name": "Token Ring Color",
+          "hint": "Select if the module should change the dynamic token ring color"
+        },
+        "background": {
+          "name": "Token Background Color",
+          "hint": "Select if the module should change the dynamic token background color"
+        },
+        "choices": {
+          "unchanged": "Unchanged",
+          "health": "Health-Based",
+          "disposition": "Disposition"
+        }
+      },
       "": {
         "name": "",
         "hint": ""

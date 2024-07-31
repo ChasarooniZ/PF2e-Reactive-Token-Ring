@@ -17,29 +17,50 @@ export function getHealingInfo(actor, update, status) {
   const keys = getSystemKeys(actor);
   const currentHP = foundry.utils.getProperty(actor, keys.hpPath);
   const updateHP = foundry.utils.getProperty(update, keys.hpPath);
-  const dmgTaken = foundry.utils.getProperty(status, keys.statusDamagePath);
-  if (!updateHP || (keys.statusDamagePath ? !dmgTaken : currentHP === updateHP))
+  const dmgTaken = foundry.utils.getProperty(status, keys.statusDamagePath) ?? (currentHP - updateHP);
+  if (!updateHP || !dmgTaken)
     return { isHeal: undefined, dmg: undefined, maxHP: undefined };
-
   const maxHP = foundry.utils.getProperty(actor, keys.hpMaxPath);
+  return {
+    isHeal: dmgTaken > 0 !== keys.zeroIsBad,
+    dmg: dmgTaken,
+    maxHP: maxHP,
+  };
+}
 
-  if (!keys.statusDamagePath) {
-    return {
-      isHeal: updateHP > currentHP === keys.zeroIsBad,
-      dmg: updateHP - currentHP,
-      maxHP: maxHP,
-    };
-  } else {
-    const damageTaken = foundry.utils.getProperty(
-      status,
-      keys.statusDamagePath
-    );
-    return {
-      isHeal: damageTaken > 0 !== keys.zeroIsBad,
-      dmg: damageTaken,
-      maxHP: maxHP,
-    };
-  }
+/**
+ * Retrieves the current health level based on system-specific rules.
+ * @param {Object} actor - The actor object whose HP is being evaluated.
+ * @param {Object} [update] - Optional parameter if used for preUpdate hooks. Data will be used from here if present.
+ * @returns {number} The current health level from 0.0 to 1.0, worst to best.
+ */
+export function getHealthLevel(actor, update = undefined) {
+  const keys = getSystemKeys(actor);
+  const maxHP = foundry.utils.getProperty(update, keys.hpMaxPath) ?? foundry.utils.getProperty(actor, keys.hpMaxPath);
+  const currentHP = foundry.utils.getProperty(update, keys.hpPath) ?? foundry.utils.getProperty(actor, keys.hpPath);
+  let ratio = Math.clamp(currentHP / maxHP, 0.0, 1.0);
+  if (keys.zeroIsBad === false)
+    ratio = 1.0 - ratio;
+  return ratio;
+}
+
+/**
+ * Check the update object for the given actor whether there were any system-specific chagnes to alliance.
+ * @param {Object} actor - Actor from our update.
+ * @param {Object} update - Update to check for changes.
+ * @returns {boolean} Whether a change has been found.
+ */
+export function updateHasAllianceChange(actor, update) {
+  const keys = getSystemKeys(actor);
+  let path = getSystemKeys(actor).alliancePath;
+  if (typeof(foundry.utils.getProperty(update, path)) !== "undefined")
+    return true;
+  // Also check if the field is being unset
+  let parts = path.split(".");
+  parts[parts.length - 1] = "-=" + parts[parts.length - 1];
+  if (typeof(foundry.utils.getProperty(update, parts.join("."))) !== "undefined")
+    return true;
+  return false;
 }
 
 /**
@@ -85,6 +106,7 @@ function getSystemKeys(actor) {
         hpMaxPath: "system.attributes.hp.max",
         zeroIsBad: true,
         statusDamagePath: "damageTaken",
+        alliancePath: "system.details.alliance",
       };
     case "hexxen-1733":
       return {
