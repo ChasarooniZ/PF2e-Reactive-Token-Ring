@@ -17,7 +17,9 @@ export function getHealingInfo(actor, update, status) {
   const keys = getSystemKeys(actor);
   const currentHP = foundry.utils.getProperty(actor, keys.hpPath);
   const updateHP = foundry.utils.getProperty(update, keys.hpPath);
-  const dmgTaken = foundry.utils.getProperty(status, keys.statusDamagePath) ?? (currentHP - updateHP);
+  const dmgTaken =
+    foundry.utils.getProperty(status, keys.statusDamagePath) ??
+    currentHP - updateHP;
   if (!updateHP || !dmgTaken)
     return { isHeal: undefined, dmg: undefined, maxHP: undefined };
   const maxHP = foundry.utils.getProperty(actor, keys.hpMaxPath);
@@ -36,31 +38,33 @@ export function getHealingInfo(actor, update, status) {
  */
 export function getHealthLevel(actor, update = undefined) {
   const keys = getSystemKeys(actor);
-  const maxHP = foundry.utils.getProperty(update, keys.hpMaxPath) ?? foundry.utils.getProperty(actor, keys.hpMaxPath);
-  const currentHP = foundry.utils.getProperty(update, keys.hpPath) ?? foundry.utils.getProperty(actor, keys.hpPath);
+  const maxHP =
+    foundry.utils.getProperty(update, keys.hpMaxPath) ??
+    foundry.utils.getProperty(actor, keys.hpMaxPath);
+  const currentHP =
+    foundry.utils.getProperty(update, keys.hpPath) ??
+    foundry.utils.getProperty(actor, keys.hpPath);
   let ratio = Math.clamp(currentHP / maxHP, 0.0, 1.0);
-  if (keys.zeroIsBad === false)
-    ratio = 1.0 - ratio;
+  if (keys.zeroIsBad === false) ratio = 1.0 - ratio;
   return ratio;
 }
 
 /**
- * Check the update object for the given actor whether there were any system-specific chagnes to alliance.
+ * Check the update object for the given actor whether there were any system-specific changes to alliance.
  * @param {Object} actor - Actor from our update.
  * @param {Object} update - Update to check for changes.
  * @returns {boolean} Whether a change has been found.
  */
 export function updateHasAllianceChange(actor, update) {
-  const keys = getSystemKeys(actor);
   let path = getSystemKeys(actor).alliancePath;
-  if (typeof(foundry.utils.getProperty(update, path)) !== "undefined")
+  if (typeof foundry.utils.getProperty(update, path) !== "undefined")
     return true;
   // Also check if the field is being unset
   let parts = path.split(".");
   parts[parts.length - 1] = "-=" + parts[parts.length - 1];
-  if (typeof(foundry.utils.getProperty(update, parts.join("."))) !== "undefined")
-    return true;
-  return false;
+  return (
+    typeof foundry.utils.getProperty(update, parts.join(".")) !== "undefined"
+  );
 }
 
 /**
