@@ -4,37 +4,37 @@
     "module-settings": {
       "target": {
         "share-flash": {
-          "name": "Zielblitz teilen",
-          "hint": "Zeigt den Blitzeffekt auf dem Ziel für alle Benutzer (deaktiviert zeigt nur für die Person, die zielt)"
+          "name": "Aufblitzen beim Zielen teilen",
+          "hint": "Zeigt den Aufblitz-Effekt auf dem Ziel für alle Benutzer (deaktiviert zeigt dies nur für die Person, die zielt)"
         },
         "player-color": {
-          "name": "Ziel verwendet Spielerfarbe",
-          "hint": "Für den Zielblitz verwenden Sie die Spielerfarbe (überschreibt alle benutzerdefinierten Farben)"
+          "name": "Zielen verwendet Spielerfarbe",
+          "hint": "Verwende die Spielerfarbe für den Effekt beim Zielen (überschreibt alle benutzerdefinierten Farben)"
         }
       },
       "damage-heal": {
         "scale-on-%-hp": {
           "name": "Schaden/Heilungsdauer skalieren",
-          "hint": "Skaliert die Schaden-/Heilungsdauer basierend auf dem prozentualen Gesundheitsänderung"
+          "hint": "Skaliert die Effektdauer bei Schaden/Heilung basierend auf der prozentualen Gesundheitsänderung"
         }
       },
       "duration": {
         "name": "Dauer",
-        "hint": "Wie lange (in ms) sollte das Token-Blitzen für alle Effekte dauern? (Standard 500 ms, dies wird skaliert, wenn Sie Einstellungen aktivieren, die die Dauer skalieren)"
+        "hint": "Wie lange (in ms) sollte das Aufblitzen für alle Effekte dauern? (Standard 500 ms, dies wird skaliert wenn die obrige Option aktiviert ist)"
       },
       "auto-coloring": {
         "ring": {
           "name": "Farbe des Token-Rings",
-          "hint": "Wählen Sie, ob das Modul die dynamische Token-Ringfarbe ändern soll"
+          "hint": "Ob und wie das Modul die dynamische Token-Ringfarbe ändern soll"
         },
         "background": {
           "name": "Farbe des Token-Hintergrunds",
-          "hint": "Wählen Sie, ob das Modul die dynamische Token-Hintergrundfarbe ändern soll"
+          "hint": "Ob und wie das Modul die dynamische Token-Hintergrundfarbe ändern soll"
         },
         "choices": {
           "unchanged": "Unverändert",
           "health": "Gesundheitsbasiert",
-          "disposition": "Disposition"
+          "disposition": "Gesinnung"
         }
       },
       "": {
