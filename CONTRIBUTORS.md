@@ -18,3 +18,4 @@
 - Support for Dragonbane - Drakar och Demoner
 #### Mystler
 - Token Health Ring Coloring Features <3
+- German Translation fixing
