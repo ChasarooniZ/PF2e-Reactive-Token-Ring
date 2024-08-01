@@ -24,17 +24,17 @@
       },
       "auto-coloring": {
         "ring": {
-          "name": "Token Ring Color",
-          "hint": "Select if the module should change the dynamic token ring color"
+          "name": "Kolor pierścienia tokena",
+          "hint": "Wybierz, czy moduł ma zmienić kolor dynamicznego pierścienia tokenów"
         },
         "background": {
-          "name": "Token Background Color",
-          "hint": "Select if the module should change the dynamic token background color"
+          "name": "Kolor tła tokena",
+          "hint": "Wybierz, czy moduł ma zmieniać kolor tła dynamicznego tokena"
         },
         "choices": {
-          "unchanged": "Unchanged",
-          "health": "Health-Based",
-          "disposition": "Disposition"
+          "unchanged": "Bez zmian",
+          "health": "Oparte na zdrowiu",
+          "disposition": "Rozmieszczenie"
         }
       },
       "": {
