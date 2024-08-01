@@ -1,4 +1,15 @@
 export const MODULE_ID = "pf2e-reactive-token-ring";
+// Define color constants
+export const COLORS = {
+  GREEN: "#ADFF2F",
+  RED: "#FF0000",
+  YELLOW: "#FFFF00",
+  PURPLE: "#9370DB",
+  WHITE: "#FFFFFF",
+  DEEPSKYBLUE: "#00BFFF",
+  ORANGE: "#FFA500",
+  PINK: "#FF69B4",
+};
 export const CONDITIONS = {
   POSITIVE: [
     "concealed",

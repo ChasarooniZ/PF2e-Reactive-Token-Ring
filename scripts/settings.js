@@ -50,6 +50,8 @@ export function registerSettings() {
     },
     type: Number,
   });
+
+  //Auto Color Ring
   const autoColoringChoices = {
     "unchanged": game.i18n.localize(MODULE_ID + ".module-settings.auto-coloring.choices.unchanged"),
     "health": game.i18n.localize(MODULE_ID + ".module-settings.auto-coloring.choices.health"),
@@ -74,5 +76,19 @@ export function registerSettings() {
     type: String,
     requiresReload: true,
     choices: autoColoringChoices,
+  });
+  game.settings.register(MODULE_ID, "auto-coloring.percent-color", {
+    name: game.i18n.localize(MODULE_ID + ".module-settings.auto-coloring.percent-color.name"),
+    hint: game.i18n.localize(MODULE_ID + ".module-settings.auto-coloring.percent-color.hint"),
+    scope: "world",
+    config: true,
+    default: "0.5",
+    type: Number,
+    range: {
+      min: 0,
+      max: 1,
+      step: 0.01
+    },
+    requiresReload: true,
   });
 }

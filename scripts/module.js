@@ -1,23 +1,11 @@
 // Import necessary modules and constants
-import { CONDITIONS, MODULE_ID } from "./misc.js";
+import { COLORS, CONDITIONS, MODULE_ID } from "./misc.js";
 import { registerSettings } from "./settings.js";
 import {
   getHealingInfo,
   getHealthLevel,
   updateHasAllianceChange,
 } from "./systemCompatability.js";
-
-// Define color constants
-const COLORS = {
-  GREEN: "#ADFF2F",
-  RED: "#FF0000",
-  YELLOW: "#FFFF00",
-  PURPLE: "#9370DB",
-  WHITE: "#FFFFFF",
-  DEEPSKYBLUE: "#00BFFF",
-  ORANGE: "#FFA500",
-  PINK: "#FF69B4",
-};
 
 // Initialize module settings and ring color wrapper
 Hooks.once("init", () => {
@@ -164,16 +152,6 @@ const effects = Object.freeze({
 });
 
 /**
- * Calculate the color representing the current health level.
- * To scale from red to green, we apply the health level to the first third of the hue in HSV space.
- * @param {number} level - Health level from 0 (worst) to 1 (best).
- * @returns {Color}
- */
-function getColorForHealthLevel(level) {
-  return Color.fromHSV([level / 3.0, 1.0, 1.0]);
-}
-
-/**
  * Override getRingColors on the Token class, which returns an empty object by default
  * and falls through to fallbacks. Note that changing the returns of that function does
  * not cause a rendering update; calling configureVisuals() can do that.
@@ -183,52 +161,7 @@ function registerRingColorsWrapper() {
     libWrapper.register(
       MODULE_ID,
       "CONFIG.Token.objectClass.prototype.getRingColors",
-      function () {
-        let ringColor = this.document.ring.colors.ring;
-        let backgroundColor = this.document.ring.colors.background;
-        const ringSetting = game.settings.get(MODULE_ID, "auto-coloring.ring");
-        const backgroundSetting = game.settings.get(
-          MODULE_ID,
-          "auto-coloring.background"
-        );
-
-        if (ringSetting === "health" || backgroundSetting === "health") {
-          const level =
-            this.document.getFlag(MODULE_ID, "tokenHealthLevel") ??
-            getHealthLevel(this.actor);
-          if (!isNaN(level)) {
-            const healthColor = getColorForHealthLevel(level);
-            if (ringSetting === "health") ringColor = healthColor;
-            if (backgroundSetting === "health") backgroundColor = healthColor;
-          }
-        }
-
-        if (
-          ringSetting === "disposition" ||
-          backgroundSetting === "disposition"
-        ) {
-          let dispositionColor = undefined;
-          switch (this.document.disposition) {
-            case CONST.TOKEN_DISPOSITIONS.FRIENDLY:
-              dispositionColor = COLORS.GREEN;
-              break;
-            case CONST.TOKEN_DISPOSITIONS.NEUTRAL:
-              dispositionColor = COLORS.YELLOW;
-              break;
-            case CONST.TOKEN_DISPOSITIONS.HOSTILE:
-              dispositionColor = COLORS.RED;
-              break;
-          }
-          if (ringSetting === "disposition") ringColor = dispositionColor;
-          if (backgroundSetting === "disposition")
-            backgroundColor = dispositionColor;
-        }
-
-        return {
-          ring: ringColor,
-          background: backgroundColor,
-        };
-      },
+      autoColorRing,
       "OVERRIDE"
     );
   } catch {
