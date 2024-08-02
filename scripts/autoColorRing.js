@@ -41,11 +41,11 @@ export function autoColorRing() {
     MODULE_ID,
     "auto-coloring.percent-color"
   );
-  if (ringSetting !== "unchanged") {
+  if (ringSetting !== "unchanged" && ringColor) {
     const [h, s, v] = ringColor.hsv;
     ringColor = Color.fromHSV(h, s * percentColor, v);
   }
-  if (backgroundSetting !== "unchanged") {
+  if (backgroundSetting !== "unchanged" && backgroundColor) {
     const [h, s, v] = backgroundColor.hsv;
     backgroundColor = Color.fromHSV(h, s * percentColor, v);
   }
