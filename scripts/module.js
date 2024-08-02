@@ -21,26 +21,28 @@ Hooks.once("ready", async () => {
     if (!status.diff) return;
     const { isHeal, dmg, maxHP } = getHealingInfo(actor, update, status);
     if (isHeal !== undefined) {
-      const token = canvas.tokens.placeables.find(
-        (t) => t.actor.id === actor.id
-      );
-      if (!token) return;
-      // Update health level flag for the module so the Ring color can be determined before the actual update
-      await token.document.setFlag(
-        MODULE_ID,
-        "tokenHealthLevel",
-        getHealthLevel(actor, update)
-      );
-      // Force updating of the ring elements including background before flashing
-      if (token.document.ring?.enabled) token.ring.configureVisuals();
-      // Flash!
-      const color = isHeal ? COLORS.GREEN : COLORS.RED;
-      const situation = isHeal ? "heal" : "damage";
-      await flashColor(
-        token,
-        color,
-        getAnimationChanges(situation, { dmg, maxHP })
-      );
+      // Put process into async subfunction so we can run it in parallel on multiple tokens
+      const healthAnimation = async(token) => {
+        // Update health level flag for the module so the Ring color can be determined before the actual update
+        await token.document.setFlag(
+          MODULE_ID,
+          "tokenHealthLevel",
+          getHealthLevel(actor, update)
+        );
+        // Force updating of the ring elements including background before flashing
+        if (token.document.ring?.enabled) token.ring.configureVisuals();
+        // Flash!
+        const color = isHeal ? COLORS.GREEN : COLORS.RED;
+        const situation = isHeal ? "heal" : "damage";
+        await flashColor(
+          token,
+          color,
+          getAnimationChanges(situation, { dmg, maxHP })
+        );
+      };
+      for (const token of canvas.tokens.placeables.filter(t => t.actor.id === actor.id)) {
+        healthAnimation(token);
+      }
     }
   });
 
@@ -49,11 +51,9 @@ Hooks.once("ready", async () => {
     // Cause a manual token ring update if alliance changed via system, so it picks up disposition
     // If the system-specific part is not implemented, it will simply synch up on the next regular update.
     if (updateHasAllianceChange(actor, update)) {
-      const token = canvas.tokens.placeables.find(
-        (t) => t.actor.id === actor.id
-      );
-      if (!token) return;
-      if (token.document.ring?.enabled) token.ring.configureVisuals();
+      for (const token of canvas.tokens.placeables.filter(t => t.actor.id === actor.id)) {
+        if (token.document.ring?.enabled) token.ring.configureVisuals();
+      }
     }
   });
 
