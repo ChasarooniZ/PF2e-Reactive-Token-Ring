@@ -24,17 +24,21 @@
       },
       "auto-coloring": {
         "ring": {
-          "name": "Token Ring Color",
+          "name": "Token Ring Auto Color",
           "hint": "Select if the module should change the dynamic token ring color"
         },
         "background": {
-          "name": "Token Background Color",
+          "name": "Token Background Auto Color",
           "hint": "Select if the module should change the dynamic token background color"
         },
         "choices": {
           "unchanged": "Unchanged",
           "health": "Health-Based",
           "disposition": "Disposition"
+        },
+        "percent-color": {
+          "name": "Token Auto Color Percentage",
+          "hint": "How much should the <b>saturation</b> of the autocoloring be"
         }
       },
       "": {
