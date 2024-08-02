@@ -82,12 +82,12 @@ export function registerSettings() {
     hint: game.i18n.localize(MODULE_ID + ".module-settings.auto-coloring.percent-color.hint"),
     scope: "world",
     config: true,
-    default: "0.5",
+    default: "0.75",
     type: Number,
     range: {
       min: 0,
       max: 1,
-      step: 0.01
+      step: 0.05
     },
     requiresReload: true,
   });
