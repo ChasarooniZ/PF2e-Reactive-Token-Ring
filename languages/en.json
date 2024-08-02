@@ -38,7 +38,7 @@
         },
         "percent-color": {
           "name": "Token Auto Color Percentage",
-          "hint": "How much should the <b>saturation</b> of the autocoloring be"
+          "hint": "How much should the saturation of the autocoloring be"
         }
       },
       "": {

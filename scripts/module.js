@@ -1,4 +1,5 @@
 // Import necessary modules and constants
+import { autoColorRing } from "./autoColorRing.js";
 import { COLORS, CONDITIONS, MODULE_ID } from "./misc.js";
 import { registerSettings } from "./settings.js";
 import {
