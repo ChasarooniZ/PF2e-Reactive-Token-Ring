@@ -1,3 +1,12 @@
+## [1.3.4](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.3.3...1.3.4) - Color Saturation
+- `Auto Coloring`
+  - Added option to set the saturation of the autocoloring
+  - (did some behind the scenes reorganizing of the code)
+## [1.3.3](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.3.2...1.3.3) - Updated Translation
+- Updated polish translation (@Lioheart)
+## [1.3.2](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.3.1...1.3.2) - Bug Fix
+- Fixed issue where path to languages was incorrect
+- made tweaks to German translation (@stwlam)
 ## [1.3.1](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.3.0...1.3.1) - Rise of the Machine Languages I
 Added Machine Translations into the following languages
 - French
