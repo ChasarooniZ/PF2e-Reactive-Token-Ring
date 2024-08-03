@@ -35,6 +35,10 @@
           "unchanged": "Unverändert",
           "health": "Gesundheitsbasiert",
           "disposition": "Gesinnung"
+        },
+        "percent-color": {
+          "name": "Faktor der automatischen Färbung",
+          "hint": "Wie stark die Sättigung der automatischen Färbung ausfallen soll"
         }
       },
       "colors": {

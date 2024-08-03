@@ -46,8 +46,9 @@ Adds some reaction for dynamic token rings.
 #### Flashes pink on positive condition
   - <img src="https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/assets/79132112/b766645e-4bfd-4198-b1bb-e36e99ea6e96" height=250>
 
-## How to Make a Dynamic Token
+## How to Make a Dynamic Token using Tokenizer
 [<img src="https://img.youtube.com/vi/P7Ot2YipUjU/0.jpg">](https://youtu.be/P7Ot2YipUjU?si=I2VRDQexxBJybVRc)
+Click me! ^^
 
 ## Supported Systems
 - Alien RPG

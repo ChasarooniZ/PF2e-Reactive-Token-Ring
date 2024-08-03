@@ -4,7 +4,6 @@
   "description": "Adds some reaction for dynamic token rings",
   "version": "#{VERSION}#",
   "library": "false",
-  "manifestPlusVersion": "1.2.0",
   "compatibility": {
     "minimum": 12,
     "verified": 12
