@@ -1,3 +1,5 @@
+## [1.3.8](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.3.7...1.3.8) - Autocoloring Fix
+- Fixed autocoloring not syncing when a token takes damage (@Mystler)
 ## [1.3.7](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.3.6...1.3.7) - Polish Translation Update
 - Updated Polish translation (@Lioheart)
 ## [1.3.6](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.3.5...1.3.6) - Hot Patch
