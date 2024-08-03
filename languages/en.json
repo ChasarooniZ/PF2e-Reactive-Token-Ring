@@ -41,6 +41,30 @@
           "hint": "How much should the saturation of the autocoloring be"
         }
       },
+      "colors": {
+        "damage": {
+          "name": "[Color] Damage",
+          "hint": "Change the color the token flashes on damage"
+        },
+        "healing": {
+          "name": "[Color] Healing",
+          "hint": "Change the color the token flashes on healing"
+        },
+        "target": {
+          "name": "[Color] Target",
+          "hint": "Change the color the token flashes on targeting (assuming you don't have the player color setting enabled)"
+        },
+        "status": {
+          "positive": {
+            "name": "[Color] Positive Condition",
+            "hint": "Change the color the token flashes on receiving a positive condition"
+          },
+          "negative": {
+            "name": "[Color] Negative Condition",
+            "hint": "Change the color the token flashes on receiving a negative condition"
+          }
+        }
+      },
       "": {
         "name": "",
         "hint": ""

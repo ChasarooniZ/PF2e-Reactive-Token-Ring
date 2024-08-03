@@ -37,6 +37,30 @@
           "disposition": "Disposición"
         }
       },
+      "colors": {
+        "damage": {
+          "name": "[Color] Daño",
+          "hint": "Cambie el color que parpadea el token al recibir daño"
+        },
+        "healing": {
+          "name": "[Color] Curación",
+          "hint": "Cambie el color que parpadea el token al recibir curación"
+        },
+        "target": {
+          "name": "[Color] Objetivo",
+          "hint": "Cambie el color que parpadea el token al apuntar (suponiendo que no tenga habilitada la configuración de color del jugador)"
+        },
+        "status": {
+          "positive": {
+            "name": "[Color] Condición Positiva",
+            "hint": "Cambie el color que parpadea el token al recibir una condición positiva"
+          },
+          "negative": {
+            "name": "[Color] Condición Negativa",
+            "hint": "Cambie el color que parpadea el token al recibir una condición negativa"
+          }
+        }
+      },
       "": {
         "name": "",
         "hint": ""

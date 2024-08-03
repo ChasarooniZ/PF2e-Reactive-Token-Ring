@@ -37,6 +37,30 @@
           "disposition": "Gesinnung"
         }
       },
+      "colors": {
+        "damage": {
+          "name": "[Farbe] Schaden",
+          "hint": "Ändern Sie die Farbe, in der der Token bei Schaden aufblitzt"
+        },
+        "healing": {
+          "name": "[Farbe] Heilung",
+          "hint": "Ändern Sie die Farbe, in der der Token bei Heilung aufblitzt"
+        },
+        "target": {
+          "name": "[Farbe] Ziel",
+          "hint": "Ändern Sie die Farbe, in der der Token beim Anvisieren aufblitzt (vorausgesetzt, die Spielerfarbeneinstellung ist nicht aktiviert)"
+        },
+        "status": {
+          "positive": {
+            "name": "[Farbe] Positive Bedingung",
+            "hint": "Ändern Sie die Farbe, in der der Token bei einer positiven Bedingung aufblitzt"
+          },
+          "negative": {
+            "name": "[Farbe] Negative Bedingung",
+            "hint": "Ändern Sie die Farbe, in der der Token bei einer negativen Bedingung aufblitzt"
+          }
+        }
+      },
       "": {
         "name": "",
         "hint": ""

@@ -37,6 +37,30 @@
           "disposition": "Rozmieszczenie"
         }
       },
+      "colors": {
+        "damage": {
+          "name": "[Kolor] Uszkodzenie",
+          "hint": "Zmień kolor, w którym miga żeton po otrzymaniu obrażeń"
+        },
+        "healing": {
+          "name": "[Kolor] Leczenie",
+          "hint": "Zmień kolor, w którym miga żeton po otrzymaniu leczenia"
+        },
+        "target": {
+          "name": "[Kolor] Cel",
+          "hint": "Zmień kolor, w którym miga żeton podczas celowania (zakładając, że nie masz włączonego ustawienia koloru gracza)"
+        },
+        "status": {
+          "positive": {
+            "name": "[Kolor] Pozytywny Stan",
+            "hint": "Zmień kolor, w którym miga żeton po otrzymaniu pozytywnego stanu"
+          },
+          "negative": {
+            "name": "[Kolor] Negatywny Stan",
+            "hint": "Zmień kolor, w którym miga żeton po otrzymaniu negatywnego stanu"
+          }
+        }
+      },
       "": {
         "name": "",
         "hint": ""

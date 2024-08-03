@@ -1,0 +1,75 @@
+{
+    "I18N.LANGUAGE": "Português",
+    "pf2e-reactive-token-ring": {
+      "module-settings": {
+        "target": {
+          "share-flash": {
+            "name": "Compartilhar Flash de Alvo",
+            "hint": "Mostra o efeito de flash no alvo para todos os usuários (desativado mostra apenas para a pessoa que está mirando)"
+          },
+          "player-color": {
+            "name": "Alvo usa a Cor do Jogador",
+            "hint": "Para o flash do alvo, use a cor do jogador (substitui qualquer cor personalizada definida)"
+          }
+        },
+        "damage-heal": {
+          "scale-on-%-hp": {
+            "name": "Escalar Duração de Dano/Cura",
+            "hint": "Escalar a duração de dano/cura com base na porcentagem de mudança de saúde"
+          }
+        },
+        "duration": {
+          "name": "Duração",
+          "hint": "Quanto tempo (em ms) o token deve piscar para todos os efeitos (Padrão 500 ms, isso será escalado se você ativar as configurações que escalam a duração)"
+        },
+        "auto-coloring": {
+          "ring": {
+            "name": "Cor Automática do Anel de Token",
+            "hint": "Selecione se o módulo deve alterar a cor do anel de token dinâmico"
+          },
+          "background": {
+            "name": "Cor Automática do Fundo do Token",
+            "hint": "Selecione se o módulo deve alterar a cor do fundo do token dinâmico"
+          },
+          "choices": {
+            "unchanged": "Inalterado",
+            "health": "Baseado em Saúde",
+            "disposition": "Disposição"
+          },
+          "percent-color": {
+            "name": "Porcentagem de Cor Automática do Token",
+            "hint": "Quanto deve ser a saturação da coloração automática"
+          }
+        },
+        "colors": {
+          "damage": {
+            "name": "[Cor] Dano",
+            "hint": "Altera a cor que o token pisca ao receber dano"
+          },
+          "healing": {
+            "name": "[Cor] Cura",
+            "hint": "Altera a cor que o token pisca ao receber cura"
+          },
+          "target": {
+            "name": "[Cor] Alvo",
+            "hint": "Altera a cor que o token pisca ao mirar (assumindo que você não tenha ativado a configuração de cor do jogador)"
+          },
+          "status": {
+            "positive": {
+              "name": "[Cor] Condição Positiva",
+              "hint": "Altera a cor que o token pisca ao receber uma condição positiva"
+            },
+            "negative": {
+              "name": "[Cor] Condição Negativa",
+              "hint": "Altera a cor que o token pisca ao receber uma condição negativa"
+            }
+          }
+        },
+        "": {
+          "name": "",
+          "hint": ""
+        }
+      }
+    }
+  }
+  

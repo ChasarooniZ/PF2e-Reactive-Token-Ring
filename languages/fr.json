@@ -37,6 +37,30 @@
           "disposition": "Disposition"
         }
       },
+      "colors": {
+        "damage": {
+          "name": "[Couleur] Dégâts",
+          "hint": "Changez la couleur que le jeton clignote en cas de dégâts"
+        },
+        "healing": {
+          "name": "[Couleur] Soin",
+          "hint": "Changez la couleur que le jeton clignote en cas de soin"
+        },
+        "target": {
+          "name": "[Couleur] Cible",
+          "hint": "Changez la couleur que le jeton clignote en ciblant (à condition que vous n'ayez pas activé les paramètres de couleur du joueur)"
+        },
+        "status": {
+          "positive": {
+            "name": "[Couleur] Condition Positive",
+            "hint": "Changez la couleur que le jeton clignote en recevant une condition positive"
+          },
+          "negative": {
+            "name": "[Couleur] Condition Négative",
+            "hint": "Changez la couleur que le jeton clignote en recevant une condition négative"
+          }
+        }
+      },
       "": {
         "name": "",
         "hint": ""
