@@ -28,6 +28,7 @@
     ]
   },
   "esmodules": ["scripts/module.js"],
+  "socket": true,
   "languages": [
     {
       "lang": "en",
