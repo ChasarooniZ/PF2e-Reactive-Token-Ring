@@ -33,7 +33,7 @@ Hooks.once("ready", async () => {
         if (token.document.ring?.enabled) token.ring.configureVisuals();
         // Flash!
         const color = isHeal
-          ? game.settings.get(MODULE_ID, "colors.heal")
+          ? game.settings.get(MODULE_ID, "colors.healing")
           : game.settings.get(MODULE_ID, "colors.damage");
         const situation = isHeal ? "heal" : "damage";
         await flashColor(

@@ -133,9 +133,9 @@ export function registerSettings() {
     type: new foundry.data.fields.ColorField(),
     requiresReload: false
   });
-  game.settings.register(MODULE_ID, "colors.heal", {
-    name: game.i18n.localize(MODULE_ID + ".module-settings.colors.heal.name"),
-    hint: game.i18n.localize(MODULE_ID + ".module-settings.colors.heal.hint"),
+  game.settings.register(MODULE_ID, "colors.healing", {
+    name: game.i18n.localize(MODULE_ID + ".module-settings.colors.healing.name"),
+    hint: game.i18n.localize(MODULE_ID + ".module-settings.colors.healing.hint"),
     scope: "world",
     config: true,
     default: COLORS.GREEN,
