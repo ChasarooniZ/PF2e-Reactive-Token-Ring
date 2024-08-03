@@ -34,7 +34,9 @@ Hooks.once("ready", async () => {
       // Force updating of the ring elements including background before flashing
       if (token.document.ring?.enabled) token.ring.configureVisuals();
       // Flash!
-      const color = isHeal ? COLORS.GREEN : COLORS.RED;
+      const color = isHeal
+        ? game.settings.get(MODULE_ID, "colors.heal")
+        : game.settings.get(MODULE_ID, "colors.damage");
       const situation = isHeal ? "heal" : "damage";
       await flashColor(
         token,
@@ -66,7 +68,7 @@ Hooks.once("ready", async () => {
     ) {
       const color = game.settings.get(MODULE_ID, "target.player-color")
         ? user.color.css
-        : COLORS.DEEPSKYBLUE;
+        : game.settings.get(MODULE_ID, "colors.target");
       await flashColor(token, color, getAnimationChanges("target", { token }));
     }
   });
@@ -81,9 +83,15 @@ Hooks.once("ready", async () => {
       if (conditions.includes(name)) {
         //is added
         if (CONDITIONS.POSITIVE.includes(name)) {
-          await flashColor(token, COLORS.PINK);
+          await flashColor(
+            token,
+            game.settings.get(MODULE_ID, "colors.status.positive")
+          );
         } else if (CONDITIONS.NEGATIVE.includes(name)) {
-          await flashColor(token, COLORS.ORANGE);
+          await flashColor(
+            token,
+            game.settings.get(MODULE_ID, "colors.status.negative")
+          );
         }
       }
     });

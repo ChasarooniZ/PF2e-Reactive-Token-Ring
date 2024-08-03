@@ -1,4 +1,4 @@
-import { MODULE_ID } from "./misc.js";
+import { COLORS, MODULE_ID } from "./misc.js";
 
 export function registerSettings() {
   game.settings.register(MODULE_ID, "target.share-flash", {
@@ -53,13 +53,23 @@ export function registerSettings() {
 
   //Auto Color Ring
   const autoColoringChoices = {
-    "unchanged": game.i18n.localize(MODULE_ID + ".module-settings.auto-coloring.choices.unchanged"),
-    "health": game.i18n.localize(MODULE_ID + ".module-settings.auto-coloring.choices.health"),
-    "disposition": game.i18n.localize(MODULE_ID + ".module-settings.auto-coloring.choices.disposition"),
-  }
+    unchanged: game.i18n.localize(
+      MODULE_ID + ".module-settings.auto-coloring.choices.unchanged"
+    ),
+    health: game.i18n.localize(
+      MODULE_ID + ".module-settings.auto-coloring.choices.health"
+    ),
+    disposition: game.i18n.localize(
+      MODULE_ID + ".module-settings.auto-coloring.choices.disposition"
+    ),
+  };
   game.settings.register(MODULE_ID, "auto-coloring.ring", {
-    name: game.i18n.localize(MODULE_ID + ".module-settings.auto-coloring.ring.name"),
-    hint: game.i18n.localize(MODULE_ID + ".module-settings.auto-coloring.ring.hint"),
+    name: game.i18n.localize(
+      MODULE_ID + ".module-settings.auto-coloring.ring.name"
+    ),
+    hint: game.i18n.localize(
+      MODULE_ID + ".module-settings.auto-coloring.ring.hint"
+    ),
     scope: "client",
     config: true,
     default: "unchanged",
@@ -68,8 +78,12 @@ export function registerSettings() {
     choices: autoColoringChoices,
   });
   game.settings.register(MODULE_ID, "auto-coloring.background", {
-    name: game.i18n.localize(MODULE_ID + ".module-settings.auto-coloring.background.name"),
-    hint: game.i18n.localize(MODULE_ID + ".module-settings.auto-coloring.background.hint"),
+    name: game.i18n.localize(
+      MODULE_ID + ".module-settings.auto-coloring.background.name"
+    ),
+    hint: game.i18n.localize(
+      MODULE_ID + ".module-settings.auto-coloring.background.hint"
+    ),
     scope: "client",
     config: true,
     default: "unchanged",
@@ -78,8 +92,12 @@ export function registerSettings() {
     choices: autoColoringChoices,
   });
   game.settings.register(MODULE_ID, "auto-coloring.percent-color", {
-    name: game.i18n.localize(MODULE_ID + ".module-settings.auto-coloring.percent-color.name"),
-    hint: game.i18n.localize(MODULE_ID + ".module-settings.auto-coloring.percent-color.hint"),
+    name: game.i18n.localize(
+      MODULE_ID + ".module-settings.auto-coloring.percent-color.name"
+    ),
+    hint: game.i18n.localize(
+      MODULE_ID + ".module-settings.auto-coloring.percent-color.hint"
+    ),
     scope: "world",
     config: true,
     default: "0.75",
@@ -87,8 +105,65 @@ export function registerSettings() {
     range: {
       min: 0,
       max: 1,
-      step: 0.05
+      step: 0.05,
     },
     requiresReload: true,
+  });
+  game.settings.register(MODULE_ID, "auto-coloring.background", {
+    name: game.i18n.localize(
+      MODULE_ID + ".module-settings.auto-coloring.background.name"
+    ),
+    hint: game.i18n.localize(
+      MODULE_ID + ".module-settings.auto-coloring.background.hint"
+    ),
+    scope: "client",
+    config: true,
+    default: "unchanged",
+    type: new foundry.data.fields.ColorField(),
+    requiresReload: true,
+    choices: autoColoringChoices,
+  });
+  //Color settings
+  game.settings.register(MODULE_ID, "colors.damage", {
+    name: game.i18n.localize(MODULE_ID + ".module-settings.colors.damage.name"),
+    hint: game.i18n.localize(MODULE_ID + ".module-settings.colors.damage.hint"),
+    scope: "world",
+    config: true,
+    default: COLORS.RED,
+    type: new foundry.data.fields.ColorField(),
+    requiresReload: false
+  });
+  game.settings.register(MODULE_ID, "colors.heal", {
+    name: game.i18n.localize(MODULE_ID + ".module-settings.colors.heal.name"),
+    hint: game.i18n.localize(MODULE_ID + ".module-settings.colors.heal.hint"),
+    scope: "world",
+    config: true,
+    default: COLORS.GREEN,
+    type: new foundry.data.fields.ColorField()
+  });
+  game.settings.register(MODULE_ID, "colors.target", {
+    name: game.i18n.localize(MODULE_ID + ".module-settings.colors.target.name"),
+    hint: game.i18n.localize(MODULE_ID + ".module-settings.colors.target.hint"),
+    scope: "world",
+    config: true,
+    default: COLORS.DEEPSKYBLUE,
+    type: new foundry.data.fields.ColorField()
+  });
+  
+  game.settings.register(MODULE_ID, "colors.status.positive", {
+    name: game.i18n.localize(MODULE_ID + ".module-settings.colors.status.positive.name"),
+    hint: game.i18n.localize(MODULE_ID + ".module-settings.colors.status.positive.hint"),
+    scope: "world",
+    config: game.system.id === "pf2e",
+    default: COLORS.PINK,
+    type: new foundry.data.fields.ColorField()
+  });
+  game.settings.register(MODULE_ID, "colors.status.negative", {
+    name: game.i18n.localize(MODULE_ID + ".module-settings.colors.status.negative.name"),
+    hint: game.i18n.localize(MODULE_ID + ".module-settings.colors.status.negative.hint"),
+    scope: "world",
+    config: game.system.id === "pf2e",
+    default: COLORS.ORANGE,
+    type: new foundry.data.fields.ColorField()
   });
 }
