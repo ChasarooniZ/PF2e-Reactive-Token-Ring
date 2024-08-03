@@ -16,36 +16,38 @@ Hooks.once("init", () => {
 
 // Set up main functionality when Foundry VTT is ready
 Hooks.once("ready", async () => {
-  // Handle actor updates
+  // Register the listener for our module socket.
+  // Note that this is not entered on the origin client of any broadcast.
+  game.socket.on(`module.${MODULE_ID}`, ({type, payload}) => {
+    if (type === "tokenHealthUpdate")
+      handleTokenHealthUpdate(...payload);
+  });
+
+  // Handle actor pre update, which is running only on the causing client
   Hooks.on("preUpdateActor", async (actor, update, status, _userID) => {
     if (!status.diff) return;
     const { isHeal, dmg, maxHP } = getHealingInfo(actor, update, status);
     if (isHeal !== undefined) {
+      const healthLevel = getHealthLevel(actor, update);
       // Put process into async subfunction so we can run it in parallel on multiple tokens
-      const healthAnimation = async (token) => {
-        // Update health level flag for the module so the Ring color can be determined before the actual update
+      const processToken = async (token) => {
+        // Update health level flag for the module so the Ring color can be determined before the completed actor update
+        // This flag is synched over the network and can only be set by owners with permission.
         await token.document.setFlag(
           MODULE_ID,
           "tokenHealthLevel",
-          getHealthLevel(actor, update)
+          healthLevel
         );
-        // Force updating of the ring elements including background before flashing
-        if (token.document.ring?.enabled) token.ring.configureVisuals();
-        // Flash!
-        const color = isHeal
-          ? game.settings.get(MODULE_ID, "colors.healing")
-          : game.settings.get(MODULE_ID, "colors.damage");
-        const situation = isHeal ? "heal" : "damage";
-        await flashColor(
-          token,
-          color,
-          getAnimationChanges(situation, { dmg, maxHP })
-        );
+        // Run our visual fanciness. Run local function first, since it is not broadcast to ourselves
+        const args = [token.id, isHeal, dmg, maxHP];
+        handleTokenHealthUpdate(...args);
+        // Trigger other clients now
+        game.socket.emit(`module.${MODULE_ID}`, {type: "tokenHealthUpdate", payload: args});
       };
       for (const token of canvas.tokens.placeables.filter(
         (t) => t.actor.id === actor.id
       )) {
-        healthAnimation(token);
+        processToken(token);
       }
     }
   });
@@ -101,6 +103,31 @@ Hooks.once("ready", async () => {
     });
   }
 });
+
+/**
+ * Ths function is called locally and on network clients when we want to handle the actual visual updates
+ * when the health of a token changes.
+ * @param {string} tokenId
+ * @param {boolean} isHeal
+ * @param {number} dmg
+ * @param {number} maxHP
+ */
+function handleTokenHealthUpdate(tokenId, isHeal, dmg, maxHP) {
+  const token = canvas.tokens.get(tokenId);
+  if (!token) return;
+  // Force updating of the ring elements including background before flashing
+  if (token.document.ring?.enabled) token.ring.configureVisuals();
+  // Flash!
+  const color = isHeal
+    ? game.settings.get(MODULE_ID, "colors.healing")
+    : game.settings.get(MODULE_ID, "colors.damage");
+  const situation = isHeal ? "heal" : "damage";
+  flashColor(
+    token,
+    color,
+    getAnimationChanges(situation, { dmg, maxHP })
+  );
+}
 
 /**
  * Flash color of token
