@@ -109,20 +109,6 @@ export function registerSettings() {
     },
     requiresReload: true,
   });
-  game.settings.register(MODULE_ID, "auto-coloring.background", {
-    name: game.i18n.localize(
-      MODULE_ID + ".module-settings.auto-coloring.background.name"
-    ),
-    hint: game.i18n.localize(
-      MODULE_ID + ".module-settings.auto-coloring.background.hint"
-    ),
-    scope: "client",
-    config: true,
-    default: "unchanged",
-    type: new foundry.data.fields.ColorField(),
-    requiresReload: true,
-    choices: autoColoringChoices,
-  });
   //Color settings
   game.settings.register(MODULE_ID, "colors.damage", {
     name: game.i18n.localize(MODULE_ID + ".module-settings.colors.damage.name"),

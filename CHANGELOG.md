@@ -1,3 +1,5 @@
+## [1.3.6](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.3.5...1.3.6) - Hot Patch
+- Fixed one of the disposition settings turning into a color drop down
 ## [1.3.5](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.3.4...1.3.5) - Options, and Languages, and Fixes Oh My
 - `Token Flash`
   - Added Module settings to change color of all token flashes
