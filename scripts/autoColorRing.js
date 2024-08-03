@@ -25,13 +25,13 @@ export function autoColorRing() {
     let dispositionColor = undefined;
     switch (this.document.disposition) {
       case CONST.TOKEN_DISPOSITIONS.FRIENDLY:
-        dispositionColor = COLORS.GREEN;
+        dispositionColor = Color.fromString(COLORS.GREEN);
         break;
       case CONST.TOKEN_DISPOSITIONS.NEUTRAL:
-        dispositionColor = COLORS.YELLOW;
+        dispositionColor = Color.fromString(COLORS.YELLOW);
         break;
       case CONST.TOKEN_DISPOSITIONS.HOSTILE:
-        dispositionColor = COLORS.RED;
+        dispositionColor = Color.fromString(COLORS.RED);
         break;
     }
     if (ringSetting === "disposition") ringColor = dispositionColor;
