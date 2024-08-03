@@ -1,3 +1,18 @@
+## [1.3.5](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.3.4...1.3.5) - Options, and Languages, and Fixes Oh My
+- `Token Flash`
+  - Added Module settings to change color of all token flashes
+  - Fixed bug where token wouldn't flash when hp was set to 0 (@Mystler)
+  - Fixed edge case where multiple tokens sharing the same linked actor wouldn't flash (@Mystler)
+  - Fixed bug where disposition auto coloring wasn't working in `1.3.4` (@Mystler)
+- **Languages**
+  - Punched up some of the the german translation (@Mystler)
+  - Added the followign new machine translated languages
+    - `Japanese`
+    - `Korean`
+    - `Chinese`
+    - `Portuguese`
+- **Misc Fixes**
+  - Fix for manifestplus log error (@Razytos)
 ## [1.3.4](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.3.3...1.3.4) - Color Saturation
 - `Auto Coloring`
   - Added option to set the saturation of the autocoloring

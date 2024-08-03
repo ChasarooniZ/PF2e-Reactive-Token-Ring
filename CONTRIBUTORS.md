@@ -1,4 +1,4 @@
-## Contributers
+## Contributors
 #### Lioheart
   - Polish Translator
 #### shemetz
@@ -19,3 +19,6 @@
 #### Mystler
 - Token Health Ring Coloring Features <3
 - German Translation fixing
+- Overall bug fixes <3, truly instrumental to recent project developments
+#### Razytos
+- PR to fix manifestplusversion line
