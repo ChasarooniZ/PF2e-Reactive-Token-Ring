@@ -24,40 +24,44 @@
       },
       "auto-coloring": {
         "ring": {
-          "name": "Kolor pierścienia tokena",
+          "name": "Automatyczny kolor pierścienia tokena",
           "hint": "Wybierz, czy moduł ma zmienić kolor dynamicznego pierścienia tokenów"
         },
         "background": {
-          "name": "Kolor tła tokena",
+          "name": "Automatyczny kolor tła tokena",
           "hint": "Wybierz, czy moduł ma zmieniać kolor tła dynamicznego tokena"
         },
         "choices": {
           "unchanged": "Bez zmian",
           "health": "Oparte na zdrowiu",
           "disposition": "Rozmieszczenie"
+        },
+        "percent-color": {
+          "name": "Procentowy automatyczny kolor tokena",
+          "hint": "Jak duże powinno być nasycenie automatycznego kolorowania?"
         }
       },
       "colors": {
         "damage": {
-          "name": "[Kolor] Uszkodzenie",
-          "hint": "Zmień kolor, w którym miga żeton po otrzymaniu obrażeń"
+          "name": "[Kolor] obrażeń",
+          "hint": "Zmień kolor migania tokena po otrzymaniu obrażeń"
         },
         "healing": {
-          "name": "[Kolor] Leczenie",
-          "hint": "Zmień kolor, w którym miga żeton po otrzymaniu leczenia"
+          "name": "[Kolor] leczenia",
+          "hint": "Zmień kolor migania tokena podczas leczenia"
         },
         "target": {
-          "name": "[Kolor] Cel",
-          "hint": "Zmień kolor, w którym miga żeton podczas celowania (zakładając, że nie masz włączonego ustawienia koloru gracza)"
+          "name": "[Kolor] celowania",
+          "hint": "Zmień kolor migania tokena podczas celowania (zakładając, że nie masz włączonego ustawienia koloru gracza)"
         },
         "status": {
           "positive": {
-            "name": "[Kolor] Pozytywny Stan",
-            "hint": "Zmień kolor, w którym miga żeton po otrzymaniu pozytywnego stanu"
+            "name": "[Kolor] pozytywnych efektów",
+            "hint": "Zmień kolor migania tokena po otrzymaniu pozytywnego stanu"
           },
           "negative": {
-            "name": "[Kolor] Negatywny Stan",
-            "hint": "Zmień kolor, w którym miga żeton po otrzymaniu negatywnego stanu"
+            "name": "[Kolor] negatywnych efektów",
+            "hint": "Zmień kolor migania tokena po otrzymaniu negatywnego stanu"
           }
         }
       },
