@@ -45,7 +45,7 @@ Hooks.once("ready", async () => {
         game.socket.emit(`module.${MODULE_ID}`, {type: "tokenHealthUpdate", payload: args});
       };
       for (const token of canvas.tokens.placeables.filter(
-        (t) => t.actor.id === actor.id
+        (t) => t.actor.uuid === actor.uuid
       )) {
         processToken(token);
       }
@@ -58,7 +58,7 @@ Hooks.once("ready", async () => {
     // If the system-specific part is not implemented, it will simply synch up on the next regular update.
     if (updateHasAllianceChange(actor, update)) {
       for (const token of canvas.tokens.placeables.filter(
-        (t) => t.actor.id === actor.id
+        (t) => t.actor.uuid === actor.uuid
       )) {
         if (token.document.ring?.enabled) token.ring.configureVisuals();
       }
