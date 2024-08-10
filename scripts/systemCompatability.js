@@ -20,7 +20,7 @@ export function getHealingInfo(actor, update, status) {
   const dmgTaken =
     foundry.utils.getProperty(status, keys.statusDamagePath) ??
     currentHP - updateHP;
-  if (updateHP === undefined || !dmgTaken)
+  if (updateHP === undefined || updateHP === currentHP || !dmgTaken)
     return { isHeal: undefined, dmg: undefined, maxHP: undefined };
   const maxHP = foundry.utils.getProperty(actor, keys.hpMaxPath);
   return {
