@@ -44,9 +44,7 @@ Hooks.once("ready", async () => {
         // Trigger other clients now
         game.socket.emit(`module.${MODULE_ID}`, {type: "tokenHealthUpdate", payload: args});
       };
-      for (const token of canvas.tokens.placeables.filter(
-        (t) => t.actor.uuid === actor.uuid
-      )) {
+      for (const token of actor.getActiveTokens()) {
         processToken(token);
       }
     }
@@ -57,9 +55,7 @@ Hooks.once("ready", async () => {
     // Cause a manual token ring update if alliance changed via system, so it picks up disposition
     // If the system-specific part is not implemented, it will simply synch up on the next regular update.
     if (updateHasAllianceChange(actor, update)) {
-      for (const token of canvas.tokens.placeables.filter(
-        (t) => t.actor.uuid === actor.uuid
-      )) {
+      for (const token of actor.getActiveTokens()) {
         if (token.document.ring?.enabled) token.ring.configureVisuals();
       }
     }
