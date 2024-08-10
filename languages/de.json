@@ -36,6 +36,15 @@
           "health": "Gesundheitsbasiert",
           "disposition": "Gesinnung"
         },
+        "health-targets": {
+          "name": "Gesundheitsbasierte Färbung für",
+          "hint": "Wenn gesundheitsbasierte Färbung aktiviert ist, trifft diese nur bei folgender Gesinnung gezeigt.",
+          "all": "Alle",
+          "friendly": "Freundlich",
+          "non-friendly": "Nicht Freundlich",
+          "hostile": "Feindlich",
+          "non-hostile": "Nicht Feindlich"
+        },
         "percent-color": {
           "name": "Faktor der automatischen Färbung",
           "hint": "Wie stark die Sättigung der automatischen Färbung ausfallen soll"

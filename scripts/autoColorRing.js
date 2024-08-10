@@ -1,6 +1,28 @@
 import { COLORS, MODULE_ID } from "./misc.js";
 import { getHealthLevel } from "./systemCompatability.js";
 
+/**
+ * Check if the token is a valid disposition for our health target setting.
+ * @param {Object} Token instance
+ * @returns {boolean} If the token should be colored
+ */
+function getValidHealthTarget(token) {
+  const healthTargetsSetting = game.settings.get(MODULE_ID, "auto-coloring.health-targets");
+  if (token.document.disposition == CONST.TOKEN_DISPOSITIONS.FRIENDLY &&
+    (healthTargetsSetting === "non-friendly" || healthTargetsSetting === "hostile"))
+    return false;
+  if (token.document.disposition == CONST.TOKEN_DISPOSITIONS.HOSTILE &&
+    (healthTargetsSetting === "non-hostile" || healthTargetsSetting === "friendly"))
+    return false;
+  if (token.document.disposition == CONST.TOKEN_DISPOSITIONS.NEUTRAL &&
+    (healthTargetsSetting === "hostile" || healthTargetsSetting === "friendly"))
+    return false;
+  if (token.document.disposition == CONST.TOKEN_DISPOSITIONS.SECRET &&
+    healthTargetsSetting !== "all")
+    return false;
+  return true;
+}
+
 export function autoColorRing() {
   let ringColor = this.document.ring.colors.ring;
   let backgroundColor = this.document.ring.colors.background;
@@ -16,8 +38,9 @@ export function autoColorRing() {
       getHealthLevel(this.actor);
     if (!isNaN(level)) {
       const healthColor = getColorForHealthLevel(level);
-      if (ringSetting === "health") ringColor = healthColor;
-      if (backgroundSetting === "health") backgroundColor = healthColor;
+      const valid = getValidHealthTarget(this);
+      if (ringSetting === "health" && valid) ringColor = healthColor;
+      if (backgroundSetting === "health" && valid) backgroundColor = healthColor;
     }
   }
 
