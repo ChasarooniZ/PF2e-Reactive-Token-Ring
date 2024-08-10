@@ -91,6 +91,36 @@ export function registerSettings() {
     requiresReload: true,
     choices: autoColoringChoices,
   });
+  game.settings.register(MODULE_ID, "auto-coloring.health-targets", {
+    name: game.i18n.localize(
+      MODULE_ID + ".module-settings.auto-coloring.health-targets.name"
+    ),
+    hint: game.i18n.localize(
+      MODULE_ID + ".module-settings.auto-coloring.health-targets.hint"
+    ),
+    scope: "client",
+    config: true,
+    default: "all",
+    type: String,
+    requiresReload: true,
+    choices: {
+      "all": game.i18n.localize(
+        MODULE_ID + ".module-settings.auto-coloring.health-targets.all"
+      ),
+      "friendly": game.i18n.localize(
+        MODULE_ID + ".module-settings.auto-coloring.health-targets.friendly"
+      ),
+      "non-friendly": game.i18n.localize(
+        MODULE_ID + ".module-settings.auto-coloring.health-targets.non-friendly"
+      ),
+      "hostile": game.i18n.localize(
+        MODULE_ID + ".module-settings.auto-coloring.health-targets.hostile"
+      ),
+      "non-hostile": game.i18n.localize(
+        MODULE_ID + ".module-settings.auto-coloring.health-targets.non-hostile"
+      )
+    },
+  });
   game.settings.register(MODULE_ID, "auto-coloring.percent-color", {
     name: game.i18n.localize(
       MODULE_ID + ".module-settings.auto-coloring.percent-color.name"
@@ -135,7 +165,7 @@ export function registerSettings() {
     default: COLORS.DEEPSKYBLUE,
     type: new foundry.data.fields.ColorField()
   });
-  
+
   game.settings.register(MODULE_ID, "colors.status.positive", {
     name: game.i18n.localize(MODULE_ID + ".module-settings.colors.status.positive.name"),
     hint: game.i18n.localize(MODULE_ID + ".module-settings.colors.status.positive.hint"),
