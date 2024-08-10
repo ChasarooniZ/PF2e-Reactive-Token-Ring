@@ -20,7 +20,10 @@ export function getHealingInfo(actor, update, status) {
   const dmgTaken =
     foundry.utils.getProperty(status, keys.statusDamagePath) ??
     currentHP - updateHP;
-  if (updateHP === undefined || updateHP === currentHP || !dmgTaken)
+  // Slight hack to check for the actors adjustment since that seems to send only the new HP and adjustment update.
+  // Do not trigger on those.
+  const adjustmentChange = foundry.utils.getProperty(update, keys.adjustmentPath) !== undefined;
+  if (updateHP === undefined || updateHP === currentHP || !dmgTaken || adjustmentChange)
     return { isHeal: undefined, dmg: undefined, maxHP: undefined };
   const maxHP = foundry.utils.getProperty(actor, keys.hpMaxPath);
   return {
@@ -111,6 +114,7 @@ function getSystemKeys(actor) {
         zeroIsBad: true,
         statusDamagePath: "damageTaken",
         alliancePath: "system.details.alliance",
+        adjustmentPath: "system.attributes.adjustment",
       };
     case "hexxen-1733":
       return {
