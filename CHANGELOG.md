@@ -1,3 +1,9 @@
+## [1.4.0](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.3.8...1.4.0) - Health Targets
+- `Autocoloring`
+  - Added options for which token rings to autocolor health for (@Mystler )
+- `Bug Fixes`
+  - Fixes flashing on 0 hp heals and adjustment changes (@Mystler, @shemetz for bug finding)
+  - Stops errors on actorless tokens (@Mystler, @shemetz for bug finding)
 ## [1.3.8](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.3.7...1.3.8) - Autocoloring Fix
 - Fixed autocoloring not syncing when a token takes damage (@Mystler)
 ## [1.3.7](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.3.6...1.3.7) - Polish Translation Update
