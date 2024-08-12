@@ -9,15 +9,22 @@ export const COLORS = {
   DEEPSKYBLUE: "#00BFFF",
   ORANGE: "#FFA500",
   PINK: "#FF69B4",
+  PF2E: {
+    LEVELDIFF: {
+      "-4": "#808080", //;Grey
+      "-3": "#add8e6", //Light Blue
+      "-2": "#008000", //Green
+      "-1": "#ffff00", //Yellow
+      0: "#ffa500", // Orange
+      "+1": "#FF0000", //Red
+      "+2": "#8b0000", //Dark Red
+      "+3": "#800080", //purple
+      "+4": "#000000", //Black
+    },
+  },
 };
 export const CONDITIONS = {
-  POSITIVE: [
-    "concealed",
-    "hidden",
-    "invisible",
-    "quickened",
-    "undetected",
-  ],
+  POSITIVE: ["concealed", "hidden", "invisible", "quickened", "undetected"],
   NEGATIVE: [
     "blinded",
     "clumsy",
@@ -47,9 +54,5 @@ export const CONDITIONS = {
     "stunned",
     "stupefied",
   ],
-  DEAD: [
-      "dead",
-      "unconscious",
-      "wounded",
-  ]
+  DEAD: ["dead", "unconscious", "wounded"],
 };

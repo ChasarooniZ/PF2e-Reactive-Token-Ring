@@ -34,7 +34,8 @@
         "choices": {
           "unchanged": "Unchanged",
           "health": "Health-Based",
-          "disposition": "Disposition"
+          "disposition": "Disposition",
+          "levelDiff": "Level Difference"
         },
         "health-targets": {
           "name": "Health-Based Token Applies To",

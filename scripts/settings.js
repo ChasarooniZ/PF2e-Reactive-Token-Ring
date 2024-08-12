@@ -63,6 +63,11 @@ export function registerSettings() {
       MODULE_ID + ".module-settings.auto-coloring.choices.disposition"
     ),
   };
+  if (game.system.id === "pf2e") {
+    autoColoringChoices.levelDiff = game.i18n.localize(
+      MODULE_ID + ".module-settings.auto-coloring.choices.levelDiff"
+    );
+  }
   game.settings.register(MODULE_ID, "auto-coloring.ring", {
     name: game.i18n.localize(
       MODULE_ID + ".module-settings.auto-coloring.ring.name"
@@ -104,21 +109,21 @@ export function registerSettings() {
     type: String,
     requiresReload: true,
     choices: {
-      "all": game.i18n.localize(
+      all: game.i18n.localize(
         MODULE_ID + ".module-settings.auto-coloring.health-targets.all"
       ),
-      "friendly": game.i18n.localize(
+      friendly: game.i18n.localize(
         MODULE_ID + ".module-settings.auto-coloring.health-targets.friendly"
       ),
       "non-friendly": game.i18n.localize(
         MODULE_ID + ".module-settings.auto-coloring.health-targets.non-friendly"
       ),
-      "hostile": game.i18n.localize(
+      hostile: game.i18n.localize(
         MODULE_ID + ".module-settings.auto-coloring.health-targets.hostile"
       ),
       "non-hostile": game.i18n.localize(
         MODULE_ID + ".module-settings.auto-coloring.health-targets.non-hostile"
-      )
+      ),
     },
   });
   game.settings.register(MODULE_ID, "auto-coloring.percent-color", {
@@ -147,15 +152,19 @@ export function registerSettings() {
     config: true,
     default: COLORS.RED,
     type: new foundry.data.fields.ColorField(),
-    requiresReload: false
+    requiresReload: false,
   });
   game.settings.register(MODULE_ID, "colors.healing", {
-    name: game.i18n.localize(MODULE_ID + ".module-settings.colors.healing.name"),
-    hint: game.i18n.localize(MODULE_ID + ".module-settings.colors.healing.hint"),
+    name: game.i18n.localize(
+      MODULE_ID + ".module-settings.colors.healing.name"
+    ),
+    hint: game.i18n.localize(
+      MODULE_ID + ".module-settings.colors.healing.hint"
+    ),
     scope: "world",
     config: true,
     default: COLORS.GREEN,
-    type: new foundry.data.fields.ColorField()
+    type: new foundry.data.fields.ColorField(),
   });
   game.settings.register(MODULE_ID, "colors.target", {
     name: game.i18n.localize(MODULE_ID + ".module-settings.colors.target.name"),
@@ -163,23 +172,31 @@ export function registerSettings() {
     scope: "world",
     config: true,
     default: COLORS.DEEPSKYBLUE,
-    type: new foundry.data.fields.ColorField()
+    type: new foundry.data.fields.ColorField(),
   });
 
   game.settings.register(MODULE_ID, "colors.status.positive", {
-    name: game.i18n.localize(MODULE_ID + ".module-settings.colors.status.positive.name"),
-    hint: game.i18n.localize(MODULE_ID + ".module-settings.colors.status.positive.hint"),
+    name: game.i18n.localize(
+      MODULE_ID + ".module-settings.colors.status.positive.name"
+    ),
+    hint: game.i18n.localize(
+      MODULE_ID + ".module-settings.colors.status.positive.hint"
+    ),
     scope: "world",
     config: game.system.id === "pf2e",
     default: COLORS.PINK,
-    type: new foundry.data.fields.ColorField()
+    type: new foundry.data.fields.ColorField(),
   });
   game.settings.register(MODULE_ID, "colors.status.negative", {
-    name: game.i18n.localize(MODULE_ID + ".module-settings.colors.status.negative.name"),
-    hint: game.i18n.localize(MODULE_ID + ".module-settings.colors.status.negative.hint"),
+    name: game.i18n.localize(
+      MODULE_ID + ".module-settings.colors.status.negative.name"
+    ),
+    hint: game.i18n.localize(
+      MODULE_ID + ".module-settings.colors.status.negative.hint"
+    ),
     scope: "world",
     config: game.system.id === "pf2e",
     default: COLORS.ORANGE,
-    type: new foundry.data.fields.ColorField()
+    type: new foundry.data.fields.ColorField(),
   });
 }

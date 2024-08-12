@@ -7,20 +7,31 @@ import { getHealthLevel } from "./systemCompatability.js";
  * @returns {boolean} If the token should be colored
  */
 function getValidHealthTarget(token) {
-  const healthTargetsSetting = game.settings.get(MODULE_ID, "auto-coloring.health-targets");
-  if (token.document.disposition == CONST.TOKEN_DISPOSITIONS.FRIENDLY &&
-    (healthTargetsSetting === "non-friendly" || healthTargetsSetting === "hostile"))
+  const healthTargetsSetting = game.settings.get(
+    MODULE_ID,
+    "auto-coloring.health-targets"
+  );
+  if (
+    token.document.disposition == CONST.TOKEN_DISPOSITIONS.FRIENDLY &&
+    (healthTargetsSetting === "non-friendly" ||
+      healthTargetsSetting === "hostile")
+  )
     return false;
-  if (token.document.disposition == CONST.TOKEN_DISPOSITIONS.HOSTILE &&
-    (healthTargetsSetting === "non-hostile" || healthTargetsSetting === "friendly"))
+  if (
+    token.document.disposition == CONST.TOKEN_DISPOSITIONS.HOSTILE &&
+    (healthTargetsSetting === "non-hostile" ||
+      healthTargetsSetting === "friendly")
+  )
     return false;
-  if (token.document.disposition == CONST.TOKEN_DISPOSITIONS.NEUTRAL &&
-    (healthTargetsSetting === "hostile" || healthTargetsSetting === "friendly"))
+  if (
+    token.document.disposition == CONST.TOKEN_DISPOSITIONS.NEUTRAL &&
+    (healthTargetsSetting === "hostile" || healthTargetsSetting === "friendly")
+  )
     return false;
-  if (token.document.disposition == CONST.TOKEN_DISPOSITIONS.SECRET &&
-    healthTargetsSetting !== "all")
-    return false;
-  return true;
+  return !(
+    token.document.disposition == CONST.TOKEN_DISPOSITIONS.SECRET &&
+    healthTargetsSetting !== "all"
+  );
 }
 
 export function autoColorRing() {
@@ -40,7 +51,8 @@ export function autoColorRing() {
       const healthColor = getColorForHealthLevel(level);
       const valid = getValidHealthTarget(this);
       if (ringSetting === "health" && valid) ringColor = healthColor;
-      if (backgroundSetting === "health" && valid) backgroundColor = healthColor;
+      if (backgroundSetting === "health" && valid)
+        backgroundColor = healthColor;
     }
   }
 
@@ -60,15 +72,55 @@ export function autoColorRing() {
     if (ringSetting === "disposition") ringColor = dispositionColor;
     if (backgroundSetting === "disposition") backgroundColor = dispositionColor;
   }
+
+  if (ringSetting === "levelDiff" || backgroundSetting === "levelDiff") {
+    const partyLevel =
+      game.actors.party.members.reduce((tot, char) => (tot += char.level), 0) /
+        game.actors.party.members.length ?? 1;
+    const charLevel = this.actor.level;
+    const levelDiff = charLevel - partyLevel;
+    let levelDiffColor = undefined;
+    if (levelDiff <= -4) {
+      // PL -4
+      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF["-4"]);
+    } else if (levelDiff <= -3) {
+      // PL -3
+      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF["-3"]);
+    } else if (levelDiff <= -2) {
+      // PL -2
+      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF["-2"]);
+    } else if (levelDiff <= -1) {
+      // PL -1
+      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF["-1"]);
+    } else if (levelDiff <= 0) {
+      // PL
+      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF["0"]);
+    } else if (levelDiff <= 1) {
+      // PL +1
+      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF["+1"]);
+    } else if (levelDiff <= 2) {
+      // PL +2
+      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF["+2"]);
+    } else if (levelDiff <= 3) {
+      // PL +3
+      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF["+3"]);
+    } else {
+      // PL +4
+      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF["+4"]);
+    }
+    if (ringSetting === "levelDiff") ringColor = levelDiffColor;
+    if (backgroundSetting === "levelDiff") backgroundColor = levelDiffColor;
+  }
+
   const percentColor = game.settings.get(
     MODULE_ID,
     "auto-coloring.percent-color"
   );
   if (ringSetting !== "unchanged" && ringColor) {
-    ringColor = Color.multiplyScalar(ringColor,percentColor)
+    ringColor = Color.multiplyScalar(ringColor, percentColor);
   }
   if (backgroundSetting !== "unchanged" && backgroundColor) {
-    backgroundColor = Color.multiplyScalar(backgroundColor, percentColor)
+    backgroundColor = Color.multiplyScalar(backgroundColor, percentColor);
   }
   return {
     ring: ringColor,
