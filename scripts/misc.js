@@ -11,7 +11,7 @@ export const COLORS = {
   PINK: "#FF69B4",
   PF2E: {
     LEVELDIFF: {
-      "-4": "#808080", //;Grey
+      "-4": "#FFFFFF", //White
       "-3": "#add8e6", //Light Blue
       "-2": "#008000", //Green
       "-1": "#ffff00", //Yellow
