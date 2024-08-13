@@ -1,6 +1,6 @@
 // Import necessary modules and constants
 import { autoColorRing } from "./autoColorRing.js";
-import { preUpdateActor, targetToken, updateActor } from "./hooks.js";
+import { applyTokenStatusEffect, preUpdateActor, targetToken, updateActor } from "./hooks.js";
 import { MODULE_ID } from "./misc.js";
 import { registerSettings } from "./settings.js";
 
