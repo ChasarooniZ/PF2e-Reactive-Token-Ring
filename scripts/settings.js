@@ -144,6 +144,20 @@ export function registerSettings() {
     },
     requiresReload: true,
   });
+
+  game.settings.register(MODULE_ID, "auto-coloring.override-color", {
+    name: game.i18n.localize(
+      MODULE_ID + ".module-settings.auto-coloring.override-color.name"
+    ),
+    hint: game.i18n.localize(
+      MODULE_ID + ".module-settings.auto-coloring.override-color.hint"
+    ),
+    scope: "world",
+    config: true,
+    default: false,
+    type: Boolean,
+  });
+
   //Color settings
   game.settings.register(MODULE_ID, "colors.damage", {
     name: game.i18n.localize(MODULE_ID + ".module-settings.colors.damage.name"),

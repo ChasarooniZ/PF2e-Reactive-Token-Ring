@@ -49,8 +49,13 @@
         "percent-color": {
           "name": "Token Auto Color Percentage",
           "hint": "How much should the saturation of the autocoloring be"
+        },
+        "override-color": {
+          "name": "Auto Color Overrides Color",
+          "hint": "Select whether autocoloring should override color if you have it set to a value for tha token?"
         }
       },
+
       "colors": {
         "damage": {
           "name": "[Color] Damage",

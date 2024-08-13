@@ -37,6 +37,10 @@ function getValidHealthTarget(token) {
 export function autoColorRing() {
   let ringColor = this.document.ring.colors.ring;
   let backgroundColor = this.document.ring.colors.background;
+  const overideColor = game.settings.get(
+    MODULE_ID,
+    "auto-coloring.override-color"
+  );
   const ringSetting = game.settings.get(MODULE_ID, "auto-coloring.ring");
   const backgroundSetting = game.settings.get(
     MODULE_ID,
@@ -121,6 +125,12 @@ export function autoColorRing() {
   }
   if (backgroundSetting !== "unchanged" && backgroundColor) {
     backgroundColor = Color.multiplyScalar(backgroundColor, percentColor);
+  }
+  if (!overideColor) {
+    if (this.document.ring.colors.ring !== null)
+      ringColor = this.document.ring.colors.ring;
+    if (this.document.ring.colors.background !== null)
+      backgroundColor = this.document.ring.colors.background;
   }
   return {
     ring: ringColor,
