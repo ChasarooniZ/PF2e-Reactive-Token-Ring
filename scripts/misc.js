@@ -11,15 +11,17 @@ export const COLORS = {
   PINK: "#FF69B4",
   PF2E: {
     LEVELDIFF: {
-      "-4": "#add8e6", //Light Blue
-      "-3": "#adff2f", //greenyellow
-      "-2": "#008000", //Green
-      "-1": "#ffff00", //Yellow
-      0: "#ffa500", // Orange
-      "+1": "#FF0000", //Red
-      "+2": "#8b0000", //Dark Red
-      "+3": "#800080", //purple
-      "+4": "#000000", //Black
+      DEFAULT: {
+        "-4": "#bac6df",
+        "-3": "#aae1e0",
+        "-2": "#97e4ad",
+        "-1": "#ace883",
+        0: "#eee16e",
+        "+1": "#dc9251",
+        "+2": "#ba3f39",
+        "+3": "#751575",
+        "+4": "#231529",
+      },
     },
   },
 };

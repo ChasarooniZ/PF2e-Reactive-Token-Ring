@@ -86,31 +86,31 @@ export function autoColorRing() {
     let levelDiffColor = undefined;
     if (levelDiff <= -4) {
       // PL -4
-      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF["-4"]);
+      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF.DEFAULT["-4"]);
     } else if (levelDiff <= -3) {
       // PL -3
-      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF["-3"]);
+      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF.DEFAULT["-3"]);
     } else if (levelDiff <= -2) {
       // PL -2
-      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF["-2"]);
+      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF.DEFAULT["-2"]);
     } else if (levelDiff <= -1) {
       // PL -1
-      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF["-1"]);
+      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF.DEFAULT["-1"]);
     } else if (levelDiff <= 0) {
       // PL
-      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF["0"]);
+      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF.DEFAULT["0"]);
     } else if (levelDiff <= 1) {
       // PL +1
-      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF["+1"]);
+      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF.DEFAULT["+1"]);
     } else if (levelDiff <= 2) {
       // PL +2
-      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF["+2"]);
+      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF.DEFAULT["+2"]);
     } else if (levelDiff <= 3) {
       // PL +3
-      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF["+3"]);
+      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF.DEFAULT["+3"]);
     } else {
       // PL +4
-      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF["+4"]);
+      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF.DEFAULT["+4"]);
     }
     if (ringSetting === "levelDiff") ringColor = levelDiffColor;
     if (backgroundSetting === "levelDiff") backgroundColor = levelDiffColor;
