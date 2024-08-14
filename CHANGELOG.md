@@ -16,7 +16,7 @@
     - `Custom`
       - Allows you to set the ring or background of rings of a particular disposition to a particular color (is not affected by the `color percentage` setting)
     - `Level Difference` - Pf2e exclusive
-      - Comapres the level to that of the average level of the party
+      - Compares the level to that of the average level of the party
         - (atm is statically set when the token is loaded so you may need to reload if the level of the ceature or the party changes to update the color)
 - `Backend`
   - reworked/rewrote some code for streamlining the generation of settings and possibly improving performance
