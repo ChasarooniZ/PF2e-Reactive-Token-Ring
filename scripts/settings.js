@@ -1,6 +1,7 @@
 import { COLORS, MODULE_ID } from "./misc.js";
 
-export function registerSettings() {
+export function registerSettingFs() {
+  Hooks.on("renderSettingsConfig", renderSettingsConfig);
   const settings = [
     {
       key: "target.share-flash",
@@ -150,4 +151,56 @@ export function resolvePlayerWorldSetting(settingPath) {
   return player === "default" || player === COLORS.PLAYER_DEFAULT
     ? world
     : player;
+}
+
+/**
+ * Credit to PF2e Token Action HUD for the code on this to reference, helped a tooon
+ * @param {} _
+ * @param {*} html
+ */
+export function renderSettingsConfig(_, html) {
+  // Find the tab related to the module
+  const moduleTab = html.find(`.tab[data-tab=${MODULE_ID}]`);
+
+  // Helper function to add settings groups before a specified key
+  function addSettingsGroup(
+    headerKey,
+    settingID,
+    elementType = "h3",
+    mod = ""
+  ) {
+    // Retrieve the localized name for the setting
+    const localizedName = game.i18n.localize(
+      `${MODULE_ID}.module-settings.headers.${headerKey}`
+    );
+    // Find the target element and add the localized name before it
+    moduleTab
+      .find(`[name="${MODULE_ID}.${settingID}"]`)
+      .closest(".form-group")
+      .before(`<${elementType} ${mod}>${localizedName}</${elementType}>`);
+  }
+
+  // Adding settings groups for various options
+  addSettingsGroup("flash.name", "target.share-flash");
+  addSettingsGroup("flash.colors", "colors.damage", "h4");
+  addSettingsGroup("auto-coloring.percent-color", "auto-coloring.name");
+  addSettingsGroup(
+    "auto-coloring.scope.world",
+    "auto-coloring.ring.type.hostile.world",
+    "h4"
+  );
+  addSettingsGroup(
+    "auto-coloring.scope.player",
+    "auto-coloring.ring.type.hostile.player",
+    "h4"
+  );
+  ["hostile", "neutral", "friendly", "party"].forEach((type) => {
+    ["player", "world"].forEach((scope) => {
+      addSettingsGroup(
+        `auto-coloring.type.${type}`,
+        `auto-coloring.ring.type.${type}.${scope}`,
+        "h5"
+      );
+    });
+  });
 }

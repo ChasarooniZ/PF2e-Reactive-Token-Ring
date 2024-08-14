@@ -2,6 +2,25 @@
   "I18N.LANGUAGE": "English",
   "pf2e-reactive-token-ring": {
     "module-settings": {
+      "headers": {
+        "flash": {
+          "name": "Flash Settings",
+          "colors": "Flash Color Settings"
+        },
+        "auto-coloring": {
+          "name": "Auto Coloring Setting",
+          "type": {
+            "friendly": "Friendly | Auto Coloring",
+            "neutral": "Neutral | Auto Coloring",
+            "hostile": "Hostile | Auto Coloring",
+            "party": "Party | Auto Coloring"
+          },
+          "scope": {
+            "player": "Player Auto Coloring Settings",
+            "world": "World Auto Coloring Settings"
+          }
+        }
+      },
       "target": {
         "share-flash": {
           "name": "Share Target Flash",
