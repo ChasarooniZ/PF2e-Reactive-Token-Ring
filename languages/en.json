@@ -25,156 +25,127 @@
       "auto-coloring": {
         "ring": {
           "type": {
+            "hint": "Select if the module should change the dynamic token ring color automatically",
             "world": {
               "friendly": {
-                "name": "[Friendly] Token Ring Auto Color",
-                "hint": "Select if the module should change the dynamic token ring color automatically"
+                "name": "[Friendly] Token Ring Auto Color"
               },
               "neutral": {
-                "name": "[Neutral] Token Ring Auto Color",
-                "hint": "Select if the module should change the dynamic token ring color automatically"
+                "name": "[Neutral] Token Ring Auto Color"
               },
               "hostile": {
-                "name": "[Hostile] Token Ring Auto Color",
-                "hint": "Select if the module should change the dynamic token ring color automatically"
+                "name": "[Hostile] Token Ring Auto Color"
               },
               "party": {
-                "name": "[Party] Token Ring Auto Color",
-                "hint": "Select if the module should change the dynamic token ring color automatically"
+                "name": "[Party] Token Ring Auto Color"
               }
             },
             "player": {
               "friendly": {
-                "name": "[Player] [Friendly] Token Ring Auto Color",
-                "hint": "Select if the module should change the dynamic token ring color automatically"
+                "name": "[Player] [Friendly] Token Ring Auto Color"
               },
               "neutral": {
-                "name": "[Player] [Neutral] Token Ring Auto Color",
-                "hint": "Select if the module should change the dynamic token ring color automatically"
+                "name": "[Player] [Neutral] Token Ring Auto Color"
               },
               "hostile": {
-                "name": "[Player] [Hostile] Token Ring Auto Color",
-                "hint": "Select if the module should change the dynamic token ring color automatically"
+                "name": "[Player] [Hostile] Token Ring Auto Color"
               },
               "party": {
-                "name": "[Player] [Party] Token Ring Auto Color",
-                "hint": "Select if the module should change the dynamic token ring color automatically"
+                "name": "[Player] [Party] Token Ring Auto Color"
               }
             }
           },
           "custom-color": {
+            "hint": "If auto color option is set to custom will use this color",
             "world": {
               "friendly": {
-                "name": "[Friendly] Token Ring Custom Color",
-                "hint": "If auto color option is set to custom will use this color"
+                "name": "[Friendly] Token Ring Custom Color"
               },
               "neutral": {
-                "name": "[Neutral] Token Ring Custom Color",
-                "hint": "If auto color option is set to custom will use this color"
+                "name": "[Neutral] Token Ring Custom Color"
               },
               "hostile": {
-                "name": "[Hostile] Token Ring Custom Color",
-                "hint": "If auto color option is set to custom will use this color"
+                "name": "[Hostile] Token Ring Custom Color"
               },
               "party": {
-                "name": "[Party] Token Ring Custom Color",
-                "hint": "If auto color option is set to custom will use this color"
+                "name": "[Party] Token Ring Custom Color"
               }
             },
             "player": {
               "friendly": {
-                "name": "[Player] [Friendly] Token Ring Custom Color",
-                "hint": "If auto color option is set to custom will use this color"
+                "name": "[Player] [Friendly] Token Ring Custom Color"
               },
               "neutral": {
-                "name": "[Player] [Neutral] Token Ring Custom Color",
-                "hint": "If auto color option is set to custom will use this color"
+                "name": "[Player] [Neutral] Token Ring Custom Color"
               },
               "hostile": {
-                "name": "[Player] [Hostile] Token Ring Custom Color",
-                "hint": "If auto color option is set to custom will use this color"
+                "name": "[Player] [Hostile] Token Ring Custom Color"
               },
               "party": {
-                "name": "[Player] [Party] Token Ring Custom Color",
-                "hint": "If auto color option is set to custom will use this color"
+                "name": "[Player] [Party] Token Ring Custom Color"
               }
             }
           }
         },
         "background": {
           "type": {
+            "hint": "Select if the module should change the dynamic token ring color",
             "world": {
               "friendly": {
-                "name": "[Friendly] Token Background Auto Color",
-                "hint": "Select if the module should change the dynamic token ring color"
+                "name": "[Friendly] Token Background Auto Color"
               },
               "neutral": {
-                "name": "[Neutral] Token Background Auto Color",
-                "hint": "Select if the module should change the dynamic token ring color"
+                "name": "[Neutral] Token Background Auto Color"
               },
               "hostile": {
-                "name": "[Hostile] Token Background Auto Color",
-                "hint": "Select if the module should change the dynamic token ring color"
+                "name": "[Hostile] Token Background Auto Color"
               },
               "party": {
-                "name": "[Party] Token Background Auto Color",
-                "hint": "Select if the module should change the dynamic token ring color"
+                "name": "[Party] Token Background Auto Color"
               }
             },
             "player": {
               "friendly": {
-                "name": "[Player] [Friendly] Token Background Auto Color",
-                "hint": "Select if the module should change the dynamic token ring color"
+                "name": "[Player] [Friendly] Token Background Auto Color"
               },
               "neutral": {
-                "name": "[Player] [Neutral] Token Background Auto Color",
-                "hint": "Select if the module should change the dynamic token ring color"
+                "name": "[Player] [Neutral] Token Background Auto Color"
               },
               "hostile": {
-                "name": "[Player] [Hostile] Token Background Auto Color",
-                "hint": "Select if the module should change the dynamic token ring color"
+                "name": "[Player] [Hostile] Token Background Auto Color"
               },
               "party": {
-                "name": "[Player] [Party] Token Background Auto Color",
-                "hint": "Select if the module should change the dynamic token ring color"
+                "name": "[Player] [Party] Token Background Auto Color"
               }
             }
           },
           "custom-color": {
             "world": {
               "friendly": {
-                "name": "[Friendly] Token Background Custom Color",
-                "hint": "If auto color option is set to custom will use this color"
+                "name": "[Friendly] Token Background Custom Color"
               },
               "neutral": {
-                "name": "[Neutral] Token Background Custom Color",
-                "hint": "If auto color option is set to custom will use this color"
+                "name": "[Neutral] Token Background Custom Color"
               },
               "hostile": {
-                "name": "[Hostile] Token Background Custom Color",
-                "hint": "If auto color option is set to custom will use this color"
+                "name": "[Hostile] Token Background Custom Color"
               },
               "party": {
-                "name": "[Party] Token Background Custom Color",
-                "hint": "If auto color option is set to custom will use this color"
+                "name": "[Party] Token Background Custom Color"
               }
             },
             "player": {
               "friendly": {
-                "name": "[Player] [Friendly] Token Background Custom Color",
-                "hint": "If auto color option is set to custom will use this color"
+                "name": "[Player] [Friendly] Token Background Custom Color"
               },
               "neutral": {
-                "name": "[Player] [Neutral] Token Background Custom Color",
-                "hint": "If auto color option is set to custom will use this color"
+                "name": "[Player] [Neutral] Token Background Custom Color"
               },
               "hostile": {
-                "name": "[Player] [Hostile] Token Background Custom Color",
-                "hint": "If auto color option is set to custom will use this color"
+                "name": "[Player] [Hostile] Token Background Custom Color"
               },
               "party": {
-                "name": "[Player] [Party] Token Background Custom Color",
-                "hint": "If auto color option is set to custom will use this color"
+                "name": "[Player] [Party] Token Background Custom Color"
               }
             }
           }
