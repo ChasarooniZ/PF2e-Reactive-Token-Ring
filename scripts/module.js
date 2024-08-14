@@ -7,7 +7,7 @@ import {
   updateActor,
 } from "./hooks.js";
 import { MODULE_ID } from "./misc.js";
-import { registerSettings } from "./settings.js";
+import { legacySettingsTestAndMessage,registerSettings } from "./settings.js";
 
 // Initialize module settings and ring color wrapper
 Hooks.once("init", () => {
@@ -19,7 +19,7 @@ Hooks.once("init", () => {
 Hooks.once("ready", async () => {
   // Register the listener for our module socket.
   // Note that this is not entered on the origin client of any broadcast.
-  //migrateLegacySettings(); //TODO Enable and this maybe
+  legacySettingsTestAndMessage();
   game.socket.on(`module.${MODULE_ID}`, ({ type, payload }) => {
     if (type === "tokenHealthUpdate") handleTokenHealthUpdate(...payload);
   });
