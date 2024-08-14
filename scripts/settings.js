@@ -59,7 +59,7 @@ export function registerSettings() {
       requiresReload: true,
     },
   ];
-  //addLegacySettings();
+  addLegacySettings();
   settings.forEach(
     ({ key, default: def, type, range, config = true, requiresReload }) => {
       game.settings.register(MODULE_ID, key, {
@@ -205,7 +205,6 @@ export function renderSettingsConfig(_, html) {
   });
 }
 
-/*
 function addLegacySettings() {
   game.settings.register(MODULE_ID, "auto-coloring.ring", {
     name: "auto-ring",
@@ -233,35 +232,32 @@ function addLegacySettings() {
   });
 }
 
-export function migrateLegacySettings() {
-  const ac_ring = game.settings.get(MODULE_ID, "auto-coloring.ring");
-  const ac_bg = game.settings.get(MODULE_ID, "auto-coloring.background");
+export function legacySettingsTestAndMessage() {
+  const settingsKeys = [
+    "auto-coloring.ring",
+    "auto-coloring.background",
+    "auto-coloring.health-targets",
+  ];
 
-  const ac_ht = game.settings.get(MODULE_ID, "auto-coloring.health-targets");
+  let settingsUpdated = false;
 
-  if (ac_ring !== "") {
-    if (game?.user?.isGM) {
-      switch (ac_ring) {
-        case "health":
-          if (ac_ht !== "") {
-          }
-          break;
-        case "disposition":
-          break;
-        case "unchanged":
-        default:
-          break;
-      }
-    } else {
+  settingsKeys.forEach((key) => {
+    if (game.settings.get(MODULE_ID, key) !== "") {
+      game.settings.set(MODULE_ID, key, "");
+      settingsUpdated = true;
     }
-    game.settings.set(MODULE_ID, "auto-coloring.ring", "");
-  }
-  if (ac_bg !== "") {
-    game.settings.set(MODULE_ID, "auto-coloring.background", "");
-  }
+  });
 
-  if (ac_ht !== "") {
-    game.settings.set(MODULE_ID, "auto-coloring.health-targets", "");
+  if (settingsUpdated) {
+    const messageContent = `
+      <h2>REDY</h2>
+      <p>Hi, module settings have updated for this module, 
+      please look at your module settings and adjust them to meet your preference.</p>
+    `;
+
+    ChatMessage.create({ content: messageContent });
+    ui.notifications.notify(
+      "<b>REDY.</b> Please check your module settings as they have changed with this update"
+    );
   }
 }
-*/
