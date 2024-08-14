@@ -61,15 +61,13 @@ export function autoColorRing() {
   );
 
   //Ring Color Scaling
-  ringColor =
-    ringSetting !== "unchanged"
-      ? Color.multiplyScalar(ringColor, percentColor)
-      : ringColor;
+  ringColor = !["unchanged", "custom"].includes(ringSetting)
+    ? Color.multiplyScalar(ringColor, percentColor)
+    : ringColor;
   //Background Color Scaling
-  backgroundColor =
-    backgroundSetting !== "unchanged"
-      ? Color.multiplyScalar(backgroundColor, percentColor)
-      : backgroundColor;
+  backgroundColor = !["unchanged", "custom"].includes(backgroundSetting)
+    ? Color.multiplyScalar(backgroundColor, percentColor)
+    : backgroundColor;
 
   return { ring: ringColor, background: backgroundColor };
 }
