@@ -10,14 +10,22 @@
         "auto-coloring": {
           "name": "Auto Coloring Setting",
           "type": {
-            "friendly": "Friendly | Auto Coloring",
-            "neutral": "Neutral | Auto Coloring",
-            "hostile": "Hostile | Auto Coloring",
-            "party": "Party | Auto Coloring"
+            "world": {
+              "friendly": "Friendly | Auto Coloring",
+              "neutral": "Neutral | Auto Coloring",
+              "hostile": "Hostile | Auto Coloring",
+              "party": "Party | Auto Coloring"
+            },
+            "player": {
+              "friendly": "Player | Friendly | Auto Coloring",
+              "neutral": "Player | Neutral | Auto Coloring",
+              "hostile": "Player | Hostile | Auto Coloring",
+              "party": "Player | Party | Auto Coloring"
+            }
           },
           "scope": {
-            "player": "Player Auto Coloring Settings",
-            "world": "World Auto Coloring Settings"
+            "player": "Player | Auto Coloring Settings",
+            "world": "World | Auto Coloring Settings"
           }
         }
       },
@@ -44,129 +52,22 @@
       "auto-coloring": {
         "ring": {
           "type": {
-            "hint": "Select if the module should change the dynamic token ring color automatically",
-            "world": {
-              "friendly": {
-                "name": "[Friendly] Token Ring Auto Color"
-              },
-              "neutral": {
-                "name": "[Neutral] Token Ring Auto Color"
-              },
-              "hostile": {
-                "name": "[Hostile] Token Ring Auto Color"
-              },
-              "party": {
-                "name": "[Party] Token Ring Auto Color"
-              }
-            },
-            "player": {
-              "friendly": {
-                "name": "[Player] [Friendly] Token Ring Auto Color"
-              },
-              "neutral": {
-                "name": "[Player] [Neutral] Token Ring Auto Color"
-              },
-              "hostile": {
-                "name": "[Player] [Hostile] Token Ring Auto Color"
-              },
-              "party": {
-                "name": "[Player] [Party] Token Ring Auto Color"
-              }
-            }
+            "name": "Token Ring Auto Color",
+            "hint": "Select if the module should change the dynamic token ring color automatically"
           },
           "custom-color": {
-            "hint": "If auto color option is set to custom will use this color",
-            "world": {
-              "friendly": {
-                "name": "[Friendly] Token Ring Custom Color"
-              },
-              "neutral": {
-                "name": "[Neutral] Token Ring Custom Color"
-              },
-              "hostile": {
-                "name": "[Hostile] Token Ring Custom Color"
-              },
-              "party": {
-                "name": "[Party] Token Ring Custom Color"
-              }
-            },
-            "player": {
-              "friendly": {
-                "name": "[Player] [Friendly] Token Ring Custom Color"
-              },
-              "neutral": {
-                "name": "[Player] [Neutral] Token Ring Custom Color"
-              },
-              "hostile": {
-                "name": "[Player] [Hostile] Token Ring Custom Color"
-              },
-              "party": {
-                "name": "[Player] [Party] Token Ring Custom Color"
-              }
-            }
+            "name": "Token Ring Custom Color",
+            "hint": "If auto color option is set to custom will use this color"
           }
         },
         "background": {
           "type": {
-            "hint": "Select if the module should change the dynamic token ring color",
-            "world": {
-              "friendly": {
-                "name": "[Friendly] Token Background Auto Color"
-              },
-              "neutral": {
-                "name": "[Neutral] Token Background Auto Color"
-              },
-              "hostile": {
-                "name": "[Hostile] Token Background Auto Color"
-              },
-              "party": {
-                "name": "[Party] Token Background Auto Color"
-              }
-            },
-            "player": {
-              "friendly": {
-                "name": "[Player] [Friendly] Token Background Auto Color"
-              },
-              "neutral": {
-                "name": "[Player] [Neutral] Token Background Auto Color"
-              },
-              "hostile": {
-                "name": "[Player] [Hostile] Token Background Auto Color"
-              },
-              "party": {
-                "name": "[Player] [Party] Token Background Auto Color"
-              }
-            }
+            "name": "Token Background Auto Color",
+            "hint": "Select if the module should change the dynamic token ring color"
           },
           "custom-color": {
-            "world": {
-              "friendly": {
-                "name": "[Friendly] Token Background Custom Color"
-              },
-              "neutral": {
-                "name": "[Neutral] Token Background Custom Color"
-              },
-              "hostile": {
-                "name": "[Hostile] Token Background Custom Color"
-              },
-              "party": {
-                "name": "[Party] Token Background Custom Color"
-              }
-            },
-            "player": {
-              "friendly": {
-                "name": "[Player] [Friendly] Token Background Custom Color"
-              },
-              "neutral": {
-                "name": "[Player] [Neutral] Token Background Custom Color"
-              },
-              "hostile": {
-                "name": "[Player] [Hostile] Token Background Custom Color"
-              },
-              "party": {
-                "name": "[Player] [Party] Token Background Custom Color"
-              }
-            }
+            "name": "Token Background Custom Color",
+            "hint": "If auto color option is set to custom will use this color"
           }
         },
         "choices": {

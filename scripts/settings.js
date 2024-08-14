@@ -105,7 +105,7 @@ export function registerSettings() {
           const ty =
             setting === "type" ? String : new foundry.data.fields.ColorField();
           const config = {
-            name: localize(`${path}.${level}.${type}.name`),
+            name: localize(`${path}.name`),
             hint: localize(`${path}.hint`),
             scope: level,
             config: true,
@@ -197,7 +197,7 @@ export function renderSettingsConfig(_, html) {
   ["hostile", "neutral", "friendly", "party"].forEach((type) => {
     ["player", "world"].forEach((scope) => {
       addSettingsGroup(
-        `auto-coloring.type.${type}`,
+        `auto-coloring.type.${scope}.${type}`,
         `auto-coloring.ring.type.${type}.${scope}`,
         "h4"
       );
