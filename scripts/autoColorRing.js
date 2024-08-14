@@ -17,7 +17,7 @@ export function autoColorRing() {
         [CONST.TOKEN_DISPOSITIONS.FRIENDLY]: Color.fromString(COLORS.GREEN),
         [CONST.TOKEN_DISPOSITIONS.NEUTRAL]: Color.fromString(COLORS.YELLOW),
         [CONST.TOKEN_DISPOSITIONS.HOSTILE]: Color.fromString(COLORS.RED),
-      }[token.document.disposition]),
+      }?.[token.document.disposition ?? Color.fromString(COLORS.WHITE)]),
     levelDiff: (token, _type) => {
       const partyLevel =
         game.actors.party.members.reduce((tot, char) => tot + char.level, 0) /
