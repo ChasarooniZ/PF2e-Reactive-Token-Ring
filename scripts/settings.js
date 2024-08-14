@@ -104,7 +104,7 @@ export function registerSettings() {
           const ty =
             setting === "type" ? String : new foundry.data.fields.ColorField();
           const config = {
-            name: localizeName(path, isPlayer, type),
+            name: localize(`${path}.${level}.${type}.name`),
             hint: localize(`${path}.hint`),
             scope: level,
             config: true,
@@ -124,16 +124,6 @@ export function registerSettings() {
 
 function localize(key) {
   return game.i18n.localize(`${MODULE_ID}.module-settings.${key}`);
-}
-
-function localizeName(path, isPlayer, type) {
-  const playType = isPlayer ? "player" : type;
-  return (
-    (isPlayer ? getPrefix(playType) : "") +
-    getPrefix(type) +
-    " " +
-    localize(`${path}.name`)
-  );
 }
 
 function getDefault(isPlayer, setting, type) {
