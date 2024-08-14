@@ -104,8 +104,8 @@ export function registerSettings() {
           const ty =
             setting === "type" ? String : new foundry.data.fields.ColorField();
           const config = {
-            name: localizeSetting(path, isPlayer, type),
-            hint: localizeSettingHint(path, isPlayer, type),
+            name: localizeName(path, isPlayer, type),
+            hint: localize(`${path}.hint`),
             scope: level,
             config: true,
             default: def,
@@ -126,12 +126,14 @@ function localize(key) {
   return game.i18n.localize(`${MODULE_ID}.module-settings.${key}`);
 }
 
-function localizeSetting(path, isPlayer, type) {
-  return getPrefix(isPlayer, type) + localize(`${path}.name`);
-}
-
-function localizeSettingHint(path, isPlayer, type) {
-  return getPrefix(isPlayer, type) + localize(`${path}.hint`);
+function localizeName(path, isPlayer, type) {
+  const playType = isPlayer ? "player" : type;
+  return (
+    (isPlayer ? getPrefix(playType) : "") +
+    getPrefix(type) +
+    " " +
+    localize(`${path}.name`)
+  );
 }
 
 function getDefault(isPlayer, setting, type) {
@@ -144,9 +146,9 @@ function getDefault(isPlayer, setting, type) {
   return null;
 }
 
-function getPrefix(isPlayer, type) {
+function getPrefix(prefix) {
   const path = `${MODULE_ID}.module-settings.auto-coloring.prefixes.`;
-  return game.i18n.localize(`${path}${isPlayer ? "player" : ""}${type}`);
+  return game.i18n.localize(`${path}${prefix}`);
 }
 
 export function resolvePlayerWorldSetting(settingPath) {
