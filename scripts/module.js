@@ -1,6 +1,11 @@
 // Import necessary modules and constants
 import { autoColorRing } from "./autoColorRing.js";
-import { applyTokenStatusEffect, preUpdateActor, targetToken, updateActor } from "./hooks.js";
+import {
+  applyTokenStatusEffect,
+  preUpdateActor,
+  targetToken,
+  updateActor,
+} from "./hooks.js";
 import { MODULE_ID } from "./misc.js";
 import { registerSettings } from "./settings.js";
 
@@ -14,6 +19,7 @@ Hooks.once("init", () => {
 Hooks.once("ready", async () => {
   // Register the listener for our module socket.
   // Note that this is not entered on the origin client of any broadcast.
+  //migrateLegacySettings(); //TODO Enable and this maybe
   game.socket.on(`module.${MODULE_ID}`, ({ type, payload }) => {
     if (type === "tokenHealthUpdate") handleTokenHealthUpdate(...payload);
   });

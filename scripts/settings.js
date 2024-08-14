@@ -59,7 +59,7 @@ export function registerSettings() {
       requiresReload: true,
     },
   ];
-
+  //addLegacySettings();
   settings.forEach(
     ({ key, default: def, type, range, config = true, requiresReload }) => {
       game.settings.register(MODULE_ID, key, {
@@ -204,3 +204,64 @@ export function renderSettingsConfig(_, html) {
     });
   });
 }
+
+/*
+function addLegacySettings() {
+  game.settings.register(MODULE_ID, "auto-coloring.ring", {
+    name: "auto-ring",
+    hint: "",
+    scope: "client",
+    config: false,
+    default: "",
+    type: String,
+  });
+  game.settings.register(MODULE_ID, "auto-coloring.background", {
+    name: "auto-bg",
+    hint: "",
+    scope: "client",
+    config: false,
+    default: "",
+    type: String,
+  });
+  game.settings.register(MODULE_ID, "auto-coloring.health-targets", {
+    name: "auto-health-targets",
+    hint: "",
+    scope: "client",
+    config: false,
+    default: "",
+    type: String,
+  });
+}
+
+export function migrateLegacySettings() {
+  const ac_ring = game.settings.get(MODULE_ID, "auto-coloring.ring");
+  const ac_bg = game.settings.get(MODULE_ID, "auto-coloring.background");
+
+  const ac_ht = game.settings.get(MODULE_ID, "auto-coloring.health-targets");
+
+  if (ac_ring !== "") {
+    if (game?.user?.isGM) {
+      switch (ac_ring) {
+        case "health":
+          if (ac_ht !== "") {
+          }
+          break;
+        case "disposition":
+          break;
+        case "unchanged":
+        default:
+          break;
+      }
+    } else {
+    }
+    game.settings.set(MODULE_ID, "auto-coloring.ring", "");
+  }
+  if (ac_bg !== "") {
+    game.settings.set(MODULE_ID, "auto-coloring.background", "");
+  }
+
+  if (ac_ht !== "") {
+    game.settings.set(MODULE_ID, "auto-coloring.health-targets", "");
+  }
+}
+*/
