@@ -51,6 +51,7 @@
         },
         "choices": {
           "default": "Default",
+          "custom": "Custom",
           "unchanged": "Unchanged",
           "health": "Health-Based",
           "disposition": "Disposition",

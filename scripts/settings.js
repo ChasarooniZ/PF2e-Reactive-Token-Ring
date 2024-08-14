@@ -76,6 +76,7 @@ export function registerSettings() {
 
   const autoColoringChoices = {
     unchanged: localize("auto-coloring.choices.unchanged"),
+    custom: localize("auto-coloring.choices.custom"),
     health: localize("auto-coloring.choices.health"),
     disposition: localize("auto-coloring.choices.disposition"),
     ...(game.system.id === "pf2e" && {

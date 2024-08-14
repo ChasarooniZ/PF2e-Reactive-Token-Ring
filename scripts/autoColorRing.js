@@ -1,141 +1,76 @@
 import { COLORS, MODULE_ID } from "./misc.js";
 import { getHealthLevel } from "./systemCompatability.js";
 
-/**
- * Check if the token is a valid disposition for our health target setting.
- * @param {Object} Token instance
- * @returns {boolean} If the token should be colored
- */
-function getValidHealthTarget(token) {
-  const healthTargetsSetting = game.settings.get(
-    MODULE_ID,
-    "auto-coloring.health-targets"
-  );
-  if (
-    token.document.disposition == CONST.TOKEN_DISPOSITIONS.FRIENDLY &&
-    (healthTargetsSetting === "non-friendly" ||
-      healthTargetsSetting === "hostile")
-  )
-    return false;
-  if (
-    token.document.disposition == CONST.TOKEN_DISPOSITIONS.HOSTILE &&
-    (healthTargetsSetting === "non-hostile" ||
-      healthTargetsSetting === "friendly")
-  )
-    return false;
-  if (
-    token.document.disposition == CONST.TOKEN_DISPOSITIONS.NEUTRAL &&
-    (healthTargetsSetting === "hostile" || healthTargetsSetting === "friendly")
-  )
-    return false;
-  return !(
-    token.document.disposition == CONST.TOKEN_DISPOSITIONS.SECRET &&
-    healthTargetsSetting !== "all"
-  );
-}
-
 export function autoColorRing() {
-  let ringColor = this.document.ring.colors.ring;
-  let backgroundColor = this.document.ring.colors.background;
-  const overideColor = game.settings.get(
-    MODULE_ID,
-    "auto-coloring.override-color"
-  );
-  const ringSetting = game.settings.get(MODULE_ID, "auto-coloring.ring");
-  const backgroundSetting = game.settings.get(
-    MODULE_ID,
-    "auto-coloring.background"
-  );
+  const { ring, background } = this.document.ring.colors;
+  const ringSetting = getSetting(this.actor, "type", "ring");
+  const backgroundSetting = getSetting(this.actor, "type", "background");
 
-  if (ringSetting === "health" || backgroundSetting === "health") {
-    const level =
-      this.document.getFlag(MODULE_ID, "tokenHealthLevel") ??
-      getHealthLevel(this.actor);
-    if (!isNaN(level)) {
-      const healthColor = getColorForHealthLevel(level);
-      const valid = getValidHealthTarget(this);
-      if (ringSetting === "health" && valid) ringColor = healthColor;
-      if (backgroundSetting === "health" && valid)
-        backgroundColor = healthColor;
-    }
-  }
+  const colorMap = {
+    health: () =>
+      getColorForHealthLevel(
+        this.document.getFlag(MODULE_ID, "tokenHealthLevel") ??
+          getHealthLevel(this.actor)
+      ),
+    disposition: () =>
+      ({
+        [CONST.TOKEN_DISPOSITIONS.FRIENDLY]: Color.fromString(COLORS.GREEN),
+        [CONST.TOKEN_DISPOSITIONS.NEUTRAL]: Color.fromString(COLORS.YELLOW),
+        [CONST.TOKEN_DISPOSITIONS.HOSTILE]: Color.fromString(COLORS.RED),
+      }[this.document.disposition]),
+    levelDiff: () => {
+      const partyLevel =
+        game.actors.party.members.reduce((tot, char) => tot + char.level, 0) /
+          game.actors.party.members.length || 1;
+      const levelDiff = this.actor.level - partyLevel;
+      return Color.fromString(
+        COLORS.PF2E.LEVELDIFF.DEFAULT[
+          levelDiff <= -4
+            ? "-4"
+            : levelDiff <= -3
+            ? "-3"
+            : levelDiff <= -2
+            ? "-2"
+            : levelDiff <= -1
+            ? "-1"
+            : levelDiff <= 0
+            ? "0"
+            : levelDiff <= 1
+            ? "+1"
+            : levelDiff <= 2
+            ? "+2"
+            : levelDiff <= 3
+            ? "+3"
+            : "+4"
+        ]
+      );
+    },
+    custom: (type) => getSetting(this.actor, "color", type),
+  };
 
-  if (ringSetting === "disposition" || backgroundSetting === "disposition") {
-    let dispositionColor = undefined;
-    switch (this.document.disposition) {
-      case CONST.TOKEN_DISPOSITIONS.FRIENDLY:
-        dispositionColor = Color.fromString(COLORS.GREEN);
-        break;
-      case CONST.TOKEN_DISPOSITIONS.NEUTRAL:
-        dispositionColor = Color.fromString(COLORS.YELLOW);
-        break;
-      case CONST.TOKEN_DISPOSITIONS.HOSTILE:
-        dispositionColor = Color.fromString(COLORS.RED);
-        break;
-    }
-    if (ringSetting === "disposition") ringColor = dispositionColor;
-    if (backgroundSetting === "disposition") backgroundColor = dispositionColor;
-  }
-
-  if (ringSetting === "levelDiff" || backgroundSetting === "levelDiff") {
-    const partyLevel =
-      game.actors.party.members.reduce((tot, char) => (tot += char.level), 0) /
-        game.actors.party.members.length ?? 1;
-    const charLevel = this.actor.level;
-    const levelDiff = charLevel - partyLevel;
-    let levelDiffColor = undefined;
-    if (levelDiff <= -4) {
-      // PL -4
-      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF.DEFAULT["-4"]);
-    } else if (levelDiff <= -3) {
-      // PL -3
-      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF.DEFAULT["-3"]);
-    } else if (levelDiff <= -2) {
-      // PL -2
-      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF.DEFAULT["-2"]);
-    } else if (levelDiff <= -1) {
-      // PL -1
-      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF.DEFAULT["-1"]);
-    } else if (levelDiff <= 0) {
-      // PL
-      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF.DEFAULT["0"]);
-    } else if (levelDiff <= 1) {
-      // PL +1
-      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF.DEFAULT["+1"]);
-    } else if (levelDiff <= 2) {
-      // PL +2
-      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF.DEFAULT["+2"]);
-    } else if (levelDiff <= 3) {
-      // PL +3
-      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF.DEFAULT["+3"]);
-    } else {
-      // PL +4
-      levelDiffColor = Color.fromString(COLORS.PF2E.LEVELDIFF.DEFAULT["+4"]);
-    }
-    if (ringSetting === "levelDiff") ringColor = levelDiffColor;
-    if (backgroundSetting === "levelDiff") backgroundColor = levelDiffColor;
-  }
+  //Ring Color Set
+  let ringColor = colorMap[ringSetting]?.("ring") ?? ring;
+  // Background Color Set
+  let backgroundColor =
+    colorMap[backgroundSetting]?.("background") ?? background;
 
   const percentColor = game.settings.get(
     MODULE_ID,
     "auto-coloring.percent-color"
   );
-  if (ringSetting !== "unchanged" && ringColor) {
-    ringColor = Color.multiplyScalar(ringColor, percentColor);
-  }
-  if (backgroundSetting !== "unchanged" && backgroundColor) {
-    backgroundColor = Color.multiplyScalar(backgroundColor, percentColor);
-  }
-  if (!overideColor) {
-    if (this.document.ring.colors.ring !== null)
-      ringColor = this.document.ring.colors.ring;
-    if (this.document.ring.colors.background !== null)
-      backgroundColor = this.document.ring.colors.background;
-  }
-  return {
-    ring: ringColor,
-    background: backgroundColor,
-  };
+
+  //Ring Color Scaling
+  ringColor =
+    ringSetting !== "unchanged"
+      ? Color.multiplyScalar(ringColor, percentColor)
+      : ringColor;
+  //Background Color Scaling
+  backgroundColor =
+    backgroundSetting !== "unchanged"
+      ? Color.multiplyScalar(backgroundColor, percentColor)
+      : backgroundColor;
+
+  return { ring: ringColor, background: backgroundColor };
 }
 
 /**
@@ -146,4 +81,25 @@ export function autoColorRing() {
  */
 function getColorForHealthLevel(level) {
   return Color.fromHSV([level / 3.0, 1.0, 1.0]);
+}
+
+/**
+ *
+ * @param {*} actor Actor to getSettingFor
+ * @param {"type" | "color"} typeOrColor "type" or "color"
+ * @param {"ring" | "background"} ringOrBackground "ring" or "background"
+ */
+function getSetting(actor, typeOrColor, ringOrBackground) {
+  const isParty = game.actors.party.members.some((a) => a.id === actor.id);
+  const type = isParty
+    ? "party"
+    : {
+        [CONST.TOKEN_DISPOSITIONS.FRIENDLY]: "friendly",
+        [CONST.TOKEN_DISPOSITIONS.NEUTRAL]: "neutral",
+        [CONST.TOKEN_DISPOSITIONS.HOSTILE]: "hostile",
+      }[this.document.disposition] || "";
+
+  return resolvePlayerWorldSetting(
+    `auto-coloring.${ringOrBackground}.${typeOrColor}.${type}`
+  );
 }
