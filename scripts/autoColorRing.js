@@ -7,22 +7,22 @@ export function autoColorRing() {
   const backgroundSetting = getSetting(this, "type", "background");
 
   const colorMap = {
-    health: () =>
+    health: (token, _type) =>
       getColorForHealthLevel(
-        this.document.getFlag(MODULE_ID, "tokenHealthLevel") ??
-          getHealthLevel(this.actor)
+        token.document.getFlag(MODULE_ID, "tokenHealthLevel") ??
+          getHealthLevel(token.actor)
       ),
-    disposition: () =>
+    disposition: (token, _type) =>
       ({
         [CONST.TOKEN_DISPOSITIONS.FRIENDLY]: Color.fromString(COLORS.GREEN),
         [CONST.TOKEN_DISPOSITIONS.NEUTRAL]: Color.fromString(COLORS.YELLOW),
         [CONST.TOKEN_DISPOSITIONS.HOSTILE]: Color.fromString(COLORS.RED),
-      }[this.document.disposition]),
-    levelDiff: () => {
+      }[token.document.disposition]),
+    levelDiff: (token, _type) => {
       const partyLevel =
         game.actors.party.members.reduce((tot, char) => tot + char.level, 0) /
           game.actors.party.members.length || 1;
-      const levelDiff = this.actor.level - partyLevel;
+      const levelDiff = token.actor.level - partyLevel;
       return Color.fromString(
         COLORS.PF2E.LEVELDIFF.DEFAULT[
           levelDiff <= -4
@@ -45,14 +45,14 @@ export function autoColorRing() {
         ]
       );
     },
-    custom: (type) => getSetting(this, "color", type),
+    custom: (_token, type) => getSetting(this, "color", type),
   };
 
   //Ring Color Set
-  let ringColor = colorMap[ringSetting]?.("ring") ?? ring;
+  let ringColor = colorMap[ringSetting]?.(this, "ring") ?? ring;
   // Background Color Set
   let backgroundColor =
-    colorMap[backgroundSetting]?.("background") ?? background;
+    colorMap[backgroundSetting]?.(this, "background") ?? background;
 
   const percentColor = game.settings.get(
     MODULE_ID,
@@ -98,7 +98,7 @@ function getSetting(token, typeOrColor, ringOrBackground) {
         [CONST.TOKEN_DISPOSITIONS.FRIENDLY]: "friendly",
         [CONST.TOKEN_DISPOSITIONS.NEUTRAL]: "neutral",
         [CONST.TOKEN_DISPOSITIONS.HOSTILE]: "hostile",
-      }[actor.token.document.disposition] || "";
+      }[token.document.disposition] || "";
 
   return resolvePlayerWorldSetting(
     `auto-coloring.${ringOrBackground}.${typeOrColor}.${type}`
