@@ -183,7 +183,7 @@ export function renderSettingsConfig(_, html) {
   // Adding settings groups for various options
   addSettingsGroup("flash.name", "target.share-flash", "h2");
   addSettingsGroup("flash.colors", "colors.damage", "h3");
-  addSettingsGroup("auto-coloring.percent-color", "auto-coloring.name", "h2");
+  addSettingsGroup("auto-coloring.name", "auto-coloring.percent-color", "h2");
   addSettingsGroup(
     "auto-coloring.scope.world",
     "auto-coloring.ring.type.hostile.world",
