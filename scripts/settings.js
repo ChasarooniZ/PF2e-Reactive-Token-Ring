@@ -181,25 +181,25 @@ export function renderSettingsConfig(_, html) {
   }
 
   // Adding settings groups for various options
-  addSettingsGroup("flash.name", "target.share-flash");
-  addSettingsGroup("flash.colors", "colors.damage", "h4");
-  addSettingsGroup("auto-coloring.percent-color", "auto-coloring.name");
+  addSettingsGroup("flash.name", "target.share-flash", "h2");
+  addSettingsGroup("flash.colors", "colors.damage", "h3");
+  addSettingsGroup("auto-coloring.percent-color", "auto-coloring.name", "h2");
   addSettingsGroup(
     "auto-coloring.scope.world",
     "auto-coloring.ring.type.hostile.world",
-    "h4"
+    "h3"
   );
   addSettingsGroup(
     "auto-coloring.scope.player",
     "auto-coloring.ring.type.hostile.player",
-    "h4"
+    "h3"
   );
   ["hostile", "neutral", "friendly", "party"].forEach((type) => {
     ["player", "world"].forEach((scope) => {
       addSettingsGroup(
         `auto-coloring.type.${type}`,
         `auto-coloring.ring.type.${type}.${scope}`,
-        "h5"
+        "h4"
       );
     });
   });
