@@ -84,6 +84,9 @@ export function registerSettings() {
     }),
   };
 
+  const playerAutoColoringChoices = autoColoringChoices;
+  playerAutoColoringChoices.default = localize("auto-coloring.choices.default");
+
   const actorTypes = [
     "hostile",
     "neutral",
@@ -93,10 +96,7 @@ export function registerSettings() {
 
   ["world", "player"].forEach((level) => {
     const isPlayer = level === "player";
-    if (isPlayer)
-      autoColoringChoices.default = localize("auto-coloring.choices.default");
-
-    actorTypes.forEach((type) => {
+    autoColoringChoices.default = actorTypes.forEach((type) => {
       ["ring", "background"].forEach((part) => {
         ["type", "custom-color"].forEach((setting) => {
           const path = `auto-coloring.${part}.${setting}`;
@@ -113,7 +113,10 @@ export function registerSettings() {
             requiresReload: true,
           };
 
-          if (setting === "type") config.choices = autoColoringChoices;
+          if (setting === "type")
+            config.choices = !isPlayer
+              ? autoColoringChoices
+              : playerAutoColoringChoices;
 
           game.settings.register(MODULE_ID, `${path}.${type}.${level}`, config);
         });
