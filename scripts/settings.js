@@ -51,113 +51,6 @@ export function registerSettings() {
     type: Number,
   });
 
-  //Auto Color Ring
-  const autoColoringChoices = {
-    unchanged: game.i18n.localize(
-      MODULE_ID + ".module-settings.auto-coloring.choices.unchanged"
-    ),
-    health: game.i18n.localize(
-      MODULE_ID + ".module-settings.auto-coloring.choices.health"
-    ),
-    disposition: game.i18n.localize(
-      MODULE_ID + ".module-settings.auto-coloring.choices.disposition"
-    ),
-  };
-  if (game.system.id === "pf2e") {
-    autoColoringChoices.levelDiff = game.i18n.localize(
-      MODULE_ID + ".module-settings.auto-coloring.choices.levelDiff"
-    );
-  }
-  game.settings.register(MODULE_ID, "auto-coloring.ring", {
-    name: game.i18n.localize(
-      MODULE_ID + ".module-settings.auto-coloring.ring.name"
-    ),
-    hint: game.i18n.localize(
-      MODULE_ID + ".module-settings.auto-coloring.ring.hint"
-    ),
-    scope: "client",
-    config: true,
-    default: "unchanged",
-    type: String,
-    requiresReload: true,
-    choices: autoColoringChoices,
-  });
-  game.settings.register(MODULE_ID, "auto-coloring.background", {
-    name: game.i18n.localize(
-      MODULE_ID + ".module-settings.auto-coloring.background.name"
-    ),
-    hint: game.i18n.localize(
-      MODULE_ID + ".module-settings.auto-coloring.background.hint"
-    ),
-    scope: "client",
-    config: true,
-    default: "unchanged",
-    type: String,
-    requiresReload: true,
-    choices: autoColoringChoices,
-  });
-  game.settings.register(MODULE_ID, "auto-coloring.health-targets", {
-    name: game.i18n.localize(
-      MODULE_ID + ".module-settings.auto-coloring.health-targets.name"
-    ),
-    hint: game.i18n.localize(
-      MODULE_ID + ".module-settings.auto-coloring.health-targets.hint"
-    ),
-    scope: "client",
-    config: true,
-    default: "all",
-    type: String,
-    requiresReload: true,
-    choices: {
-      all: game.i18n.localize(
-        MODULE_ID + ".module-settings.auto-coloring.health-targets.all"
-      ),
-      friendly: game.i18n.localize(
-        MODULE_ID + ".module-settings.auto-coloring.health-targets.friendly"
-      ),
-      "non-friendly": game.i18n.localize(
-        MODULE_ID + ".module-settings.auto-coloring.health-targets.non-friendly"
-      ),
-      hostile: game.i18n.localize(
-        MODULE_ID + ".module-settings.auto-coloring.health-targets.hostile"
-      ),
-      "non-hostile": game.i18n.localize(
-        MODULE_ID + ".module-settings.auto-coloring.health-targets.non-hostile"
-      ),
-    },
-  });
-  game.settings.register(MODULE_ID, "auto-coloring.percent-color", {
-    name: game.i18n.localize(
-      MODULE_ID + ".module-settings.auto-coloring.percent-color.name"
-    ),
-    hint: game.i18n.localize(
-      MODULE_ID + ".module-settings.auto-coloring.percent-color.hint"
-    ),
-    scope: "world",
-    config: true,
-    default: "0.75",
-    type: Number,
-    range: {
-      min: 0,
-      max: 1,
-      step: 0.05,
-    },
-    requiresReload: true,
-  });
-
-  game.settings.register(MODULE_ID, "auto-coloring.override-color", {
-    name: game.i18n.localize(
-      MODULE_ID + ".module-settings.auto-coloring.override-color.name"
-    ),
-    hint: game.i18n.localize(
-      MODULE_ID + ".module-settings.auto-coloring.override-color.hint"
-    ),
-    scope: "world",
-    config: true,
-    default: false,
-    type: Boolean,
-  });
-
   //Color settings
   game.settings.register(MODULE_ID, "colors.damage", {
     name: game.i18n.localize(MODULE_ID + ".module-settings.colors.damage.name"),
@@ -213,4 +106,96 @@ export function registerSettings() {
     default: COLORS.ORANGE,
     type: new foundry.data.fields.ColorField(),
   });
+
+  game.settings.register(MODULE_ID, "auto-coloring.percent-color", {
+    name: game.i18n.localize(
+      MODULE_ID + ".module-settings.auto-coloring.percent-color.name"
+    ),
+    hint: game.i18n.localize(
+      MODULE_ID + ".module-settings.auto-coloring.percent-color.hint"
+    ),
+    scope: "world",
+    config: true,
+    default: "0.75",
+    type: Number,
+    range: {
+      min: 0,
+      max: 1,
+      step: 0.05,
+    },
+    requiresReload: true,
+  });
+
+  //Auto Color Ring
+  const autoColoringChoices = {
+    unchanged: game.i18n.localize(
+      MODULE_ID + ".module-settings.auto-coloring.choices.unchanged"
+    ),
+    health: game.i18n.localize(
+      MODULE_ID + ".module-settings.auto-coloring.choices.health"
+    ),
+    disposition: game.i18n.localize(
+      MODULE_ID + ".module-settings.auto-coloring.choices.disposition"
+    ),
+  };
+  const actorTypes = ["hostile", "neutral", "friendly"];
+  if (game.system.id === "pf2e") {
+    autoColoringChoices.levelDiff = game.i18n.localize(
+      MODULE_ID + ".module-settings.auto-coloring.choices.levelDiff"
+    );
+    actorTypes.push("party");
+  }
+
+  for (const type of actorTypes) {
+    for (const part of ["ring", "background"]) {
+      for (const setting of ["type", "custom-color"]) {
+        const path = `auto-coloring.affects.${type}.${part}.${setting}`;
+        const def = getDefault(setting, type);
+        const ty =
+          setting === "type" ? String : new foundry.data.fields.ColorField();
+        const body = {
+          name: game.i18n.localize(
+            MODULE_ID + ".module-settings." + path + ".name"
+          ),
+          hint: game.i18n.localize(
+            MODULE_ID + ".module-settings." + path + ".hint"
+          ),
+          scope: "world",
+          config: true,
+          default: def,
+          type: ty,
+          requiresReload: true,
+        };
+
+        if (setting === "type") {
+          body.choices = autoColoringChoices;
+        }
+        game.settings.register(MODULE_ID, path, body);
+      }
+    }
+  }
+
+  //OLD Auto Color Ring
+
+  // game.settings.register(MODULE_ID, "auto-coloring.override-color", {
+  //   name: game.i18n.localize(
+  //     MODULE_ID + ".module-settings.auto-coloring.override-color.name"
+  //   ),
+  //   hint: game.i18n.localize(
+  //     MODULE_ID + ".module-settings.auto-coloring.override-color.hint"
+  //   ),
+  //   scope: "world",
+  //   config: true,
+  //   default: false,
+  //   type: Boolean,
+  // });
+}
+
+function getDefault(setting, type) {
+  if (setting === "type") return "unchanged";
+  if (type === "party") return COLORS.DEEPSKYBLUE;
+  if (type === "friendly") return COLORS.GREEN;
+  if (type === "hostile") return COLORS.RED;
+  if (type === "neutral") return COLORS.YELLOW;
+  return null;
 }

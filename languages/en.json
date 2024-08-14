@@ -23,28 +23,101 @@
         "hint": "How long (in ms) should the token flashing be for all effects (Default 500 ms, this will scaled if you toggle on settings that scale duration)"
       },
       "auto-coloring": {
-        "ring": {
-          "name": "Token Ring Auto Color",
-          "hint": "Select if the module should change the dynamic token ring color"
-        },
-        "background": {
-          "name": "Token Background Auto Color",
-          "hint": "Select if the module should change the dynamic token background color"
+        "affects": {
+          "friendly": {
+            "ring": {
+              "type": {
+                "name": "[Friendly] Token Ring Auto Color",
+                "hint": "Select if the module should change the dynamic token ring color"
+              },
+              "custom-color": {
+                "name": "[Friendly] Token Ring Custom Color",
+                "hint": "If auto color option is set to custom will use this color"
+              }
+            },
+            "background": {
+              "type": {
+                "name": "[Friendly] Token Background Auto Color",
+                "hint": "Select if the module should change the dynamic token ring color"
+              },
+              "custom-color": {
+                "name": "[Friendly] Token Background Custom Color",
+                "hint": "If auto color option is set to custom will use this color"
+              }
+            }
+          },
+          "neutral": {
+            "ring": {
+              "type": {
+                "name": "[Neutral] Token Ring Auto Color",
+                "hint": "Select if the module should change the dynamic token ring color"
+              },
+              "custom-color": {
+                "name": "[Neutral] Token Ring Custom Color",
+                "hint": "If auto color option is set to custom will use this color"
+              }
+            },
+            "background": {
+              "type": {
+                "name": "[Neutral] Token Background Auto Color",
+                "hint": "Select if the module should change the dynamic token ring color"
+              },
+              "custom-color": {
+                "name": "[Neutral] Token Background Custom Color",
+                "hint": "If auto color option is set to custom will use this color"
+              }
+            }
+          },
+          "hostile": {
+            "ring": {
+              "type": {
+                "name": "[Hostile] Token Ring Auto Color",
+                "hint": "Select if the module should change the dynamic token ring color"
+              },
+              "custom-color": {
+                "name": "[Hostile]",
+                "hint": ""
+              }
+            },
+            "background": {
+              "type": {
+                "name": "[Hostile] Token Ring Auto Color",
+                "hint": "Select if the module should change the dynamic token ring color"
+              },
+              "custom-color": {
+                "name": "[Hostile] ",
+                "hint": ""
+              }
+            }
+          },
+          "party": {
+            "ring": {
+              "type": {
+                "name": "[Party] Token Ring Auto Color",
+                "hint": "Select if the module should change the dynamic token ring color"
+              },
+              "custom-color": {
+                "name": "[Party] ",
+                "hint": ""
+              }
+            },
+            "background": {
+              "type": {
+                "name": "[Party] Token Ring Auto Color",
+                "hint": "Select if the module should change the dynamic token ring color"
+              },
+              "custom-color": {
+                "name": "[Party] ",
+                "hint": ""
+              }
+            }
+          }
         },
         "choices": {
           "unchanged": "Unchanged",
           "health": "Health-Based",
           "disposition": "Disposition",
           "levelDiff": "Level Difference"
-        },
-        "health-targets": {
-          "name": "Health-Based Token Applies To",
-          "hint": "If Health-Based auto coloring is enabled, this can be set to only apply to actors by their disposition.",
-          "all": "All",
-          "friendly": "Friendly",
-          "non-friendly": "Non-Friendly",
-          "hostile": "Hostile",
-          "non-hostile": "Non-Hostile"
         },
         "percent-color": {
           "name": "Token Auto Color Percentage",
