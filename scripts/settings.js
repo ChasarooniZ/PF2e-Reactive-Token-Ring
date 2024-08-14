@@ -1,6 +1,6 @@
 import { COLORS, MODULE_ID } from "./misc.js";
 
-export function registerSettingFs() {
+export function registerSettings() {
   Hooks.on("renderSettingsConfig", renderSettingsConfig);
   const settings = [
     {
