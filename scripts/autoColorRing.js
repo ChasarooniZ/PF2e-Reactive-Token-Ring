@@ -3,8 +3,8 @@ import { getHealthLevel } from "./systemCompatability.js";
 
 export function autoColorRing() {
   const { ring, background } = this.document.ring.colors;
-  const ringSetting = getSetting(this.actor, "type", "ring");
-  const backgroundSetting = getSetting(this.actor, "type", "background");
+  const ringSetting = getSetting(this, "type", "ring");
+  const backgroundSetting = getSetting(this, "type", "background");
 
   const colorMap = {
     health: () =>
@@ -45,7 +45,7 @@ export function autoColorRing() {
         ]
       );
     },
-    custom: (type) => getSetting(this.actor, "color", type),
+    custom: (type) => getSetting(this, "color", type),
   };
 
   //Ring Color Set
@@ -89,7 +89,8 @@ function getColorForHealthLevel(level) {
  * @param {"type" | "color"} typeOrColor "type" or "color"
  * @param {"ring" | "background"} ringOrBackground "ring" or "background"
  */
-function getSetting(actor, typeOrColor, ringOrBackground) {
+function getSetting(token, typeOrColor, ringOrBackground) {
+  const actor = token.actor;
   const isParty = game.actors.party.members.some((a) => a.id === actor.id);
   const type = isParty
     ? "party"
