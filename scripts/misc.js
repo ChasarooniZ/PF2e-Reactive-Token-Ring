@@ -9,6 +9,7 @@ export const COLORS = {
   DEEPSKYBLUE: "#00BFFF",
   ORANGE: "#FFA500",
   PINK: "#FF69B4",
+  PLAYER_DEFAULT: "#FFFFFE",
   PF2E: {
     LEVELDIFF: {
       DEFAULT: {

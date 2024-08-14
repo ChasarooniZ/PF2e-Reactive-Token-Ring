@@ -23,97 +23,34 @@
         "hint": "How long (in ms) should the token flashing be for all effects (Default 500 ms, this will scaled if you toggle on settings that scale duration)"
       },
       "auto-coloring": {
-        "affects": {
-          "friendly": {
-            "ring": {
-              "type": {
-                "name": "[Friendly] Token Ring Auto Color",
-                "hint": "Select if the module should change the dynamic token ring color"
-              },
-              "custom-color": {
-                "name": "[Friendly] Token Ring Custom Color",
-                "hint": "If auto color option is set to custom will use this color"
-              }
-            },
-            "background": {
-              "type": {
-                "name": "[Friendly] Token Background Auto Color",
-                "hint": "Select if the module should change the dynamic token ring color"
-              },
-              "custom-color": {
-                "name": "[Friendly] Token Background Custom Color",
-                "hint": "If auto color option is set to custom will use this color"
-              }
-            }
+        "prefixes": {
+          "player": "[Player]",
+          "friendly": "[Friendly]",
+          "neutral": "[Neutral]",
+          "hostile": "[Hostile]"
+        },
+        "ring": {
+          "type": {
+            "name": "Token Ring Auto Color",
+            "hint": "Select if the module should change the dynamic token ring color automatically"
           },
-          "neutral": {
-            "ring": {
-              "type": {
-                "name": "[Neutral] Token Ring Auto Color",
-                "hint": "Select if the module should change the dynamic token ring color"
-              },
-              "custom-color": {
-                "name": "[Neutral] Token Ring Custom Color",
-                "hint": "If auto color option is set to custom will use this color"
-              }
-            },
-            "background": {
-              "type": {
-                "name": "[Neutral] Token Background Auto Color",
-                "hint": "Select if the module should change the dynamic token ring color"
-              },
-              "custom-color": {
-                "name": "[Neutral] Token Background Custom Color",
-                "hint": "If auto color option is set to custom will use this color"
-              }
-            }
+          "custom-color": {
+            "name": "Token Ring Custom Color",
+            "hint": "If auto color option is set to custom will use this color"
+          }
+        },
+        "background": {
+          "type": {
+            "name": "Token Background Auto Color",
+            "hint": "Select if the module should change the dynamic token ring color"
           },
-          "hostile": {
-            "ring": {
-              "type": {
-                "name": "[Hostile] Token Ring Auto Color",
-                "hint": "Select if the module should change the dynamic token ring color"
-              },
-              "custom-color": {
-                "name": "[Hostile]",
-                "hint": ""
-              }
-            },
-            "background": {
-              "type": {
-                "name": "[Hostile] Token Ring Auto Color",
-                "hint": "Select if the module should change the dynamic token ring color"
-              },
-              "custom-color": {
-                "name": "[Hostile] ",
-                "hint": ""
-              }
-            }
-          },
-          "party": {
-            "ring": {
-              "type": {
-                "name": "[Party] Token Ring Auto Color",
-                "hint": "Select if the module should change the dynamic token ring color"
-              },
-              "custom-color": {
-                "name": "[Party] ",
-                "hint": ""
-              }
-            },
-            "background": {
-              "type": {
-                "name": "[Party] Token Ring Auto Color",
-                "hint": "Select if the module should change the dynamic token ring color"
-              },
-              "custom-color": {
-                "name": "[Party] ",
-                "hint": ""
-              }
-            }
+          "custom-color": {
+            "name": "Token Background Custom Color",
+            "hint": "If auto color option is set to custom will use this color"
           }
         },
         "choices": {
+          "default": "Default",
           "unchanged": "Unchanged",
           "health": "Health-Based",
           "disposition": "Disposition",

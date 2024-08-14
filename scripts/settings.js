@@ -1,201 +1,157 @@
 import { COLORS, MODULE_ID } from "./misc.js";
 
 export function registerSettings() {
-  game.settings.register(MODULE_ID, "target.share-flash", {
-    name: game.i18n.localize(
-      MODULE_ID + ".module-settings.target.share-flash.name"
-    ),
-    hint: game.i18n.localize(
-      MODULE_ID + ".module-settings.target.share-flash.hint"
-    ),
-    scope: "world",
-    config: true,
-    default: true,
-    type: Boolean,
-  });
-  game.settings.register(MODULE_ID, "target.player-color", {
-    name: game.i18n.localize(
-      MODULE_ID + ".module-settings.target.player-color.name"
-    ),
-    hint: game.i18n.localize(
-      MODULE_ID + ".module-settings.target.player-color.hint"
-    ),
-    scope: "world",
-    config: true,
-    default: false,
-    type: Boolean,
-  });
-  game.settings.register(MODULE_ID, "damage-heal.scale-on-%-hp", {
-    name: game.i18n.localize(
-      MODULE_ID + ".module-settings.damage-heal.scale-on-%-hp.name"
-    ),
-    hint: game.i18n.localize(
-      MODULE_ID + ".module-settings.damage-heal.scale-on-%-hp.hint"
-    ),
-    scope: "world",
-    config: true,
-    default: true,
-    type: Boolean,
-  });
-  game.settings.register(MODULE_ID, "duration", {
-    name: game.i18n.localize(MODULE_ID + ".module-settings.duration.name"),
-    hint: game.i18n.localize(MODULE_ID + ".module-settings.duration.hint"),
-    scope: "world",
-    config: true,
-    default: 500,
-    range: {
-      min: 100,
-      step: 10,
-      max: 2000,
+  const settings = [
+    {
+      key: "target.share-flash",
+      default: true,
+      type: Boolean,
     },
-    type: Number,
-  });
-
-  //Color settings
-  game.settings.register(MODULE_ID, "colors.damage", {
-    name: game.i18n.localize(MODULE_ID + ".module-settings.colors.damage.name"),
-    hint: game.i18n.localize(MODULE_ID + ".module-settings.colors.damage.hint"),
-    scope: "world",
-    config: true,
-    default: COLORS.RED,
-    type: new foundry.data.fields.ColorField(),
-    requiresReload: false,
-  });
-  game.settings.register(MODULE_ID, "colors.healing", {
-    name: game.i18n.localize(
-      MODULE_ID + ".module-settings.colors.healing.name"
-    ),
-    hint: game.i18n.localize(
-      MODULE_ID + ".module-settings.colors.healing.hint"
-    ),
-    scope: "world",
-    config: true,
-    default: COLORS.GREEN,
-    type: new foundry.data.fields.ColorField(),
-  });
-  game.settings.register(MODULE_ID, "colors.target", {
-    name: game.i18n.localize(MODULE_ID + ".module-settings.colors.target.name"),
-    hint: game.i18n.localize(MODULE_ID + ".module-settings.colors.target.hint"),
-    scope: "world",
-    config: true,
-    default: COLORS.DEEPSKYBLUE,
-    type: new foundry.data.fields.ColorField(),
-  });
-
-  game.settings.register(MODULE_ID, "colors.status.positive", {
-    name: game.i18n.localize(
-      MODULE_ID + ".module-settings.colors.status.positive.name"
-    ),
-    hint: game.i18n.localize(
-      MODULE_ID + ".module-settings.colors.status.positive.hint"
-    ),
-    scope: "world",
-    config: game.system.id === "pf2e",
-    default: COLORS.PINK,
-    type: new foundry.data.fields.ColorField(),
-  });
-  game.settings.register(MODULE_ID, "colors.status.negative", {
-    name: game.i18n.localize(
-      MODULE_ID + ".module-settings.colors.status.negative.name"
-    ),
-    hint: game.i18n.localize(
-      MODULE_ID + ".module-settings.colors.status.negative.hint"
-    ),
-    scope: "world",
-    config: game.system.id === "pf2e",
-    default: COLORS.ORANGE,
-    type: new foundry.data.fields.ColorField(),
-  });
-
-  game.settings.register(MODULE_ID, "auto-coloring.percent-color", {
-    name: game.i18n.localize(
-      MODULE_ID + ".module-settings.auto-coloring.percent-color.name"
-    ),
-    hint: game.i18n.localize(
-      MODULE_ID + ".module-settings.auto-coloring.percent-color.hint"
-    ),
-    scope: "world",
-    config: true,
-    default: "0.75",
-    type: Number,
-    range: {
-      min: 0,
-      max: 1,
-      step: 0.05,
+    {
+      key: "target.player-color",
+      default: false,
+      type: Boolean,
     },
-    requiresReload: true,
-  });
+    {
+      key: "damage-heal.scale-on-%-hp",
+      default: true,
+      type: Boolean,
+    },
+    {
+      key: "duration",
+      default: 500,
+      type: Number,
+      range: { min: 100, step: 10, max: 2000 },
+    },
+    {
+      key: "colors.damage",
+      default: COLORS.RED,
+      type: new foundry.data.fields.ColorField(),
+    },
+    {
+      key: "colors.healing",
+      default: COLORS.GREEN,
+      type: new foundry.data.fields.ColorField(),
+    },
+    {
+      key: "colors.target",
+      default: COLORS.DEEPSKYBLUE,
+      type: new foundry.data.fields.ColorField(),
+    },
+    {
+      key: "colors.status.positive",
+      default: COLORS.PINK,
+      type: new foundry.data.fields.ColorField(),
+      config: game.system.id === "pf2e",
+    },
+    {
+      key: "colors.status.negative",
+      default: COLORS.ORANGE,
+      type: new foundry.data.fields.ColorField(),
+      config: game.system.id === "pf2e",
+    },
+    {
+      key: "auto-coloring.percent-color",
+      default: "0.75",
+      type: Number,
+      range: { min: 0, max: 1, step: 0.05 },
+      requiresReload: true,
+    },
+  ];
 
-  //Auto Color Ring
-  const autoColoringChoices = {
-    unchanged: game.i18n.localize(
-      MODULE_ID + ".module-settings.auto-coloring.choices.unchanged"
-    ),
-    health: game.i18n.localize(
-      MODULE_ID + ".module-settings.auto-coloring.choices.health"
-    ),
-    disposition: game.i18n.localize(
-      MODULE_ID + ".module-settings.auto-coloring.choices.disposition"
-    ),
-  };
-  const actorTypes = ["hostile", "neutral", "friendly"];
-  if (game.system.id === "pf2e") {
-    autoColoringChoices.levelDiff = game.i18n.localize(
-      MODULE_ID + ".module-settings.auto-coloring.choices.levelDiff"
-    );
-    actorTypes.push("party");
-  }
-
-  for (const type of actorTypes) {
-    for (const part of ["ring", "background"]) {
-      for (const setting of ["type", "custom-color"]) {
-        const path = `auto-coloring.affects.${type}.${part}.${setting}`;
-        const def = getDefault(setting, type);
-        const ty =
-          setting === "type" ? String : new foundry.data.fields.ColorField();
-        const body = {
-          name: game.i18n.localize(
-            MODULE_ID + ".module-settings." + path + ".name"
-          ),
-          hint: game.i18n.localize(
-            MODULE_ID + ".module-settings." + path + ".hint"
-          ),
-          scope: "world",
-          config: true,
-          default: def,
-          type: ty,
-          requiresReload: true,
-        };
-
-        if (setting === "type") {
-          body.choices = autoColoringChoices;
-        }
-        game.settings.register(MODULE_ID, path, body);
-      }
+  settings.forEach(
+    ({ key, default: def, type, range, config = true, requiresReload }) => {
+      game.settings.register(MODULE_ID, key, {
+        name: game.i18n.localize(`${MODULE_ID}.module-settings.${key}.name`),
+        hint: game.i18n.localize(`${MODULE_ID}.module-settings.${key}.hint`),
+        scope: "world",
+        config,
+        default: def,
+        type,
+        range,
+        requiresReload,
+      });
     }
-  }
+  );
 
-  //OLD Auto Color Ring
+  const autoColoringChoices = {
+    unchanged: localize("auto-coloring.choices.unchanged"),
+    health: localize("auto-coloring.choices.health"),
+    disposition: localize("auto-coloring.choices.disposition"),
+    ...(game.system.id === "pf2e" && {
+      levelDiff: localize("auto-coloring.choices.levelDiff"),
+    }),
+  };
 
-  // game.settings.register(MODULE_ID, "auto-coloring.override-color", {
-  //   name: game.i18n.localize(
-  //     MODULE_ID + ".module-settings.auto-coloring.override-color.name"
-  //   ),
-  //   hint: game.i18n.localize(
-  //     MODULE_ID + ".module-settings.auto-coloring.override-color.hint"
-  //   ),
-  //   scope: "world",
-  //   config: true,
-  //   default: false,
-  //   type: Boolean,
-  // });
+  const actorTypes = [
+    "hostile",
+    "neutral",
+    "friendly",
+    ...(game.system.id === "pf2e" ? ["party"] : []),
+  ];
+
+  ["world", "player"].forEach((level) => {
+    const isPlayer = level === "player";
+    if (isPlayer)
+      autoColoringChoices.default = localize("auto-coloring.choices.default");
+
+    actorTypes.forEach((type) => {
+      ["ring", "background"].forEach((part) => {
+        ["type", "custom-color"].forEach((setting) => {
+          const path = `auto-coloring.${part}.${setting}`;
+          const def = getDefault(isPlayer, setting, type);
+          const ty =
+            setting === "type" ? String : new foundry.data.fields.ColorField();
+          const config = {
+            name: localizeSetting(path, isPlayer, type),
+            hint: localizeSettingHint(path, isPlayer, type),
+            scope: level,
+            config: true,
+            default: def,
+            type: ty,
+            requiresReload: true,
+          };
+
+          if (setting === "type") config.choices = autoColoringChoices;
+
+          game.settings.register(MODULE_ID, `${path}.${type}.${level}`, config);
+        });
+      });
+    });
+  });
 }
 
-function getDefault(setting, type) {
-  if (setting === "type") return "unchanged";
+function localize(key) {
+  return game.i18n.localize(`${MODULE_ID}.module-settings.${key}`);
+}
+
+function localizeSetting(path, isPlayer, type) {
+  return getPrefix(isPlayer, type) + localize(`${path}.name`);
+}
+
+function localizeSettingHint(path, isPlayer, type) {
+  return getPrefix(isPlayer, type) + localize(`${path}.hint`);
+}
+
+function getDefault(isPlayer, setting, type) {
+  if (setting === "type") return isPlayer ? "default" : "unchanged";
+  if (isPlayer) return COLORS.PLAYER_DEFAULT;
   if (type === "party") return COLORS.DEEPSKYBLUE;
   if (type === "friendly") return COLORS.GREEN;
   if (type === "hostile") return COLORS.RED;
   if (type === "neutral") return COLORS.YELLOW;
   return null;
+}
+
+function getPrefix(isPlayer, type) {
+  const path = `${MODULE_ID}.module-settings.auto-coloring.prefixes.`;
+  return game.i18n.localize(`${path}${isPlayer ? "player" : ""}${type}`);
+}
+
+export function resolvePlayerWorldSetting(settingPath) {
+  const world = game.settings.get(MODULE_ID, `${settingPath}.world`);
+  const player = game.settings.get(MODULE_ID, `${settingPath}.player`);
+  return player === "default" || player === COLORS.PLAYER_DEFAULT
+    ? world
+    : player;
 }
