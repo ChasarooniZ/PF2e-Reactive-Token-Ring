@@ -98,7 +98,7 @@ function getSetting(token, typeOrColor, ringOrBackground) {
         [CONST.TOKEN_DISPOSITIONS.FRIENDLY]: "friendly",
         [CONST.TOKEN_DISPOSITIONS.NEUTRAL]: "neutral",
         [CONST.TOKEN_DISPOSITIONS.HOSTILE]: "hostile",
-      }[token.document.disposition] || "";
+      }?.[token.document.disposition] || "neutral";
 
   return resolvePlayerWorldSetting(
     `auto-coloring.${ringOrBackground}.${typeOrColor}.${type}`
