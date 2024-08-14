@@ -1,4 +1,5 @@
 import { COLORS, MODULE_ID } from "./misc.js";
+import { resolvePlayerWorldSetting } from "./settings.js";
 import { getHealthLevel } from "./systemCompatability.js";
 
 export function autoColorRing() {
