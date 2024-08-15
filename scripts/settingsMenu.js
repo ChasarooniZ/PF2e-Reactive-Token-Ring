@@ -37,17 +37,17 @@ function createRow(name, savedType, savedColor) {
       <td><strong>${ringBG}</strong></td>
       <td><input type="checkbox" name="custom" ${isChecked(
         "custom"
-      )} data-tooltip="${TEXT.hover.config_menu.header.custom}"></td>
+      )} data-tooltip="${"hi"}"></td>
       <td><input type="checkbox" name="disposition" ${isChecked(
         "disposition"
-      )} data-tooltip="${TEXT.hover.config_menu.header.disposition}"></td>
+      )} data-tooltip="${"hi"}"></td>
       <td><input type="checkbox" name="health" ${isChecked(
         "health"
-      )} data-tooltip="${TEXT.hover.config_menu.header.health_percent}"></td>
+      )} data-tooltip="${"hi"}"></td>
       <td><input type="checkbox" name="levelDiff" ${isChecked(
         "levelDiff"
-      )} data-tooltip="${TEXT.hover.config_menu.header.level_diff}"></td>
-      <td data-tooltip="${TEXT.hover.config_menu.header.custom_color}">
+      )} data-tooltip="${"hi"}"></td>
+      <td data-tooltip="${"hi"}">
         <input type="color" name="color" value="${savedColor}">
         <input type="text" name="colorText" value="${savedColor}" maxlength="7" style="width: 70px; margin-left: 5px;">
       </td>
@@ -86,23 +86,6 @@ function loadSettings(isWorld) {
     })
     .join("");
 }
-const TEXT = {
-  TITLE: game.i18n.localize(
-    `${MODULE_ID}.module-settings.configuration-menu.headers.title`
-  ),
-  HOVER: {
-    HEADERS: {
-      CATEGORY: game.i18n.localize(
-        `${MODULE_ID}.module-settings.configuration-menu.hover.headers.category`
-      ),
-    },
-  },
-  NOTIFICATION: {
-    SAVED: game.i18n.localize(
-      `${MODULE_ID}.module-settings.configuration-menu.notifications.saved`
-    ),
-  },
-};
 
 // Register settings initially
 export function settingsMenu(isWorld) {
@@ -171,7 +154,11 @@ export function settingsMenu(isWorld) {
               customColor
             );
           });
-          ui.notifications.info(TEXT.NOTIFICATION.SAVED);
+          ui.notifications.info(
+            game.i18n.localize(
+              `${MODULE_ID}.module-settings.configuration-menu.notifications.saved`
+            )
+          );
         },
       },
       cancel: {
