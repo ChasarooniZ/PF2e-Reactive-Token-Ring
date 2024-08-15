@@ -94,6 +94,7 @@ function getSetting(token, typeOrColor, ringOrBackground) {
   const type = isParty
     ? "party"
     : {
+        [CONST.TOKEN_DISPOSITIONS.SECRET]: "secret",
         [CONST.TOKEN_DISPOSITIONS.FRIENDLY]: "friendly",
         [CONST.TOKEN_DISPOSITIONS.NEUTRAL]: "neutral",
         [CONST.TOKEN_DISPOSITIONS.HOSTILE]: "hostile",

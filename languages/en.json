@@ -8,25 +8,7 @@
           "colors": "Flash Color Settings"
         },
         "auto-coloring": {
-          "name": "Auto Coloring Setting",
-          "type": {
-            "world": {
-              "friendly": "Friendly | Auto Coloring",
-              "neutral": "Neutral | Auto Coloring",
-              "hostile": "Hostile | Auto Coloring",
-              "party": "Party | Auto Coloring"
-            },
-            "player": {
-              "friendly": "Player | Friendly | Auto Coloring",
-              "neutral": "Player | Neutral | Auto Coloring",
-              "hostile": "Player | Hostile | Auto Coloring",
-              "party": "Player | Party | Auto Coloring"
-            }
-          },
-          "scope": {
-            "player": "Player | Auto Coloring Settings",
-            "world": "World | Auto Coloring Settings"
-          }
+          "name": "Auto Coloring Setting"
         }
       },
       "configuration-menu": {

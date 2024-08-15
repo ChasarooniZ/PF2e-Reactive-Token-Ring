@@ -23,9 +23,9 @@ function createRow(name, savedType, savedColor, isWorld) {
       ico = "fa-regular fa-face-angry";
       hover = "Tokens with hostile disposition";
       break;
-    case "Hidden":
+    case "secret":
       ico = "fa-solid fa-mask";
-      hover = "Tokens with a hidden disposition";
+      hover = "Tokens with a secret disposition";
       break;
   }
   const icon = `<i class="${ico}"></i>`;
@@ -74,8 +74,8 @@ function loadSettings(isWorld) {
     "Neutral BG": "neutral.bg",
     "Hostile Ring": "hostile.ring",
     "Hostile BG": "hostile.bg",
-    "Hidden Ring": "hidden.ring",
-    "Hidden BG": "hidden.bg",
+    "Secret Ring": "secret.ring",
+    "Secret BG": "secret.bg",
   };
 
   return Object.keys(rows)
