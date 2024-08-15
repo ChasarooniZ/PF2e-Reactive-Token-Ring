@@ -5,7 +5,7 @@ import { getHealthLevel } from "./systemCompatability.js";
 export function autoColorRing() {
   const { ring, background } = this.document.ring.colors;
   const ringSetting = getSetting(this, "type", "ring");
-  const backgroundSetting = getSetting(this, "type", "background");
+  const backgroundSetting = getSetting(this, "type", "bg");
 
   const colorMap = {
     health: (token, _type) =>
@@ -54,7 +54,7 @@ export function autoColorRing() {
   let ringColor = colorMap[ringSetting]?.(this, "ring") ?? ring;
   // Background Color Set
   let backgroundColor =
-    colorMap[backgroundSetting]?.(this, "background") ?? background;
+    colorMap[backgroundSetting]?.(this, "bg") ?? background;
 
   const percentColor = game.settings.get(
     MODULE_ID,
