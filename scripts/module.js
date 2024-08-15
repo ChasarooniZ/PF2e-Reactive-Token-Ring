@@ -21,8 +21,10 @@ Hooks.once("ready", async () => {
   // Register the listener for our module socket.
   // Note that this is not entered on the origin client of any broadcast.
   legacySettingsTestAndMessage();
-  game.REDY.api = {
-    openSettingsMenu: settingsMenu,
+  game.REDY = {
+    api: {
+      openSettingsMenu: settingsMenu,
+    },
   };
   game.socket.on(`module.${MODULE_ID}`, ({ type, payload }) => {
     if (type === "tokenHealthUpdate") handleTokenHealthUpdate(...payload);
