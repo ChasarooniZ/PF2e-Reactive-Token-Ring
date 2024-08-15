@@ -143,13 +143,22 @@ export function resolvePlayerWorldSetting(settingPath) {
 export function renderSettingsConfig(_, html) {
   // Find the tab related to the module
   const moduleTab = html.find(`.tab[data-tab=${MODULE_ID}]`);
-  const local = "SETT Menu";
+  const local = "SETT Menu (World)";
   moduleTab
     .find(`[name="pf2e-reactive-token-ring.auto-coloring.percent-color"]`)
     .closest(".form-group").before(`
       <button type="button" class="REDY-button" style="width: 50%;position: relative;transform: translateX(95%);" onclick="(async () => { 
         game.REDY.api.openSettingsMenu(true); 
       })()">${local}
+      </button>
+  `);
+  const local2 = "SETT Menu (Player)";
+  moduleTab
+    .find(`[name="pf2e-reactive-token-ring.auto-coloring.percent-color"]`)
+    .closest(".form-group").before(`
+      <button type="button" class="REDY-button" style="width: 50%;position: relative;" onclick="(async () => { 
+        game.REDY.api.openSettingsMenu(false); 
+      })()">${local2}
       </button>
   `);
 
