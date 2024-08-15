@@ -97,6 +97,9 @@ function loadSettings(isWorld) {
 // Register settings initially
 export function settingsMenu(isWorld) {
   const scope = isWorld ? "world" : "player";
+  const title = game.i18n.localize(
+    `${MODULE_ID}.module-settings.configuration-menu.headers.title`
+  );
   const titleScope = game.i18n.localize(
     `${MODULE_ID}.module-settings.configuration-menu.headers.${scope}`
   );
