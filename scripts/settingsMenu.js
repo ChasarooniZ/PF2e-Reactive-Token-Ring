@@ -128,7 +128,7 @@ export function settingsMenu(isWorld) {
   );
 
   new Dialog({
-    title: `${title}(${titleScope})`,
+    title: `${title} (${titleScope})`,
     content: `
     <table style="width:100%; text-align:center;">
       <thead>
@@ -148,9 +148,10 @@ export function settingsMenu(isWorld) {
           html.find("tr[data-row]").each(function () {
             const row = $(this);
             const rowName = row.data("row").toLowerCase().replace(" ", ".");
-            const selectedType = row
-              .find('input[type="checkbox"]:checked')
-              .attr("name");
+            const selectedType =
+              row.find('input[type="checkbox"]:checked').attr("name") || isWorld
+                ? "unchanged"
+                : "default";
             const customColor = row.find('input[name="color"]').val();
 
             // Save the selected type and custom color
