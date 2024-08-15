@@ -1,7 +1,7 @@
 import { MODULE_ID } from "./misc.js";
 
 // Function to create the row with the proper data from settings
-function createRow(name, savedType, savedColor) {
+function createRow(name, savedType, savedColor, isWorld) {
   const isChecked = (type) => (savedType === type ? "checked" : "");
   const [type, ringBG] = name.split(" ");
   let ico = "";
@@ -29,27 +29,31 @@ function createRow(name, savedType, savedColor) {
       break;
   }
   const icon = `<i class="${ico}"></i>`;
+  const checkboxIds = [
+    isWorld ? "unchanged" : "default",
+    "custom",
+    "disposition",
+    "health-percent",
+  ];
+  if (game.system.id === "pf2e") checkboxIds.push("level-diff");
+  const checkboxes = checkboxIds.map((c) => ({
+    id: c,
+    hoverText: "Hi There",
+  }));
+  const checkboxHTML = checkboxes.map(
+    (c) =>
+      `<td><input type="checkbox" name="${c.id}" ${isChecked(
+        c.id
+      )} data-tooltip="${c.hoverText}"></td>`
+  );
+
   return `
     <tr data-row="${name}">
       <td><strong data-tooltip="${hover}" data-tooltip-direction="UP">${
     ringBG === "Ring" ? icon + " " + type : ""
   }</strong></td>
       <td><strong>${ringBG}</strong></td>
-      <td><input type="checkbox" name="unchanged" ${isChecked(
-        "unchanged"
-      )} data-tooltip="${"hi"}"></td>
-      <td><input type="checkbox" name="custom" ${isChecked(
-        "custom"
-      )} data-tooltip="${"hi"}"></td>
-      <td><input type="checkbox" name="disposition" ${isChecked(
-        "disposition"
-      )} data-tooltip="${"hi"}"></td>
-      <td><input type="checkbox" name="health" ${isChecked(
-        "health"
-      )} data-tooltip="${"hi"}"></td>
-      <td><input type="checkbox" name="levelDiff" ${isChecked(
-        "levelDiff"
-      )} data-tooltip="${"hi"}"></td>
+      ${checkboxHTML.join("")}
       <td data-tooltip="${"hi"}">
         <input type="color" name="color" value="${savedColor}">
         <input type="text" name="colorText" value="${savedColor}" maxlength="7" style="width: 70px; margin-left: 5px;">
@@ -85,7 +89,7 @@ function loadSettings(isWorld) {
         MODULE_ID,
         `auto-coloring.${rowKey}.custom-color.${scope}`
       );
-      return createRow(key, savedType, savedColor);
+      return createRow(key, savedType, savedColor, isWorld);
     })
     .join("");
 }
