@@ -35,6 +35,9 @@ function createRow(name, savedType, savedColor) {
     ringBG === "Ring" ? icon + " " + type : ""
   }</strong></td>
       <td><strong>${ringBG}</strong></td>
+      <td><input type="checkbox" name="unchanged" ${isChecked(
+        "unchanged"
+      )} data-tooltip="${"hi"}"></td>
       <td><input type="checkbox" name="custom" ${isChecked(
         "custom"
       )} data-tooltip="${"hi"}"></td>
@@ -96,6 +99,7 @@ export function settingsMenu(isWorld) {
   const headerIDs = [
     "category",
     "ring-or-bg",
+    isWorld ? "unchanged" : "default",
     "custom",
     "disposition",
     "health-percent",

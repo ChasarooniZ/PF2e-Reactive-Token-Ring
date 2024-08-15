@@ -38,7 +38,9 @@
             "disposition": "Color tokens based on their disposition",
             "health-percent": "Color tokens based on their percentage health",
             "level-diff": "Color tokens based on their level difference from the party",
-            "custom-color": "If Custom is toggled, uses this color for tokens"
+            "custom-color": "If Custom is toggled, uses this color for tokens",
+            "default": "Use the world setting for this",
+            "unchanged": "Doesn't auto color the token"
           }
         },
         "headers": {
@@ -51,7 +53,9 @@
           "disposition": "Disposition",
           "health-percent": "Health %",
           "level-diff": "Level Diff",
-          "custom-color": "Custom Color"
+          "custom-color": "Custom Color",
+          "default": "Default",
+          "unchanged": "Unchanged"
         },
         "notifications": {
           "saved": "Custom Token Ring Settings Saved!"
