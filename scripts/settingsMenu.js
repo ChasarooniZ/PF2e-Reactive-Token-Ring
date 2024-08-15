@@ -170,7 +170,7 @@ export function settingsMenu(isWorld) {
       },
     },
     default: "save",
-  }).render(true, { width: 600 });
+  }).render(true, { width: 800 });
 
   // Synchronize the color picker and text input
   $(document).on("input", 'input[name="color"]', function () {
