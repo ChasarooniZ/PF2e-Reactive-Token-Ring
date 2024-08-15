@@ -15,6 +15,7 @@ export function autoColorRing() {
       ),
     disposition: (token, _type) =>
       ({
+        [CONST.TOKEN_DISPOSITIONS.SECRET]: Color.fromString(COLORS.PURPLE),
         [CONST.TOKEN_DISPOSITIONS.FRIENDLY]: Color.fromString(COLORS.GREEN),
         [CONST.TOKEN_DISPOSITIONS.NEUTRAL]: Color.fromString(COLORS.YELLOW),
         [CONST.TOKEN_DISPOSITIONS.HOSTILE]: Color.fromString(COLORS.RED),
