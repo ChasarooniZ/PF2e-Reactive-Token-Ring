@@ -149,9 +149,8 @@ export function settingsMenu(isWorld) {
             const row = $(this);
             const rowName = row.data("row").toLowerCase().replace(" ", ".");
             const selectedType =
-              row.find('input[type="checkbox"]:checked').attr("name") || isWorld
-                ? "unchanged"
-                : "default";
+              row.find('input[type="checkbox"]:checked').attr("name") ??
+              (isWorld ? "unchanged" : "default");
             const customColor = row.find('input[name="color"]').val();
 
             // Save the selected type and custom color
