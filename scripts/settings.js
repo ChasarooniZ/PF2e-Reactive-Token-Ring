@@ -144,22 +144,20 @@ export function renderSettingsConfig(_, html) {
   // Find the tab related to the module
   const moduleTab = html.find(`.tab[data-tab=${MODULE_ID}]`);
   const local = "SETT Menu (World)";
-  moduleTab
-    .find(`[name="pf2e-reactive-token-ring.auto-coloring.percent-color"]`)
-    .closest(".form-group").before(`
-      <button type="button" class="REDY-button" style="width: 50%;position: relative;transform: translateX(95%);" onclick="(async () => { 
-        game.REDY.api.openSettingsMenu(true); 
-      })()">${local}
-      </button>
-  `);
   const local2 = "SETT Menu (Player)";
   moduleTab
     .find(`[name="pf2e-reactive-token-ring.auto-coloring.percent-color"]`)
     .closest(".form-group").before(`
-      <button type="button" class="REDY-button" style="width: 50%;position: relative;" onclick="(async () => { 
+    <div class="button-container" style="display: flex;justify-content: space-between;width: 100%;max-width: 600px; margin: 0 auto;">
+      <button type="button" class="REDY-button" style="width: 48%; /* Slightly less than 50% to account for spacing */padding: 10px 15px;font-size: 16px;text-align: center;border: none;border-radius: 5px;cursor: pointer;transition: background-color 0.3s ease;" onclick="(async () => { 
+        game.REDY.api.openSettingsMenu(true); 
+      })()">${local}
+      </button>
+      <button type="button" class="REDY-button" style="width: 48%; /* Slightly less than 50% to account for spacing */padding: 10px 15px;font-size: 16px;text-align: center;border: none;border-radius: 5px;cursor: pointer;transition: background-color 0.3s ease;" onclick="(async () => { 
         game.REDY.api.openSettingsMenu(false); 
       })()">${local2}
       </button>
+    </div>
   `);
 
   // Helper function to add settings groups before a specified key
