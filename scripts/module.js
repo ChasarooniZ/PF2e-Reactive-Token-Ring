@@ -13,7 +13,7 @@ import { settingsMenu } from "./settingsMenu.js";
 // Initialize module settings and ring color wrapper
 Hooks.once("init", () => {
   registerSettings();
-  //registerRingColorsWrapper();
+  registerRingColorsWrapper();
 });
 
 // Set up main functionality when Foundry VTT is ready
@@ -42,7 +42,7 @@ Hooks.once("ready", async () => {
   if (game.system.id === "pf2e") {
     Hooks.on("applyTokenStatusEffect", applyTokenStatusEffect);
   }
-  
+
 });
 
 /**
