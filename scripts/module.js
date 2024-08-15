@@ -42,6 +42,7 @@ Hooks.once("ready", async () => {
   if (game.system.id === "pf2e") {
     Hooks.on("applyTokenStatusEffect", applyTokenStatusEffect);
   }
+  
 });
 
 /**
