@@ -8,7 +8,7 @@ export function autoColorRing() {
   const backgroundSetting = getSetting(this, "type", "bg");
 
   const colorMap = {
-    health: (token, _type) =>
+    "health-percent": (token, _type) =>
       getColorForHealthLevel(
         token.document.getFlag(MODULE_ID, "tokenHealthLevel") ??
           getHealthLevel(token.actor)
@@ -20,7 +20,7 @@ export function autoColorRing() {
         [CONST.TOKEN_DISPOSITIONS.NEUTRAL]: Color.fromString(COLORS.YELLOW),
         [CONST.TOKEN_DISPOSITIONS.HOSTILE]: Color.fromString(COLORS.RED),
       }?.[token.document.disposition ?? Color.fromString(COLORS.WHITE)]),
-    levelDiff: (token, _type) => {
+    "level-diff": (token, _type) => {
       const partyLevel =
         game.actors.party.members.reduce((tot, char) => tot + char.level, 0) /
           game.actors.party.members.length || 1;
@@ -47,14 +47,13 @@ export function autoColorRing() {
         ]
       );
     },
-    custom: (_token, type) => getSetting(this, "color", type),
+    custom: (_token, type) => getSetting(this, "custom-color", type),
   };
 
   //Ring Color Set
   let ringColor = colorMap[ringSetting]?.(this, "ring") ?? ring;
   // Background Color Set
-  let backgroundColor =
-    colorMap[backgroundSetting]?.(this, "bg") ?? background;
+  let backgroundColor = colorMap[backgroundSetting]?.(this, "bg") ?? background;
 
   const percentColor = game.settings.get(
     MODULE_ID,
