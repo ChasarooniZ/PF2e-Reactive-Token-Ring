@@ -119,6 +119,7 @@ function getDefault(isPlayer, setting, type) {
   if (type === "friendly") return COLORS.GREEN;
   if (type === "hostile") return COLORS.RED;
   if (type === "neutral") return COLORS.YELLOW;
+  if (type === "hidden") return COLORS.PURPLE;
   return null;
 }
 
