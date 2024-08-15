@@ -134,7 +134,7 @@ export function settingsMenu(isWorld) {
         </tr>
       </thead>
       <tbody>
-        ${loadSettings()}
+        ${loadSettings(isWorld)}
       </tbody>
     </table>
   `,
