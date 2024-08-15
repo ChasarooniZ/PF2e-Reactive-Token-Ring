@@ -94,7 +94,7 @@ export function registerSettings() {
         const ty =
           setting === "type" ? String : new foundry.data.fields.ColorField();
         const config = {
-          name: `auto-coloring.${head}.${setting}.${level}`,
+          name: `auto-coloring.${type}.${setting}.${level}`,
           hint: "",
           scope: level,
           config: false,
@@ -104,7 +104,7 @@ export function registerSettings() {
 
         game.settings.register(
           MODULE_ID,
-          `auto-coloring.${head}.${setting}.${level}`,
+          `auto-coloring.${type}.${setting}.${level}`,
           config
         );
       });
