@@ -145,12 +145,12 @@ export function settingsMenu(isWorld) {
             // Save the selected type and custom color
             game.settings.set(
               MODULE_ID,
-              `${rowName}.type.${scope}`,
+              `auto-coloring.${rowName}.type.${scope}`,
               selectedType
             );
             game.settings.set(
               MODULE_ID,
-              `${rowName}.custom-color.${scope}`,
+              `auto-coloring.${rowName}.custom-color.${scope}`,
               customColor
             );
           });
