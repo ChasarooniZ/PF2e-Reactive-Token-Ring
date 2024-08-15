@@ -75,52 +75,38 @@ export function registerSettings() {
     }
   );
 
-  const autoColoringChoices = {
-    unchanged: localize("auto-coloring.choices.unchanged"),
-    custom: localize("auto-coloring.choices.custom"),
-    health: localize("auto-coloring.choices.health"),
-    disposition: localize("auto-coloring.choices.disposition"),
-    ...(game.system.id === "pf2e" && {
-      levelDiff: localize("auto-coloring.choices.levelDiff"),
-    }),
-  };
-
-  const playerAutoColoringChoices = autoColoringChoices;
-  playerAutoColoringChoices.default = localize("auto-coloring.choices.default");
-
-  const actorTypes = [
-    "hostile",
-    "neutral",
-    "friendly",
-    ...(game.system.id === "pf2e" ? ["party"] : []),
-  ];
-
   ["world", "player"].forEach((level) => {
     const isPlayer = level === "player";
-    autoColoringChoices.default = actorTypes.forEach((type) => {
-      ["ring", "background"].forEach((part) => {
-        ["type", "custom-color"].forEach((setting) => {
-          const path = `auto-coloring.${part}.${setting}`;
-          const def = getDefault(isPlayer, setting, type);
-          const ty =
-            setting === "type" ? String : new foundry.data.fields.ColorField();
-          const config = {
-            name: localize(`${path}.name`),
-            hint: localize(`${path}.hint`),
-            scope: level,
-            config: true,
-            default: def,
-            type: ty,
-            requiresReload: true,
-          };
+    [
+      "party.ring",
+      "party.bg",
+      "friendly.ring",
+      "friendly.bg",
+      "neutral.ring",
+      "neutral.bg",
+      "hostile.ring",
+      "hostile.bg",
+      "hidden.ring",
+      "hidden.bg",
+    ].forEach((head) => {
+      ["type", "custom-color"].forEach((setting) => {
+        const def = getDefault(isPlayer, setting, type);
+        const ty =
+          setting === "type" ? String : new foundry.data.fields.ColorField();
+        const config = {
+          name: `auto-coloring.${head}.${setting}.${level}`,
+          hint: "",
+          scope: level,
+          config: false,
+          default: def,
+          type: ty,
+        };
 
-          if (setting === "type")
-            config.choices = !isPlayer
-              ? autoColoringChoices
-              : playerAutoColoringChoices;
-
-          game.settings.register(MODULE_ID, `${path}.${type}.${level}`, config);
-        });
+        game.settings.register(
+          MODULE_ID,
+          `auto-coloring.${head}.${setting}.${level}`,
+          config
+        );
       });
     });
   });
@@ -161,6 +147,17 @@ export function resolvePlayerWorldSetting(settingPath) {
 export function renderSettingsConfig(_, html) {
   // Find the tab related to the module
   const moduleTab = html.find(`.tab[data-tab=${MODULE_ID}]`);
+  const localizedName = "SETT Menu"; /*game.i18n.localize(
+    MODULE_ID + ".module-settings.button"
+  );*/
+  moduleTab
+    .find(`[name="pf2e-reactive-token-ring.auto-coloring.percent-color"]`)
+    .closest(".form-group").before(`
+      <button type="button" class="REDY-button" style="width: 50%;position: relative;transform: translateX(95%);" onclick="(async () => { 
+        game.REDY.api.openSettingsMenu(true); 
+      })()">${localizedName}
+      </button>
+  `);
 
   // Helper function to add settings groups before a specified key
   function addSettingsGroup(

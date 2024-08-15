@@ -29,6 +29,34 @@
           }
         }
       },
+      "configuration-menu": {
+        "hover": {
+          "headers": {
+            "category": "Category of token type",
+            "ring-or-bg": "Whether auto color affects the ring or background",
+            "custom": "Use Custom Color for token rings",
+            "disposition": "Color tokens based on their disposition",
+            "health-percent": "Color tokens based on their percentage health",
+            "level-diff": "Color tokens based on their level difference from the party",
+            "custom-color": "If Custom is toggled, uses this color for tokens"
+          }
+        },
+        "headers": {
+          "title": "REDY: Auto Color Dynamic Token Settings",
+          "world": "World🌎",
+          "player": "Player👤",
+          "category": "Category",
+          "ring-or-bg": "Ring or BG",
+          "custom": "Custom",
+          "disposition": "Disposition",
+          "health-percent": "Health %",
+          "level-diff": "Level Diff",
+          "custom-color": "Custom Color"
+        },
+        "notifications": {
+          "saved": "Custom Token Ring Settings Saved!"
+        }
+      },
       "target": {
         "share-flash": {
           "name": "Share Target Flash",

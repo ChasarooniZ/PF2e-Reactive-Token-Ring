@@ -7,12 +7,13 @@ import {
   updateActor,
 } from "./hooks.js";
 import { MODULE_ID } from "./misc.js";
-import { legacySettingsTestAndMessage,registerSettings } from "./settings.js";
+import { legacySettingsTestAndMessage, registerSettings } from "./settings.js";
+import { settingsMenu } from "./settingsMenu.js";
 
 // Initialize module settings and ring color wrapper
 Hooks.once("init", () => {
   registerSettings();
-  registerRingColorsWrapper();
+  //registerRingColorsWrapper();
 });
 
 // Set up main functionality when Foundry VTT is ready
@@ -20,6 +21,9 @@ Hooks.once("ready", async () => {
   // Register the listener for our module socket.
   // Note that this is not entered on the origin client of any broadcast.
   legacySettingsTestAndMessage();
+  game.REDY.api = {
+    openSettingsMenu: settingsMenu,
+  };
   game.socket.on(`module.${MODULE_ID}`, ({ type, payload }) => {
     if (type === "tokenHealthUpdate") handleTokenHealthUpdate(...payload);
   });
