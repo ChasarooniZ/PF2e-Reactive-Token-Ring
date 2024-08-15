@@ -112,10 +112,6 @@ export function registerSettings() {
   });
 }
 
-function localize(key) {
-  return game.i18n.localize(`${MODULE_ID}.module-settings.${key}`);
-}
-
 function getDefault(isPlayer, setting, type) {
   if (setting === "type") return isPlayer ? "default" : "unchanged";
   if (isPlayer) return COLORS.PLAYER_DEFAULT;
