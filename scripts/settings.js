@@ -88,9 +88,9 @@ export function registerSettings() {
       "hostile.bg",
       "hidden.ring",
       "hidden.bg",
-    ].forEach((head) => {
+    ].forEach((type) => {
       ["type", "custom-color"].forEach((setting) => {
-        const def = getDefault(isPlayer, setting, type);
+        const def = getDefault(isPlayer, setting, type.split(".")[0]);
         const ty =
           setting === "type" ? String : new foundry.data.fields.ColorField();
         const config = {

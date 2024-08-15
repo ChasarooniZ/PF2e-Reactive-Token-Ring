@@ -100,6 +100,6 @@ function getSetting(token, typeOrColor, ringOrBackground) {
       }?.[token.document.disposition] || "neutral";
 
   return resolvePlayerWorldSetting(
-    `auto-coloring.${ringOrBackground}.${typeOrColor}.${type}`
+    `auto-coloring.${type}.${ringOrBackground}.${typeOrColor}`
   );
 }
