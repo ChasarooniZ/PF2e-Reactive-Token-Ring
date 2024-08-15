@@ -23,7 +23,7 @@ function createRow(name, savedType, savedColor, isWorld) {
       ico = "fa-regular fa-face-angry";
       hover = "Tokens with hostile disposition";
       break;
-    case "secret":
+    case "Secret":
       ico = "fa-solid fa-mask";
       hover = "Tokens with a secret disposition";
       break;
