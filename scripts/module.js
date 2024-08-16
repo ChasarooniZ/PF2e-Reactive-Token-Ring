@@ -5,6 +5,7 @@ import {
   preUpdateActor,
   targetToken,
   updateActor,
+  updateToken,
 } from "./hooks.js";
 import { MODULE_ID } from "./misc.js";
 import { legacySettingsTestAndMessage, registerSettings } from "./settings.js";
@@ -39,6 +40,9 @@ Hooks.once("ready", async () => {
 
   // Handle token targeting
   Hooks.on("targetToken", targetToken);
+
+  //Handle Token updates for settings
+  Hooks.on("updateToken", updateToken);
 
   // Handle PF2e specific condition changes
   if (game.system.id === "pf2e") {

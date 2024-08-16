@@ -187,6 +187,8 @@ export function displaySettingsMenu(isWorld) {
               `${MODULE_ID}.module-settings.configuration-menu.notifications.saved`
             )
           );
+          canvas.tokens.placeables.forEach(t => t?.ring?.configureVisuals())
+          game.settings.sheet.close();
         },
       },
       cancel: {

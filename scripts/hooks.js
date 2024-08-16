@@ -79,3 +79,9 @@ export async function applyTokenStatusEffect(token, name, _unknown) {
     }
   }
 }
+
+export async function updateToken(tokenDoc, diff, _mod, _playerID) {
+  if (diff?.disposition !== null) {
+    tokenDoc?.object?.ring?.configureVisuals();
+  }
+}
