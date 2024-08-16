@@ -1,6 +1,11 @@
 {
   "I18N.LANGUAGE": "English",
   "pf2e-reactive-token-ring": {
+    "libwrapper": {
+      "autocolor": {
+        "error": "REDY: Another module is already overriding token ring colors!"
+      }
+    }, 
     "module-settings": {
       "headers": {
         "flash": {
@@ -41,6 +46,20 @@
         },
         "notifications": {
           "saved": "Custom Token Ring Settings Saved!"
+        }
+      },
+      "import-export-menu": {
+        "import": "Import",
+        "export": "Export",
+        "title": "REDY Settings Importer",
+        "body": "Upload Settings JSON",
+        "notifications": {
+          "error": "Invalid JSON in uploaded file. Please check the file content.",
+          "imported": "REDY Settings were successfully Imported! Reloading foundry"
+        },
+        "buttons": {
+          "cancel": "Cancel",
+          "import": "Import"
         }
       },
       "target": {

@@ -25,7 +25,7 @@ Hooks.once("ready", async () => {
     api: {
       openSettingsMenu: settingsMenu,
       importSettings: importSettings,
-      exportSettings: exportSettings
+      exportSettings: exportSettings,
     },
   };
   game.socket.on(`module.${MODULE_ID}`, ({ type, payload }) => {
@@ -144,7 +144,7 @@ function registerRingColorsWrapper() {
     );
   } catch {
     ui.notifications.error(
-      "REDY: Another module is already overriding token ring colors!"
+      game.i18n.localize(`${MODULE_ID}.libwrapper.autocolor.error`)
     );
   }
 }
@@ -181,11 +181,15 @@ function exportSettings(isWorld) {
 function importSettings() {
   // Create a dialog to input JSON and upload a file
   new Dialog({
-    title: "REDY Settings Importer",
+    title: game.i18n.localize(
+      `${MODULE_ID}.module-settings.import-export-menu.title`
+    ),
     content: `
     <form>
       <div class="form-group">
-        <label for="file-input">Upload Settings JSON file:</label>
+        <label for="file-input">${game.i18n.localize(
+          `${MODULE_ID}.module-settings.import-export-menu.body`
+        )}</label>
         <input type="file" id="file-input" name="file-input" accept=".json">
       </div>
     </form>
@@ -193,7 +197,9 @@ function importSettings() {
     buttons: {
       convert: {
         icon: '<i class="fas fa-check"></i>',
-        label: "Convert",
+        label: game.i18n.localize(
+          `${MODULE_ID}.module-settings.import-export-menu.buttons.import`
+        ),
         callback: async (html) => {
           const fileInput = html.find('[name="file-input"]')[0].files[0];
 
@@ -209,7 +215,9 @@ function importSettings() {
             } catch (error) {
               console.error("Invalid JSON file:", error);
               ui.notifications.error(
-                "Invalid JSON in uploaded file. Please check the file content."
+                game.i18n.localize(
+                  `${MODULE_ID}.module-settings.import-export-menu.notifications.error`
+                )
               );
               return;
             }
@@ -218,15 +226,20 @@ function importSettings() {
           console.log("Imported REDY Data:", jsonObject);
           jsonObject.settings.forEach(([key, value]) => {
             game.settings.set(MODULE_ID, key, value);
-          })
+          });
           ui.notifications.info(
-            "REDY Settings were successfully Imported!"
+            game.i18n.localize(
+              `${MODULE_ID}.module-settings.import-export-menu.notifications.imported`
+            )
           );
+          foundry.utils.debouncedReload();
         },
       },
       cancel: {
         icon: '<i class="fas fa-times"></i>',
-        label: "Cancel",
+        label: game.i18n.localize(
+          `${MODULE_ID}.module-settings.import-export-menu.buttons.cancel`
+        ),
       },
     },
     default: "convert",
