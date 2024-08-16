@@ -1,31 +1,33 @@
 import { MODULE_ID } from "./misc.js";
 
 // Function to create the row with the proper data from settings
-function createRow(name, savedType, savedColor, isWorld) {
+function createRow(key, savedType, savedColor, isWorld) {
   const isChecked = (type) => (savedType === type ? "checked" : "");
-  const [type, ringBG] = name.split(" ");
-  let ico = "";
-  let hover = "";
+  const [type, ringBG] = key.split(".");
+  const label = {
+    ico: "",
+    hover: game.i18n.localize(
+      `${MODULE_ID}.module-settings.configuration-menu.hover.row.type.${type}`
+    ),
+    label: game.i18n.localize(
+      `${MODULE_ID}.module-settings.configuration-menu.row.type.${type}`
+    ),
+  };
   switch (type) {
-    case "Party":
-      ico = "fa-solid fa-people-group";
-      hover = "Tokens in the pf2e party";
+    case "party":
+      label.ico = "fa-solid fa-people-group";
       break;
-    case "Friendly":
+    case "friendly":
       ico = "fa-regular fa-face-smile";
-      hover = "Tokens with friendly disposition";
       break;
-    case "Neutral":
+    case "neutral":
       ico = "fa-regular fa-face-meh-blank";
-      hover = "Tokens with neutral disposition";
       break;
-    case "Hostile":
+    case "hostile":
       ico = "fa-regular fa-face-angry";
-      hover = "Tokens with hostile disposition";
       break;
-    case "Secret":
+    case "secret":
       ico = "fa-solid fa-mask";
-      hover = "Tokens with a secret disposition";
       break;
   }
   const icon = `<i class="${ico}"></i>`;
@@ -48,11 +50,13 @@ function createRow(name, savedType, savedColor, isWorld) {
   );
 
   return `
-    <tr data-row="${name}">
+    <tr data-row="${key}">
       <td><strong data-tooltip="${hover}" data-tooltip-direction="UP">${
-    ringBG === "Ring" ? icon + " " + type : ""
+    ringBG === "ring" ? icon + " " + label.label : ""
   }</strong></td>
-      <td><strong>${ringBG}</strong></td>
+      <td><strong>${game.i18n.localize(
+        `${MODULE_ID}.module-settings.configuration-menu.row.${ringBG}`
+      )}</strong></td>
       ${checkboxHTML.join("")}
       <td data-tooltip="${"hi"}">
         <input type="color" name="color" value="${savedColor}">
@@ -65,22 +69,22 @@ function createRow(name, savedType, savedColor, isWorld) {
 // Load settings for each row
 function loadSettings(isWorld) {
   const scope = isWorld ? "world" : "player";
-  const rows = {
-    "Party Ring": "party.ring",
-    "Party BG": "party.bg",
-    "Friendly Ring": "friendly.ring",
-    "Friendly BG": "friendly.bg",
-    "Neutral Ring": "neutral.ring",
-    "Neutral BG": "neutral.bg",
-    "Hostile Ring": "hostile.ring",
-    "Hostile BG": "hostile.bg",
-    "Secret Ring": "secret.ring",
-    "Secret BG": "secret.bg",
-  };
+  const rows = [
+    "party.ring",
+    "party.bg",
+    "friendly.ring",
+    "friendly.bg",
+    "neutral.ring",
+    "neutral.bg",
+    "hostile.ring",
+    "hostile.bg",
+    "secret.ring",
+    "secret.bg",
+  ];
 
-  return Object.keys(rows)
+  return rows
     .map((key) => {
-      const rowKey = rows[key];
+      const rowKey = key;
       const savedType = game.settings.get(
         MODULE_ID,
         `auto-coloring.${rowKey}.type.${scope}`
