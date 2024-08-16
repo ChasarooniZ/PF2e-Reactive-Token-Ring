@@ -5,7 +5,7 @@
       "autocolor": {
         "error": "REDY: Another module is already overriding token ring colors!"
       }
-    }, 
+    },
     "module-settings": {
       "headers": {
         "flash": {
@@ -28,6 +28,15 @@
             "custom-color": "If Custom is toggled, uses this color for tokens",
             "default": "Use the world setting for this",
             "unchanged": "Doesn't auto color the token"
+          },
+          "row": {
+            "type": {
+              "party": "Tokens in the pf2e party",
+              "friendly": "Tokens with friendly disposition",
+              "neutral": "Tokens with neutral disposition",
+              "hostile": "Tokens with hostile disposition",
+              "secret": "Tokens with a secret disposition"
+            }
           }
         },
         "headers": {
@@ -43,6 +52,17 @@
           "custom-color": "Custom Color",
           "default": "Default",
           "unchanged": "Unchanged"
+        },
+        "row": {
+          "type": {
+            "party": "Party",
+            "friendly": "Friendly",
+            "neutral": "Neutral",
+            "hostile": "Hostile",
+            "secret": "Secret"
+          },
+          "ring": "Ring",
+          "background": "BG"
         },
         "notifications": {
           "saved": "Custom Token Ring Settings Saved!"
