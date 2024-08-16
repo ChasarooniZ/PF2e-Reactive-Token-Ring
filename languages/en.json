@@ -17,6 +17,7 @@
         }
       },
       "configuration-menu": {
+        "redy-menu": "REDY Menu",
         "hover": {
           "headers": {
             "category": "Category of token type",

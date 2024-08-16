@@ -24,10 +24,9 @@
 
 .REDY-button-settings {
   width: 49%; /* Slightly less than 50% to account for spacing */
-  padding: 10px 15px;
-  font-size: 16px;
+  /*padding: 10px 15px;
+  font-size: 16px;*/
   text-align: center;
-  border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
