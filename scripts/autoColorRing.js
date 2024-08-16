@@ -3,69 +3,78 @@ import { resolvePlayerWorldSetting } from "./settings.js";
 import { getHealthLevel } from "./systemCompatability.js";
 
 export function autoColorRing() {
-  const { ring, background } = this.document.ring.colors;
+  // Ensure this.document and this.document.ring exist
+  const ringColors = this.document?.ring?.colors || {};
+  const { ring = Color.WHITE, background = Color.BLACK } = ringColors;
+
   const ringSetting = getSetting(this, "type", "ring");
   const backgroundSetting = getSetting(this, "type", "bg");
 
   const colorMap = {
     "health-percent": (token, _type) =>
       getColorForHealthLevel(
-        token.document.getFlag(MODULE_ID, "tokenHealthLevel") ??
+        token.document?.getFlag(MODULE_ID, "tokenHealthLevel") ??
           getHealthLevel(token.actor)
       ),
-    disposition: (token, _type) =>
-      ({
-        [CONST.TOKEN_DISPOSITIONS.SECRET]: Color.fromString(COLORS.PURPLE),
-        [CONST.TOKEN_DISPOSITIONS.FRIENDLY]: Color.fromString(COLORS.GREEN),
-        [CONST.TOKEN_DISPOSITIONS.NEUTRAL]: Color.fromString(COLORS.YELLOW),
-        [CONST.TOKEN_DISPOSITIONS.HOSTILE]: Color.fromString(COLORS.RED),
-      }?.[token?.document?.disposition] ?? Color.fromString(COLORS.WHITE)),
+    disposition: (token, _type) => {
+      const disposition = token?.document?.disposition;
+      return (
+        {
+          [CONST.TOKEN_DISPOSITIONS.SECRET]: Color.fromString(COLORS.PURPLE),
+          [CONST.TOKEN_DISPOSITIONS.FRIENDLY]: Color.fromString(COLORS.GREEN),
+          [CONST.TOKEN_DISPOSITIONS.NEUTRAL]: Color.fromString(COLORS.YELLOW),
+          [CONST.TOKEN_DISPOSITIONS.HOSTILE]: Color.fromString(COLORS.RED),
+        }[disposition] || Color.fromString(COLORS.WHITE)
+      );
+    },
     "level-diff": (token, _type) => {
+      const party = game.actors?.party;
+      const partyMembers = party?.members || [];
       const partyLevel =
-        game.actors.party.members.reduce((tot, char) => tot + char.level, 0) /
-          game.actors.party.members.length || 1;
+        partyMembers.reduce((tot, char) => tot + (char.level || 0), 0) /
+          (partyMembers.length || 1) || 1;
       const levelDiff = (token?.actor?.level || 0) - partyLevel;
+      const levelKey =
+        levelDiff <= -4
+          ? "-4"
+          : levelDiff <= -3
+          ? "-3"
+          : levelDiff <= -2
+          ? "-2"
+          : levelDiff <= -1
+          ? "-1"
+          : levelDiff <= 0
+          ? "0"
+          : levelDiff <= 1
+          ? "+1"
+          : levelDiff <= 2
+          ? "+2"
+          : levelDiff <= 3
+          ? "+3"
+          : "+4";
       return Color.fromString(
-        COLORS.PF2E.LEVELDIFF.DEFAULT[
-          levelDiff <= -4
-            ? "-4"
-            : levelDiff <= -3
-            ? "-3"
-            : levelDiff <= -2
-            ? "-2"
-            : levelDiff <= -1
-            ? "-1"
-            : levelDiff <= 0
-            ? "0"
-            : levelDiff <= 1
-            ? "+1"
-            : levelDiff <= 2
-            ? "+2"
-            : levelDiff <= 3
-            ? "+3"
-            : "+4"
-        ] ?? COLORS.WHITE
+        COLORS.PF2E.LEVELDIFF.DEFAULT[levelKey] || COLORS.WHITE
       );
     },
     custom: (_token, type) =>
-      Color.fromString(getSetting(this, "custom-color", type) ?? COLORS.WHITE),
+      Color.fromString(getSetting(this, "custom-color", type) || COLORS.WHITE),
   };
 
-  //Ring Color Set
-  let ringColor = colorMap[ringSetting]?.(this, "ring") ?? ring;
+  // Ring Color Set
+  let ringColor = colorMap[ringSetting]?.(this, "ring") || ring;
   // Background Color Set
-  let backgroundColor = colorMap[backgroundSetting]?.(this, "bg") ?? background;
+  let backgroundColor = colorMap[backgroundSetting]?.(this, "bg") || background;
 
   const percentColor = game.settings.get(
     MODULE_ID,
     "auto-coloring.percent-color"
   );
 
-  //Ring Color Scaling
+  // Ring Color Scaling
   ringColor = !["unchanged", "custom"].includes(ringSetting)
     ? Color.multiplyScalar(ringColor, percentColor)
     : ringColor;
-  //Background Color Scaling
+  // Background Color Scaling
   backgroundColor = !["unchanged", "custom"].includes(backgroundSetting)
     ? Color.multiplyScalar(backgroundColor, percentColor)
     : backgroundColor;
