@@ -44,7 +44,7 @@ export function autoColorRing() {
             : levelDiff <= 3
             ? "+3"
             : "+4"
-        ]
+        ] ?? COLORS.WHITE
       );
     },
     custom: (_token, type) => getSetting(this, "custom-color", type),
