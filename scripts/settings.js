@@ -158,7 +158,7 @@ export function renderSettingsConfig(_, html) {
   moduleTab
     .find(`[name="pf2e-reactive-token-ring.auto-coloring.percent-color"]`)
     .closest(".form-group").before(`
-    <div class="button-container" style="display: flex;justify-content: space-between;width: 100%;max-width: 600px; margin: 0 auto;">
+    <div class="button-container" style="display: flex;justify-content: space-between;width: 100%; margin: 0 auto;">
       ${buttons.join("")}
     </div>
   `);
@@ -175,8 +175,8 @@ export function renderSettingsConfig(_, html) {
   moduleTab
     .find(`[name="pf2e-reactive-token-ring.target.share-flash"]`)
     .closest(".form-group").before(`
-    <div class="button-container" style="display: flex;justify-content: space-between;width: 100%;max-width: 600px; margin: 0 auto;">
-      ${buttons.join("")}
+    <div class="button-container" style="display: flex;justify-content: space-between;width: 100%; margin: 0 auto;">
+      ${buttonsIE.join("")}
     </div>
   `);
 
