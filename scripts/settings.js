@@ -191,40 +191,38 @@ export function renderSettingsConfig(_, html) {
   // Create buttons for the settings menu
   const buttons = buttonScopes.map(
     (scope) => `
-    <div class="REDY-button-container">
       <button type="button" class="REDY-button-settings" onclick="(async () => { 
         game.REDY.api.openSettingsMenu(${scope === "world"}); 
       })()">${menuLabel} (${game.i18n.localize(
       `${MODULE_ID}.module-settings.configuration-menu.headers.${scope}`
     )})
-      </button>
-    </div>`
+      </button>`
   );
 
   // Add the buttons before the 'percent-color' setting
   moduleTab
     .find(`[name="pf2e-reactive-token-ring.auto-coloring.percent-color"]`)
-    .closest(".form-group")
-    .before(buttons.join(""));
+    .closest(".form-group").before(`
+    <div class="REDY-button-container">${buttons.join("")}
+    </div>`);
 
   // Create import/export buttons
   const importExportButtons = ["export", "import"].map(
     (action) => `
-    <div class="REDY-button-container">
       <button type="button" class="REDY-button-settings" onclick="(async () => { 
         game.REDY.api.${action}Settings(${action === "export" ? true : ""}); 
       })()">${game.i18n.localize(
         `${MODULE_ID}.module-settings.import-export-menu.${action}-settings`
-      )} Settings
-      </button>
-    </div>`
+      )}
+      </button>`
   );
 
   // Add import/export buttons before the 'share-flash' setting
   moduleTab
     .find(`[name="pf2e-reactive-token-ring.target.share-flash"]`)
-    .closest(".form-group")
-    .before(importExportButtons.join(""));
+    .closest(".form-group").before(`
+    <div class="REDY-button-container">${importExportButtons.join("")}
+    </div>`);
 
   // Helper function to add headers for settings groups
   function addSettingsHeader(
