@@ -1,75 +1,91 @@
 import { MODULE_ID } from "./misc.js";
 
-// Function to create the row with the proper data from settings
-function createRow(key, savedType, savedColor, isWorld) {
+/**
+ * Function to create a table row representing settings for a specific token type and background.
+ * @param {string} key - The key representing the token type and background (e.g., "party.ring").
+ * @param {string} savedType - The saved type setting for the token.
+ * @param {string} savedColor - The saved color setting for the token.
+ * @param {boolean} isWorld - Boolean indicating whether the settings are for the world scope.
+ * @returns {string} - HTML string for the table row.
+ */
+function createSettingsRow(key, savedType, savedColor, isWorld) {
   const isChecked = (type) => (savedType === type ? "checked" : "");
-  const [type, ringBG] = key.split(".");
+  const [tokenType, backgroundType] = key.split(".");
   const label = {
-    ico: "",
-    hover: game.i18n.localize(
-      `${MODULE_ID}.module-settings.configuration-menu.hover.row.type.${type}`
+    iconClass: "",
+    hoverText: game.i18n.localize(
+      `${MODULE_ID}.module-settings.configuration-menu.hover.row.type.${tokenType}`
     ),
-    label: game.i18n.localize(
-      `${MODULE_ID}.module-settings.configuration-menu.row.type.${type}`
+    labelText: game.i18n.localize(
+      `${MODULE_ID}.module-settings.configuration-menu.row.type.${tokenType}`
     ),
   };
-  switch (type) {
+
+  switch (tokenType) {
     case "party":
-      label.ico = "fa-solid fa-people-group";
+      label.iconClass = "fa-solid fa-people-group";
       break;
     case "friendly":
-      ico = "fa-regular fa-face-smile";
+      label.iconClass = "fa-regular fa-face-smile";
       break;
     case "neutral":
-      ico = "fa-regular fa-face-meh-blank";
+      label.iconClass = "fa-regular fa-face-meh-blank";
       break;
     case "hostile":
-      ico = "fa-regular fa-face-angry";
+      label.iconClass = "fa-regular fa-face-angry";
       break;
     case "secret":
-      ico = "fa-solid fa-mask";
+      label.iconClass = "fa-solid fa-mask";
       break;
   }
-  const icon = `<i class="${ico}"></i>`;
-  const checkboxIds = [
+
+  const iconHTML = `<i class="${label.iconClass}"></i>`;
+  const checkboxOptions = [
     isWorld ? "unchanged" : "default",
     "custom",
     "disposition",
     "health-percent",
   ];
-  if (game.system.id === "pf2e") checkboxIds.push("level-diff");
-  const checkboxes = checkboxIds.map((c) => ({
-    id: c,
-    hoverText: "Hi There",
-  }));
-  const checkboxHTML = checkboxes.map(
-    (c) =>
-      `<td><input type="checkbox" name="${c.id}" ${isChecked(
-        c.id
-      )} data-tooltip="${c.hoverText}"></td>`
-  );
+  if (game.system.id === "pf2e") checkboxOptions.push("level-diff");
+
+  const checkboxesHTML = checkboxOptions
+    .map(
+      (option) => `
+      <td>
+        <input type="checkbox" name="${option}" ${isChecked(
+        option
+      )} data-tooltip="Tooltip text">
+      </td>`
+    )
+    .join("");
 
   return `
-    <tr data-row="${key}">
-      <td><strong data-tooltip="${hover}" data-tooltip-direction="UP">${
-    ringBG === "ring" ? icon + " " + label.label : ""
-  }</strong></td>
+    <tr data-row-key="${key}">
+      <td>
+        <strong data-tooltip="${label.hoverText}" data-tooltip-direction="UP">
+          ${backgroundType === "ring" ? iconHTML + " " + label.labelText : ""}
+        </strong>
+      </td>
       <td><strong>${game.i18n.localize(
-        `${MODULE_ID}.module-settings.configuration-menu.row.${ringBG}`
+        `${MODULE_ID}.module-settings.configuration-menu.row.${backgroundType}`
       )}</strong></td>
-      ${checkboxHTML.join("")}
-      <td data-tooltip="${"hi"}">
+      ${checkboxesHTML}
+      <td>
         <input type="color" name="color" value="${savedColor}">
-        <input type="text" name="colorText" value="${savedColor}" maxlength="7" style="width: 70px; margin-left: 5px;">
+        <input type="text" name="colorText" value="${savedColor}" maxlength="7" class="REDY-color-input">
       </td>
     </tr>
   `;
 }
 
-// Load settings for each row
-function loadSettings(isWorld) {
+/**
+ * Function to load and generate HTML for settings rows.
+ * @param {boolean} isWorld - Boolean indicating whether the settings are for the world scope.
+ * @returns {string} - HTML string for all settings rows.
+ */
+function loadSettingsRows(isWorld) {
   const scope = isWorld ? "world" : "player";
-  const rows = [
+  const rowKeys = [
     "party.ring",
     "party.bg",
     "friendly.ring",
@@ -82,32 +98,34 @@ function loadSettings(isWorld) {
     "secret.bg",
   ];
 
-  return rows
+  return rowKeys
     .map((key) => {
-      const rowKey = key;
       const savedType = game.settings.get(
         MODULE_ID,
-        `auto-coloring.${rowKey}.type.${scope}`
+        `auto-coloring.${key}.type.${scope}`
       );
       const savedColor = game.settings.get(
         MODULE_ID,
-        `auto-coloring.${rowKey}.custom-color.${scope}`
+        `auto-coloring.${key}.custom-color.${scope}`
       );
-      return createRow(key, savedType, savedColor, isWorld);
+      return createSettingsRow(key, savedType, savedColor, isWorld);
     })
     .join("");
 }
 
-// Register settings initially
-export function settingsMenu(isWorld) {
+/**
+ * Function to display the settings menu in a dialog.
+ * @param {boolean} isWorld - Boolean indicating whether the settings are for the world scope.
+ */
+export function displaySettingsMenu(isWorld) {
   const scope = isWorld ? "world" : "player";
-  const title = game.i18n.localize(
+  const dialogTitle = game.i18n.localize(
     `${MODULE_ID}.module-settings.configuration-menu.headers.title`
   );
-  const titleScope = game.i18n.localize(
+  const scopeTitle = game.i18n.localize(
     `${MODULE_ID}.module-settings.configuration-menu.headers.${scope}`
   );
-  const headerIDs = [
+  const headerKeys = [
     "category",
     "ring-or-bg",
     isWorld ? "unchanged" : "default",
@@ -115,57 +133,52 @@ export function settingsMenu(isWorld) {
     "disposition",
     "health-percent",
   ];
-  if (game.system.id === "pf2e") headerIDs.push("level-diff");
-  headerIDs.push("custom-color");
+  if (game.system.id === "pf2e") headerKeys.push("level-diff");
+  headerKeys.push("custom-color");
 
-  const headers = headerIDs.map((h) => ({
-    id: h,
-    label: game.i18n.localize(
-      `${MODULE_ID}.module-settings.configuration-menu.headers.${h}`
-    ),
-    hoverText: game.i18n.localize(
-      `${MODULE_ID}.module-settings.configuration-menu.hover.headers.${h}`
-    ),
-  }));
-  const headerHTML = headers.map(
-    (h) => `<th data-tooltip="${h.hoverText}">${h.label}</th>`
-  );
+  const headersHTML = headerKeys
+    .map(
+      (key) => `
+      <th data-tooltip="${game.i18n.localize(
+        `${MODULE_ID}.module-settings.configuration-menu.hover.headers.${key}`
+      )}">
+        ${game.i18n.localize(
+          `${MODULE_ID}.module-settings.configuration-menu.headers.${key}`
+        )}
+      </th>`
+    )
+    .join("");
 
   new Dialog({
-    title: `${title} (${titleScope})`,
+    title: `${dialogTitle} (${scopeTitle})`,
     content: `
-    <table style="width:100%; text-align:center;">
-      <thead>
-        <tr>
-         ${headerHTML.join("")}
-        </tr>
-      </thead>
-      <tbody>
-        ${loadSettings(isWorld)}
-      </tbody>
-    </table>
-  `,
+      <table class="REDY-settings-table">
+        <thead>
+          <tr>${headersHTML}</tr>
+        </thead>
+        <tbody>${loadSettingsRows(isWorld)}</tbody>
+      </table>
+    `,
     buttons: {
       save: {
-        label: "Save",
+        label: game.i18n.localize("Save"),
         callback: (html) => {
-          html.find("tr[data-row]").each(function () {
-            const row = $(this);
-            const rowName = row.data("row").toLowerCase().replace(" ", ".");
+          html.find("tr[data-row-key]").each(function () {
+            const $row = $(this);
+            const rowKey = $row.data("row-key").toLowerCase().replace(" ", ".");
             const selectedType =
-              row.find('input[type="checkbox"]:checked').attr("name") ??
+              $row.find('input[type="checkbox"]:checked').attr("name") ??
               (isWorld ? "unchanged" : "default");
-            const customColor = row.find('input[name="color"]').val();
+            const customColor = $row.find('input[name="color"]').val();
 
-            // Save the selected type and custom color
             game.settings.set(
               MODULE_ID,
-              `auto-coloring.${rowName}.type.${scope}`,
+              `auto-coloring.${rowKey}.type.${scope}`,
               selectedType
             );
             game.settings.set(
               MODULE_ID,
-              `auto-coloring.${rowName}.custom-color.${scope}`,
+              `auto-coloring.${rowKey}.custom-color.${scope}`,
               customColor
             );
           });
@@ -177,7 +190,7 @@ export function settingsMenu(isWorld) {
         },
       },
       cancel: {
-        label: "Cancel",
+        label: game.i18n.localize("Cancel"),
       },
     },
     default: "save",

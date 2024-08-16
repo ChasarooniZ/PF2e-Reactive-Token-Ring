@@ -1,23 +1,15 @@
-import { COLORS, MODULE_ID } from "./misc.js";
-
+/**
+ * Registers module settings and hooks into the Foundry VTT settings UI.
+ */
 export function registerSettings() {
+  // Register the custom render function for the settings UI
   Hooks.on("renderSettingsConfig", renderSettingsConfig);
-  const settings = [
-    {
-      key: "target.share-flash",
-      default: true,
-      type: Boolean,
-    },
-    {
-      key: "target.player-color",
-      default: false,
-      type: Boolean,
-    },
-    {
-      key: "damage-heal.scale-on-%-hp",
-      default: true,
-      type: Boolean,
-    },
+
+  // Define an array of settings to be registered
+  const settingsDefinitions = [
+    { key: "target.share-flash", default: true, type: Boolean },
+    { key: "target.player-color", default: false, type: Boolean },
+    { key: "damage-heal.scale-on-%-hp", default: true, type: Boolean },
     {
       key: "duration",
       default: 500,
@@ -53,21 +45,32 @@ export function registerSettings() {
     },
     {
       key: "auto-coloring.percent-color",
-      default: "0.75",
+      default: 0.75,
       type: Number,
       range: { min: 0, max: 1, step: 0.05 },
       requiresReload: true,
     },
   ];
-  addLegacySettings();
-  settings.forEach(
-    ({ key, default: def, type, range, config = true, requiresReload }) => {
+
+  // Register legacy settings
+  registerLegacySettings();
+
+  // Register the defined settings
+  settingsDefinitions.forEach(
+    ({
+      key,
+      default: defaultValue,
+      type,
+      range,
+      config = true,
+      requiresReload,
+    }) => {
       game.settings.register(MODULE_ID, key, {
         name: game.i18n.localize(`${MODULE_ID}.module-settings.${key}.name`),
         hint: game.i18n.localize(`${MODULE_ID}.module-settings.${key}.hint`),
         scope: "world",
         config,
-        default: def,
+        default: defaultValue,
         type,
         range,
         requiresReload,
@@ -75,9 +78,10 @@ export function registerSettings() {
     }
   );
 
-  ["world", "player"].forEach((level) => {
-    const isPlayer = level === "player";
-    [
+  // Register settings for different scopes (world and player)
+  ["world", "player"].forEach((scope) => {
+    const isPlayerScope = scope === "player";
+    const settingTypes = [
       "party.ring",
       "party.bg",
       "friendly.ring",
@@ -88,133 +92,170 @@ export function registerSettings() {
       "hostile.bg",
       "secret.ring",
       "secret.bg",
-    ].forEach((type) => {
-      ["type", "custom-color"].forEach((setting) => {
-        const def = getDefault(isPlayer, setting, type.split(".")[0]);
-        const ty =
-          setting === "type" ? String : new foundry.data.fields.ColorField();
-        const config = {
-          name: `auto-coloring.${type}.${setting}.${level}`,
-          hint: "",
-          scope: level,
-          config: false,
-          default: def,
-          type: ty,
-        };
+    ];
+
+    settingTypes.forEach((settingType) => {
+      ["type", "custom-color"].forEach((subSetting) => {
+        const defaultValue = getDefaultSetting(
+          isPlayerScope,
+          subSetting,
+          settingType.split(".")[0]
+        );
+        const settingDataType =
+          subSetting === "type" ? String : new foundry.data.fields.ColorField();
 
         game.settings.register(
           MODULE_ID,
-          `auto-coloring.${type}.${setting}.${level}`,
-          config
+          `auto-coloring.${settingType}.${subSetting}.${scope}`,
+          {
+            name: `auto-coloring.${settingType}.${subSetting}.${scope}`,
+            hint: "",
+            scope,
+            config: false,
+            default: defaultValue,
+            type: settingDataType,
+          }
         );
       });
     });
   });
 }
 
-function getDefault(isPlayer, setting, type) {
-  if (setting === "type") return isPlayer ? "default" : "unchanged";
-  if (isPlayer) return COLORS.PLAYER_DEFAULT;
-  if (type === "party") return COLORS.DEEPSKYBLUE;
-  if (type === "friendly") return COLORS.GREEN;
-  if (type === "hostile") return COLORS.RED;
-  if (type === "neutral") return COLORS.YELLOW;
-  if (type === "secret") return COLORS.PURPLE;
-  return null;
+/**
+ * Returns the default value for a given setting.
+ *
+ * @param {boolean} isPlayerScope - True if the setting is for player scope, false otherwise.
+ * @param {string} setting - The specific setting type ('type' or 'custom-color').
+ * @param {string} settingCategory - The category of the setting (e.g., 'party', 'friendly').
+ * @returns {string|null} - The default value for the setting.
+ */
+function getDefaultSetting(isPlayerScope, setting, settingCategory) {
+  if (setting === "type") return isPlayerScope ? "default" : "unchanged";
+  if (isPlayerScope) return COLORS.PLAYER_DEFAULT;
+  switch (settingCategory) {
+    case "party":
+      return COLORS.DEEPSKYBLUE;
+    case "friendly":
+      return COLORS.GREEN;
+    case "hostile":
+      return COLORS.RED;
+    case "neutral":
+      return COLORS.YELLOW;
+    case "secret":
+      return COLORS.PURPLE;
+    default:
+      return null;
+  }
 }
 
+/**
+ * Retrieves the localized prefix for a setting.
+ *
+ * @param {string} prefix - The prefix to be localized.
+ * @returns {string} - The localized prefix string.
+ */
 function getPrefix(prefix) {
   const path = `${MODULE_ID}.module-settings.auto-coloring.prefixes.`;
   return game.i18n.localize(`${path}${prefix}`);
 }
 
+/**
+ * Resolves the effective value of a setting, considering both player and world scopes.
+ *
+ * @param {string} settingPath - The path to the setting.
+ * @returns {string} - The resolved setting value.
+ */
 export function resolvePlayerWorldSetting(settingPath) {
-  const world = game.settings.get(MODULE_ID, `${settingPath}.world`);
-  const player = game.settings.get(MODULE_ID, `${settingPath}.player`);
-  return player === "default" || player === COLORS.PLAYER_DEFAULT
-    ? world
-    : player;
+  const worldValue = game.settings.get(MODULE_ID, `${settingPath}.world`);
+  const playerValue = game.settings.get(MODULE_ID, `${settingPath}.player`);
+  return playerValue === "default" || playerValue === COLORS.PLAYER_DEFAULT
+    ? worldValue
+    : playerValue;
 }
 
 /**
- * Credit to PF2e Token Action HUD for the code on this to reference, helped a tooon
- * @param {} _
- * @param {*} html
+ * Custom render function to modify the settings UI.
+ *
+ * @param {} _ - Placeholder parameter for the render hook.
+ * @param {*} html - The HTML content of the settings UI.
  */
 export function renderSettingsConfig(_, html) {
-  // Find the tab related to the module
   const moduleTab = html.find(`.tab[data-tab=${MODULE_ID}]`);
-  const local = "SETT Menu";
-  const buttonIds = ["player"];
-  if (game.user.isGM) buttonIds.unshift("world");
-  const buttons = buttonIds.map(
-    (id) => `
-  <div class="button-container" style="display: flex;justify-content: space-between;width: 100%;max-width: 600px; margin: 0 auto;">
-    <button type="button" class="REDY-button" style="width: 48%; /* Slightly less than 50% to account for spacing */padding: 10px 15px;font-size: 16px;text-align: center;border: none;border-radius: 5px;cursor: pointer;transition: background-color 0.3s ease;" onclick="(async () => { 
-      game.REDY.api.openSettingsMenu(${id === "world"}); 
-    })()">${local} (${id})
-    </button>`
+  const menuLabel = "SETT Menu";
+  const buttonScopes = ["player"];
+  if (game.user.isGM) buttonScopes.unshift("world");
+
+  // Create buttons for the settings menu
+  const buttons = buttonScopes.map(
+    (scope) => `
+    <div class="REDY-button-container">
+      <button type="button" class="REDY-button-settings" onclick="(async () => { 
+        game.REDY.api.openSettingsMenu(${scope === "world"}); 
+      })()">${menuLabel} (${scope})
+      </button>
+    </div>`
   );
+
+  // Add the buttons before the 'percent-color' setting
   moduleTab
     .find(`[name="pf2e-reactive-token-ring.auto-coloring.percent-color"]`)
-    .closest(".form-group").before(`
-    <div class="button-container" style="display: flex;justify-content: space-between;width: 100%; margin: 0 auto;">
-      ${buttons.join("")}
-    </div>
-  `);
+    .closest(".form-group")
+    .before(buttons.join(""));
 
-  const buttonIE_IDs = ["export", "import"];
-  const buttonsIE = buttonIE_IDs.map(
-    (id) => `
-  <div class="button-container" style="display: flex;justify-content: space-between;width: 100%;max-width: 600px; margin: 0 auto;">
-    <button type="button" class="REDY-button" style="width: 48%; /* Slightly less than 50% to account for spacing */padding: 10px 15px;font-size: 16px;text-align: center;border: none;border-radius: 5px;cursor: pointer;transition: background-color 0.3s ease;" onclick="(async () => { 
-      game.REDY.api.${id}Settings(${id === "export" ? true : ""}); 
-    })()">${id} Settings
-    </button>`
+  // Create import/export buttons
+  const importExportButtons = ["export", "import"].map(
+    (action) => `
+    <div class="REDY-button-container">
+      <button type="button" class="REDY-button-settings" onclick="(async () => { 
+        game.REDY.api.${action}Settings(${action === "export" ? true : ""}); 
+      })()">${action} Settings
+      </button>
+    </div>`
   );
+
+  // Add import/export buttons before the 'share-flash' setting
   moduleTab
     .find(`[name="pf2e-reactive-token-ring.target.share-flash"]`)
-    .closest(".form-group").before(`
-    <div class="button-container" style="display: flex;justify-content: space-between;width: 100%; margin: 0 auto;">
-      ${buttonsIE.join("")}
-    </div>
-  `);
+    .closest(".form-group")
+    .before(importExportButtons.join(""));
 
-  // Helper function to add settings groups before a specified key
-  function addSettingsGroup(
+  // Helper function to add headers for settings groups
+  function addSettingsHeader(
     headerKey,
     settingID,
     elementType = "h3",
-    mod = ""
+    additionalAttributes = ""
   ) {
-    // Retrieve the localized name for the setting
-    const localizedName = game.i18n.localize(
+    const localizedHeader = game.i18n.localize(
       `${MODULE_ID}.module-settings.headers.${headerKey}`
     );
-    // Find the target element and add the localized name before it
     moduleTab
       .find(`[name="${MODULE_ID}.${settingID}"]`)
       .closest(".form-group")
-      .before(`<${elementType} ${mod}>${localizedName}</${elementType}>`);
+      .before(
+        `<${elementType} ${additionalAttributes}>${localizedHeader}</${elementType}>`
+      );
   }
 
-  // Adding settings groups for various options
-  addSettingsGroup("flash.name", "target.share-flash", "h2");
-  addSettingsGroup("flash.colors", "colors.damage", "h3");
-  addSettingsGroup("auto-coloring.name", "auto-coloring.percent-color", "h2");
-  addSettingsGroup(
+  // Add headers to organize settings in the UI
+  addSettingsHeader("flash.name", "target.share-flash", "h2");
+  addSettingsHeader("flash.colors", "colors.damage", "h3");
+  addSettingsHeader("auto-coloring.name", "auto-coloring.percent-color", "h2");
+  addSettingsHeader(
     "auto-coloring.scope.world",
     "auto-coloring.ring.type.hostile.world",
     "h3"
   );
-  addSettingsGroup(
+  addSettingsHeader(
     "auto-coloring.scope.player",
     "auto-coloring.ring.type.hostile.player",
     "h3"
   );
+
+  // Add headers for specific scopes and types
   ["hostile", "neutral", "friendly", "party"].forEach((type) => {
     ["player", "world"].forEach((scope) => {
-      addSettingsGroup(
+      addSettingsHeader(
         `auto-coloring.type.${scope}.${type}`,
         `auto-coloring.ring.type.${type}.${scope}`,
         "h4"
@@ -223,33 +264,9 @@ export function renderSettingsConfig(_, html) {
   });
 }
 
-function addLegacySettings() {
-  game.settings.register(MODULE_ID, "auto-coloring.ring", {
-    name: "auto-ring",
-    hint: "",
-    scope: "client",
-    config: false,
-    default: "",
-    type: String,
-  });
-  game.settings.register(MODULE_ID, "auto-coloring.background", {
-    name: "auto-bg",
-    hint: "",
-    scope: "client",
-    config: false,
-    default: "",
-    type: String,
-  });
-  game.settings.register(MODULE_ID, "auto-coloring.health-targets", {
-    name: "auto-health-targets",
-    hint: "",
-    scope: "client",
-    config: false,
-    default: "",
-    type: String,
-  });
-}
-
+/**
+ * Registers legacy settings to maintain backward compatibility.
+ */
 export function legacySettingsTestAndMessage() {
   const settingsKeys = [
     "auto-coloring.ring",
