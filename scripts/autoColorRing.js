@@ -47,7 +47,7 @@ export function autoColorRing() {
         ] ?? COLORS.WHITE
       );
     },
-    custom: (_token, type) => getSetting(this, "custom-color", type),
+    custom: (_token, type) => Color.fromString(getSetting(this, "custom-color", type)?? COLORS.WHITE),
   };
 
   //Ring Color Set
