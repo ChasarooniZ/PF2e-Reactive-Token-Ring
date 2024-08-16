@@ -28,6 +28,9 @@
     ]
   },
   "esmodules": ["scripts/module.js"],
+  "styles": [
+    "styles/module.css"
+  ],
   "socket": true,
   "languages": [
     {
