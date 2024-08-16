@@ -182,7 +182,9 @@ export function resolvePlayerWorldSetting(settingPath) {
  */
 export function renderSettingsConfig(_, html) {
   const moduleTab = html.find(`.tab[data-tab=${MODULE_ID}]`);
-  const menuLabel = "SETT Menu";
+  const menuLabel = game.i18n.localize(
+    `${MODULE_ID}.module-settings.configuration-menu.redy-menu`
+  );
   const buttonScopes = ["player"];
   if (game.user.isGM) buttonScopes.unshift("world");
 

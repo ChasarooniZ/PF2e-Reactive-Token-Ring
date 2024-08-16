@@ -2,14 +2,28 @@
   width: 100%;
   text-align: center;
 }
+.REDY-settings-table td {
+  padding: 5px;
+  vertical-align: middle; /* Aligns items vertically in the middle */
+}
+
+.REDY-settings-table input[type="color"] {
+  width: 60px; /* Adjust width as needed */
+  height: 30px; /* Adjust height as needed */
+  margin-right: 10px; /* Space between color picker and text box */
+  display: inline-block;
+  vertical-align: middle; /* Aligns with the text box */
+}
 
 .REDY-color-input {
-  width: 70px;
-  margin-left: 5px;
+  width: 80px; /* Smaller width for the text box */
+  display: inline-block;
+  vertical-align: middle; /* Aligns with the color picker */
+  padding: 5px;
 }
 
 .REDY-button-settings {
-  width: 48%; /* Slightly less than 50% to account for spacing */
+  width: 49%; /* Slightly less than 50% to account for spacing */
   padding: 10px 15px;
   font-size: 16px;
   text-align: center;
@@ -22,7 +36,9 @@
 .REDY-button-container {
   display: flex;
   justify-content: space-between;
+  gap: 1%; /* Add a gap between the buttons */
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
 }
+
