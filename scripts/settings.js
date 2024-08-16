@@ -192,7 +192,9 @@ export function renderSettingsConfig(_, html) {
     <div class="REDY-button-container">
       <button type="button" class="REDY-button-settings" onclick="(async () => { 
         game.REDY.api.openSettingsMenu(${scope === "world"}); 
-      })()">${menuLabel} (${scope})
+      })()">${menuLabel} (${game.i18n.localize(
+      `${MODULE_ID}.module-settings.configuration-menu.headers.${scope}`
+    )})
       </button>
     </div>`
   );
