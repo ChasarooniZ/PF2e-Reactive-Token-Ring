@@ -19,12 +19,12 @@ export function autoColorRing() {
         [CONST.TOKEN_DISPOSITIONS.FRIENDLY]: Color.fromString(COLORS.GREEN),
         [CONST.TOKEN_DISPOSITIONS.NEUTRAL]: Color.fromString(COLORS.YELLOW),
         [CONST.TOKEN_DISPOSITIONS.HOSTILE]: Color.fromString(COLORS.RED),
-      }?.[token.document.disposition ?? Color.fromString(COLORS.WHITE)]),
+      }?.[token?.document?.disposition] ?? Color.fromString(COLORS.WHITE)),
     "level-diff": (token, _type) => {
       const partyLevel =
         game.actors.party.members.reduce((tot, char) => tot + char.level, 0) /
           game.actors.party.members.length || 1;
-      const levelDiff = token.actor.level - partyLevel;
+      const levelDiff = (token?.actor?.level || 0) - partyLevel;
       return Color.fromString(
         COLORS.PF2E.LEVELDIFF.DEFAULT[
           levelDiff <= -4
@@ -47,7 +47,8 @@ export function autoColorRing() {
         ] ?? COLORS.WHITE
       );
     },
-    custom: (_token, type) => Color.fromString(getSetting(this, "custom-color", type)?? COLORS.WHITE),
+    custom: (_token, type) =>
+      Color.fromString(getSetting(this, "custom-color", type) ?? COLORS.WHITE),
   };
 
   //Ring Color Set
@@ -98,7 +99,7 @@ function getSetting(token, typeOrColor, ringOrBackground) {
         [CONST.TOKEN_DISPOSITIONS.FRIENDLY]: "friendly",
         [CONST.TOKEN_DISPOSITIONS.NEUTRAL]: "neutral",
         [CONST.TOKEN_DISPOSITIONS.HOSTILE]: "hostile",
-      }?.[token.document.disposition] || "neutral";
+      }?.[token?.document?.disposition] || "secret";
 
   return resolvePlayerWorldSetting(
     `auto-coloring.${type}.${ringOrBackground}.${typeOrColor}`
