@@ -62,7 +62,7 @@
             "secret": "Secret"
           },
           "ring": "Ring",
-          "background": "BG"
+          "bg": "BG"
         },
         "notifications": {
           "saved": "Custom Token Ring Settings Saved!"
