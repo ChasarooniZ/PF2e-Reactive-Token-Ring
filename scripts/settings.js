@@ -54,9 +54,6 @@ export function registerSettings() {
     },
   ];
 
-  // Register legacy settings
-  registerLegacySettings();
-
   // Register the defined settings
   settingsDefinitions.forEach(
     ({
@@ -269,7 +266,7 @@ export function renderSettingsConfig(_, html) {
 /**
  * Registers legacy settings to maintain backward compatibility.
  */
-export function registerLegacySettings() {
+export function legacySettingsTestAndMessage() {
   const settingsKeys = [
     "auto-coloring.ring",
     "auto-coloring.background",
