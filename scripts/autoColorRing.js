@@ -72,11 +72,11 @@ export function autoColorRing() {
 
   // Ring Color Scaling
   ringColor = !["unchanged", "custom"].includes(ringSetting)
-    ? Color.multiplyScalar(ringColor, percentColor)
+    ? Color.from(Color.multiplyScalar(ringColor, percentColor))
     : ringColor;
   // Background Color Scaling
   backgroundColor = !["unchanged", "custom"].includes(backgroundSetting)
-    ? Color.multiplyScalar(backgroundColor, percentColor)
+    ? Color.from(Color.multiplyScalar(backgroundColor, percentColor))
     : backgroundColor;
 
   return { ring: ringColor, background: backgroundColor };
