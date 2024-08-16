@@ -48,6 +48,16 @@ function createSettingsRow(key, savedType, savedColor, isWorld) {
   ];
   if (game.system.id === "pf2e") checkboxOptions.push("level-diff");
 
+  const resetButton = !isWorld
+    ? `
+    <button class="reset-color" data-tooltip="${game.i18n.localize(
+      `${MODULE_ID}.module-settings.configuration-menu.hover.row.reset-color`
+    )}">
+      <i class="fas fa-undo"></i>
+    </button>
+  `
+    : "";
+
   const checkboxesHTML = checkboxOptions
     .map(
       (option) => `
@@ -73,6 +83,7 @@ function createSettingsRow(key, savedType, savedColor, isWorld) {
       <td>
         <input type="color" name="color" value="${savedColor}">
         <input type="text" name="colorText" value="${savedColor}" maxlength="7" class="REDY-color-input">
+        ${resetButton}
       </td>
     </tr>
   `;
@@ -187,7 +198,7 @@ export function displaySettingsMenu(isWorld) {
               `${MODULE_ID}.module-settings.configuration-menu.notifications.saved`
             )
           );
-          canvas.tokens.placeables.forEach(t => t?.ring?.configureVisuals())
+          canvas.tokens.placeables.forEach((t) => t?.ring?.configureVisuals());
         },
       },
       cancel: {
@@ -221,5 +232,12 @@ export function displaySettingsMenu(isWorld) {
     if (this.checked) {
       $checkboxes.not(this).prop("checked", false);
     }
+  });
+
+  $(document).on("click", ".reset-color", function () {
+    const $row = $(this).closest("tr");
+    const defaultColor = COLORS.PLAYER_DEFAULT;
+    $row.find('input[name="color"]').val(defaultColor);
+    $row.find('input[name="colorText"]').val(defaultColor);
   });
 }

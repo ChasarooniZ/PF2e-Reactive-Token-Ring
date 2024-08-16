@@ -36,7 +36,8 @@
               "friendly": "Tokens with friendly disposition",
               "neutral": "Tokens with neutral disposition",
               "hostile": "Tokens with hostile disposition",
-              "secret": "Tokens with a secret disposition"
+              "secret": "Tokens with a secret disposition",
+              "reset-color": "Reset to Default Color"
             }
           }
         },
