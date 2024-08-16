@@ -5,6 +5,8 @@ import { COLORS, MODULE_ID } from "./misc.js";
  */
 export function registerSettings() {
   // Register the custom render function for the settings UI
+  addLegacySettings();
+
   Hooks.on("renderSettingsConfig", renderSettingsConfig);
 
   // Define an array of settings to be registered
@@ -260,6 +262,33 @@ export function renderSettingsConfig(_, html) {
         "h4"
       );
     });
+  });
+}
+
+function addLegacySettings() {
+  game.settings.register(MODULE_ID, "auto-coloring.ring", {
+    name: "auto-ring",
+    hint: "",
+    scope: "client",
+    config: false,
+    default: "",
+    type: String,
+  });
+  game.settings.register(MODULE_ID, "auto-coloring.background", {
+    name: "auto-bg",
+    hint: "",
+    scope: "client",
+    config: false,
+    default: "",
+    type: String,
+  });
+  game.settings.register(MODULE_ID, "auto-coloring.health-targets", {
+    name: "auto-health-targets",
+    hint: "",
+    scope: "client",
+    config: false,
+    default: "",
+    type: String,
   });
 }
 
