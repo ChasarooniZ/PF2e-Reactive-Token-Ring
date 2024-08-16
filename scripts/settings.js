@@ -269,7 +269,7 @@ export function renderSettingsConfig(_, html) {
 /**
  * Registers legacy settings to maintain backward compatibility.
  */
-export function legacySettingsTestAndMessage() {
+export function registerLegacySettings() {
   const settingsKeys = [
     "auto-coloring.ring",
     "auto-coloring.background",
