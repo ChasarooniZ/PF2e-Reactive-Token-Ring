@@ -5,7 +5,7 @@ import { getHealthLevel } from "./systemCompatability.js";
 export function autoColorRing() {
   // Ensure this.document and this.document.ring exist
   const ringColors = this.document?.ring?.colors || {};
-  const { ring = Color.WHITE, background = Color.BLACK } = ringColors;
+  const { ring, background } = ringColors;
 
   const ringSetting = getSetting(this, "type", "ring");
   const backgroundSetting = getSetting(this, "type", "bg");
