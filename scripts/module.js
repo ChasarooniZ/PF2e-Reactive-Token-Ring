@@ -158,21 +158,17 @@ function exportSettings(isWorld) {
     name: "SETT Settings Export",
     version: game.modules.get(MODULE_ID).version,
   };
+
   if (isWorld) {
     // Get all setting keys
-    const settingKeys = game.settings.settings.keys().toArray();
-
     // Filter keys that start with MODULE_ID and do not end with 'player'
-    const filteredKeys = settingKeys.filter(
-      (key) => key.startsWith(MODULE_ID) && !key.endsWith("player")
-    );
-
     // Map the filtered keys to an array of [key, value] pairs
-    data.settings = filteredKeys.map((key) => {
-      const settingKey = key.replace(MODULE_ID + ".", "");
-      const settingValue = game.settings.get(MODULE_ID, settingKey);
-      return [settingKey, settingValue];
-    });
+    data.settings = Array.from(game.settings.settings.keys())
+      .filter((key) => key.startsWith(MODULE_ID) && !key.endsWith("player"))
+      .map((key) => {
+        const settingKey = key.replace(`${MODULE_ID}.`, "");
+        return [settingKey, game.settings.get(MODULE_ID, settingKey)];
+      });
   }
 
   saveDataToFile(
@@ -189,15 +185,15 @@ function importSettings() {
       `${MODULE_ID}.module-settings.import-export-menu.title`
     ),
     content: `
-    <form>
-      <div class="form-group">
-        <label for="file-input">${game.i18n.localize(
-          `${MODULE_ID}.module-settings.import-export-menu.body`
-        )}</label>
-        <input type="file" id="file-input" name="file-input" accept=".json">
-      </div>
-    </form>
-  `,
+      <form>
+        <div class="form-group">
+          <label for="file-input">${game.i18n.localize(
+            `${MODULE_ID}.module-settings.import-export-menu.body`
+          )}</label>
+          <input type="file" id="file-input" name="file-input" accept=".json">
+        </div>
+      </form>
+    `,
     buttons: {
       convert: {
         icon: '<i class="fas fa-check"></i>',
@@ -206,38 +202,34 @@ function importSettings() {
         ),
         callback: async (html) => {
           const fileInput = html.find('[name="file-input"]')[0].files[0];
-
-          let jsonObject = {};
+          if (!fileInput) return;
 
           // Parse JSON from file
-          if (fileInput) {
-            try {
-              const fileContent = await fileInput.text();
-              const fileJsonObject = JSON.parse(fileContent);
-              // Merge the file JSON with the textarea JSON
-              jsonObject = fileJsonObject;
-            } catch (error) {
-              console.error("Invalid JSON file:", error);
-              ui.notifications.error(
-                game.i18n.localize(
-                  `${MODULE_ID}.module-settings.import-export-menu.notifications.error`
-                )
-              );
-              return;
-            }
-          }
+          try {
+            const fileContent = await fileInput.text();
+            const jsonObject = JSON.parse(fileContent);
 
-          console.log("Imported REDY Data:", jsonObject);
-          jsonObject.settings.forEach(([key, value]) => {
-            game.settings.set(MODULE_ID, key, value);
-          });
-          ui.notifications.info(
-            game.i18n.localize(
-              `${MODULE_ID}.module-settings.import-export-menu.notifications.imported`
-            )
-          );
-          game.settings.sheet.close();
-          canvas.tokens.placeables.forEach(t => t?.ring?.configureVisuals())
+            jsonObject.settings.forEach(([key, value]) => {
+              game.settings.set(MODULE_ID, key, value);
+            });
+            console.log("Imported REDY Data:", jsonObject);
+            ui.notifications.info(
+              game.i18n.localize(
+                `${MODULE_ID}.module-settings.import-export-menu.notifications.imported`
+              )
+            );
+            game.settings.sheet.close();
+            canvas.tokens.placeables.forEach((t) =>
+              t?.ring?.configureVisuals()
+            );
+          } catch (error) {
+            console.error("Invalid JSON file:", error);
+            ui.notifications.error(
+              game.i18n.localize(
+                `${MODULE_ID}.module-settings.import-export-menu.notifications.error`
+              )
+            );
+          }
         },
       },
       cancel: {
