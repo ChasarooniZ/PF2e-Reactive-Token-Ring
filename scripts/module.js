@@ -236,7 +236,8 @@ function importSettings() {
               `${MODULE_ID}.module-settings.import-export-menu.notifications.imported`
             )
           );
-          foundry.utils.debouncedReload();
+          game.settings.sheet.close();
+          canvas.tokens.placeables.forEach(t => t?.ring?.configureVisuals())
         },
       },
       cancel: {

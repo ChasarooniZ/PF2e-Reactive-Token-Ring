@@ -188,7 +188,6 @@ export function displaySettingsMenu(isWorld) {
             )
           );
           canvas.tokens.placeables.forEach(t => t?.ring?.configureVisuals())
-          game.settings.sheet.close();
         },
       },
       cancel: {
