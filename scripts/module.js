@@ -24,6 +24,8 @@ Hooks.once("ready", async () => {
   game.REDY = {
     api: {
       openSettingsMenu: settingsMenu,
+      importSettings: importSettings,
+      exportSettings: exportSettings
     },
   };
   game.socket.on(`module.${MODULE_ID}`, ({ type, payload }) => {
@@ -42,7 +44,6 @@ Hooks.once("ready", async () => {
   if (game.system.id === "pf2e") {
     Hooks.on("applyTokenStatusEffect", applyTokenStatusEffect);
   }
-
 });
 
 /**
@@ -146,4 +147,85 @@ function registerRingColorsWrapper() {
       "REDY: Another module is already overriding token ring colors!"
     );
   }
+}
+
+function exportSettings(isWorld) {
+  const data = {
+    name: "SETT Settings Export",
+    version: game.modules.get(MODULE_ID).version,
+  };
+  if (isWorld) {
+    // Get all setting keys
+    const settingKeys = game.settings.settings.keys().toArray();
+
+    // Filter keys that start with MODULE_ID and do not end with 'player'
+    const filteredKeys = settingKeys.filter(
+      (key) => key.startsWith(MODULE_ID) && !key.endsWith("player")
+    );
+
+    // Map the filtered keys to an array of [key, value] pairs
+    data.settings = filteredKeys.map((key) => {
+      const settingKey = key.replace(MODULE_ID + ".", "");
+      const settingValue = game.settings.get(MODULE_ID, settingKey);
+      return [settingKey, settingValue];
+    });
+  }
+
+  saveDataToFile(
+    JSON.stringify(data),
+    "json",
+    `SETT-export-(${new Date().toDateInputString()}).json`
+  );
+}
+
+function importSettings() {
+  // Create a dialog to input JSON and upload a file
+  new Dialog({
+    title: "JSON and File to Object Converter",
+    content: `
+    <form>
+      <div class="form-group">
+        <label for="file-input">Upload JSON File:</label>
+        <input type="file" id="file-input" name="file-input" accept=".json">
+      </div>
+    </form>
+  `,
+    buttons: {
+      convert: {
+        icon: '<i class="fas fa-check"></i>',
+        label: "Convert",
+        callback: async (html) => {
+          const fileInput = html.find('[name="file-input"]')[0].files[0];
+
+          let jsonObject = {};
+
+          // Parse JSON from file
+          if (fileInput) {
+            try {
+              const fileContent = await fileInput.text();
+              const fileJsonObject = JSON.parse(fileContent);
+              // Merge the file JSON with the textarea JSON
+              jsonObject = fileJsonObject;
+            } catch (error) {
+              console.error("Invalid JSON in file:", error);
+              ui.notifications.error(
+                "Invalid JSON in uploaded file. Please check the file content."
+              );
+              return;
+            }
+          }
+
+          console.log("Combined JSON Object:", jsonObject);
+          ui.notifications.info(
+            "JSON successfully converted to an object. Check the console for details."
+          );
+        },
+      },
+      cancel: {
+        icon: '<i class="fas fa-times"></i>',
+        label: "Cancel",
+      },
+    },
+    default: "convert",
+  }).render(true);
 }

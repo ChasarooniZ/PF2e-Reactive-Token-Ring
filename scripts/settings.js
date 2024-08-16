@@ -163,6 +163,23 @@ export function renderSettingsConfig(_, html) {
     </div>
   `);
 
+  const buttonIE_IDs = ["export", "import"];
+  const buttonsIE = buttonIE_IDs.map(
+    (id) => `
+  <div class="button-container" style="display: flex;justify-content: space-between;width: 100%;max-width: 600px; margin: 0 auto;">
+    <button type="button" class="REDY-button" style="width: 48%; /* Slightly less than 50% to account for spacing */padding: 10px 15px;font-size: 16px;text-align: center;border: none;border-radius: 5px;cursor: pointer;transition: background-color 0.3s ease;" onclick="(async () => { 
+      game.REDY.api.${id}Settings(${id === "export" ? true : ""}); 
+    })()">${id} Settings
+    </button>`
+  );
+  moduleTab
+    .find(`[name="pf2e-reactive-token-ring.target.share-flash"]`)
+    .closest(".form-group").before(`
+    <div class="button-container" style="display: flex;justify-content: space-between;width: 100%;max-width: 600px; margin: 0 auto;">
+      ${buttons.join("")}
+    </div>
+  `);
+
   // Helper function to add settings groups before a specified key
   function addSettingsGroup(
     headerKey,
