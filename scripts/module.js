@@ -181,11 +181,11 @@ function exportSettings(isWorld) {
 function importSettings() {
   // Create a dialog to input JSON and upload a file
   new Dialog({
-    title: "JSON and File to Object Converter",
+    title: "REDY Settings Importer",
     content: `
     <form>
       <div class="form-group">
-        <label for="file-input">Upload JSON File:</label>
+        <label for="file-input">Upload Settings JSON file:</label>
         <input type="file" id="file-input" name="file-input" accept=".json">
       </div>
     </form>
@@ -207,7 +207,7 @@ function importSettings() {
               // Merge the file JSON with the textarea JSON
               jsonObject = fileJsonObject;
             } catch (error) {
-              console.error("Invalid JSON in file:", error);
+              console.error("Invalid JSON file:", error);
               ui.notifications.error(
                 "Invalid JSON in uploaded file. Please check the file content."
               );
@@ -215,9 +215,12 @@ function importSettings() {
             }
           }
 
-          console.log("Combined JSON Object:", jsonObject);
+          console.log("Imported REDY Data:", jsonObject);
+          jsonObject.settings.forEach(([key, value]) => {
+            game.settings.set(MODULE_ID, key, value);
+          })
           ui.notifications.info(
-            "JSON successfully converted to an object. Check the console for details."
+            "REDY Settings were successfully Imported!"
           );
         },
       },
