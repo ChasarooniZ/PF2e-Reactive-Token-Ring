@@ -69,8 +69,8 @@
         }
       },
       "import-export-menu": {
-        "import": "Import",
-        "export": "Export",
+        "import-settings": "Import Settings",
+        "export-settings": "Export Settings",
         "title": "REDY Settings Importer",
         "body": "Upload Settings JSON",
         "notifications": {
