@@ -1,3 +1,5 @@
+import { COLORS, MODULE_ID } from "./misc.js";
+
 /**
  * Registers module settings and hooks into the Foundry VTT settings UI.
  */
