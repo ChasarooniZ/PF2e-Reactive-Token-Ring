@@ -8,7 +8,7 @@ import {
 } from "./hooks.js";
 import { MODULE_ID } from "./misc.js";
 import { legacySettingsTestAndMessage, registerSettings } from "./settings.js";
-import { settingsMenu } from "./settingsMenu.js";
+import { displaySettingsMenu } from "./settingsMenu.js";
 
 // Initialize module settings and ring color wrapper
 Hooks.once("init", () => {
@@ -23,7 +23,7 @@ Hooks.once("ready", async () => {
   legacySettingsTestAndMessage();
   game.REDY = {
     api: {
-      openSettingsMenu: settingsMenu,
+      openSettingsMenu: displaySettingsMenu,
       importSettings: importSettings,
       exportSettings: exportSettings,
     },
