@@ -81,7 +81,7 @@ export async function applyTokenStatusEffect(token, name, _unknown) {
 }
 
 export async function updateToken(tokenDoc, diff, _mod, _playerID) {
-  if (diff?.disposition !== null) {
+  if (Number.isInteger(diff?.disposition)) {
     tokenDoc?.object?.ring?.configureVisuals();
   }
 }

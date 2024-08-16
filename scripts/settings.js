@@ -244,16 +244,6 @@ export function renderSettingsConfig(_, html) {
   addSettingsHeader("flash.name", "target.share-flash", "h2");
   addSettingsHeader("flash.colors", "colors.damage", "h3");
   addSettingsHeader("auto-coloring.name", "auto-coloring.percent-color", "h2");
-  addSettingsHeader(
-    "auto-coloring.scope.world",
-    "auto-coloring.ring.type.hostile.world",
-    "h3"
-  );
-  addSettingsHeader(
-    "auto-coloring.scope.player",
-    "auto-coloring.ring.type.hostile.player",
-    "h3"
-  );
 
   // Add headers for specific scopes and types
   ["hostile", "neutral", "friendly", "party"].forEach((type) => {
