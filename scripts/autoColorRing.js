@@ -96,7 +96,7 @@ export function autoColorRing() {
  * @returns {Color}
  */
 function getColorForHealthLevel(level) {
-  return Color.fromHSV([level / 3.0, 1.0, 1.0]);
+  return Color.fromHSV([isNaN(level) ? 1 : level / 3.0, 1.0, 1.0]);
 }
 
 /**
