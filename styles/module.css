@@ -15,7 +15,7 @@
   vertical-align: middle; /* Aligns with the text box */
 }
 
-.REDY-color-input {
+input.REDY-color-input {
   width: 80px; /* Smaller width for the text box */
   display: inline-block;
   vertical-align: middle; /* Aligns with the color picker */
