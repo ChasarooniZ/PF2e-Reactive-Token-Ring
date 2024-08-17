@@ -14,23 +14,20 @@
     }
   ],
   "relationships": {
-    "systems": [
-    ],
+    "systems": [],
     "requires": [
       {
         "id": "lib-wrapper",
         "type": "module",
         "compatibility": {
-            "minimum": "1.0.0.0",
-            "verified": "1.12.14.0"
+          "minimum": "1.0.0.0",
+          "verified": "1.12.14.0"
         }
       }
     ]
   },
   "esmodules": ["scripts/module.js"],
-  "styles": [
-    "styles/module.css"
-  ],
+  "styles": ["styles/module.css"],
   "socket": true,
   "languages": [
     {
@@ -88,6 +85,18 @@
     {
       "type": "icon",
       "url": "https://avatars2.githubusercontent.com/u/71292812?s=400&u=ccdb4eeb7abf551ca8f314e5a9bfd0479a4d3d41&v=4"
+    }
+  ],
+  "packs": [
+    {
+      "name": "redy-macros",
+      "label": "REDY Macros",
+      "path": "packs/redy-macros",
+      "type": "Macro",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      }
     }
   ]
 }
