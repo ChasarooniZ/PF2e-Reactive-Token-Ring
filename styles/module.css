@@ -41,3 +41,15 @@ input.REDY-color-input {
   margin: 0 auto;
 }
 
+button.REDY-reset-color {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
