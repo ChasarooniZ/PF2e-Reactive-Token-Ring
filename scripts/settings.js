@@ -79,6 +79,15 @@ export function registerSettings() {
     }
   );
 
+  game.settings.register(MODULE_ID, key, {
+    name: game.i18n.localize(`${MODULE_ID}.module-settings.${key}.name`),
+    hint: game.i18n.localize(`${MODULE_ID}.module-settings.${key}.hint`),
+    scope: "player",
+    config: true,
+    default: false,
+    type: boolean
+  });
+
   // Register settings for different scopes (world and player)
   ["world", "player"].forEach((scope) => {
     const isPlayerScope = scope === "player";
