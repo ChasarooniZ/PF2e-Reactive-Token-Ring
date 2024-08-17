@@ -20,7 +20,7 @@ export function autoColorRing() {
         const disposition = token?.document?.disposition;
         return (
           {
-            [CONST.TOKEN_DISPOSITIONS.SECRET]: Color.fromString(COLORS.PURPLE),
+            [CONST.TOKEN_DISPOSITIONS.SECRET]: Color.fromString(COLORS.MAGENTA),
             [CONST.TOKEN_DISPOSITIONS.FRIENDLY]: Color.fromString(COLORS.GREEN),
             [CONST.TOKEN_DISPOSITIONS.NEUTRAL]: Color.fromString(COLORS.YELLOW),
             [CONST.TOKEN_DISPOSITIONS.HOSTILE]: Color.fromString(COLORS.RED),

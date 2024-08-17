@@ -143,7 +143,7 @@ function getDefaultSetting(isPlayerScope, setting, settingCategory) {
     case "neutral":
       return COLORS.YELLOW;
     case "secret":
-      return COLORS.PURPLE;
+      return COLORS.MAGENTA;
     default:
       return null;
   }
