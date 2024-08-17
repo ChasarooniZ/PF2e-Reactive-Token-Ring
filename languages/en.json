@@ -38,6 +38,22 @@
               "hostile": "Tokens with hostile disposition",
               "secret": "Tokens with a secret disposition"
             },
+            "ring": {
+              "unchanged": "Does not change the color of the ring color",
+              "default": "Uses the GM settings for the ring color",
+              "custom": "Uses the Custom Color inputted for the ring color",
+              "disposition": "Uses the token's disposition for the ring color",
+              "health-percent": "Uses the Percentage if health for the ring color",
+              "level-diff": "Uses the Difference from the part level for the ring color"
+            },
+            "bg": {
+              "unchanged": "Does not change the color of the background color",
+              "default": "Uses the GM settings for the background color",
+              "custom": "Uses the Custom Color inputted for the background color",
+              "disposition": "Uses the token's disposition for the background color",
+              "health-percent": "Uses the Percentage if health for the background color",
+              "level-diff": "Uses the Difference from the part level for the background color"
+            },
             "reset-color": "Reset to Default Color"
           }
         },

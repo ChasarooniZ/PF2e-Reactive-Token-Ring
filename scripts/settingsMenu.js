@@ -64,7 +64,9 @@ function createSettingsRow(key, savedType, savedColor, isWorld) {
       <td>
         <input type="checkbox" name="${option}" ${isChecked(
         option
-      )} data-tooltip="Tooltip text">
+      )} data-tooltip="${game.i18n.localize(
+        `${MODULE_ID}.module-settings.configuration-menu.hover.row.${backgroundType}.${option}`
+      )}">
       </td>`
     )
     .join("");
