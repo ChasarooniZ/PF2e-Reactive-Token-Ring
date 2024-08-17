@@ -1,5 +1,22 @@
-## [1.5.0](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.4.0...1.5.0) - Difficulty at a Glance
-- `Autcoloring Settings Rework`
+## 1.5.2 - Let's try this one last time
+- `Settings Rework`
+  - `Autocolor Submenu`
+    - Allows for easier configuration of settings
+    - Allows for configuration on settings on a per token disposition type basis
+    - `PLAYER SETTINGS`
+    -  For players to access the autocolor player settings you'll need to use one of the new `REDY Macros`
+    - __Overrides world settings when changed from default (`Default` and `#FFFFFE`)__
+  - Import and Export Settings
+    - New option in REDY settingsto import and export your settings for easy copying between worlds
+- `New Autocolor Options`
+    - `Custom`
+      - Allows you to set the ring or background of rings of a particular disposition to a particular color (is not affected by the `color percentage` setting)
+    - `Level Difference` - Pf2e exclusive
+      - Compares the level to that of the average level of the party
+        - (atm is statically set when the token is loaded so you may need to reload if the level of the creature or the party changes to update the color)
+## 1.5.1 - Fake push cause foundry said no
+## ~~[1.5.0](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.4.0...1.5.0) - Difficulty at a Glance~~
+`Autcoloring Settings Rework`
   - Settings have been reworked for autocoloring to the following structure
     - Top level
       - `World`
@@ -17,7 +34,7 @@
       - Allows you to set the ring or background of rings of a particular disposition to a particular color (is not affected by the `color percentage` setting)
     - `Level Difference` - Pf2e exclusive
       - Compares the level to that of the average level of the party
-        - (atm is statically set when the token is loaded so you may need to reload if the level of the ceature or the party changes to update the color)
+        - (atm is statically set when the token is loaded so you may need to reload if the level of the creature or the party changes to update the color)
 - `Backend`
   - reworked/rewrote some code for streamlining the generation of settings and possibly improving performance
 ![image](https://github.com/user-attachments/assets/9ae4c0c2-15d9-4a6c-9d82-6467f90bacb8)
