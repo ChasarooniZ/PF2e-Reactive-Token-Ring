@@ -1,4 +1,4 @@
-import { MODULE_ID } from "./misc.js";
+import { COLORS, MODULE_ID } from "./misc.js";
 
 /**
  * Function to create a table row representing settings for a specific token type and background.
@@ -234,7 +234,7 @@ export function displaySettingsMenu(isWorld) {
     }
   });
 
-  $(document).on("click", ".reset-color", function () {
+  $(document).on("click", ".REDY-reset-color", function () {
     const $row = $(this).closest("tr");
     const defaultColor = COLORS.PLAYER_DEFAULT;
     $row.find('input[name="color"]').val(defaultColor);
