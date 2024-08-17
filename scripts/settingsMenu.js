@@ -50,7 +50,7 @@ function createSettingsRow(key, savedType, savedColor, isWorld) {
 
   const resetButton = !isWorld
     ? `
-    <button class="reset-color" data-tooltip="${game.i18n.localize(
+    <button class="REDY-reset-color" data-tooltip="${game.i18n.localize(
       `${MODULE_ID}.module-settings.configuration-menu.hover.row.reset-color`
     )}">
       <i class="fas fa-undo"></i>
