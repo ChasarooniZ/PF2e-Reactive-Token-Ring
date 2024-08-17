@@ -44,7 +44,7 @@
               "custom": "Uses the Custom Color inputted for the ring color",
               "disposition": "Uses the token's disposition for the ring color",
               "health-percent": "Uses the Percentage if health for the ring color",
-              "level-diff": "Uses the Difference from the part level for the ring color"
+              "level-diff": "Uses the Difference from the party level for the ring color"
             },
             "bg": {
               "unchanged": "Does not change the color of the background color",
