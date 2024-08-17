@@ -66,7 +66,11 @@ function createSettingsRow(key, savedType, savedColor, isWorld) {
         option
       )} data-tooltip="${game.i18n.localize(
         `${MODULE_ID}.module-settings.configuration-menu.hover.row.${backgroundType}.${option}`
-      )}">
+      )}${
+        checkboxHasHoverImage(option)
+          ? `<img src="https://raw.githubusercontent.com/ChasarooniZ/PF2e-Reactive-Token-Ring/main/imgs/${tokenType}-${backgroundType}.webp">`
+          : ""
+      }">
       </td>`
     )
     .join("");
@@ -200,7 +204,9 @@ export function displaySettingsMenu(isWorld) {
               `${MODULE_ID}.module-settings.configuration-menu.notifications.saved`
             )
           );
-          canvas.tokens.placeables.forEach(tok => tok.ring?.configureVisuals())
+          canvas.tokens.placeables.forEach((tok) =>
+            tok.ring?.configureVisuals()
+          );
         },
       },
       cancel: {
@@ -242,4 +248,8 @@ export function displaySettingsMenu(isWorld) {
     $row.find('input[name="color"]').val(defaultColor);
     $row.find('input[name="colorText"]').val(defaultColor);
   });
+}
+
+function checkboxHasHoverImage(category) {
+  return ["dispostion", "health-percent", "level-diff"].contains(category);
 }
