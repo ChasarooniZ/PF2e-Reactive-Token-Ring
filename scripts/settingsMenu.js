@@ -251,5 +251,5 @@ export function displaySettingsMenu(isWorld) {
 }
 
 function checkboxHasHoverImage(category) {
-  return ["dispostion", "health-percent", "level-diff"].contains(category);
+  return ["dispostion", "health-percent", "level-diff"].includes(category);
 }
