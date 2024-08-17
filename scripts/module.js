@@ -157,24 +157,30 @@ function exportSettings(isWorld) {
   const data = {
     name: "SETT Settings Export",
     version: game.modules.get(MODULE_ID).version,
+    // Get all setting keys
+    settings: Array.from(game.settings.settings.keys()),
   };
 
   if (isWorld) {
-    // Get all setting keys
-    // Filter keys that start with MODULE_ID and do not end with 'player'
-    // Map the filtered keys to an array of [key, value] pairs
-    data.settings = Array.from(game.settings.settings.keys())
-      .filter((key) => key.startsWith(MODULE_ID) && !key.endsWith("player"))
-      .map((key) => {
-        const settingKey = key.replace(`${MODULE_ID}.`, "");
-        return [settingKey, game.settings.get(MODULE_ID, settingKey)];
-      });
+    // Filter keys that start with MODULE_ID
+    data.settings = data.settings.filter((key) => key.startsWith(MODULE_ID));
+  } else {
+    // Filter keys that start with MODULE_ID and do end with 'player'
+    data.settings = data.settings.filter(
+      (key) => key.startsWith(MODULE_ID) && key.endsWith("player")
+    );
   }
+
+  // Map the filtered keys to an array of [key, value] pairs
+  data.settings = data.settings.map((key) => {
+    const settingKey = key.replace(`${MODULE_ID}.`, "");
+    return [settingKey, game.settings.get(MODULE_ID, settingKey)];
+  });
 
   saveDataToFile(
     JSON.stringify(data),
     "json",
-    `SETT-export-(${new Date().toDateInputString()}).json`
+    `SETT-export-${isWorld ? "GM" : "player"}-(${new Date().toDateInputString()}).json`
   );
 }
 

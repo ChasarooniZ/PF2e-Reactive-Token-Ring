@@ -210,7 +210,9 @@ export function renderSettingsConfig(_, html) {
   const importExportButtons = ["export", "import"].map(
     (action) => `
       <button type="button" class="REDY-button-settings" onclick="(async () => { 
-        game.REDY.api.${action}Settings(${action === "export" ? true : ""}); 
+        game.REDY.api.${action}Settings(${
+      action === "export" ? game.user.isGM : ""
+    }); 
       })()">${game.i18n.localize(
         `${MODULE_ID}.module-settings.import-export-menu.${action}-settings`
       )}
