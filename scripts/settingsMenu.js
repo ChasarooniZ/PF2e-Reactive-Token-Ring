@@ -68,7 +68,7 @@ function createSettingsRow(key, savedType, savedColor, isWorld) {
         `${MODULE_ID}.module-settings.configuration-menu.hover.row.${backgroundType}.${option}`
       )}${
         checkboxHasHoverImage(option)
-          ? `<img src="https://raw.githubusercontent.com/ChasarooniZ/PF2e-Reactive-Token-Ring/main/imgs/${tokenType}-${backgroundType}.webp">`
+          ? `<img src='https://raw.githubusercontent.com/ChasarooniZ/PF2e-Reactive-Token-Ring/main/imgs/${tokenType}-${backgroundType}.webp'>`
           : ""
       }">
       </td>`
@@ -251,5 +251,5 @@ export function displaySettingsMenu(isWorld) {
 }
 
 function checkboxHasHoverImage(category) {
-  return ["dispostion", "health-percent", "level-diff"].includes(category);
+  return ["disposition", "health-percent", "level-diff"].includes(category);
 }
