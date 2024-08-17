@@ -135,6 +135,10 @@ function loadSettingsRows(isWorld) {
  * @param {boolean} isWorld - Boolean indicating whether the settings are for the world scope.
  */
 export function displaySettingsMenu(isWorld) {
+  if (!game.user.isGM && isWorld) {
+    ui.notifications.error("Only accessible as a GM");
+    return false;
+  }
   const scope = isWorld ? "world" : "player";
   const dialogTitle = game.i18n.localize(
     `${MODULE_ID}.module-settings.configuration-menu.headers.title`
