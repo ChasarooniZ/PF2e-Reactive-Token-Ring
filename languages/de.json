@@ -13,7 +13,7 @@
           "colors": "Aufblitz-Farbeinstellungen"
         },
         "auto-coloring": {
-          "name": "Automatische Färbeeinstellung"
+          "name": "Automatische Farbänderung"
         }
       },
       "configuration-menu": {
@@ -23,12 +23,12 @@
             "category": "Kategorie des Token-Typs",
             "ring-or-bg": "Ob die automatische Färbung den Ring oder Hintergrund betrifft",
             "custom": "Benutzerdefinierte Farbe für Token-Ringe verwenden",
-            "disposition": "Farbe für Token basierend auf ihrer Gesinnung",
-            "health-percent": "Farbe für Token basierend auf ihrem Gesundheitsprozentsatz",
-            "level-diff": "Farbe für Token basierend auf ihrem Levelunterschied zur Gruppe",
-            "custom-color": "Wenn Benutzerdefiniert aktiviert ist, verwenden Sie diese Farbe für Tokens",
-            "default": "Verwenden Sie die Welteinstellung dafür",
-            "unchanged": "Färbt das Token nicht automatisch"
+            "disposition": "Farbe für Tokens basierend auf ihrer Gesinnung",
+            "health-percent": "Farbe für Tokens basierend auf ihrem Gesundheitsprozentsatz",
+            "level-diff": "Farbe für Tokens basierend auf ihrem Levelunterschied zur Gruppe",
+            "custom-color": "Wenn Benutzerdefiniert aktiviert ist, wird diese Farbe für Tokens verwendet",
+            "default": "Verwenden der Welteinstellung",
+            "unchanged": "Tokens nicht automatisch färben"
           },
           "row": {
             "type": {
@@ -63,7 +63,7 @@
           "gamemaster": "GM👑",
           "player": "Spieler👤",
           "category": "Kategorie",
-          "ring-or-bg": "Ring oder BG",
+          "ring-or-bg": "Ring oder Hintergrund",
           "custom": "Benutzerdefiniert",
           "disposition": "Gesinnung",
           "health-percent": "Gesundheit %",
@@ -81,7 +81,7 @@
             "secret": "Geheim"
           },
           "ring": "Ring",
-          "bg": "BG"
+          "bg": "Hintergrund"
         },
         "notifications": {
           "saved": "Benutzerdefinierte Token-Ringeinstellungen gespeichert!"
@@ -152,34 +152,34 @@
         },
         "percent-color": {
           "name": "Faktor der automatischen Färbung",
-          "hint": "Wie stark die Sättigung der automatischen Färbung ausfallen soll"
+          "hint": "Wie stark die Helligkeit der automatischen Färbung ausfallen soll"
         },
         "override-color": {
           "name": "Automatische Färbung überschreibt Farbe",
-          "hint": "Ob die automatische Färbung die Farbe überschreiben soll, wenn sie auf einen Wert für das Token eingestellt ist?"
+          "hint": "Ob die automatische Färbung die Grundfarbe überschreiben soll, wenn sie auf einen Wert für das Token eingestellt ist?"
         }
       },
       "colors": {
         "damage": {
           "name": "[Farbe] Schaden",
-          "hint": "Ändern Sie die Farbe, in der der Token bei Schaden aufblitzt"
+          "hint": "Ändern Sie die Farbe, in der das Token bei Schaden aufblitzt"
         },
         "healing": {
           "name": "[Farbe] Heilung",
-          "hint": "Ändern Sie die Farbe, in der der Token bei Heilung aufblitzt"
+          "hint": "Ändern Sie die Farbe, in der das Token bei Heilung aufblitzt"
         },
         "target": {
           "name": "[Farbe] Ziel",
-          "hint": "Ändern Sie die Farbe, in der der Token beim Anvisieren aufblitzt (vorausgesetzt, die Spielerfarbeneinstellung ist nicht aktiviert)"
+          "hint": "Ändern Sie die Farbe, in der das Token beim Anvisieren aufblitzt (vorausgesetzt, die Spielerfarbeneinstellung ist nicht aktiviert)"
         },
         "status": {
           "positive": {
-            "name": "[Farbe] Positive Bedingung",
-            "hint": "Ändern Sie die Farbe, in der der Token bei einer positiven Bedingung aufblitzt"
+            "name": "[Farbe] Positiver Zustand",
+            "hint": "Ändern Sie die Farbe, in der das Token bei einem positiven Zustand aufblitzt"
           },
           "negative": {
-            "name": "[Farbe] Negative Bedingung",
-            "hint": "Ändern Sie die Farbe, in der der Token bei einer negativen Bedingung aufblitzt"
+            "name": "[Farbe] Negativer Zustand",
+            "hint": "Ändern Sie die Farbe, in der das Token bei einem negativen Zustand aufblitzt"
           }
         }
       },
