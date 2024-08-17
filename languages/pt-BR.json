@@ -1,75 +1,188 @@
 {
-    "I18N.LANGUAGE": "Português",
-    "pf2e-reactive-token-ring": {
-      "module-settings": {
-        "target": {
-          "share-flash": {
-            "name": "Compartilhar Flash de Alvo",
-            "hint": "Mostra o efeito de flash no alvo para todos os usuários (desativado mostra apenas para a pessoa que está mirando)"
-          },
-          "player-color": {
-            "name": "Alvo usa a Cor do Jogador",
-            "hint": "Para o flash do alvo, use a cor do jogador (substitui qualquer cor personalizada definida)"
-          }
-        },
-        "damage-heal": {
-          "scale-on-%-hp": {
-            "name": "Escalar Duração de Dano/Cura",
-            "hint": "Escalar a duração de dano/cura com base na porcentagem de mudança de saúde"
-          }
-        },
-        "duration": {
-          "name": "Duração",
-          "hint": "Quanto tempo (em ms) o token deve piscar para todos os efeitos (Padrão 500 ms, isso será escalado se você ativar as configurações que escalam a duração)"
+  "I18N.LANGUAGE": "Português (Brasil)",
+  "pf2e-reactive-token-ring": {
+    "libwrapper": {
+      "autocolor": {
+        "error": "REDY: Outro módulo já está substituindo as cores dos anéis de token!"
+      }
+    },
+    "module-settings": {
+      "headers": {
+        "flash": {
+          "name": "Configurações de Flash",
+          "colors": "Configurações de Cores de Flash"
         },
         "auto-coloring": {
-          "ring": {
-            "name": "Cor Automática do Anel de Token",
-            "hint": "Selecione se o módulo deve alterar a cor do anel de token dinâmico"
+          "name": "Configuração de Coloração Automática"
+        }
+      },
+      "configuration-menu": {
+        "redy-menu": "Menu REDY",
+        "hover": {
+          "headers": {
+            "category": "Categoria do tipo de token",
+            "ring-or-bg": "Se a cor automática afeta o anel ou o fundo",
+            "custom": "Usar Cor Personalizada para os anéis de token",
+            "disposition": "Colorir tokens com base em sua disposição",
+            "health-percent": "Colorir tokens com base na porcentagem de saúde",
+            "level-diff": "Colorir tokens com base na diferença de nível em relação ao grupo",
+            "custom-color": "Se Personalizado estiver ativado, usa essa cor para os tokens",
+            "default": "Usar a configuração mundial para isso",
+            "unchanged": "Não colora automaticamente o token"
           },
-          "background": {
-            "name": "Cor Automática do Fundo do Token",
-            "hint": "Selecione se o módulo deve alterar a cor do fundo do token dinâmico"
-          },
-          "choices": {
-            "unchanged": "Inalterado",
-            "health": "Baseado em Saúde",
-            "disposition": "Disposição"
-          },
-          "percent-color": {
-            "name": "Porcentagem de Cor Automática do Token",
-            "hint": "Quanto deve ser a saturação da coloração automática"
-          }
-        },
-        "colors": {
-          "damage": {
-            "name": "[Cor] Dano",
-            "hint": "Altera a cor que o token pisca ao receber dano"
-          },
-          "healing": {
-            "name": "[Cor] Cura",
-            "hint": "Altera a cor que o token pisca ao receber cura"
-          },
-          "target": {
-            "name": "[Cor] Alvo",
-            "hint": "Altera a cor que o token pisca ao mirar (assumindo que você não tenha ativado a configuração de cor do jogador)"
-          },
-          "status": {
-            "positive": {
-              "name": "[Cor] Condição Positiva",
-              "hint": "Altera a cor que o token pisca ao receber uma condição positiva"
+          "row": {
+            "type": {
+              "party": "Tokens no grupo pf2e",
+              "friendly": "Tokens com disposição amigável",
+              "neutral": "Tokens com disposição neutra",
+              "hostile": "Tokens com disposição hostil",
+              "secret": "Tokens com disposição secreta"
             },
-            "negative": {
-              "name": "[Cor] Condição Negativa",
-              "hint": "Altera a cor que o token pisca ao receber uma condição negativa"
-            }
+            "ring": {
+              "unchanged": "Não altera a cor do anel",
+              "default": "Usa as configurações do GM para a cor do anel",
+              "custom": "Usa a Cor Personalizada inserida para a cor do anel",
+              "disposition": "Usa a disposição do token para a cor do anel",
+              "health-percent": "Usa a Porcentagem de saúde para a cor do anel",
+              "level-diff": "Usa a Diferença do nível do grupo para a cor do anel"
+            },
+            "bg": {
+              "unchanged": "Não altera a cor do fundo",
+              "default": "Usa as configurações do GM para a cor do fundo",
+              "custom": "Usa a Cor Personalizada inserida para a cor do fundo",
+              "disposition": "Usa a disposição do token para a cor do fundo",
+              "health-percent": "Usa a Porcentagem de saúde para a cor do fundo",
+              "level-diff": "Usa a Diferença do nível do grupo para a cor do fundo"
+            },
+            "reset-color": "Redefinir para Cor Padrão"
           }
         },
-        "": {
-          "name": "",
-          "hint": ""
+        "headers": {
+          "title": "REDY: Configurações de Coloração Automática de Tokens Dinâmicos",
+          "world": "Mundo🌎",
+          "gamemaster": "GM👑",
+          "player": "Jogador👤",
+          "category": "Categoria",
+          "ring-or-bg": "Anel ou Fundo",
+          "custom": "Personalizado",
+          "disposition": "Disposição",
+          "health-percent": "Saúde %",
+          "level-diff": "Diferença de Nível",
+          "custom-color": "Cor Personalizada",
+          "default": "Padrão",
+          "unchanged": "Inalterado"
+        },
+        "row": {
+          "type": {
+            "party": "Grupo",
+            "friendly": "Amigável",
+            "neutral": "Neutro",
+            "hostile": "Hostil",
+            "secret": "Secreto"
+          },
+          "ring": "Anel",
+          "bg": "Fundo"
+        },
+        "notifications": {
+          "saved": "Configurações de Anel de Token Personalizadas Salvas!"
+        }
+      },
+      "import-export-menu": {
+        "import-settings": "Importar Configurações",
+        "export-settings": "Exportar Configurações",
+        "title": "Importador de Configurações REDY",
+        "body": "Carregar Configurações JSON",
+        "notifications": {
+          "error": "JSON inválido no arquivo carregado. Verifique o conteúdo do arquivo.",
+          "imported": "Configurações REDY foram importadas com sucesso! Recarregando o Foundry"
+        },
+        "buttons": {
+          "cancel": "Cancelar",
+          "import": "Importar"
+        }
+      },
+      "target": {
+        "share-flash": {
+          "name": "Compartilhar Flash de Alvo",
+          "hint": "Mostra o efeito de flash no alvo para todos os usuários (desativado mostra apenas para a pessoa que está mirando)"
+        },
+        "player-color": {
+          "name": "Alvo usa Cor do Jogador",
+          "hint": "Para o flash do alvo, use a cor do jogador (substitui quaisquer cores personalizadas definidas)"
+        }
+      },
+      "damage-heal": {
+        "scale-on-%-hp": {
+          "name": "Escala Duração de Dano/Cura",
+          "hint": "Escala a duração do dano/cura com base na porcentagem de mudança de saúde"
+        }
+      },
+      "duration": {
+        "name": "Duração",
+        "hint": "Por quanto tempo (em ms) o flash do token deve durar para todos os efeitos (Padrão 500 ms, isso será escalado se você ativar configurações que escalam a duração)"
+      },
+      "auto-coloring": {
+        "ring": {
+          "type": {
+            "name": "Anel de Token com Cor Automática",
+            "hint": "Selecione se o módulo deve alterar automaticamente a cor do anel do token dinâmico"
+          },
+          "custom-color": {
+            "name": "Cor Personalizada do Anel de Token",
+            "hint": "Se a opção de cor automática estiver configurada para personalizado, usará essa cor"
+          }
+        },
+        "background": {
+          "type": {
+            "name": "Fundo do Token com Cor Automática",
+            "hint": "Selecione se o módulo deve alterar a cor do anel do token dinâmico"
+          },
+          "custom-color": {
+            "name": "Cor Personalizada do Fundo do Token",
+            "hint": "Se a opção de cor automática estiver configurada para personalizado, usará essa cor"
+          }
+        },
+        "choices": {
+          "default": "Padrão",
+          "custom": "Personalizado",
+          "unchanged": "Inalterado",
+          "health": "Baseado na Saúde",
+          "disposition": "Disposição",
+          "levelDiff": "Diferença de Nível"
+        },
+        "percent-color": {
+          "name": "Porcentagem de Cor Automática do Token",
+          "hint": "Quanto deve ser a saturação da coloração automática"
+        },
+        "override-color": {
+          "name": "Sobrescrever Cor Automática",
+          "hint": "Selecione se a coloração automática deve sobrescrever a cor se você a tiver configurada para um valor no token?"
+        }
+      },
+      "colors": {
+        "damage": {
+          "name": "[Cor] Dano",
+          "hint": "Altere a cor que o token pisca ao receber dano"
+        },
+        "healing": {
+          "name": "[Cor] Cura",
+          "hint": "Altere a cor que o token pisca ao ser curado"
+        },
+        "target": {
+          "name": "[Cor] Alvo",
+          "hint": "Altere a cor que o token pisca ao ser alvo (supondo que você não tenha a configuração de cor do jogador ativada)"
+        },
+        "status": {
+          "positive": {
+            "name": "[Cor] Condição Positiva",
+            "hint": "Altere a cor que o token pisca ao receber uma condição positiva"
+          },
+          "negative": {
+            "name": "[Cor] Condição Negativa",
+            "hint": "Altere a cor que o token pisca ao receber uma condição negativa"
+          }
         }
       }
     }
   }
-  
+}

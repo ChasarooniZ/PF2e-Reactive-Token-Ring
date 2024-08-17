@@ -1,75 +1,192 @@
 {
-    "I18N.LANGUAGE": "한국어",
-    "pf2e-reactive-token-ring": {
-      "module-settings": {
-        "target": {
-          "share-flash": {
-            "name": "타겟 플래시 공유",
-            "hint": "모든 사용자에게 타겟의 플래시 효과를 표시합니다 (비활성화 시 타겟팅한 사람에게만 표시)"
-          },
-          "player-color": {
-            "name": "타겟이 플레이어 색상을 사용",
-            "hint": "타겟 플래시 시 플레이어 색상을 사용합니다 (설정된 사용자 색상을 덮어씁니다)"
-          }
-        },
-        "damage-heal": {
-          "scale-on-%-hp": {
-            "name": "데미지/치유 지속 시간 스케일",
-            "hint": "체력 변화 비율에 따라 데미지/치유 지속 시간을 조절합니다"
-          }
-        },
-        "duration": {
-          "name": "지속 시간",
-          "hint": "모든 효과에 대해 토큰이 깜빡이는 시간을 (ms 단위로) 설정합니다 (기본 500ms, 지속 시간 스케일링 설정을 활성화한 경우 스케일됩니다)"
+  "I18N.LANGUAGE": "한국어",
+  "pf2e-reactive-token-ring": {
+    "libwrapper": {
+      "autocolor": {
+        "error": "REDY: 다른 모듈이 이미 토큰 링 색상을 재정의하고 있습니다!"
+      }
+    },
+    "module-settings": {
+      "headers": {
+        "flash": {
+          "name": "플래시 설정",
+          "colors": "플래시 색상 설정"
         },
         "auto-coloring": {
-          "ring": {
-            "name": "토큰 링 자동 색상",
-            "hint": "모듈이 동적 토큰 링 색상을 변경할지 선택합니다"
-          },
-          "background": {
-            "name": "토큰 배경 자동 색상",
-            "hint": "모듈이 동적 토큰 배경 색상을 변경할지 선택합니다"
-          },
-          "choices": {
-            "unchanged": "변경 없음",
-            "health": "체력 기반",
-            "disposition": "성향"
-          },
-          "percent-color": {
-            "name": "토큰 자동 색상 비율",
-            "hint": "자동 색상의 채도를 얼마나 조절할지 설정합니다"
-          }
-        },
-        "colors": {
-          "damage": {
-            "name": "[색상] 데미지",
-            "hint": "데미지를 받을 때 토큰이 깜빡이는 색상을 변경합니다"
-          },
-          "healing": {
-            "name": "[색상] 치유",
-            "hint": "치유를 받을 때 토큰이 깜빡이는 색상을 변경합니다"
-          },
-          "target": {
-            "name": "[색상] 타겟",
-            "hint": "타겟팅 시 토큰이 깜빡이는 색상을 변경합니다 (플레이어 색상 설정이 활성화되지 않은 경우)"
-          },
-          "status": {
-            "positive": {
-              "name": "[색상] 긍정적 상태",
-              "hint": "긍정적인 상태를 받을 때 토큰이 깜빡이는 색상을 변경합니다"
-            },
-            "negative": {
-              "name": "[색상] 부정적 상태",
-              "hint": "부정적인 상태를 받을 때 토큰이 깜빡이는 색상을 변경합니다"
-            }
-          }
-        },
-        "": {
-          "name": "",
-          "hint": ""
+          "name": "자동 색상 설정"
         }
+      },
+      "configuration-menu": {
+        "redy-menu": "REDY 메뉴",
+        "hover": {
+          "headers": {
+            "category": "토큰 유형 카테고리",
+            "ring-or-bg": "자동 색상이 링 또는 배경에 영향을 미치는지 여부",
+            "custom": "토큰 링에 사용자 정의 색상 사용",
+            "disposition": "토큰의 성향에 따라 색상 지정",
+            "health-percent": "토큰의 체력 백분율에 따라 색상 지정",
+            "level-diff": "파티와의 레벨 차이에 따라 토큰 색상 지정",
+            "custom-color": "사용자 정의가 선택된 경우 이 색상을 토큰에 사용",
+            "default": "이 세계 설정 사용",
+            "unchanged": "토큰 자동 색상 지정 안 함"
+          },
+          "row": {
+            "type": {
+              "party": "pf2e 파티의 토큰",
+              "friendly": "우호적 성향의 토큰",
+              "neutral": "중립적 성향의 토큰",
+              "hostile": "적대적 성향의 토큰",
+              "secret": "비밀 성향의 토큰"
+            },
+            "ring": {
+              "unchanged": "링 색상을 변경하지 않음",
+              "default": "GM 설정을 링 색상에 사용",
+              "custom": "입력된 사용자 정의 색상을 링 색상에 사용",
+              "disposition": "토큰의 성향을 링 색상에 사용",
+              "health-percent": "체력 백분율을 링 색상에 사용",
+              "level-diff": "파티 레벨과의 차이를 링 색상에 사용"
+            },
+            "bg": {
+              "unchanged": "배경 색상을 변경하지 않음",
+              "default": "GM 설정을 배경 색상에 사용",
+              "custom": "입력된 사용자 정의 색상을 배경 색상에 사용",
+              "disposition": "토큰의 성향을 배경 색상에 사용",
+              "health-percent": "체력 백분율을 배경 색상에 사용",
+              "level-diff": "파티 레벨과의 차이를 배경 색상에 사용"
+            },
+            "reset-color": "기본 색상으로 재설정"
+          }
+        },
+        "headers": {
+          "title": "REDY: 동적 토큰 자동 색상 설정",
+          "world": "세계🌎",
+          "gamemaster": "GM👑",
+          "player": "플레이어👤",
+          "category": "카테고리",
+          "ring-or-bg": "링 또는 배경",
+          "custom": "사용자 정의",
+          "disposition": "성향",
+          "health-percent": "체력 %",
+          "level-diff": "레벨 차이",
+          "custom-color": "사용자 정의 색상",
+          "default": "기본값",
+          "unchanged": "변경 없음"
+        },
+        "row": {
+          "type": {
+            "party": "파티",
+            "friendly": "우호적",
+            "neutral": "중립",
+            "hostile": "적대적",
+            "secret": "비밀"
+          },
+          "ring": "링",
+          "bg": "배경"
+        },
+        "notifications": {
+          "saved": "사용자 정의 토큰 링 설정이 저장되었습니다!"
+        }
+      },
+      "import-export-menu": {
+        "import-settings": "설정 가져오기",
+        "export-settings": "설정 내보내기",
+        "title": "REDY 설정 가져오기",
+        "body": "설정 JSON 업로드",
+        "notifications": {
+          "error": "업로드된 파일의 JSON이 유효하지 않습니다. 파일 내용을 확인해주세요.",
+          "imported": "REDY 설정을 성공적으로 가져왔습니다! Foundry를 다시 로드합니다"
+        },
+        "buttons": {
+          "cancel": "취소",
+          "import": "가져오기"
+        }
+      },
+      "target": {
+        "share-flash": {
+          "name": "대상 플래시 공유",
+          "hint": "대상의 플래시 효과를 모든 사용자에게 표시 (비활성화하면 대상을 지정한 사람에게만 표시)"
+        },
+        "player-color": {
+          "name": "대상에 플레이어 색상 사용",
+          "hint": "대상 플래시에 플레이어 색상 사용 (사용자 정의 설정 색상 재정의)"
+        }
+      },
+      "damage-heal": {
+        "scale-on-%-hp": {
+          "name": "피해/치유 지속 시간 조정",
+          "hint": "체력 변화 백분율에 따라 피해/치유 지속 시간 조정"
+        }
+      },
+      "duration": {
+        "name": "지속 시간",
+        "hint": "모든 효과에 대한 토큰 플래시 지속 시간 (ms) (기본값 500ms, 지속 시간을 조정하는 설정을 활성화하면 이 값이 조정됩니다)"
+      },
+      "auto-coloring": {
+        "ring": {
+          "type": {
+            "name": "토큰 링 자동 색상",
+            "hint": "모듈이 동적 토큰 링 색상을 자동으로 변경할지 선택"
+          },
+          "custom-color": {
+            "name": "토큰 링 사용자 정의 색상",
+            "hint": "자동 색상 옵션이 사용자 정의로 설정된 경우 이 색상 사용"
+          }
+        },
+        "background": {
+          "type": {
+            "name": "토큰 배경 자동 색상",
+            "hint": "모듈이 동적 토큰 링 색상을 변경할지 선택"
+          },
+          "custom-color": {
+            "name": "토큰 배경 사용자 정의 색상",
+            "hint": "자동 색상 옵션이 사용자 정의로 설정된 경우 이 색상 사용"
+          }
+        },
+        "choices": {
+          "default": "기본값",
+          "custom": "사용자 정의",
+          "unchanged": "변경 없음",
+          "health": "체력 기반",
+          "disposition": "성향",
+          "levelDiff": "레벨 차이"
+        },
+        "percent-color": {
+          "name": "토큰 자동 색상 백분율",
+          "hint": "자동 색상의 채도를 얼마나 설정할지"
+        },
+        "override-color": {
+          "name": "자동 색상이 색상 재정의",
+          "hint": "토큰에 값이 설정된 경우 자동 색상이 색상을 재정의할지 선택"
+        }
+      },
+      "colors": {
+        "damage": {
+          "name": "[색상] 피해",
+          "hint": "피해 시 토큰 플래시 색상 변경"
+        },
+        "healing": {
+          "name": "[색상] 치유",
+          "hint": "치유 시 토큰 플래시 색상 변경"
+        },
+        "target": {
+          "name": "[색상] 대상",
+          "hint": "대상 지정 시 토큰 플래시 색상 변경 (플레이어 색상 설정이 활성화되지 않은 경우)"
+        },
+        "status": {
+          "positive": {
+            "name": "[색상] 긍정적 상태",
+            "hint": "긍정적 상태를 받았을 때 토큰 플래시 색상 변경"
+          },
+          "negative": {
+            "name": "[색상] 부정적 상태",
+            "hint": "부정적 상태를 받았을 때 토큰 플래시 색상 변경"
+          }
+        }
+      },
+      "": {
+        "name": "",
+        "hint": ""
       }
     }
   }
-  
+}

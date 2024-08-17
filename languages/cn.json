@@ -1,75 +1,193 @@
 {
-    "I18N.LANGUAGE": "中文",
-    "pf2e-reactive-token-ring": {
-      "module-settings": {
-        "target": {
-          "share-flash": {
-            "name": "共享目标闪烁",
-            "hint": "向所有用户显示目标的闪烁效果（禁用时仅对目标者显示）"
-          },
-          "player-color": {
-            "name": "目标使用玩家颜色",
-            "hint": "目标闪烁时使用玩家颜色（覆盖任何自定义设置的颜色）"
-          }
-        },
-        "damage-heal": {
-          "scale-on-%-hp": {
-            "name": "调整伤害/治疗持续时间",
-            "hint": "根据健康变化的百分比调整伤害/治疗持续时间"
-          }
-        },
-        "duration": {
-          "name": "持续时间",
-          "hint": "所有效果中，令牌闪烁的时间（以毫秒为单位）（默认500毫秒，如果开启了持续时间调整设置，将会进行调整）"
+  "I18N.LANGUAGE": "中文",
+  "pf2e-reactive-token-ring": {
+    "libwrapper": {
+      "autocolor": {
+        "error": "REDY: 另一个模块已经覆盖了标记环的颜色！"
+      }
+    },
+    "module-settings": {
+      "headers": {
+        "flash": {
+          "name": "闪烁设置",
+          "colors": "闪烁颜色设置"
         },
         "auto-coloring": {
-          "ring": {
-            "name": "令牌环自动颜色",
-            "hint": "选择模块是否应更改动态令牌环的颜色"
-          },
-          "background": {
-            "name": "令牌背景自动颜色",
-            "hint": "选择模块是否应更改动态令牌背景的颜色"
-          },
-          "choices": {
-            "unchanged": "不变",
-            "health": "基于健康",
-            "disposition": "性格"
-          },
-          "percent-color": {
-            "name": "令牌自动颜色百分比",
-            "hint": "自动着色的饱和度应为多少"
-          }
-        },
-        "colors": {
-          "damage": {
-            "name": "[颜色] 伤害",
-            "hint": "更改令牌在受伤时闪烁的颜色"
-          },
-          "healing": {
-            "name": "[颜色] 治疗",
-            "hint": "更改令牌在治疗时闪烁的颜色"
-          },
-          "target": {
-            "name": "[颜色] 目标",
-            "hint": "更改令牌在目标时闪烁的颜色（假设您没有启用玩家颜色设置）"
-          },
-          "status": {
-            "positive": {
-              "name": "[颜色] 正面状态",
-              "hint": "更改令牌在接收到正面状态时闪烁的颜色"
-            },
-            "negative": {
-              "name": "[颜色] 负面状态",
-              "hint": "更改令牌在接收到负面状态时闪烁的颜色"
-            }
-          }
-        },
-        "": {
-          "name": "",
-          "hint": ""
+          "name": "自动着色设置"
         }
+      },
+      "configuration-menu": {
+        "redy-menu": "REDY 菜单",
+        "hover": {
+          "headers": {
+            "category": "标记类型类别",
+            "ring-or-bg": "自动颜色影响标记环或背景",
+            "custom": "使用自定义颜色作为标记环",
+            "disposition": "根据其态度为标记着色",
+            "health-percent": "根据其健康百分比为标记着色",
+            "level-diff": "根据与队伍的等级差异为标记着色",
+            "custom-color": "如果开启了自定义，则为标记使用此颜色",
+            "default": "使用世界设置",
+            "unchanged": "不自动为标记着色"
+          },
+          "row": {
+            "type": {
+              "party": "在pf2e队伍中的标记",
+              "friendly": "友好态度的标记",
+              "neutral": "中立态度的标记",
+              "hostile": "敌对态度的标记",
+              "secret": "秘密态度的标记"
+            },
+            "ring": {
+              "unchanged": "不改变标记环的颜色",
+              "default": "使用GM设置的标记环颜色",
+              "custom": "使用输入的自定义颜色作为标记环颜色",
+              "disposition": "根据标记的态度使用标记环颜色",
+              "health-percent": "根据健康百分比使用标记环颜色",
+              "level-diff": "根据与队伍等级的差异使用标记环颜色"
+            },
+            "bg": {
+              "unchanged": "不改变背景颜色",
+              "default": "使用GM设置的背景颜色",
+              "custom": "使用输入的自定义颜色作为背景颜色",
+              "disposition": "根据标记的态度使用背景颜色",
+              "health-percent": "根据健康百分比使用背景颜色",
+              "level-diff": "根据与队伍等级的差异使用背景颜色"
+            },
+            "reset-color": "重置为默认颜色"
+          }
+        },
+        "headers": {
+          "title": "REDY: 自动颜色动态标记设置",
+          "world": "世界🌎",
+          "gamemaster": "GM👑",
+          "player": "玩家👤",
+          "category": "类别",
+          "ring-or-bg": "标记环或背景",
+          "custom": "自定义",
+          "disposition": "态度",
+          "health-percent": "健康 %",
+          "level-diff": "等级差异",
+          "custom-color": "自定义颜色",
+          "default": "默认",
+          "unchanged": "不变"
+        },
+        "row": {
+          "type": {
+            "party": "队伍",
+            "friendly": "友好",
+            "neutral": "中立",
+            "hostile": "敌对",
+            "secret": "秘密"
+          },
+          "ring": "标记环",
+          "bg": "背景"
+        },
+        "notifications": {
+          "saved": "自定义标记环设置已保存！"
+        }
+      },
+      "import-export-menu": {
+        "import-settings": "导入设置",
+        "export-settings": "导出设置",
+        "title": "REDY 设置导入器",
+        "body": "上传设置 JSON",
+        "notifications": {
+          "error": "上传的文件中 JSON 无效。请检查文件内容。",
+          "imported": "REDY 设置已成功导入！重新加载 Foundry"
+        },
+        "buttons": {
+          "cancel": "取消",
+          "import": "导入"
+        }
+      },
+      "target": {
+        "share-flash": {
+          "name": "共享目标闪烁",
+          "hint": "显示目标的闪烁效果给所有用户（禁用时只显示给目标用户）"
+        },
+        "player-color": {
+          "name": "目标使用玩家颜色",
+          "hint": "对于目标闪烁，使用玩家颜色（覆盖任何自定义设置的颜色）"
+        }
+      },
+      "damage-heal": {
+        "scale-on-%-hp": {
+          "name": "缩放伤害/治疗持续时间",
+          "hint": "根据健康变化百分比缩放伤害/治疗持续时间"
+        }
+      },
+      "duration": {
+        "name": "持续时间",
+        "hint": "所有效果的标记闪烁持续时间（以毫秒为单位）（默认500毫秒，如果启用了持续时间缩放选项，此值将被缩放）"
+      },
+      "auto-coloring": {
+        "ring": {
+          "type": {
+            "name": "标记环自动颜色",
+            "hint": "选择是否让模块自动改变动态标记环的颜色"
+          },
+          "custom-color": {
+            "name": "标记环自定义颜色",
+            "hint": "如果自动颜色选项设置为自定义，则使用此颜色"
+          }
+        },
+        "background": {
+          "type": {
+            "name": "标记背景自动颜色",
+            "hint": "选择是否让模块自动改变动态标记的背景颜色"
+          },
+          "custom-color": {
+            "name": "标记背景自定义颜色",
+            "hint": "如果自动颜色选项设置为自定义，则使用此颜色"
+          }
+        },
+        "choices": {
+          "default": "默认",
+          "custom": "自定义",
+          "unchanged": "不变",
+          "health": "基于健康",
+          "disposition": "态度",
+          "levelDiff": "等级差异"
+        },
+        "percent-color": {
+          "name": "标记自动颜色百分比",
+          "hint": "自动着色的饱和度应有多大"
+        },
+        "override-color": {
+          "name": "自动颜色覆盖颜色",
+          "hint": "选择是否自动着色应覆盖标记设置的颜色？"
+        }
+      },
+
+      "colors": {
+        "damage": {
+          "name": "[颜色] 伤害",
+          "hint": "更改标记在受到伤害时的闪烁颜色"
+        },
+        "healing": {
+          "name": "[颜色] 治疗",
+          "hint": "更改标记在治疗时的闪烁颜色"
+        },
+        "target": {
+          "name": "[颜色] 目标",
+          "hint": "更改标记在被目标时的闪烁颜色（假设未启用玩家颜色设置）"
+        },
+        "status": {
+          "positive": {
+            "name": "[颜色] 正面状态",
+            "hint": "更改标记在收到正面状态时的闪烁颜色"
+          },
+          "negative": {
+            "name": "[颜色] 负面状态",
+            "hint": "更改标记在收到负面状态时的闪烁颜色"
+          }
+        }
+      },
+      "": {
+        "name": "",
+        "hint": ""
       }
     }
   }
-  
+}

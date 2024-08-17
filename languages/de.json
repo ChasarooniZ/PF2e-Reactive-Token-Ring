@@ -1,7 +1,106 @@
 {
   "I18N.LANGUAGE": "Deutsch",
   "pf2e-reactive-token-ring": {
+    "libwrapper": {
+      "autocolor": {
+        "error": "REDY: Ein anderes Modul überschreibt bereits die Token-Ringfarben!"
+      }
+    },
     "module-settings": {
+      "headers": {
+        "flash": {
+          "name": "Aufblitz-Einstellungen",
+          "colors": "Aufblitz-Farbeinstellungen"
+        },
+        "auto-coloring": {
+          "name": "Automatische Färbeeinstellung"
+        }
+      },
+      "configuration-menu": {
+        "redy-menu": "REDY-Menü",
+        "hover": {
+          "headers": {
+            "category": "Kategorie des Token-Typs",
+            "ring-or-bg": "Ob die automatische Färbung den Ring oder Hintergrund betrifft",
+            "custom": "Benutzerdefinierte Farbe für Token-Ringe verwenden",
+            "disposition": "Farbe für Token basierend auf ihrer Gesinnung",
+            "health-percent": "Farbe für Token basierend auf ihrem Gesundheitsprozentsatz",
+            "level-diff": "Farbe für Token basierend auf ihrem Levelunterschied zur Gruppe",
+            "custom-color": "Wenn Benutzerdefiniert aktiviert ist, verwenden Sie diese Farbe für Tokens",
+            "default": "Verwenden Sie die Welteinstellung dafür",
+            "unchanged": "Färbt das Token nicht automatisch"
+          },
+          "row": {
+            "type": {
+              "party": "Tokens in der PF2E-Gruppe",
+              "friendly": "Tokens mit freundlicher Gesinnung",
+              "neutral": "Tokens mit neutraler Gesinnung",
+              "hostile": "Tokens mit feindlicher Gesinnung",
+              "secret": "Tokens mit geheimer Gesinnung"
+            },
+            "ring": {
+              "unchanged": "Ändert nicht die Farbe des Ringes",
+              "default": "Verwendet die GM-Einstellungen für die Ringfarbe",
+              "custom": "Verwendet die benutzerdefinierte Farbe für die Ringfarbe",
+              "disposition": "Verwendet die Gesinnung des Tokens für die Ringfarbe",
+              "health-percent": "Verwendet den Prozentsatz der Gesundheit für die Ringfarbe",
+              "level-diff": "Verwendet den Unterschied zum Gruppenlevel für die Ringfarbe"
+            },
+            "bg": {
+              "unchanged": "Ändert nicht die Farbe des Hintergrundes",
+              "default": "Verwendet die GM-Einstellungen für die Hintergrundfarbe",
+              "custom": "Verwendet die benutzerdefinierte Farbe für die Hintergrundfarbe",
+              "disposition": "Verwendet die Gesinnung des Tokens für die Hintergrundfarbe",
+              "health-percent": "Verwendet den Prozentsatz der Gesundheit für die Hintergrundfarbe",
+              "level-diff": "Verwendet den Unterschied zum Gruppenlevel für die Hintergrundfarbe"
+            },
+            "reset-color": "Auf Standardfarbe zurücksetzen"
+          }
+        },
+        "headers": {
+          "title": "REDY: Automatische Färbung der dynamischen Token-Einstellungen",
+          "world": "Welt🌎",
+          "gamemaster": "GM👑",
+          "player": "Spieler👤",
+          "category": "Kategorie",
+          "ring-or-bg": "Ring oder BG",
+          "custom": "Benutzerdefiniert",
+          "disposition": "Gesinnung",
+          "health-percent": "Gesundheit %",
+          "level-diff": "Levelunterschied",
+          "custom-color": "Benutzerdefinierte Farbe",
+          "default": "Standard",
+          "unchanged": "Unverändert"
+        },
+        "row": {
+          "type": {
+            "party": "Gruppe",
+            "friendly": "Freundlich",
+            "neutral": "Neutral",
+            "hostile": "Feindlich",
+            "secret": "Geheim"
+          },
+          "ring": "Ring",
+          "bg": "BG"
+        },
+        "notifications": {
+          "saved": "Benutzerdefinierte Token-Ringeinstellungen gespeichert!"
+        }
+      },
+      "import-export-menu": {
+        "import-settings": "Einstellungen importieren",
+        "export-settings": "Einstellungen exportieren",
+        "title": "REDY-Einstellungen Importer",
+        "body": "JSON-Einstellungen hochladen",
+        "notifications": {
+          "error": "Ungültige JSON-Datei. Bitte überprüfen Sie den Dateiinhalt.",
+          "imported": "REDY-Einstellungen wurden erfolgreich importiert! Foundry wird neu geladen."
+        },
+        "buttons": {
+          "cancel": "Abbrechen",
+          "import": "Importieren"
+        }
+      },
       "target": {
         "share-flash": {
           "name": "Aufblitzen beim Zielen teilen",
@@ -20,34 +119,44 @@
       },
       "duration": {
         "name": "Dauer",
-        "hint": "Wie lange (in ms) sollte das Aufblitzen für alle Effekte dauern? (Standard 500 ms, dies wird skaliert wenn die obrige Option aktiviert ist)"
+        "hint": "Wie lange (in ms) sollte das Aufblitzen für alle Effekte dauern? (Standard 500 ms, dies wird skaliert, wenn die oben genannte Option aktiviert ist)"
       },
       "auto-coloring": {
         "ring": {
-          "name": "Farbe des Token-Rings",
-          "hint": "Ob und wie das Modul die dynamische Token-Ringfarbe ändern soll"
+          "type": {
+            "name": "Automatische Token-Ringfarbe",
+            "hint": "Ob und wie das Modul die dynamische Token-Ringfarbe automatisch ändern soll"
+          },
+          "custom-color": {
+            "name": "Benutzerdefinierte Token-Ringfarbe",
+            "hint": "Wenn die automatische Färbung auf benutzerdefiniert eingestellt ist, wird diese Farbe verwendet"
+          }
         },
         "background": {
-          "name": "Farbe des Token-Hintergrunds",
-          "hint": "Ob und wie das Modul die dynamische Token-Hintergrundfarbe ändern soll"
+          "type": {
+            "name": "Automatische Token-Hintergrundfarbe",
+            "hint": "Ob und wie das Modul die dynamische Token-Hintergrundfarbe ändern soll"
+          },
+          "custom-color": {
+            "name": "Benutzerdefinierte Token-Hintergrundfarbe",
+            "hint": "Wenn die automatische Färbung auf benutzerdefiniert eingestellt ist, wird diese Farbe verwendet"
+          }
         },
         "choices": {
+          "default": "Standard",
+          "custom": "Benutzerdefiniert",
           "unchanged": "Unverändert",
           "health": "Gesundheitsbasiert",
-          "disposition": "Gesinnung"
-        },
-        "health-targets": {
-          "name": "Gesundheitsbasierte Färbung für",
-          "hint": "Wenn gesundheitsbasierte Färbung aktiviert ist, trifft diese nur bei folgender Gesinnung gezeigt.",
-          "all": "Alle",
-          "friendly": "Freundlich",
-          "non-friendly": "Nicht Freundlich",
-          "hostile": "Feindlich",
-          "non-hostile": "Nicht Feindlich"
+          "disposition": "Gesinnung",
+          "levelDiff": "Levelunterschied"
         },
         "percent-color": {
           "name": "Faktor der automatischen Färbung",
           "hint": "Wie stark die Sättigung der automatischen Färbung ausfallen soll"
+        },
+        "override-color": {
+          "name": "Automatische Färbung überschreibt Farbe",
+          "hint": "Ob die automatische Färbung die Farbe überschreiben soll, wenn sie auf einen Wert für das Token eingestellt ist?"
         }
       },
       "colors": {

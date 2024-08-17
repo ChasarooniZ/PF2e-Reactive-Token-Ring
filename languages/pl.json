@@ -1,7 +1,106 @@
 {
   "I18N.LANGUAGE": "Polski",
   "pf2e-reactive-token-ring": {
+    "libwrapper": {
+      "autocolor": {
+        "error": "REDY: Inny moduł już nadpisuje kolory pierścieni tokenów!"
+      }
+    },
     "module-settings": {
+      "headers": {
+        "flash": {
+          "name": "Ustawienia migania",
+          "colors": "Ustawienia koloru migania"
+        },
+        "auto-coloring": {
+          "name": "Ustawienia automatycznego kolorowania"
+        }
+      },
+      "configuration-menu": {
+        "redy-menu": "Menu REDY",
+        "hover": {
+          "headers": {
+            "category": "Kategoria typu tokena",
+            "ring-or-bg": "Czy automatyczne kolorowanie dotyczy pierścienia lub tła",
+            "custom": "Użyj niestandardowego koloru dla pierścieni tokenów",
+            "disposition": "Koloruj tokeny na podstawie ich rozmieszczenia",
+            "health-percent": "Koloruj tokeny na podstawie procentowego zdrowia",
+            "level-diff": "Koloruj tokeny na podstawie różnicy poziomów w stosunku do grupy",
+            "custom-color": "Jeśli wybrano opcję Niestandardowy, użyj tego koloru dla tokenów",
+            "default": "Użyj ustawienia świata",
+            "unchanged": "Nie koloruje automatycznie tokena"
+          },
+          "row": {
+            "type": {
+              "party": "Tokeny w drużynie pf2e",
+              "friendly": "Tokeny o przyjaznym rozmieszczeniu",
+              "neutral": "Tokeny o neutralnym rozmieszczeniu",
+              "hostile": "Tokeny o wrogim rozmieszczeniu",
+              "secret": "Tokeny o sekretnym rozmieszczeniu"
+            },
+            "ring": {
+              "unchanged": "Nie zmienia koloru pierścienia",
+              "default": "Używa ustawień GM dla koloru pierścienia",
+              "custom": "Używa niestandardowego koloru dla pierścienia",
+              "disposition": "Używa rozmieszczenia tokena do koloru pierścienia",
+              "health-percent": "Używa procentu zdrowia do koloru pierścienia",
+              "level-diff": "Używa różnicy poziomów w stosunku do grupy do koloru pierścienia"
+            },
+            "bg": {
+              "unchanged": "Nie zmienia koloru tła",
+              "default": "Używa ustawień GM dla koloru tła",
+              "custom": "Używa niestandardowego koloru dla tła",
+              "disposition": "Używa rozmieszczenia tokena do koloru tła",
+              "health-percent": "Używa procentu zdrowia do koloru tła",
+              "level-diff": "Używa różnicy poziomów w stosunku do grupy do koloru tła"
+            },
+            "reset-color": "Resetuj do domyślnego koloru"
+          }
+        },
+        "headers": {
+          "title": "REDY: Ustawienia automatycznego kolorowania dynamicznych tokenów",
+          "world": "Świat🌎",
+          "gamemaster": "GM👑",
+          "player": "Gracz👤",
+          "category": "Kategoria",
+          "ring-or-bg": "Pierścień lub tło",
+          "custom": "Niestandardowy",
+          "disposition": "Rozmieszczenie",
+          "health-percent": "Procent zdrowia",
+          "level-diff": "Różnica poziomów",
+          "custom-color": "Niestandardowy kolor",
+          "default": "Domyślny",
+          "unchanged": "Bez zmian"
+        },
+        "row": {
+          "type": {
+            "party": "Drużyna",
+            "friendly": "Przyjazny",
+            "neutral": "Neutralny",
+            "hostile": "Wrogi",
+            "secret": "Sekretny"
+          },
+          "ring": "Pierścień",
+          "bg": "Tło"
+        },
+        "notifications": {
+          "saved": "Niestandardowe ustawienia pierścienia tokena zapisane!"
+        }
+      },
+      "import-export-menu": {
+        "import-settings": "Importuj ustawienia",
+        "export-settings": "Eksportuj ustawienia",
+        "title": "Importer ustawień REDY",
+        "body": "Prześlij plik ustawień JSON",
+        "notifications": {
+          "error": "Nieprawidłowy JSON w przesłanym pliku. Proszę sprawdzić zawartość pliku.",
+          "imported": "Ustawienia REDY zostały pomyślnie zaimportowane! Przeładowanie Foundry"
+        },
+        "buttons": {
+          "cancel": "Anuluj",
+          "import": "Importuj"
+        }
+      },
       "target": {
         "share-flash": {
           "name": "Współdzielenie migania celu",
@@ -24,21 +123,40 @@
       },
       "auto-coloring": {
         "ring": {
-          "name": "Automatyczny kolor pierścienia tokena",
-          "hint": "Wybierz, czy moduł ma zmienić kolor dynamicznego pierścienia tokenów"
+          "type": {
+            "name": "Automatyczny kolor pierścienia tokena",
+            "hint": "Wybierz, czy moduł ma zmienić kolor dynamicznego pierścienia tokenów automatycznie"
+          },
+          "custom-color": {
+            "name": "Niestandardowy kolor pierścienia tokena",
+            "hint": "Jeśli opcja automatycznego kolorowania jest ustawiona na niestandardowy, użyje tego koloru"
+          }
         },
         "background": {
-          "name": "Automatyczny kolor tła tokena",
-          "hint": "Wybierz, czy moduł ma zmieniać kolor tła dynamicznego tokena"
+          "type": {
+            "name": "Automatyczny kolor tła tokena",
+            "hint": "Wybierz, czy moduł ma zmieniać kolor tła dynamicznego tokena"
+          },
+          "custom-color": {
+            "name": "Niestandardowy kolor tła tokena",
+            "hint": "Jeśli opcja automatycznego kolorowania jest ustawiona na niestandardowy, użyje tego koloru"
+          }
         },
         "choices": {
+          "default": "Domyślny",
+          "custom": "Niestandardowy",
           "unchanged": "Bez zmian",
           "health": "Oparte na zdrowiu",
-          "disposition": "Rozmieszczenie"
+          "disposition": "Rozmieszczenie",
+          "levelDiff": "Różnica poziomów"
         },
         "percent-color": {
           "name": "Procentowy automatyczny kolor tokena",
           "hint": "Jak duże powinno być nasycenie automatycznego kolorowania?"
+        },
+        "override-color": {
+          "name": "Automatyczne kolorowanie zastępuje kolor",
+          "hint": "Wybierz, czy automatyczne kolorowanie powinno zastępować kolor, jeśli masz go ustawionego dla tokena?"
         }
       },
       "colors": {

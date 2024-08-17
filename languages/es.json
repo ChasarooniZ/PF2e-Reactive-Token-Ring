@@ -1,63 +1,186 @@
 {
   "I18N.LANGUAGE": "Español",
   "pf2e-reactive-token-ring": {
+    "libwrapper": {
+      "autocolor": {
+        "error": "REDY: ¡Otro módulo ya está anulando los colores del anillo de token!"
+      }
+    },
     "module-settings": {
+      "headers": {
+        "flash": {
+          "name": "Configuraciones de Destello",
+          "colors": "Configuraciones de Color de Destello"
+        },
+        "auto-coloring": {
+          "name": "Configuración de Coloreo Automático"
+        }
+      },
+      "configuration-menu": {
+        "redy-menu": "Menú REDY",
+        "hover": {
+          "headers": {
+            "category": "Categoría del tipo de token",
+            "ring-or-bg": "Si el color automático afecta el anillo o el fondo",
+            "custom": "Usar Color Personalizado para los anillos de los tokens",
+            "disposition": "Colorear tokens según su disposición",
+            "health-percent": "Colorear tokens según su porcentaje de salud",
+            "level-diff": "Colorear tokens según su diferencia de nivel con el grupo",
+            "custom-color": "Si Personalizado está activado, usa este color para los tokens",
+            "default": "Usar la configuración global para esto",
+            "unchanged": "No colorea automáticamente el token"
+          },
+          "row": {
+            "type": {
+              "party": "Tokens en el grupo de pf2e",
+              "friendly": "Tokens con disposición amistosa",
+              "neutral": "Tokens con disposición neutral",
+              "hostile": "Tokens con disposición hostil",
+              "secret": "Tokens con disposición secreta"
+            },
+            "ring": {
+              "unchanged": "No cambia el color del anillo",
+              "default": "Usa la configuración del GM para el color del anillo",
+              "custom": "Usa el Color Personalizado introducido para el color del anillo",
+              "disposition": "Usa la disposición del token para el color del anillo",
+              "health-percent": "Usa el porcentaje de salud para el color del anillo",
+              "level-diff": "Usa la diferencia de nivel con el grupo para el color del anillo"
+            },
+            "bg": {
+              "unchanged": "No cambia el color del fondo",
+              "default": "Usa la configuración del GM para el color del fondo",
+              "custom": "Usa el Color Personalizado introducido para el color del fondo",
+              "disposition": "Usa la disposición del token para el color del fondo",
+              "health-percent": "Usa el porcentaje de salud para el color del fondo",
+              "level-diff": "Usa la diferencia de nivel con el grupo para el color del fondo"
+            },
+            "reset-color": "Restablecer al Color Predeterminado"
+          }
+        },
+        "headers": {
+          "title": "REDY: Configuración Dinámica de Coloreo Automático de Tokens",
+          "world": "Mundo🌎",
+          "gamemaster": "GM👑",
+          "player": "Jugador👤",
+          "category": "Categoría",
+          "ring-or-bg": "Anillo o Fondo",
+          "custom": "Personalizado",
+          "disposition": "Disposición",
+          "health-percent": "Salud %",
+          "level-diff": "Dif. de Nivel",
+          "custom-color": "Color Personalizado",
+          "default": "Predeterminado",
+          "unchanged": "Sin Cambios"
+        },
+        "row": {
+          "type": {
+            "party": "Grupo",
+            "friendly": "Amistoso",
+            "neutral": "Neutral",
+            "hostile": "Hostil",
+            "secret": "Secreto"
+          },
+          "ring": "Anillo",
+          "bg": "Fondo"
+        },
+        "notifications": {
+          "saved": "¡Configuración Personalizada de Anillo de Token Guardada!"
+        }
+      },
+      "import-export-menu": {
+        "import-settings": "Importar Configuraciones",
+        "export-settings": "Exportar Configuraciones",
+        "title": "Importador de Configuraciones REDY",
+        "body": "Subir JSON de Configuraciones",
+        "notifications": {
+          "error": "JSON inválido en el archivo subido. Por favor, verifica el contenido del archivo.",
+          "imported": "¡Las Configuraciones de REDY fueron importadas exitosamente! Recargando Foundry"
+        },
+        "buttons": {
+          "cancel": "Cancelar",
+          "import": "Importar"
+        }
+      },
       "target": {
         "share-flash": {
-          "name": "Compartir Destello del Objetivo",
+          "name": "Compartir Destello de Objetivo",
           "hint": "Muestra el efecto de destello en el objetivo a todos los usuarios (deshabilitado muestra solo a la persona que apunta)"
         },
         "player-color": {
-          "name": "El objetivo usa el color del jugador",
-          "hint": "Para el destello del objetivo, usa el color del jugador (sobrescribe cualquier color personalizado)"
+          "name": "El objetivo usa el Color del Jugador",
+          "hint": "Para el destello de objetivo, usa el color del jugador (anula cualquier color personalizado establecido)"
         }
       },
       "damage-heal": {
         "scale-on-%-hp": {
-          "name": "Escalar Duración de Daño/Sanación",
-          "hint": "Escala la duración del daño/sanación basada en el porcentaje de cambio de salud"
+          "name": "Escalar Duración de Daño/Curación",
+          "hint": "Escalar la duración de daño/curación basado en el porcentaje de cambio de salud"
         }
       },
       "duration": {
         "name": "Duración",
-        "hint": "¿Cuánto tiempo (en ms) debería durar el destello del token para todos los efectos? (Predeterminado 500 ms, esto se escalará si activa configuraciones que escalan la duración)"
+        "hint": "¿Cuánto tiempo (en ms) debe durar el destello del token para todos los efectos? (Predeterminado 500 ms, esto se escalará si activas configuraciones que escalan la duración)"
       },
       "auto-coloring": {
         "ring": {
-          "name": "Color del Anillo del Token",
-          "hint": "Seleccione si el módulo debe cambiar el color dinámico del anillo del token"
+          "type": {
+            "name": "Coloreo Automático del Anillo del Token",
+            "hint": "Selecciona si el módulo debe cambiar el color del anillo del token dinámicamente"
+          },
+          "custom-color": {
+            "name": "Color Personalizado del Anillo del Token",
+            "hint": "Si la opción de coloreo automático está configurada en personalizado, usará este color"
+          }
         },
         "background": {
-          "name": "Color de Fondo del Token",
-          "hint": "Seleccione si el módulo debe cambiar el color de fondo dinámico del token"
+          "type": {
+            "name": "Coloreo Automático del Fondo del Token",
+            "hint": "Selecciona si el módulo debe cambiar el color del fondo del token dinámicamente"
+          },
+          "custom-color": {
+            "name": "Color Personalizado del Fondo del Token",
+            "hint": "Si la opción de coloreo automático está configurada en personalizado, usará este color"
+          }
         },
         "choices": {
-          "unchanged": "Sin cambios",
-          "health": "Basado en la salud",
-          "disposition": "Disposición"
+          "default": "Predeterminado",
+          "custom": "Personalizado",
+          "unchanged": "Sin Cambios",
+          "health": "Basado en Salud",
+          "disposition": "Disposición",
+          "levelDiff": "Diferencia de Nivel"
+        },
+        "percent-color": {
+          "name": "Porcentaje de Color Automático del Token",
+          "hint": "¿Cuánto debería ser la saturación del coloreo automático?"
+        },
+        "override-color": {
+          "name": "Anular Coloreo Automático",
+          "hint": "Selecciona si el coloreo automático debe anular el color si tienes un valor establecido para el token"
         }
       },
+
       "colors": {
         "damage": {
           "name": "[Color] Daño",
-          "hint": "Cambie el color que parpadea el token al recibir daño"
+          "hint": "Cambiar el color en el que destella el token al recibir daño"
         },
         "healing": {
           "name": "[Color] Curación",
-          "hint": "Cambie el color que parpadea el token al recibir curación"
+          "hint": "Cambiar el color en el que destella el token al recibir curación"
         },
         "target": {
           "name": "[Color] Objetivo",
-          "hint": "Cambie el color que parpadea el token al apuntar (suponiendo que no tenga habilitada la configuración de color del jugador)"
+          "hint": "Cambiar el color en el que destella el token al apuntar (suponiendo que no tienes activada la configuración de color del jugador)"
         },
         "status": {
           "positive": {
             "name": "[Color] Condición Positiva",
-            "hint": "Cambie el color que parpadea el token al recibir una condición positiva"
+            "hint": "Cambiar el color en el que destella el token al recibir una condición positiva"
           },
           "negative": {
             "name": "[Color] Condición Negativa",
-            "hint": "Cambie el color que parpadea el token al recibir una condición negativa"
+            "hint": "Cambiar el color en el que destella el token al recibir una condición negativa"
           }
         }
       },
