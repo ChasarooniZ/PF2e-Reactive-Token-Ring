@@ -215,7 +215,11 @@ export function renderSettingsConfig(_, html) {
     }); 
       })()">${game.i18n.localize(
         `${MODULE_ID}.module-settings.import-export-menu.${action}-settings`
-      )}
+      )} (${game.i18n.localize(
+      `${MODULE_ID}.module-settings.configuration-menu.headers.${
+        game.user.isGM ? "gamemaster" : "player"
+      }`
+    )})
       </button>`
   );
 
