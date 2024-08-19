@@ -1,5 +1,9 @@
-## [1.5.3](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.5.2...1.5.3) - Updating Poland
+## [1.5.4](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.5.3...1.5.4) - Updating Poland
 -Polish translation update (@Lioheart)
+
+## [1.5.3](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.5.2...1.5.3) - German Tweaks Latest
+
+German translation tweaks (@Mystler)
 ## [1.5.2](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.4.0...1.5.2) - Let's try this one last time
 - `Settings Rework`
   - `Autocolor Submenu`
