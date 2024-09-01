@@ -31,7 +31,7 @@ export function autoColorRing() {
         const party = game.actors?.party;
         const partyMembers = party?.members || [];
         const partyLevel =
-          partyMembers.reduce((tot, char) => tot + (char.level || 0), 0) /
+          partyMembers?.reduce((tot, char) => tot + (char.level || 0), 0) /
             (partyMembers.length || 1) || 1;
         const levelDiff = (token?.actor?.level || 0) - partyLevel;
         const levelKey =
