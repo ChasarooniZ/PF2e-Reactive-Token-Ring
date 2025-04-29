@@ -28,7 +28,8 @@
             "level-diff": "Color tokens based on their level difference from the party",
             "custom-color": "If Custom is toggled, uses this color for tokens",
             "default": "Use the world setting for this",
-            "unchanged": "Doesn't auto color the token"
+            "unchanged": "Doesn't auto color the token",
+            "random": "For distinguishing duplicate tokens, selects a random color from a list of 16"
           },
           "row": {
             "type": {
@@ -70,7 +71,8 @@
           "level-diff": "Level Diff",
           "custom-color": "Custom Color",
           "default": "Default",
-          "unchanged": "Unchanged"
+          "unchanged": "Unchanged",
+          "random": "Random"
         },
         "row": {
           "type": {
@@ -147,6 +149,7 @@
           "custom": "Custom",
           "unchanged": "Unchanged",
           "health": "Health-Based",
+          "random": "Random",
           "disposition": "Disposition",
           "levelDiff": "Level Difference"
         },

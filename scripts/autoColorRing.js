@@ -56,6 +56,11 @@ export function autoColorRing() {
           COLORS.PF2E.LEVELDIFF.DEFAULT[levelKey] || COLORS.WHITE
         );
       },
+      random: (token, _type) => {
+        return Color.fromString(
+          COLORS.RANDOM[token.id.charCodeAt(0) % 16]
+        );
+      },
       custom: (_token, type) =>
         Color.fromString(
           getSetting(this, "custom-color", type) || COLORS.WHITE
