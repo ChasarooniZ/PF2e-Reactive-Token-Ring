@@ -45,6 +45,7 @@ function createSettingsRow(key, savedType, savedColor, isWorld) {
     "custom",
     "disposition",
     "health-percent",
+    "random"
   ];
   if (game.system.id === "pf2e") checkboxOptions.push("level-diff");
 
@@ -153,6 +154,7 @@ export function displaySettingsMenu(isWorld) {
     "custom",
     "disposition",
     "health-percent",
+    "random",
   ];
   if (game.system.id === "pf2e") headerKeys.push("level-diff");
   headerKeys.push("custom-color");
