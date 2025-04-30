@@ -28,7 +28,8 @@
             "level-diff": "Kolor tokenów zależy od różnicy poziomów między nimi a drużyną",
             "custom-color": "Jeśli opcja Niestandardowe jest włączona, używa tego koloru dla tokenów",
             "default": "Użyj do tego ustawienia świata",
-            "unchanged": "Nie koloruje automatycznie tokena"
+            "unchanged": "Nie koloruje automatycznie tokena",
+            "random": "W celu odróżnienia zduplikowanych tokenów wybiera losowy kolor z listy 16 kolorów."
           },
           "row": {
             "type": {
@@ -70,14 +71,15 @@
           "level-diff": "Różnica poziomów",
           "custom-color": "Niestandardowy kolor",
           "default": "Domyślne",
-          "unchanged": "Bez zmian"
+          "unchanged": "Bez zmian",
+          "random": "Losowo"
         },
         "row": {
           "type": {
             "party": "Drużyna",
-            "friendly": "Przyjazne",
+            "friendly": "Przyjazny",
             "neutral": "Neutralni",
-            "hostile": "Wrogowie",
+            "hostile": "Wrogi",
             "secret": "Sekretne"
           },
           "ring": "Pierścień",
@@ -147,6 +149,7 @@
           "custom": "Niestandardowe",
           "unchanged": "Bez zmian",
           "health": "Oparte na zdrowiu",
+          "random": "Losowo",
           "disposition": "Rozmieszczenie",
           "levelDiff": "Różnica poziomów"
         },
