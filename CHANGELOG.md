@@ -1,3 +1,7 @@
+## [1.6.1](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.6.0...1.6.1) - Swift as a Lion
+
+- Polish translation update (@Lioheart)
+
 ## [1.6.0](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.5.4...1.6.0) - Randomizing
 
 - **New**
