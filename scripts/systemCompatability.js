@@ -60,7 +60,7 @@ export function getHealthLevel(actor, update = undefined) {
  */
 export function updateHasAllianceChange(actor, update) {
   let path = getSystemKeys(actor).alliancePath;
-  ig (!path) return false;
+  if (!path) return false;
   if (typeof foundry.utils.getProperty(update, path) !== "undefined")
     return true;
   // Also check if the field is being unset
