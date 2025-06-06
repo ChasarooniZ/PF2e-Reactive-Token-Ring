@@ -60,6 +60,7 @@ export function getHealthLevel(actor, update = undefined) {
  */
 export function updateHasAllianceChange(actor, update) {
   let path = getSystemKeys(actor).alliancePath;
+  if (!path) return false;
   if (typeof foundry.utils.getProperty(update, path) !== "undefined")
     return true;
   // Also check if the field is being unset
@@ -82,7 +83,6 @@ function getSystemKeys(actor) {
         hpMaxPath: "system.attributes.hp.max",
         zeroIsBad: true,
       };
-      break;
     case "alienrpg":
       if (actor.type !== "spacecraft" && actor.type !== "vehicles") {
         return {
@@ -102,6 +102,12 @@ function getSystemKeys(actor) {
       return {
         hpPath: "system.hitPoints.value",
         hpMaxPath: "system.hitPoints.max",
+        zeroIsBad: true,
+      };
+    case "dnd4e":
+      return {
+        hpPath: "system.attributes.hp.value",
+        hpMaxPath: "system.attributes.hp.max",
         zeroIsBad: true,
       };
     //case "dnd5e":

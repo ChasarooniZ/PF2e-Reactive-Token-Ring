@@ -112,7 +112,7 @@ function getColorForHealthLevel(level) {
  */
 function getSetting(token, typeOrColor, ringOrBackground) {
   const actor = token.actor;
-  const isParty = game.actors.party.members.some((a) => a.id === actor?.id);
+  const isParty = game.actors.party?.members.some((a) => a.id === actor?.id);
   const type = isParty
     ? "party"
     : {
