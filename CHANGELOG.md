@@ -1,6 +1,13 @@
-## Uncommitted
-- V13 compatibility
-- `DND4e` system support (@SagaTympana)
+## [2.0.0](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.6.1...2.0.0) - A New Version
+
+- `Updates`
+  - V13 compatibility
+  - All `client` settings migrated to `user` settings
+  - Updated to use `DialogV2`
+  - Fixed color flash not processing color properly
+- `Added`
+  - `DND4e` system support (@SagaTympana)
+
 ## [1.6.1](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.6.0...1.6.1) - Swift as a Lion
 
 - Polish translation update (@Lioheart)

@@ -111,7 +111,7 @@ export function registerSettings() {
           {
             name: `auto-coloring.${settingType}.${subSetting}.${scope}`,
             hint: "",
-            scope,
+            scope: isPlayerScope ? "user" : "world",
             config: false,
             default: defaultValue,
             type: settingDataType,
@@ -181,7 +181,7 @@ export function resolvePlayerWorldSetting(settingPath) {
  * @param {*} html - The HTML content of the settings UI.
  */
 export function renderSettingsConfig(_, html) {
-  const moduleTab = html.find(`.tab[data-tab=${MODULE_ID}]`);
+  const moduleTab = $(html).find(`.tab[data-tab=${MODULE_ID}]`);
   const menuLabel = game.i18n.localize(
     `${MODULE_ID}.module-settings.configuration-menu.redy-menu`
   );
@@ -249,9 +249,9 @@ export function renderSettingsConfig(_, html) {
   }
 
   // Add headers to organize settings in the UI
-  addSettingsHeader("flash.name", "target.share-flash", "h2");
-  addSettingsHeader("flash.colors", "colors.damage", "h3");
-  addSettingsHeader("auto-coloring.name", "auto-coloring.percent-color", "h2");
+  addSettingsHeader("flash.name", "target.share-flash", "h3");
+  addSettingsHeader("flash.colors", "colors.damage", "h4");
+  addSettingsHeader("auto-coloring.name", "auto-coloring.percent-color", "h3");
 
   // Add headers for specific scopes and types
   ["hostile", "neutral", "friendly", "party"].forEach((type) => {
@@ -259,7 +259,7 @@ export function renderSettingsConfig(_, html) {
       addSettingsHeader(
         `auto-coloring.type.${scope}.${type}`,
         `auto-coloring.ring.type.${type}.${scope}`,
-        "h4"
+        "h5"
       );
     });
   });
@@ -269,7 +269,7 @@ function addLegacySettings() {
   game.settings.register(MODULE_ID, "auto-coloring.ring", {
     name: "auto-ring",
     hint: "",
-    scope: "client",
+    scope: "user",
     config: false,
     default: "",
     type: String,
@@ -277,7 +277,7 @@ function addLegacySettings() {
   game.settings.register(MODULE_ID, "auto-coloring.background", {
     name: "auto-bg",
     hint: "",
-    scope: "client",
+    scope: "user",
     config: false,
     default: "",
     type: String,
@@ -285,7 +285,7 @@ function addLegacySettings() {
   game.settings.register(MODULE_ID, "auto-coloring.health-targets", {
     name: "auto-health-targets",
     hint: "",
-    scope: "client",
+    scope: "user",
     config: false,
     default: "",
     type: String,

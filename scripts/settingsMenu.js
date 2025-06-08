@@ -45,7 +45,7 @@ function createSettingsRow(key, savedType, savedColor, isWorld) {
     "custom",
     "disposition",
     "health-percent",
-    "random"
+    "random",
   ];
   if (game.system.id === "pf2e") checkboxOptions.push("level-diff");
 
@@ -83,11 +83,13 @@ function createSettingsRow(key, savedType, savedColor, isWorld) {
           ${backgroundType === "ring" ? iconHTML + " " + label.labelText : ""}
         </strong>
       </td>
-      <td><strong>${game.i18n.localize(
-        `${MODULE_ID}.module-settings.configuration-menu.row.${backgroundType}`
-      )}</strong></td>
+      <td><i class="${
+        backgroundType === "ring" ? "fa-regular" : "fa-duotone"
+      } fa-circle"></i> <strong>${game.i18n.localize(
+    `${MODULE_ID}.module-settings.configuration-menu.row.${backgroundType}`
+  )}</strong></td>
       ${checkboxesHTML}
-      <td>
+      <td class="custom-color">
         <input type="color" name="color" value="${savedColor}">
         <input type="text" name="colorText" value="${savedColor}" maxlength="7" class="REDY-color-input">
         ${resetButton}
@@ -172,8 +174,19 @@ export function displaySettingsMenu(isWorld) {
     )
     .join("");
 
-  new Dialog({
-    title: `${dialogTitle} (${scopeTitle})`,
+  foundry.applications.api.DialogV2.wait({
+    window: {
+      title: `${dialogTitle} (${scopeTitle})`,
+      controls: [
+        {
+          action: "kofi",
+          label: "Support Dev",
+          icon: "fa-solid fa-mug-hot fa-beat-fade",
+          onClick: () => window.open("https://ko-fi.com/chasarooni", _blank),
+        },
+      ],
+      icon: "fas fa-atom",
+    },
     content: `
       <table class="REDY-settings-table">
         <thead>
@@ -182,29 +195,37 @@ export function displaySettingsMenu(isWorld) {
         <tbody>${loadSettingsRows(isWorld)}</tbody>
       </table>
     `,
-    buttons: {
-      save: {
+    buttons: [
+      {
+        action: "save",
         label: game.i18n.localize("Save"),
-        callback: (html) => {
-          html.find("tr[data-row-key]").each(function () {
-            const $row = $(this);
-            const rowKey = $row.data("row-key").toLowerCase().replace(" ", ".");
-            const selectedType =
-              $row.find('input[type="checkbox"]:checked').attr("name") ??
-              (isWorld ? "unchanged" : "default");
-            const customColor = $row.find('input[name="color"]').val();
+        default: true,
+        callback: (event, button, dialog) => {
+          const html = dialog.element ? dialog.element : dialog;
+          $(html)
+            .find("tr[data-row-key]")
+            .each(function () {
+              const $row = $(this);
+              const rowKey = $row
+                .data("row-key")
+                .toLowerCase()
+                .replace(" ", ".");
+              const selectedType =
+                $row.find('input[type="checkbox"]:checked').attr("name") ??
+                (isWorld ? "unchanged" : "default");
+              const customColor = $row.find('input[name="color"]').val();
 
-            game.settings.set(
-              MODULE_ID,
-              `auto-coloring.${rowKey}.type.${scope}`,
-              selectedType
-            );
-            game.settings.set(
-              MODULE_ID,
-              `auto-coloring.${rowKey}.custom-color.${scope}`,
-              customColor
-            );
-          });
+              game.settings.set(
+                MODULE_ID,
+                `auto-coloring.${rowKey}.type.${scope}`,
+                selectedType
+              );
+              game.settings.set(
+                MODULE_ID,
+                `auto-coloring.${rowKey}.custom-color.${scope}`,
+                customColor
+              );
+            });
           ui.notifications.info(
             game.i18n.localize(
               `${MODULE_ID}.module-settings.configuration-menu.notifications.saved`
@@ -215,44 +236,49 @@ export function displaySettingsMenu(isWorld) {
           );
         },
       },
-      cancel: {
+      {
+        cancel: "cancel",
         label: game.i18n.localize("Cancel"),
       },
+    ],
+    render: (_event, app) => {
+      const html = app.element ? app.element : app;
+      // Synchronize the color picker and text input
+      $(html).on("input", 'input[name="color"]', function () {
+        const $row = $(this).closest("tr");
+        $row.find('input[name="colorText"]').val(this.value);
+      });
+
+      $(html).on("input", 'input[name="colorText"]', function () {
+        const $row = $(this).closest("tr");
+        let colorValue = this.value;
+
+        // Ensure the color starts with a '#' and is a valid hex code
+        if (!colorValue.startsWith("#")) colorValue = "#" + colorValue;
+        if (/^#[0-9A-F]{6}$/i.test(colorValue)) {
+          $row.find('input[name="color"]').val(colorValue);
+        }
+      });
+
+      // Event listener to ensure checkboxes are mutually exclusive within each row
+      $(html).on("change", 'input[type="checkbox"]', function () {
+        const $row = $(this).closest("tr");
+        const $checkboxes = $row.find('input[type="checkbox"]');
+        if (this.checked) {
+          $checkboxes.not(this).prop("checked", false);
+        }
+      });
+
+      $(html).on("click", ".REDY-reset-color", function () {
+        const $row = $(this).closest("tr");
+        const defaultColor = COLORS.PLAYER_DEFAULT;
+        $row.find('input[name="color"]').val(defaultColor);
+        $row.find('input[name="colorText"]').val(defaultColor);
+      });
     },
-    default: "save",
-  }).render(true, { width: 800 });
-
-  // Synchronize the color picker and text input
-  $(document).on("input", 'input[name="color"]', function () {
-    const $row = $(this).closest("tr");
-    $row.find('input[name="colorText"]').val(this.value);
-  });
-
-  $(document).on("input", 'input[name="colorText"]', function () {
-    const $row = $(this).closest("tr");
-    let colorValue = this.value;
-
-    // Ensure the color starts with a '#' and is a valid hex code
-    if (!colorValue.startsWith("#")) colorValue = "#" + colorValue;
-    if (/^#[0-9A-F]{6}$/i.test(colorValue)) {
-      $row.find('input[name="color"]').val(colorValue);
-    }
-  });
-
-  // Event listener to ensure checkboxes are mutually exclusive within each row
-  $(document).on("change", 'input[type="checkbox"]', function () {
-    const $row = $(this).closest("tr");
-    const $checkboxes = $row.find('input[type="checkbox"]');
-    if (this.checked) {
-      $checkboxes.not(this).prop("checked", false);
-    }
-  });
-
-  $(document).on("click", ".REDY-reset-color", function () {
-    const $row = $(this).closest("tr");
-    const defaultColor = COLORS.PLAYER_DEFAULT;
-    $row.find('input[name="color"]').val(defaultColor);
-    $row.find('input[name="colorText"]').val(defaultColor);
+    position: {
+      width: 900,
+    },
   });
 }
 

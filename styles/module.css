@@ -2,9 +2,18 @@
   width: 100%;
   text-align: center;
 }
+
+.REDY-settings-table th {
+  text-align: center;
+}
+
 .REDY-settings-table td {
   padding: 5px;
   vertical-align: middle; /* Aligns items vertically in the middle */
+}
+
+.REDY-settings-table td.custom-color {
+  display: flex;
 }
 
 .REDY-settings-table input[type="color"] {
@@ -52,4 +61,3 @@ button.REDY-reset-color {
   vertical-align: middle;
   margin-left: 4px;
 }
-

@@ -87,7 +87,8 @@ export async function flashColor(token, color, animationOverride = {}) {
       defaultAnimationOptions,
       animationOverride
     );
-    const colorNum = Color.fromString(color);
+    const colorNum =
+      typeof color === "string" ? Color.fromString(color) : color;
     return token.ring.flashColor(colorNum, options);
   }
 }
@@ -180,7 +181,9 @@ function exportSettings(isWorld) {
   saveDataToFile(
     JSON.stringify(data),
     "json",
-    `SETT-export-${isWorld ? "GM" : "player"}-(${new Date().toDateInputString()}).json`
+    `SETT-export-${
+      isWorld ? "GM" : "player"
+    }-(${new Date().toDateInputString()}).json`
   );
 }
 
