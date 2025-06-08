@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/Foundry-v12-informational)
+![](https://img.shields.io/badge/Foundry-v13-informational)
 ![All Downloads](https://img.shields.io/github/downloads/ChasarooniZ/PF2e-Reactive-Token-Ring/total?color=5e0000&label=All%20Downloads)
 ![Latest Release Download Count](https://img.shields.io/github/downloads/ChasarooniZ/PF2e-Reactive-Token-Ring/latest/module.zip)
 ![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2Fpf2e-reactive-token-ring&colorB=4aa94a)
