@@ -45,7 +45,8 @@
               "custom": "Używa wprowadzonego koloru niestandardowego dla koloru pierścienia",
               "disposition": "Używa nastawienia tokena dla koloru pierścienia",
               "health-percent": "Używa wartości procentowej zdrowia dla koloru pierścienia",
-              "level-diff": "Używa wartości różnicy z poziomu drużyny dla koloru pierścienia"
+              "level-diff": "Używa wartości różnicy z poziomu drużyny dla koloru pierścienia",
+              "random": "W celu odróżnienia zduplikowanych tokenów wybiera losowy kolor z listy 16 kolorów pierścienia."
             },
             "bg": {
               "unchanged": "Nie zmienia koloru tła",
@@ -53,7 +54,8 @@
               "custom": "Używa wprowadzonego koloru niestandardowego jako koloru tła",
               "disposition": "Używa nastawienia tokena dla koloru tła",
               "health-percent": "Używa wartości procentowej zdrowia dla koloru tła",
-              "level-diff": "Używa wartości różnicy z części poziomu drużyny dla koloru tła"
+              "level-diff": "Używa wartości różnicy z części poziomu drużyny dla koloru tła",
+              "random": "W celu odróżnienia zduplikowanych tokenów wybiera losowy kolor z listy 16 kolorów jako kolor tła."
             },
             "reset-color": "Przywróć domyślny kolor"
           }
