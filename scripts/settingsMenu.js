@@ -182,7 +182,7 @@ export function displaySettingsMenu(isWorld) {
           action: "kofi",
           label: "Support Dev",
           icon: "fa-solid fa-mug-hot fa-beat-fade",
-          onClick: () => window.open("https://ko-fi.com/chasarooni", _blank),
+          onClick: () => window.open("https://ko-fi.com/chasarooni", "_blank"),
         },
       ],
       icon: "fas fa-atom",
