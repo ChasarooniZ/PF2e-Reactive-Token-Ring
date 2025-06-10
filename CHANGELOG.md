@@ -1,3 +1,8 @@
+## [2.0.1](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/2.0.0...2.0.1) - Polish Update
+
+- `Updates`
+  - Updated Polish translation (@Lioheart)
+
 ## [2.0.0](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/1.6.1...2.0.0) - A New Version
 
 - `Updates`
