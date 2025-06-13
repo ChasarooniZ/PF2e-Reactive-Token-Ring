@@ -1,48 +1,48 @@
 name: Add Support for a System
 description: Fill out this to request support for a currently unsupported system (Do not submit DND 5e)
 title: "[System Support] "
-labels: [ "sys-support" ]
+labels: ["sys-support"]
 assignees:
-- ChasarooniZ
+  - ChasarooniZ
 body:
-- type: input
-  id: system
-  attributes:
-    label: Link to system
-    description: Provide the link to the system in foundry (if it has no link give me more details in the additional notes)
-    placeholder: https://foundryvtt.com/packages/pf2e
-  validations:
-    required: true
-- type: input
-  id: hp
-  attributes:
-    label: Path to HP Value
-    description: The path to the current actor hp value
-    placeholder: system.hp.value
-  validations:
-    required: true
-- type: input
-  id: hp-max
-  attributes:
-    label: Path to HP Max
-    description: The path to the current actor hp maximum
-    placeholder: system.hp.max
-  validations:
-    required: true
-- type: dropdown
-  id: zero-good
-  attributes:
-    label: Is 0 a good value?
-    multiple: false
-    options:
-    - Yes
-    - No
-  validations:
-    required: false
-- type: textarea
-  id: additional-notes
-  attributes:
-    label: Additional notes?
-    description: Any additional notes like if there is a different path depending on the actor etc.
-  validations:
-    required: false
+  - type: input
+    id: system
+    attributes:
+      label: Link to system
+      description: Provide the link to the system in foundry (if it has no link give me more details in the additional notes)
+      placeholder: https://foundryvtt.com/packages/pf2e
+    validations:
+      required: true
+  - type: input
+    id: hp
+    attributes:
+      label: Path to HP Value
+      description: The path to the current actor hp value
+      placeholder: system.hp.value
+    validations:
+      required: true
+  - type: input
+    id: hp-max
+    attributes:
+      label: Path to HP Max
+      description: The path to the current actor hp maximum
+      placeholder: system.hp.max
+    validations:
+      required: true
+  - type: dropdown
+    id: zero-good
+    attributes:
+      label: Is 0 a good value?
+      multiple: false
+      options:
+        - Yes
+        - No
+    validations:
+      required: false
+  - type: textarea
+    id: additional-notes
+    attributes:
+      label: Additional notes?
+      description: Any additional notes like if there is a different path depending on the actor etc.
+    validations:
+      required: false
