@@ -2,8 +2,7 @@ name: Add Support for a System
 description: Fill out this to request support for a currently unsupported system (Do not submit DND 5e)
 title: "[System Support] "
 labels: ["sys-support"]
-assignees:
-  - ChasarooniZ
+assignees: ["ChasarooniZ"]
 body:
   - type: input
     id: system
@@ -13,6 +12,7 @@ body:
       placeholder: https://foundryvtt.com/packages/pf2e
     validations:
       required: true
+
   - type: input
     id: hp
     attributes:
@@ -21,6 +21,7 @@ body:
       placeholder: system.hp.value
     validations:
       required: true
+
   - type: input
     id: hp-max
     attributes:
@@ -29,6 +30,7 @@ body:
       placeholder: system.hp.max
     validations:
       required: true
+
   - type: dropdown
     id: zero-good
     attributes:
@@ -39,6 +41,7 @@ body:
         - No
     validations:
       required: false
+
   - type: textarea
     id: additional-notes
     attributes:
