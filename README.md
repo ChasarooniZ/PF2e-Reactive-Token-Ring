@@ -59,6 +59,7 @@ Click me! ^^
 - Dragonbane - Drakar och Demoner
 - Dungeon World
 - Dungeons and Dragons 4e (DND4e)
+- Fallout: The Roleplaying Game
 - HeXXen 1733 Official
 - Level Up (Advanced 5e)
 - Metanthropes

@@ -1,3 +1,10 @@
+## [2.1.0](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/2.0.1...2.1.0) - Crawl Out of the Fallot
+
+- **New**
+  - Added support for `Fallout: The Roleplaying Game` @WookieeMatt
+- **Updated**
+  - Updated Github form to be more easy to submit a System Support request
+
 ## [2.0.1](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/2.0.0...2.0.1) - Polish Update
 
 - `Updates`

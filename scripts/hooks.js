@@ -8,7 +8,7 @@ import {
   getHealingInfo,
   getHealthLevel,
   updateHasAllianceChange,
-} from "./systemCompatability.js";
+} from "./systemCompatibility.js";
 
 export async function preUpdateActor(actor, update, status, _userID) {
   if (!status.diff) return;
