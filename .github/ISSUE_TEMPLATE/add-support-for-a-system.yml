@@ -37,8 +37,8 @@ body:
       label: Is 0 a good value?
       multiple: false
       options:
-        - Yes
-        - No
+        - 'Yes'
+        - 'No'
     validations:
       required: false
 
