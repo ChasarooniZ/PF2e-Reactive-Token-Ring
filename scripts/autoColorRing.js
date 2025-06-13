@@ -34,32 +34,15 @@ export function autoColorRing() {
           partyMembers?.reduce((tot, char) => tot + (char.level || 0), 0) /
             (partyMembers.length || 1) || 1;
         const levelDiff = (token?.actor?.level || 0) - partyLevel;
-        const levelKey =
-          levelDiff <= -4
-            ? "-4"
-            : levelDiff <= -3
-            ? "-3"
-            : levelDiff <= -2
-            ? "-2"
-            : levelDiff <= -1
-            ? "-1"
-            : levelDiff <= 0
-            ? "0"
-            : levelDiff <= 1
-            ? "+1"
-            : levelDiff <= 2
-            ? "+2"
-            : levelDiff <= 3
-            ? "+3"
-            : "+4";
+        const keys = ["-4", "-3", "-2", "-1", "0", "+1", "+2", "+3", "+4"];
+        const clamped = Math.max(-4, Math.min(levelDiff, 4));
+        const levelKey = keys[clamped + 4];
         return Color.fromString(
           COLORS.PF2E.LEVELDIFF.DEFAULT[levelKey] || COLORS.WHITE
         );
       },
       random: (token, _type) => {
-        return Color.fromString(
-          COLORS.RANDOM[token.id.charCodeAt(0) % 16]
-        );
+        return Color.fromString(COLORS.RANDOM[token.id.charCodeAt(0) % 16]);
       },
       custom: (_token, type) =>
         Color.fromString(
