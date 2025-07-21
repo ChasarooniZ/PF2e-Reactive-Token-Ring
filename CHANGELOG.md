@@ -1,3 +1,8 @@
+## [2.1.1](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/2.1.0...2.1.1) - Fix Custom Ring Color
+
+- **Updated**
+  - Fixed bug where custom Ring Color wasn't being applied (🐛 @nargath)
+
 ## [2.1.0](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/2.0.1...2.1.0) - Crawl Out of the Fallot
 
 - **New**

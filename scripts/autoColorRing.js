@@ -14,7 +14,7 @@ export function autoColorRing() {
       "health-percent": (token, _type) =>
         getColorForHealthLevel(
           token.document?.getFlag(MODULE_ID, "tokenHealthLevel") ??
-            getHealthLevel(token.actor)
+          getHealthLevel(token.actor)
         ),
       disposition: (token, _type) => {
         const disposition = token?.document?.disposition;
@@ -32,7 +32,7 @@ export function autoColorRing() {
         const partyMembers = party?.members || [];
         const partyLevel =
           partyMembers?.reduce((tot, char) => tot + (char.level || 0), 0) /
-            (partyMembers.length || 1) || 1;
+          (partyMembers.length || 1) || 1;
         const levelDiff = (token?.actor?.level || 0) - partyLevel;
         const keys = ["-4", "-3", "-2", "-1", "0", "+1", "+2", "+3", "+4"];
         const clamped = Math.max(-4, Math.min(levelDiff, 4));
@@ -42,10 +42,10 @@ export function autoColorRing() {
         );
       },
       random: (token, _type) => {
-        return Color.fromString(COLORS.RANDOM[token.id.charCodeAt(0) % 16]);
+        return Color.fromString(COLORS.RANDOM[token.id.charCodeAt(0) % COLORS.RANDOM.length]);
       },
       custom: (_token, type) =>
-        Color.fromString(
+        getColor(
           getSetting(this, "custom-color", type) || COLORS.WHITE
         ),
     };
@@ -99,13 +99,18 @@ function getSetting(token, typeOrColor, ringOrBackground) {
   const type = isParty
     ? "party"
     : {
-        [CONST.TOKEN_DISPOSITIONS.SECRET]: "secret",
-        [CONST.TOKEN_DISPOSITIONS.FRIENDLY]: "friendly",
-        [CONST.TOKEN_DISPOSITIONS.NEUTRAL]: "neutral",
-        [CONST.TOKEN_DISPOSITIONS.HOSTILE]: "hostile",
-      }?.[token?.document?.disposition] || "secret";
+      [CONST.TOKEN_DISPOSITIONS.SECRET]: "secret",
+      [CONST.TOKEN_DISPOSITIONS.FRIENDLY]: "friendly",
+      [CONST.TOKEN_DISPOSITIONS.NEUTRAL]: "neutral",
+      [CONST.TOKEN_DISPOSITIONS.HOSTILE]: "hostile",
+    }?.[token?.document?.disposition] || "secret";
 
   return resolvePlayerWorldSetting(
     `auto-coloring.${type}.${ringOrBackground}.${typeOrColor}`
   );
+}
+
+
+function getColor(color) {
+  return typeof color === 'object' ? color : Color.fromString(color);
 }
