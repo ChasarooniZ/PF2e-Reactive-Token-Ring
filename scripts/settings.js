@@ -169,7 +169,7 @@ function getPrefix(prefix) {
 export function resolvePlayerWorldSetting(settingPath) {
   const worldValue = game.settings.get(MODULE_ID, `${settingPath}.world`);
   const playerValue = game.settings.get(MODULE_ID, `${settingPath}.player`);
-  return playerValue === "default" || playerValue === COLORS.PLAYER_DEFAULT
+  return playerValue === "default" || playerValue?.toString()?.toLowerCase() === COLORS.PLAYER_DEFAULT.toLowerCase()
     ? worldValue
     : playerValue;
 }
@@ -210,16 +210,14 @@ export function renderSettingsConfig(_, html) {
   const importExportButtons = ["export", "import"].map(
     (action) => `
       <button type="button" class="REDY-button-settings" onclick="(async () => { 
-        game.REDY.api.${action}Settings(${
-      action === "export" ? game.user.isGM : ""
-    }); 
+        game.REDY.api.${action}Settings(${action === "export" ? game.user.isGM : ""
+      }); 
       })()">${game.i18n.localize(
         `${MODULE_ID}.module-settings.import-export-menu.${action}-settings`
       )} (${game.i18n.localize(
-      `${MODULE_ID}.module-settings.configuration-menu.headers.${
-        game.user.isGM ? "gamemaster" : "player"
-      }`
-    )})
+        `${MODULE_ID}.module-settings.configuration-menu.headers.${game.user.isGM ? "gamemaster" : "player"
+        }`
+      )})
       </button>`
   );
 
