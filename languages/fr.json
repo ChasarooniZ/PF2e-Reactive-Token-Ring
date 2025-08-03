@@ -28,7 +28,8 @@
             "level-diff": "Colorer les jetons en fonction de leur différence de niveau par rapport au groupe",
             "custom-color": "Si Personnalisé est activé, utilise cette couleur pour les jetons",
             "default": "Utiliser les paramètres du monde pour cela",
-            "unchanged": "Ne colore pas automatiquement le jeton"
+            "unchanged": "Ne colore pas automatiquement le jeton",
+            "random": "Pour distinguer les tokens dupliqués, sélectionne une couleur aléatoire parmi une liste de 16 couleurs"
           },
           "row": {
             "type": {
@@ -53,7 +54,8 @@
               "custom": "Utilise la couleur personnalisée saisie pour la couleur de l'arrière-plan",
               "disposition": "Utilise la disposition du jeton pour la couleur de l'arrière-plan",
               "health-percent": "Utilise le pourcentage de santé pour la couleur de l'arrière-plan",
-              "level-diff": "Utilise la différence de niveau par rapport au groupe pour la couleur de l'arrière-plan"
+              "level-diff": "Utilise la différence de niveau par rapport au groupe pour la couleur de l'arrière-plan",
+              "random": "Pour distinguer les tokens dupliqués, sélectionne une couleur aléatoire parmi une liste de 16 couleurs"
             },
             "reset-color": "Réinitialiser à la couleur par défaut"
           }
@@ -71,7 +73,8 @@
           "level-diff": "Diff. de niveau",
           "custom-color": "Couleur personnalisée",
           "default": "Par défaut",
-          "unchanged": "Inchangé"
+          "unchanged": "Inchangé",
+          "random": "Aléatoire"
         },
         "row": {
           "type": {
@@ -148,6 +151,7 @@
           "custom": "Personnalisé",
           "unchanged": "Inchangé",
           "health": "Basé sur la santé",
+          "random": "Aléatoire",
           "disposition": "Disposition",
           "levelDiff": "Différence de niveau"
         },
