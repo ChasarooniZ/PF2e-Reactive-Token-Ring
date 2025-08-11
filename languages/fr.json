@@ -9,11 +9,11 @@
     "module-settings": {
       "headers": {
         "flash": {
-          "name": "Paramètres de Flash",
-          "colors": "Paramètres de Couleur de Flash"
+          "name": "Paramètres de flash",
+          "colors": "Paramètres de couleur de flash"
         },
         "auto-coloring": {
-          "name": "Paramètre de Coloration Automatique"
+          "name": "Paramètre de coloration automatique"
         }
       },
       "configuration-menu": {
@@ -28,7 +28,8 @@
             "level-diff": "Colorer les jetons en fonction de leur différence de niveau par rapport au groupe",
             "custom-color": "Si Personnalisé est activé, utilise cette couleur pour les jetons",
             "default": "Utiliser les paramètres du monde pour cela",
-            "unchanged": "Ne colore pas automatiquement le jeton"
+            "unchanged": "Ne colore pas automatiquement le jeton",
+            "random": "Pour distinguer les tokens dupliqués, sélectionne une couleur aléatoire parmi une liste de 16 couleurs"
           },
           "row": {
             "type": {
@@ -44,7 +45,8 @@
               "custom": "Utilise la couleur personnalisée saisie pour la couleur de l'anneau",
               "disposition": "Utilise la disposition du jeton pour la couleur de l'anneau",
               "health-percent": "Utilise le pourcentage de santé pour la couleur de l'anneau",
-              "level-diff": "Utilise la différence de niveau par rapport au groupe pour la couleur de l'anneau"
+              "level-diff": "Utilise la différence de niveau par rapport au groupe pour la couleur de l'anneau",
+              "random": "Pour distinguer les jetons dupliqués, sélectionne une couleur aléatoire parmi une liste de 16 couleurs"
             },
             "bg": {
               "unchanged": "Ne change pas la couleur de l'arrière-plan",
@@ -52,25 +54,27 @@
               "custom": "Utilise la couleur personnalisée saisie pour la couleur de l'arrière-plan",
               "disposition": "Utilise la disposition du jeton pour la couleur de l'arrière-plan",
               "health-percent": "Utilise le pourcentage de santé pour la couleur de l'arrière-plan",
-              "level-diff": "Utilise la différence de niveau par rapport au groupe pour la couleur de l'arrière-plan"
+              "level-diff": "Utilise la différence de niveau par rapport au groupe pour la couleur de l'arrière-plan",
+              "random": "Pour distinguer les tokens dupliqués, sélectionne une couleur aléatoire parmi une liste de 16 couleurs"
             },
             "reset-color": "Réinitialiser à la couleur par défaut"
           }
         },
         "headers": {
-          "title": "REDY : Paramètres Dynamiques de Coloration Automatique des Jetons",
+          "title": "REDY : Paramètres automatiques dynamiques de coloration des jetons",
           "world": "Monde🌎",
           "gamemaster": "MJ👑",
           "player": "Joueur👤",
           "category": "Catégorie",
-          "ring-or-bg": "Anneau ou BG",
+          "ring-or-bg": "Anneau ou AP",
           "custom": "Personnalisé",
           "disposition": "Disposition",
           "health-percent": "Santé %",
-          "level-diff": "Diff. de Niveau",
-          "custom-color": "Couleur Personnalisée",
+          "level-diff": "Diff. de niveau",
+          "custom-color": "Couleur personnalisée",
           "default": "Par défaut",
-          "unchanged": "Inchangé"
+          "unchanged": "Inchangé",
+          "random": "Aléatoire"
         },
         "row": {
           "type": {
@@ -81,20 +85,20 @@
             "secret": "Secret"
           },
           "ring": "Anneau",
-          "bg": "BG"
+          "bg": "AP"
         },
         "notifications": {
-          "saved": "Paramètres Personnalisés de l'Anneau du Jeton Enregistrés !"
+          "saved": "Paramètres personnalisés de l'anneau du jeton enregistrés !"
         }
       },
       "import-export-menu": {
-        "import-settings": "Importer les Paramètres",
-        "export-settings": "Exporter les Paramètres",
-        "title": "Importateur de Paramètres REDY",
-        "body": "Télécharger le JSON des Paramètres",
+        "import-settings": "Importer les paramètres",
+        "export-settings": "Exporter les paramètres",
+        "title": "Importateur de paramètres REDY",
+        "body": "Télécharger le JSON des paramètres",
         "notifications": {
           "error": "JSON invalide dans le fichier téléchargé. Veuillez vérifier le contenu du fichier.",
-          "imported": "Les Paramètres REDY ont été importés avec succès ! Rechargement de Foundry"
+          "imported": "Les paramètres REDY ont été importés avec succès ! Rechargement de Foundry"
         },
         "buttons": {
           "cancel": "Annuler",
@@ -128,17 +132,17 @@
             "hint": "Sélectionnez si le module doit changer automatiquement la couleur de l'anneau du jeton dynamique"
           },
           "custom-color": {
-            "name": "Couleur Personnalisée de l'Anneau du Jeton",
+            "name": "Couleur personnalisée de l'anneau du jeton",
             "hint": "Si l'option de coloration automatique est définie sur personnalisé, utilise cette couleur"
           }
         },
         "background": {
           "type": {
-            "name": "Coloration Automatique de l'Arrière-Plan du Jeton",
+            "name": "Coloration automatique de l'arrière-plan du jeton",
             "hint": "Sélectionnez si le module doit changer la couleur de l'arrière-plan du jeton dynamique"
           },
           "custom-color": {
-            "name": "Couleur Personnalisée de l'Arrière-Plan du Jeton",
+            "name": "Couleur personnalisée de l'arrière-plan du jeton",
             "hint": "Si l'option de coloration automatique est définie sur personnalisé, utilise cette couleur"
           }
         },
@@ -146,47 +150,45 @@
           "default": "Par défaut",
           "custom": "Personnalisé",
           "unchanged": "Inchangé",
-          "health": "Basé sur la Santé",
+          "health": "Basé sur la santé",
+          "random": "Aléatoire",
           "disposition": "Disposition",
-          "levelDiff": "Différence de Niveau"
+          "levelDiff": "Différence de niveau"
         },
         "percent-color": {
-          "name": "Pourcentage de Couleur Automatique du Jeton",
-          "hint": "À quel point la saturation de la coloration automatique doit-elle être ?"
+          "name": "Pourcentage de couleur automatique du jeton",
+          "hint": "À quel niveau de saturation, la coloration automatique doit-elle être ?"
         },
         "override-color": {
-          "name": "La Coloration Automatique Remplace la Couleur",
-          "hint": "Sélectionnez si la coloration automatique doit remplacer la couleur si vous avez défini une valeur pour le jeton"
+          "name": "Coloration automatique remplace la couleur",
+          "hint": "Sélectionnez si la coloration automatique doit remplacer la couleur si vous l'avez fixé à une valeur pour le jeton"
         }
       },
-
       "colors": {
         "damage": {
           "name": "[Couleur] Dégâts",
-          "hint": "Changer la couleur du flash du jeton lors de la réception de dégâts"
+          "hint": "Changer la couleur du flash du jeton en cas de dégâts"
         },
         "healing": {
           "name": "[Couleur] Soins",
-          "hint": "Changer la couleur du flash du jeton lors de la réception de soins"
+          "hint": "Changer la couleur du flash du jeton en cas de guérison"
         },
         "target": {
           "name": "[Couleur] Cible",
-          "hint": "Changer la couleur du flash du jeton lors de la visée (à condition que vous n'ayez pas activé le paramètre de couleur du joueur)"
+          "hint": "Changer la couleur du flash du jeton n ciblant (à condition que de ne pas avoir activé le paramètre de couleur du joueur)"
         },
         "status": {
           "positive": {
-            "name": "[Couleur] Condition Positive",
-            "hint": "Changer la couleur du flash du jeton lors de la réception d'une condition positive"
+            "name": "[Couleur] État positif",
+            "hint": "Changer la couleur du flash du jeton en recevant un état positif"
           },
           "negative": {
-            "name": "[Couleur] Condition Négative",
-            "hint": "Changer la couleur du flash du jeton lors de la réception d'une condition négative"
+            "name": "[Couleur] État négative",
+            "hint": "Changer la couleur du flash du jeton en recevant un état négatif"
           }
         }
       },
       "": {
-        "name": "",
-        "hint": ""
       }
     }
   }
