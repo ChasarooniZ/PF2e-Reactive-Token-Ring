@@ -1,3 +1,8 @@
+## 2.2.0 - Daggerheart
+
+- `Added`
+  - `Daggerheart` system support
+
 ## [2.1.2](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/2.1.1...2.1.2) - Fix Custom Ring Color Player
 
 - **Updated**
