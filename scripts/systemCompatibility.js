@@ -104,6 +104,12 @@ function getSystemKeys(actor) {
         hpMaxPath: "system.derivedStats.hp.max",
         zeroIsBad: true,
       };
+    case "dcc":
+      return {
+        hpPath: "system.attributes.hp.value",
+        hpMaxPath: "system.attributes.hp.max",
+        zeroIsBad: true,
+      };
     case "daggerheart":
       return {
         hpPath: "system.resources.hitPoints.value",
