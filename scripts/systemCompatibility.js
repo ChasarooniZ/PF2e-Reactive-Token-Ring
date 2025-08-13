@@ -110,6 +110,12 @@ function getSystemKeys(actor) {
         hpMaxPath: "system.resources.hitPoints.max",
         zeroIsBad: false,
       }
+    case "dcc":
+      return {
+        hpPath: "system.attributes.hp.value",
+        hpMaxPath: "system.attributes.hp.max",
+        zeroIsBad: true,
+      }
     case "dragonbane":
       return {
         hpPath: "system.hitPoints.value",
@@ -122,7 +128,7 @@ function getSystemKeys(actor) {
         hpMaxPath: "system.attributes.hp.max",
         zeroIsBad: true,
       };
-    //case "dnd5e":
+    //case "dnd5e": Do not Add
     case "dungeonworld":
     case "pf1":
     case "pf2e":

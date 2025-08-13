@@ -1,3 +1,7 @@
+## 2.2.1 - Club Classics
+
+- Added `Dungeon Crawl Classics` system support
+
 ## 2.2.0 - Daggerheart
 
 - `Added`
