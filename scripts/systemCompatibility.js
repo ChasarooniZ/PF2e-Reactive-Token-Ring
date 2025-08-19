@@ -200,6 +200,12 @@ function getSystemKeys(actor) {
         hpMaxPath: "system.wounds.max",
         zeroIsBad: false,
       };
+    case "swnr":
+      return {
+        hpPath: "system.health.value",
+        hpMaxPath: "system.health.max",
+        zeroIsBad: true,
+      }
     case "tormenta20":
       return {
         hpPath: "system.attributes.pv.value",

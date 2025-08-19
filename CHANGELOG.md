@@ -1,3 +1,7 @@
+## 2.2.2 - A World Without Numbers
+
+- Added `Systems Without Number` system support
+
 ## 2.2.1 - Club Classics
 
 - Added `Dungeon Crawl Classics` system support
