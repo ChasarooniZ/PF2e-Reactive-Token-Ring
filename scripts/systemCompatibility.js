@@ -98,6 +98,12 @@ function getSystemKeys(actor) {
         };
       }
       break;
+    case "CoC7":
+      return {
+        hpPath: "system.attribs.hp.value",
+        hpMaxPath: "system.attribs.hp.max",
+        zeroIsBad: true,
+      };
     case "cyberpunk-red-core":
       return {
         hpPath: "system.derivedStats.hp.value",
