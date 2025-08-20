@@ -1,20 +1,24 @@
+## 2.2.3 - Cthulu Calls Nhimbaloth Answers
+
+- Added `Call of Cthulhu 7th Edition` System Support (❓ @GambetTV)
+
 ## 2.2.2 - A World Without Numbers
 
-- Added `Systems Without Number` system support
+- Added `Systems Without Number` system support (❓ @pandanielxd)
 
 ## 2.2.1 - Club Classics
 
-- Added `Dungeon Crawl Classics` system support
+- Added `Dungeon Crawl Classics` system support (❓ @cyface)
 
 ## 2.2.0 - Daggerheart
 
 - `Added`
-  - `Daggerheart` system support
+  - `Daggerheart` system support (❓ @Peach774)
 
 ## [2.1.3](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/2.1.2...2.1.3) - Updated French Translation
 
 - **Updated**
-  - Updated French Translation (RedB-hub, rectulo)
+  - Updated French Translation (@RedB-hub, @rectulo)
 
 ## [2.1.2](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/2.1.1...2.1.2) - Fix Custom Ring Color Player
 
@@ -29,7 +33,7 @@
 ## [2.1.0](https://github.com/ChasarooniZ/PF2e-Reactive-Token-Ring/compare/2.0.1...2.1.0) - Crawl Out of the Fallot
 
 - **New**
-  - Added support for `Fallout: The Roleplaying Game` @WookieeMatt
+  - Added support for `Fallout: The Roleplaying Game` (@WookieeMatt)
 - **Updated**
   - Updated Github form to be more easy to submit a System Support request
 
