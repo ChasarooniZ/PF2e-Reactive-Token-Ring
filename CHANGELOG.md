@@ -1,3 +1,7 @@
+## 2.2.4 - Fix Bug
+
+- Fixed bug with random color
+
 ## 2.2.3 - Cthulu Calls Nhimbaloth Answers
 
 - Added `Call of Cthulhu 7th Edition` System Support (❓ @GambetTV)
