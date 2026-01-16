@@ -1,3 +1,7 @@
+## 2.2.5 - Fix other Bug
+
+- Fix other bug with random color
+
 ## 2.2.4 - Fix Bug
 
 - Fixed bug with random color

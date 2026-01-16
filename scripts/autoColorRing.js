@@ -6,6 +6,10 @@ export function autoColorRing() {
   // Ensure this.document and this.document.ring exist
   const ringColors = this.document?.ring?.colors || {};
   const { ring, background } = ringColors;
+  if (!this.document?.ring?.enabled) {
+    return { ring, background };
+  }
+  
   try {
     const ringSetting = getSetting(this, "type", "ring");
     const backgroundSetting = getSetting(this, "type", "bg");
@@ -46,8 +50,9 @@ export function autoColorRing() {
           COLORS.RANDOM[(token?.id?.codePointAt(0) ?? 0) % COLORS.RANDOM.length]
         );
       },
-      custom: (_token, type) =>
-        getColor(getSetting(this, "custom-color", type) || COLORS.WHITE),
+      custom: (_token, type) => {
+        return getColor(getSetting(this, "custom-color", type) || COLORS.WHITE);
+      },
     };
 
     // Ring Color Set
@@ -62,13 +67,13 @@ export function autoColorRing() {
     );
 
     // Ring Color Scaling
-    ringColor = !["unchanged", "custom"].includes(ringSetting)
-      ? Color.from(Color.multiplyScalar(ringColor, percentColor))
-      : ringColor;
+    ringColor = ["unchanged", "custom"].includes(ringSetting)
+      ? ringColor
+      : Color.from(Color.multiplyScalar(ringColor, percentColor));
     // Background Color Scaling
-    backgroundColor = !["unchanged", "custom"].includes(backgroundSetting)
-      ? Color.from(Color.multiplyScalar(backgroundColor, percentColor))
-      : backgroundColor;
+    backgroundColor = ["unchanged", "custom"].includes(backgroundSetting)
+      ? backgroundColor
+      : Color.from(Color.multiplyScalar(backgroundColor, percentColor));
 
     return { ring: ringColor, background: backgroundColor };
   } catch (err) {
