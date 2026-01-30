@@ -1,3 +1,6 @@
+## 2.3.0
+- Enabled `Starfinder 2e` System Support (💻 @Mystler)
+
 ## 2.2.5 - Fix other Bug
 
 - Fix other bug with random color
