@@ -138,6 +138,7 @@ function getSystemKeys(actor) {
     case "dungeonworld":
     case "pf1":
     case "pf2e":
+    case "sf2e":
       return {
         hpPath: "system.attributes.hp.value",
         hpMaxPath: "system.attributes.hp.max",
