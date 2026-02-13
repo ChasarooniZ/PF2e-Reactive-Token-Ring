@@ -1,3 +1,6 @@
+## 2.3.1 - Warhammer 40,000 Roleplay: Imperium Maledictum
+- Added Support for `Warhammer 40,000 Roleplay: Imperium Maledictum`
+
 ## 2.3.0
 - Enabled `Starfinder 2e` System Support (💻 @Mystler)
 
