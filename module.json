@@ -24,6 +24,15 @@
           "verified": "1.12.14.0"
         }
       }
+    ],
+    "recommends": [
+      {
+        "id": "more-dynamic-token-rings",
+        "name": "SETT: Some Extra Token (ring) Types",
+        "type": "module",
+        "reason": "This module adds more token rings",
+        "compatibility": {}
+      }
     ]
   },
   "esmodules": ["scripts/module.js"],

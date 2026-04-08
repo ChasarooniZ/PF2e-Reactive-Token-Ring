@@ -1,3 +1,7 @@
+## 2.2.6
+
+- Now reccommends SETT
+
 ## 2.2.5 - Fix other Bug
 
 - Fix other bug with random color
