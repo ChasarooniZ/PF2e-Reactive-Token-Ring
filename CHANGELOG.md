@@ -1,6 +1,15 @@
-## 2.2.6
+## 3.0.0
 
+- Updated to support FoundryVTT `14`
 - Now reccommends SETT
+
+## 2.3.1 - Warhammer 40,000 Roleplay: Imperium Maledictum
+
+- Added Support for `Warhammer 40,000 Roleplay: Imperium Maledictum`
+
+## 2.3.0
+
+- Enabled `Starfinder 2e` System Support (💻 @Mystler)
 
 ## 2.2.5 - Fix other Bug
 
